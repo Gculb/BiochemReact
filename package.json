@@ -1,8 +1,8 @@
 {
   "name": "biochemreact",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "homepage": "https://gculb.github.io/BiochemReact",
-  "description": "",
+  "description": "Interactive React-based educational platform for biochemistry with 3D molecular visualization, enzyme kinetics simulation, and 100+ interactive learning modules.",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
@@ -12,18 +12,33 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "biochemistry",
+    "education",
+    "chemistry",
+    "molecular",
+    "enzyme kinetics",
+    "michaelis-menten",
+    "3d-visualization",
+    "interactive-learning",
+    "react",
+    "three.js"
+  ],
+  "author": "Grant Culbertson",
   "license": "ISC",
   "type": "module",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@fortawesome/react-fontawesome": "^3.1.1",
+    "chart.js": "^4.5.1",
+    "katex": "^0.16.28",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "react-katex": "^3.1.0",
     "react-router-dom": "^7.13.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "three": "^0.182.0"
   },
   "devDependencies": {
     "gh-pages": "^6.3.0"

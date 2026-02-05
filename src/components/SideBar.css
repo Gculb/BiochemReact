@@ -75,6 +75,10 @@
   text-decoration: none;
   transition: background 0.15s;
 }
+.nav-link.active {
+  background: #34495e;
+  font-weight: 600;
+}
 
 .nav-link:hover {
   background: #2c3e50;

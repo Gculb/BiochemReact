@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import problems from "../data/problems.json";
 import "./PracticeProblems.css"
 
@@ -15,7 +15,7 @@ const PracticeProblems = () => {
       }
     }));
   };
-
+  const shuffled = useMemo(() => [...problems].sort(() => Math.random() - 0.5), []); 
   return (
     <div className="page">
       <label className="problem-count">
@@ -28,8 +28,11 @@ const PracticeProblems = () => {
         </select>
       </label>
 
+      <p style={{ marginBottom: "1rem", color: "#666" }}>
+  Showing {Math.min(count, problems.length)} of {problems.length} problems
+          </p>
 
-      {problems.slice(0, count).map((p) => (
+      {shuffled.slice(0, count).map((p) => (
         <div key={p.id} className="problem-card">
           <h3>{p.title}</h3>
           <div className="problem-meta">

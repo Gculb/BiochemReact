@@ -1,0 +1,240 @@
+/* Critical Concepts Section Styling */
+
+.critical-concepts {
+  /* Use CSS variable for dynamic gradient color */
+  --gradient-color: #667eea;
+  --gradient-light: color-mix(in srgb, var(--gradient-color) 80%, white);
+  --gradient-dark: color-mix(in srgb, var(--gradient-color) 100%, #1a1a1a);
+}
+
+.critical-concepts__container {
+  background: linear-gradient(
+    135deg,
+    var(--gradient-color) 0%,
+    var(--gradient-dark) 100%
+  );
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+.critical-concepts__container:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.critical-concepts__title {
+  font-size: 1.8rem;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: 0.5px;
+}
+
+.critical-concepts__icon {
+  display: inline-block;
+  font-size: 1.6em;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Grid Layout */
+.critical-concepts__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+/* Card Styling */
+.critical-concepts__card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 18px;
+  border-radius: 10px;
+  border-left: 4px solid white;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 200px;
+  justify-content: flex-start;
+}
+
+.critical-concepts__card:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.critical-concepts__card-title {
+  display: block;
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1.3;
+}
+
+.critical-concepts__card-description {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.5;
+}
+
+/* Key Points List */
+.critical-concepts__key-points {
+  margin: 8px 0 0 0;
+  padding-left: 18px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  list-style-type: none;
+}
+
+.critical-concepts__key-points li {
+  margin-bottom: 6px;
+  position: relative;
+  padding-left: 8px;
+}
+
+.critical-concepts__key-points li:before {
+  content: "•";
+  position: absolute;
+  left: -8px;
+  font-weight: bold;
+}
+
+.critical-concepts__key-points li:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .critical-concepts__grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .critical-concepts__container {
+    padding: 24px;
+  }
+
+  .critical-concepts__title {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+
+  .critical-concepts__grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 13px;
+  }
+
+  .critical-concepts__card {
+    padding: 16px;
+    min-height: 180px;
+  }
+
+  .critical-concepts__card-title {
+    font-size: 1.05rem;
+  }
+
+  .critical-concepts__card-description {
+    font-size: 0.9rem;
+  }
+
+  .critical-concepts__key-points {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .critical-concepts__container {
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+
+  .critical-concepts__title {
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+    gap: 8px;
+  }
+
+  .critical-concepts__icon {
+    font-size: 1.4em;
+  }
+
+  .critical-concepts__grid {
+    grid-template-columns: 1fr;
+    gap: 11px;
+  }
+
+  .critical-concepts__card {
+    padding: 14px;
+    min-height: auto;
+    gap: 10px;
+  }
+
+  .critical-concepts__card-title {
+    font-size: 1rem;
+  }
+
+  .critical-concepts__card-description {
+    font-size: 0.85rem;
+  }
+
+  .critical-concepts__key-points {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    padding-left: 16px;
+  }
+
+  .critical-concepts__key-points li {
+    margin-bottom: 4px;
+    padding-left: 6px;
+  }
+
+  .critical-concepts__key-points li:before {
+    left: -6px;
+  }
+}
+
+/* Accessibility */
+.critical-concepts__card:focus-within {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .critical-concepts__container {
+    page-break-inside: avoid;
+    box-shadow: none;
+  }
+
+  .critical-concepts__card {
+    page-break-inside: avoid;
+  }
+}
+
+/* Dark mode consideration */
+@media (prefers-color-scheme: dark) {
+  .critical-concepts__card {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .critical-concepts__card:hover {
+    background: rgba(255, 255, 255, 0.18);
+  }
+}

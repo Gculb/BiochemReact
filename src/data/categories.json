@@ -88,7 +88,7 @@
       "id": "stats",
       "title": "Statistics",
       "icon": "fa-chart-pie",
-      "color": "#ffc107",
+      "color": "#ff6f00",
       "description": "Biochemical data analysis: descriptive stats, hypothesis testing, regression, power & sampling.",
       "order": 5,
       "topics": [

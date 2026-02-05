@@ -1,746 +1,1057 @@
 {
-  "sections": {
-    "genchem": {
+  "topicSections": [
+    {
+      "sectionId": "genchem",
       "section_title": "General Chemistry",
       "cards": [
         {
-          "id": "atomic-structure-periodic-trends-critical",
-          "title": "Atomic Structure & Periodic Trends",
-          "description": "Understanding electron configuration and periodic properties is essential for predicting chemical behavior.",
-          "key_points": [
-            "Electron configurations: 1s² 2s² 2p⁶ 3s² 3p⁶... (Aufbau principle)",
-            "Electronegativity trends: Increases left→right, decreases top→bottom",
-            "Ionization energy: Energy to remove electron (same trend as electronegativity)",
-            "Atomic radius: Decreases across period, increases down group",
-            "Valence electrons: Determine chemical properties and reactivity"
-          ],
-          "isCritical": true
+          "id": "hh-equation",
+          "title": "Henderson–Hasselbalch Equation",
+          "summary": "Relates pH, pKa and the conjugate base/acid ratio for buffers.",
+          "details": "$pH = pK_a + \\log([A^-]/[HA])$. Used to design and analyze buffers and predict pH of solutions containing weak acids and conjugate bases.",
+          "important": true
         },
         {
-          "id": "chemical-bonding-molecular-geometry",
-          "title": "Chemical Bonding & Molecular Geometry",
-          "description": "Learn how atoms bond and the shapes molecules take - fundamental for understanding biomolecules.",
-          "key_points": [
-            "Ionic bonding: Transfer of electrons (metals + nonmetals)",
-            "Covalent bonding: Sharing of electrons (nonmetals)",
-            "VSEPR theory: Electron pairs repel to determine molecular shape",
-            "Hybridization: sp (linear), sp² (trigonal planar), sp³ (tetrahedral)",
-            "Polarity: Electronegativity differences create dipoles",
-            "Intermolecular forces: H-bonding, dipole-dipole, London dispersion"
-          ],
-          "isCritical": false
+          "id": "gibbs-free-energy",
+          "title": "Gibbs Free Energy",
+          "summary": "Predicts reaction spontaneity and links to equilibrium.",
+          "details": "$\\Delta G = \\Delta H - T\\Delta S$ and $\\Delta G^\\circ = -RT \\ln(K_{eq})$. Fundamental for determining if reactions will proceed spontaneously.",
+          "important": true
         },
         {
-          "id": "acid-base-chemistry-critical",
-          "title": "Acid-Base Chemistry",
-          "description": "Essential for understanding pH regulation in biological systems and enzyme mechanisms.",
-          "key_points": [
-            "pH scale: pH = -log[H⁺], ranges 0-14 (7 is neutral)",
-            "pKa: Acid dissociation constant (lower pKa = stronger acid)",
-            "Henderson-Hasselbalch: pH = pKa + log([A⁻]/[HA])",
-            "Buffers: Resist pH changes (weak acid + conjugate base)",
-            "Titration curves: Show pH vs volume added, equivalence point"
-          ],
-          "isCritical": true
+          "id": "electronegativity-trends",
+          "title": "Electronegativity & Periodic Trends",
+          "summary": "Trends that determine bonding and reactivity across the periodic table.",
+          "details": "F > O > N > C. Electronegativity and ionization energy increase left→right; atomic radius decreases left→right. These trends explain chemical behavior.",
+          "important": true
         },
         {
-          "id": "thermodynamics-equilibrium",
-          "title": "Thermodynamics & Equilibrium",
-          "description": "The energy foundations of all biochemical reactions.",
-          "key_points": [
-            "Gibbs free energy: ΔG = ΔH - TΔS (predicts spontaneity)",
-            "Enthalpy (ΔH): Heat content change in reaction",
-            "Entropy (ΔS): Disorder/randomness of system",
-            "Equilibrium constant: Keq = [products]/[reactants] at equilibrium",
-            "Le Chatelier's principle: System shifts to counteract stress",
-            "Temperature dependence: ΔG° = -RT ln(Keq)"
-          ],
-          "isCritical": false
+          "id": "equilibrium-constant",
+          "title": "Equilibrium Constant",
+          "summary": "Relationship of product and reactant concentrations at equilibrium.",
+          "details": "K_eq = [products]/[reactants]. Relates to ΔG° and determines the position of equilibrium.",
+          "important": false
+        },
+        {
+          "id": "atomic-structure",
+          "title": "Atomic Structure & Electron Configuration",
+          "summary": "Electron configurations and the properties they drive.",
+          "details": "Aufbau principle and orbital filling. Valence electrons determine reactivity and chemical properties.",
+          "important": true
+        },
+        {
+          "id": "acid-base-chemistry",
+          "title": "Acid–Base Chemistry",
+          "summary": "pH, pKa, buffers and titration essentials for biological systems.",
+          "details": "$pH = -\\log[H^+]$. Buffers consist of weak acid + conjugate base. Titration curves show equivalence point and buffer range.",
+          "important": true
         },
         {
           "id": "redox-reactions",
           "title": "Redox Reactions",
-          "description": "Foundation for understanding cellular respiration and photosynthesis.",
-          "key_points": [
-            "Oxidation: Loss of electrons (increase in oxidation state)",
-            "Reduction: Gain of electrons (decrease in oxidation state)",
-            "OIL RIG: Oxidation Is Loss, Reduction Is Gain",
-            "Balancing: Half-reaction method, balance electrons transferred",
-            "Standard potentials: E° values predict spontaneity (ΔG° = -nFE°)"
-          ],
-          "isCritical": false
+          "summary": "Electron transfer processes and their role in metabolism.",
+          "details": "Oxidation = loss of electrons, Reduction = gain of electrons. Redox couples and standard reduction potentials determine reaction feasibility.",
+          "important": false
+        },
+        {
+          "id": "stoichiometry",
+          "title": "Stoichiometry & Limiting Reagents",
+          "summary": "Quantitative relationships in chemical reactions for yield calculations.",
+          "details": "Mole ratios from balanced equations. Identify limiting reagent to calculate theoretical yield.",
+          "important": false
+        },
+        {
+          "id": "gas-laws",
+          "title": "Gas Laws",
+          "summary": "Relationships between pressure, volume, temperature and moles of gas.",
+          "details": "PV = nRT. Combined gas law for changing conditions. Partial pressures and Dalton's law.",
+          "important": false
+        },
+        {
+          "id": "solutions",
+          "title": "Solutions & Concentrations",
+          "summary": "Calculating molarity, molality and preparing solutions.",
+          "details": "Molarity = moles/L. Molality = moles/kg solvent. Dilution calculations M1V1 = M2V2.",
+          "important": false
+        },
+        {
+          "id": "thermochemistry",
+          "title": "Thermochemistry",
+          "summary": "Enthalpy, entropy and their role in reaction energetics.",
+          "details": "ΔH = heat change at constant pressure. ΔS = change in disorder. Exothermic vs endothermic reactions.",
+          "important": false
         }
       ]
     },
-    "physics": {
-      "section_title": "Physics Essentials",
-      "cards": [
-        {
-          "id": "classical-mechanics-critical",
-          "title": "Classical Mechanics",
-          "description": "Mastering classical mechanics is essential for understanding motion, forces, and energy conservation.",
-          "key_points": [
-            "Newton's Laws: Understand the three laws of motion and their applications",
-            "Conservation Laws: Grasp conservation of energy and momentum in closed systems",
-            "Rotational Dynamics: Comprehend torque, angular momentum, and moment of inertia",
-            "Simple Harmonic Motion: Analyze oscillatory motion and related equations",
-            "Kinematics Equations: Apply equations of motion for constant acceleration scenarios"
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "circuits-critical",
-          "title": "Circuits",
-          "description": "Mastering circuits is essential for understanding electrical behavior in systems.",
-          "key_points": [
-            "Ohm's Law: V = IR, relationship between voltage, current, and resistance",
-            "Series & Parallel Circuits: Calculate equivalent resistance and voltage/current distribution",
-            "Kirchhoff's Laws: Apply junction and loop rules for complex circuit analysis",
-            "Capacitors & Inductors: Understand charging/discharging behavior and energy storage",
-            "Power in Circuits: P = IV, calculating power dissipation in resistive elements"
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "diagrams-critical",
-          "title": "Diagrams",
-          "description": "Mastering diagrams is essential for visualizing and interpreting scientific data effectively.",
-          "key_points": [
-            "Free Body Diagrams: Represent forces acting on an object to analyze motion",
-            "Energy Diagrams: Visualize potential and kinetic energy changes in systems",
-            "Wave Diagrams: Illustrate wave properties such as amplitude, wavelength, and frequency",
-            "Circuit Diagrams: Depict electrical components and their connections in a circuit",
-            "Graph Interpretation: Analyze and extract information from various scientific graphs"
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "waves-and-oscillations-critical",
-          "title": "Waves and oscillations",
-          "description": "Mastering waves and oscillations is essential for understanding periodic motion and wave behavior.",
-          "key_points": [
-            "Wave Properties: Understand amplitude, wavelength, frequency, and speed",
-            "Wave Equation: v = fλ, relationship between wave speed, frequency, and wavelength",
-            "Interference: Constructive and destructive interference patterns",
-            "Standing Waves: Formation and characteristics of standing wave patterns",
-            "Simple Harmonic Motion: Analyze oscillatory motion and related equations"
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "thermodynamics-critical",
-          "title": "Thermodynamics",
-          "description": "Mastering thermodynamics is essential for understanding heat, work, and energy transfer in systems.",
-          "key_points": [
-            "First Law of Thermodynamics: ΔU = Q - W, conservation of energy in thermodynamic processes",
-            "Second Law of Thermodynamics: Entropy of an isolated system always increases",
-            "Thermodynamic Processes: Understand isothermal, adiabatic, isobaric, and isochoric processes",
-            "Heat Transfer: Conduction, convection, and radiation mechanisms",
-            "State Functions: Identify properties like enthalpy, entropy, and Gibbs free energy"
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "lensescritical",
-          "title": "Lenses",
-          "description": "Mastering lenses is essential for understanding how light behaves in optical systems.",
-          "key_points": [
-            "Lens Types: Differentiate between converging (convex) and diverging (concave) lenses",
-            "Lens Formula: 1/f = 1/do + 1/di, relating focal length, object distance, and image distance",
-            "Magnification: M = -di/do, calculate image size relative to object size",
-            "Ray Diagrams: Construct ray diagrams to locate images formed by lenses",
-            "Optical Instruments: Understand the function of microscopes and telescopes using lenses"
-          ],
-          "isCritical": true
-        }
-      ]
-    },
-    "stats": {
-      "section_title": "Statistics (Biochemical Data Analysis)",
-      "cards": [
-        {
-          "id": "distributions-critical",
-          "title": "Distributions",
-          "description": "Probability distributions describe how experimental data is expected to behave in biochemical and laboratory measurements.                 Choosing the correct distribution is essential for proper statistical testing and interpretation.",
-          "key_points": [
-            "Normal (Gaussian) Distribution: Most biochemical measurements (enzyme rates, absorbance values) approximate normality due to random error.",
-            "Binomial Distribution: Used for discrete outcomes such as success/failure events (e.g., binding vs non-binding, mutated vs non-mutated).",
-            "Poisson Distribution: Models rare molecular events such as photon counts, mutation frequency, or low-copy-number reactions.",
-            "Assumption Checking: Many statistical tests assume normality; always inspect histograms or residual plots.",
-            "Central Limit Theorem: Even non-normal biological data approaches normality as sample size increases.",
-            "Practical Insight: When distributions deviate strongly from normality, consider transformations or nonparametric tests."
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "descriptive-statistics-critical",
-          "title": "Descriptive Statistics",
-          "description": "Descriptive statistics summarize experimental data and communicate biological variability clearly and accurately.",
-          "key_points": [
-            "Mean: Average value; sensitive to outliers and skewed data.",
-            "Standard Deviation (SD): Measures spread of biological data.",
-            "Standard Error of the Mean (SEM): Estimates precision of the sample mean.",
-            "Reporting Format: Always report mean ± SD (or SEM), sample size (n), and units.",
-            "Best Practice: Plot individual data points whenever possible."
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "biological-vs-technical-replicates-critical",
-          "title": "Biological vs Technical Replicates",
-          "description": "Correct use of replicates determines whether results reflect true biology or measurement noise.",
-          "key_points": [
-            "Biological Replicates: Independent biological samples capturing real biological variation.",
-            "Technical Replicates: Repeated measurements of the same sample to assess instrument error.",
-            "Key Rule: Statistical tests should be performed on biological replicates, not technical replicates.",
-            "Common Mistake: Treating technical replicates as independent data points."
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "hypothesis-testing-critical",
-          "title": "Hypothesis Testing",
-          "description": "Hypothesis testing determines whether observed differences are statistically meaningful or due to random chance.",
-          "key_points": [
-            "Null Hypothesis (H₀): Assumes no difference or effect.",
-            "Alternative Hypothesis (H₁): Represents the expected biological effect.",
-            "p-value: Probability of observing the data if H₀ is true.",
-            "Significance Level (α): Commonly set at 0.05.",
-            "Interpretation: Statistical significance does not always imply biological significance."
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "t-tests-anova-critical",
-          "title": "t-Tests & ANOVA",
-          "description": "These tests compare group means to determine whether experimental conditions differ significantly.",
-          "key_points": [
-            "Unpaired t-test: Compares two independent groups.",
-            "Paired t-test: Compares matched or repeated measurements.",
-            "ANOVA: Compares three or more groups simultaneously.",
-            "Post-hoc Tests: Required after significant ANOVA results.",
-            "Assumptions: Normality and similar variances across groups."
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "regression-enzyme-kinetics-critical",
-          "title": "Regression & Enzyme Kinetics",
-          "description": "Regression analysis is essential for interpreting calibration curves and enzyme kinetic data.",
-          "key_points": [
-            "Linear Regression: Used for standard curves and calibration plots.",
-            "R² Value: Indicates goodness of fit, not model correctness.",
-            "Michaelis–Menten: Nonlinear regression is preferred over linearized plots.",
-            "Parameters: Report Vmax, Km, and confidence intervals.",
-            "Residuals: Inspect residual plots to assess fit quality."
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "error-analysis-confidence-intervals-critical",
-          "title": "Error Analysis & Confidence Intervals",
-          "description": "Error analysis quantifies uncertainty and strengthens the reliability of experimental conclusions.",
-          "key_points": [
-            "Random Error: Causes spread in repeated measurements.",
-            "Systematic Error: Produces consistent bias in results.",
-            "Error Propagation: Combines uncertainty through calculations.",
-            "Confidence Intervals: Provide a range of plausible values for parameters.",
-            "Best Practice: Always report uncertainty alongside measurements."
-          ],
-          "isCritical": true
-        }
-      ]
-    },
-    "genchemlab": {
-      "section_title": "General Chemistry Lab",
-      "cards": [
-        {
-          "id": "titration-critical",
-          "title": "Titration",
-          "description": "Mastering titration methods is essential for accurate concentration determination in solutions.",
-          "key_points": [
-            "Types of Titrations: Acid-base, redox, complexometric, and precipitation titrations",
-            "Indicators: Choosing appropriate indicators based on pH range and titration type",
-            "Calculations: M1V1 = M2V2 for dilution and titration calculations",
-            "End Point vs Equivalence Point: Understanding the difference and significance",
-            "Common Errors: Identifying and minimizing errors in titration experiments"
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "spectroscopy",
-          "title": "Spectroscopy",
-          "description": "Understanding spectroscopy techniques is crucial for analyzing molecular structures and compositions.",
-          "key_points": [
-            "IR Spectroscopy: Identifying functional groups based on absorption of infrared light",
-            "NMR Spectroscopy: Determining molecular structure through nuclear spin interactions",
-            "UV-Vis Spectroscopy: Analyzing electronic transitions in molecules",
-            "Beer-Lambert Law: A = εbc for quantifying concentration using absorbance",
-            "Sample Preparation: Proper techniques for preparing samples for spectroscopic analysis"
-          ],
-          "isCritical": false
-        },
-        {
-          "id": "electron-orbitals",
-          "title": "Electron Orbitals",
-          "description": "Exploring the arrangement and behavior of electrons in atoms and molecules.",
-          "key_points": [
-            "Orbital Types: s, p, d, f orbitals and their shapes",
-            "Energy Levels: Understanding the energy hierarchy of orbitals (Aufbau principle)",
-            "Electron Configuration: Writing configurations using the Pauli exclusion principle and Hund's rule",
-            "Quantum Numbers: n, l, m_l, m_s and their significance in defining electron positions",
-            "Orbital Hybridization: sp, sp², sp³ hybridization and its role in molecular geometry"
-          ],
-          "isCritical": false
-        },
-        {
-          "id": "lab-safety-data-analysis",
-          "title": "Lab Safety & Data Analysis",
-          "description": "Ensuring safety and accurate data interpretation is vital for successful laboratory work.",
-          "key_points": [
-            "Safety Protocols: Proper use of personal protective equipment (PPE) and emergency procedures",
-            "Chemical Handling: Safe storage, labeling, and disposal of chemicals",
-            "Data Recording: Accurate and organized documentation of experimental data",
-            "Error Analysis: Identifying sources of error and calculating uncertainties",
-            "Graphing Data: Effective presentation of data using graphs and charts"
-          ],
-          "isCritical": false
-        }
-      ]
-    },
-    "ochem": {
+    {
+      "sectionId": "ochem",
       "section_title": "Organic Chemistry",
       "cards": [
         {
-          "id": "structure-bonding-in-organic-molecules-critical",
-          "title": "Structure & Bonding in Organic Molecules",
-          "description": "Understanding carbon's unique bonding properties and molecular representations.",
-          "key_points": [
-            "Hybridization: sp (180°), sp² (120°), sp³ (109.5°)",
-            "Isomers: Same formula, different structure or arrangement",
-            "Chirality: Non-superimposable mirror images (enantiomers)",
-            "R/S nomenclature: Cahn-Ingold-Prelog priority rules",
-            "Fischer projections: Horizontal = wedge, vertical = dash",
-            "Optical activity: Rotation of plane-polarized light"
-          ],
-          "isCritical": true
+          "id": "functional-groups",
+          "title": "Functional Groups & Reactivity",
+          "summary": "Key functional groups and their chemical behavior.",
+          "details": "Alcohols, amines, carboxylic acids. Nucleophiles vs electrophiles. Reactivity trends determine substitution and elimination outcomes.",
+          "important": true
         },
         {
-          "id": "functional-groups-critical",
-          "title": "Functional Groups",
-          "description": "The building blocks of all biomolecules - must know cold!",
-          "key_points": [
-            "Alcohols (-OH): Found in sugars, glycerol; can be oxidized",
-            "Aldehydes (R-CHO): Reducing sugars, formyl groups",
-            "Ketones (R-CO-R): Ketose sugars, ketone bodies",
-            "Carboxylic acids (-COOH): Fatty acids, amino acids (acidic)",
-            "Esters (R-COO-R): Triglycerides, phospholipids",
-            "Amines (-NH₂): Amino acids (basic group)",
-            "Amides (-CONH-): Peptide bonds in proteins",
-            "Thiols (-SH): Cysteine, disulfide bonds (S-S)",
-            "Phosphates (-OPO₃²⁻): ATP, nucleic acids, phospholipids"
-          ],
-          "isCritical": true
+          "id": "stereochemistry",
+          "title": "Stereochemistry",
+          "summary": "Chirality, enantiomers, diastereomers and their biological implications.",
+          "details": "Chiral centers and R/S configuration. Enantiomers are mirror images. Stereochemistry is critical for drug activity and enzyme specificity.",
+          "important": true
         },
         {
           "id": "reaction-mechanisms",
           "title": "Reaction Mechanisms",
-          "description": "How and why reactions occur - critical for enzyme mechanisms.",
-          "key_points": [
-            "Nucleophiles: Electron-rich species (attack positive centers)",
-            "Electrophiles: Electron-poor species (accept electrons)",
-            "SN2: Backside attack, inversion of configuration, one step",
-            "SN1: Carbocation intermediate, racemization, two steps",
-            "Carbonyl additions: Nucleophile attacks C=O carbon",
-            "Curved arrow notation: Shows electron movement in mechanisms"
-          ],
-          "isCritical": true
+          "summary": "Common organic reaction types and their stepwise mechanisms.",
+          "details": "SN1 vs SN2 mechanisms. E1 vs E2 eliminations. Addition, elimination, and substitution reactions.",
+          "important": true
         },
         {
-          "id": "amino-acids-peptides-critical",
-          "title": "Amino Acids & Peptides",
-          "description": "The chemistry of protein building blocks.",
-          "key_points": [
-            "General structure: H₂N-CHR-COOH (α-carbon center)",
-            "Zwitterion: ⁺H₃N-CHR-COO⁻ (physiological pH)",
-            "Isoelectric point (pI): pH where net charge = 0",
-            "Peptide bond: Amide linkage between amino acids",
-            "N-terminus & C-terminus: Free amino and carboxyl ends",
-            "20 standard amino acids: MEMORIZE structures and properties!"
-          ],
-          "isCritical": true
+          "id": "aromaticity",
+          "title": "Aromaticity & Hückel's Rule",
+          "summary": "Aromatic compounds and their stability and reactivity.",
+          "details": "4n+2 π electrons in aromatic systems. Benzene and aromatic stability. Antiaromatic compounds are destabilized.",
+          "important": false
         },
         {
-          "id": "lipids-carbohydrates",
-          "title": "Lipids & Carbohydrates",
-          "description": "Essential biomolecules for energy storage and structural components.",
-          "key_points": [
-            "Lipids: Fatty acids, triglycerides, phospholipids, steroids",
-            "Fatty acid types: Saturated (no double bonds), unsaturated (double bonds)",
-            "Carbohydrates: Monosaccharides (glucose, fructose), disaccharides (sucrose), polysaccharides (starch, glycogen)",
-            "Glycosidic bonds: Link monosaccharides in disaccharides and polysaccharides",
-            "Energy storage: Lipids (9 kcal/g), carbohydrates (4 kcal/g)"
-          ],
-          "isCritical": true
+          "id": "protecting-groups",
+          "title": "Protecting Groups",
+          "summary": "Strategies to mask reactive functional groups during synthesis.",
+          "details": "Acetals, ethers, and silyl ethers as protecting groups. Key for multi-step syntheses and selective reactions.",
+          "important": false
         },
         {
-          "id": "carbohydrate-chemistry",
-          "title": "Carbohydrate Chemistry",
-          "description": "The chemistry of sugars and their derivatives.",
-          "key_points": [
-            "Monosaccharides: Glucose, fructose, galactose (simple sugars)",
-            "Disaccharides: Sucrose, lactose, maltose (two monosaccharides linked)",
-            "Polysaccharides: Starch, glycogen, cellulose (long chains of monosaccharides)",
-            "Glycosidic Bonds: Linkage between sugar units (α or β)",
-            "Mutarotation: Interconversion between α and β anomers in solution"
-          ],
-          "isCritical": false
+          "id": "carbonyl-chemistry",
+          "title": "Carbonyl Chemistry",
+          "summary": "Aldehydes, ketones, and carboxylic acid derivatives and their reactions.",
+          "details": "Nucleophilic addition and acyl substitution mechanisms. Aldol condensation and Wittig reactions.",
+          "important": true
         }
       ]
     },
-    "analytical": {
-      "section_title": "Analytical Chemistry",
-      "cards": [
-        {
-          "id": "calibration-quantitation",
-          "title": "Calibration & Quantitation",
-          "description": "Best practices for turning instrument responses into reliable concentrations.",
-          "key_points": [
-            "External calibration: Standard curve (blank → high concentration), check linear dynamic range",
-            "Internal standards: Compensate for sample prep and ionization variability (esp. LC-MS)",
-            "Isotope dilution: Gold standard for quantitation when available",
-            "Matrix-matched standards: Reduce matrix bias in complex samples"
-          ],
-          "isCritical": false
-        },
-        {
-          "id": "quality-assurance-controls-critical",
-          "title": "Quality Assurance & Controls",
-          "description": "SOPs, documentation, and routine checks that keep results defensible.",
-          "key_points": [
-            "Blanks (reagent & method), check standards, spike recoveries",
-            "Control charts (Levey-Jennings) and acceptance criteria",
-            "Instrument logbook, preventative maintenance, calibration verification",
-            "Chain of custody and reporting limits (LOD/LOQ) in final reports"
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "data-processing-reporting",
-          "title": "Data Processing & Reporting",
-          "description": "From peak integration to uncertainty reporting — how to present analytical results.",
-          "key_points": [
-            "Signal baseline, peak integration, deconvolution (for co-eluting peaks)",
-            "Calculate uncertainty: combine precision, bias, instrument error",
-            "Reporting: method, calibration, QC results, LOD/LOQ and units"
-          ],
-          "isCritical": false
-        },
-        {
-          "id": "spectroscopy",
-          "title": "Spectroscopy",
-          "description": "From UV-Vis to NMR and mass spectrometry — how to interpret spectral data.",
-          "key_points": [
-            "UV-Vis: Absorbance peaks, Beer-Lambert law, chromophores",
-            "IR: Functional group identification via characteristic absorption bands",
-            "NMR: Chemical shifts, splitting patterns, integration for structure elucidation",
-            "Mass Spectrometry: m/z ratios, isotopic patterns, fragmentation pathways"
-          ],
-          "isCritical": false
-        },
-        {
-          "id": "calibration-curves",
-          "title": "Calibration Curves",
-          "description": "How to build and validate calibration curves for quantitative analysis.",
-          "key_points": [
-            "Prepare standards across expected concentration range",
-            "Plot instrument response vs concentration, fit linear or appropriate model",
-            "Evaluate linearity (R²), residuals, and homoscedasticity",
-            "Use curve to interpolate sample concentrations, considering dilution factors"
-          ],
-          "isCritical": false
-        }
-      ]
-    },
-    "biochem1": {
+    {
+      "sectionId": "biochem1",
       "section_title": "Biochemistry I",
       "cards": [
         {
-          "id": "protein-structure-function-critical",
-          "title": "Protein Structure & Function",
-          "description": "From amino acids to functional proteins - the workhorses of the cell.",
-          "key_points": [
-            "Primary structure: Amino acid sequence (peptide bonds)",
-            "Secondary structure: α-helices and β-sheets (H-bonds)",
-            "Tertiary structure: 3D folding (hydrophobic effect, disulfide bonds)",
-            "Quaternary structure: Multiple polypeptide subunits",
-            "Myoglobin: Single subunit, hyperbolic O₂ binding",
-            "Hemoglobin: 4 subunits, cooperative O₂ binding (sigmoidal curve)",
-            "Denaturation: Loss of structure (heat, pH, chemicals)"
-          ],
-          "isCritical": true
+          "id": "glycolysis",
+          "title": "Glycolysis",
+          "summary": "10-step pathway converting glucose to pyruvate with ATP and NADH generation.",
+          "details": "10 enzymes, 2 ATP net, 2 NADH per glucose. Hexokinase & phosphofructokinase are key regulatory steps. Pyruvate fate: TCA, lactate, or gluconeogenesis.",
+          "important": true
         },
         {
-          "id": "enzyme-kinetics-catalysis-critical",
-          "title": "Enzyme Kinetics & Catalysis",
-          "description": "How enzymes speed up reactions and how they're regulated.",
-          "key_points": [
-            "Catalysis: Lower activation energy (Ea), don't change equilibrium",
-            "Active site: Substrate binding pocket (lock and key / induced fit)",
-            "Competitive inhibition: Binds active site, increases Km, same Vmax",
-            "Non-competitive: Binds elsewhere, decreases Vmax, same Km",
-            "Uncompetitive: Binds ES complex, decreases both Km and Vmax",
-            "Allosteric regulation: Binding at one site affects another",
-            "Cooperativity: Binding facilitates subsequent binding (hemoglobin)"
-          ],
-          "isCritical": true
+          "id": "tca-cycle",
+          "title": "Citric Acid Cycle (TCA)",
+          "summary": "Central metabolic hub oxidizing acetyl-CoA and generating reducing equivalents.",
+          "details": "8 enzymes, acetyl-CoA entry point. 3 NADH, 1 $FADH_2$, 1 GTP per cycle. Isocitrate dehydrogenase and $\\alpha$-ketoglutarate dehydrogenase are regulatory steps.",
+          "important": true
         },
         {
-          "id": "oxidative-phosphorylation-critical",
-          "title": "Oxidative Phosphorylation",
-          "description": "The electron transport chain and ATP synthesis.",
-          "key_points": [
-            "Complex I: NADH dehydrogenase (pumps 4 H⁺)",
-            "Complex II: Succinate dehydrogenase (no H⁺ pumping)",
-            "Complex III: Cytochrome bc1 (pumps 4 H⁺)",
-            "Complex IV: Cytochrome c oxidase (pumps 2 H⁺, reduces O₂)",
-            "ATP synthase: F₀F₁ complex, ~3 H⁺ per ATP synthesized",
-            "P/O ratios: ~2.5 ATP/NADH, ~1.5 ATP/FADH₂",
-            "Uncouplers: Allow H⁺ leak (DNP) - produce heat instead of ATP"
-          ],
-          "isCritical": true
+          "id": "michaelis-menten",
+          "title": "Michaelis–Menten Kinetics",
+          "summary": "Enzyme kinetics model linking reaction rate to substrate concentration.",
+          "details": "$v = \\frac{V_{max}[S]}{K_m + [S]}$. $K_m$ relates to enzyme-substrate affinity. $K_m = \\frac{k_{-1} + k_2}{k_1}$.",
+          "important": true
         },
         {
-          "id": "lipid-metabolism",
-          "title": "Lipid Metabolism",
-          "description": "Fatty acid oxidation and synthesis.",
-          "key_points": [
-            "β-oxidation: Fatty acid → Acetyl-CoA (spiral pathway)",
-            "Each cycle removes 2C: Acetyl-CoA + FADH₂ + NADH",
-            "Ketone bodies: Acetoacetate, β-hydroxybutyrate, acetone",
-            "Fatty acid synthesis: Opposite of β-oxidation (uses NADPH)",
-            "Acetyl-CoA carboxylase: Rate-limiting enzyme (makes malonyl-CoA)",
-            "Cholesterol synthesis: HMG-CoA reductase (statin target)"
-          ],
-          "isCritical": false
+          "id": "electron-transport",
+          "title": "Electron Transport Chain & Oxidative Phosphorylation",
+          "summary": "Electron transfer through complexes I–IV and ATP synthesis.",
+          "details": "Complexes I–IV pump $H^+$ across inner mitochondrial membrane. ATP synthase uses $\\Delta\\Psi$ & $\\Delta pH$. P/O ratio $\\approx$ 2.5 for NADH, $\\approx$ 1.5 for $FADH_2$.",
+          "important": true
+        },
+        {
+          "id": "metabolic-regulation",
+          "title": "Metabolic Regulation & Allosteric Control",
+          "summary": "Feedback inhibition and allosteric enzyme modulation.",
+          "details": "Allosteric sites remote from active site. Positive vs negative regulators. AMP/ATP ratios signal energy status.",
+          "important": false
         }
       ]
     },
-    "biochem2": {
+    {
+      "sectionId": "biochem2",
       "section_title": "Biochemistry II",
       "cards": [
         {
-          "id": "nucleic-acid-structure-critical",
-          "title": "Nucleic Acid Structure",
-          "description": "DNA and RNA structure, from nucleotides to chromosomes.",
-          "key_points": [
-            "Purines: Adenine (A), Guanine (G) - double ring",
-            "Pyrimidines: Cytosine (C), Thymine (T), Uracil (U) - single ring",
-            "Nucleotide: Base + sugar (ribose/deoxyribose) + phosphate",
-            "Watson-Crick pairing: A-T (2 H-bonds), G-C (3 H-bonds)",
-            "DNA: Double helix, deoxyribose, T instead of U",
-            "RNA: Usually single-stranded, ribose, U instead of T",
-            "Major/minor grooves: Protein binding sites on DNA"
-          ],
-          "isCritical": true
+          "id": "signal-transduction",
+          "title": "Signal Transduction Pathways",
+          "summary": "Cell communication via receptors, kinase cascades and second messengers.",
+          "details": "GPCRs & receptor tyrosine kinases. Second messengers (cAMP, Ca²⁺, IP3). MAPK and PI3K pathway signaling.",
+          "important": true
         },
         {
-          "id": "dna-replication-critical",
-          "title": "DNA Replication",
-          "description": "How genetic information is copied with high fidelity.",
-          "key_points": [
-            "Semi-conservative: Each strand serves as template",
-            "Helicase: Unwinds DNA double helix",
-            "Primase: Synthesizes RNA primers",
-            "DNA Pol III (prokaryotes): Main replicative polymerase (5'→3')",
-            "DNA Pol α, δ, ε (eukaryotes): Different roles in replication",
-            "Leading strand: Continuous synthesis (5'→3')",
-            "Lagging strand: Discontinuous (Okazaki fragments)",
-            "DNA ligase: Joins Okazaki fragments",
-            "Proofreading: 3'→5' exonuclease activity"
-          ],
-          "isCritical": true
+          "id": "protein-synthesis",
+          "title": "Translation & Protein Synthesis",
+          "summary": "mRNA → protein: codons, tRNA, ribosome and post-translational modifications.",
+          "details": "64 codons: 61 amino acids + 3 stop codons. Initiation at AUG. Aminoacyl-tRNA synthetases ensure fidelity. Post-translational modifications.",
+          "important": true
         },
         {
-          "id": "transcription-critical",
-          "title": "Transcription",
-          "description": "Gene expression: DNA to RNA.",
-          "key_points": [
-            "RNA polymerase II: Transcribes mRNA in eukaryotes",
-            "Promoter: TATA box, transcription start site",
-            "Transcription factors: Help RNA pol II bind to promoter",
-            "Enhancers: Distant regulatory sequences",
-            "5' capping: 7-methylguanosine cap (m7G)",
-            "Polyadenylation: ~200 adenine residues at 3' end",
-            "Splicing: Remove introns, join exons",
-            "Alternative splicing: One gene → multiple proteins"
-          ],
-          "isCritical": true
+          "id": "protein-folding",
+          "title": "Protein Folding & Chaperones",
+          "summary": "Thermodynamic and kinetic aspects of protein structure formation.",
+          "details": "Hydrophobic core and hydrogen bonding drive folding. Chaperone proteins (HSP70, GroEL) prevent aggregation. Misfolding causes diseases.",
+          "important": true
         },
         {
-          "id": "translation-critical",
-          "title": "Translation",
-          "description": "The genetic code and protein synthesis.",
-          "key_points": [
-            "Genetic code: 64 codons (61 amino acids + 3 stop)",
-            "tRNA: Anticodon pairs with mRNA codon",
-            "Aminoacyl-tRNA synthetases: Attach correct amino acid to tRNA",
-            "Ribosome: Small (40S) + large (60S) subunits in eukaryotes",
-            "Initiation: Met-tRNA binds to start codon (AUG)",
-            "Elongation: Peptide bond formation, translocation",
-            "Termination: Stop codon (UAA, UAG, UGA), release factors",
-            "Post-translational: Phosphorylation, glycosylation, etc."
-          ],
-          "isCritical": true
+          "id": "gene-regulation",
+          "title": "Gene Regulation",
+          "summary": "Transcriptional and translational control of gene expression.",
+          "details": "Promoters, enhancers, silencers. Transcription factors and chromatin remodeling. Operons (lac, trp): inducible and repressible regulation.",
+          "important": true
         },
         {
-          "id": "signal-transduction-critical",
-          "title": "Signal Transduction",
-          "description": "How cells communicate and respond to signals.",
-          "key_points": [
-            "GPCRs: 7-transmembrane receptors, activate G-proteins",
-            "Second messengers: cAMP, Ca²⁺, IP₃, DAG",
-            "Protein kinase A (PKA): Activated by cAMP",
-            "Protein kinase C (PKC): Activated by DAG and Ca²⁺",
-            "MAPK cascade: Ras → Raf → MEK → ERK",
-            "RTKs: Receptor tyrosine kinases (insulin, growth factors)",
-            "Phosphorylation cascade: Amplifies signal"
-          ],
-          "isCritical": true
+          "id": "post-translational-mods",
+          "title": "Post-Translational Modifications",
+          "summary": "Chemical modifications that regulate protein function.",
+          "details": "Phosphorylation, ubiquitination, glycosylation, and proteolytic cleavage. These modifications control protein activity, localization, and stability.",
+          "important": false
         }
       ]
     },
-    "physical": {
+    {
+      "sectionId": "biochem-lab",
+      "section_title": "Biochemistry Lab",
+      "cards": [
+        {
+          "id": "protein-purification",
+          "title": "Protein Purification & Analysis",
+          "summary": "Techniques to isolate and characterize proteins from cells.",
+          "details": "Cell lysis & chromatin removal. Gel filtration (size exclusion chromatography). Ion exchange and isoelectric focusing.",
+          "important": true
+        },
+        {
+          "id": "enzyme-assays",
+          "title": "Enzyme Assays & Kinetics",
+          "summary": "Measuring enzyme activity and determining kinetic parameters.",
+          "details": "Spectrophotometric assays. Km & Vmax determination from Lineweaver-Burk plots. Inhibition assays (competitive vs non-competitive).",
+          "important": true
+        },
+        {
+          "id": "gel-electrophoresis",
+          "title": "SDS-PAGE & Gel Electrophoresis",
+          "summary": "Separating proteins by size and analyzing protein composition.",
+          "details": "Denaturing vs native gels. Molecular weight standards for calibration. Staining (Coomassie, silver) and visualization.",
+          "important": true
+        },
+        {
+          "id": "nucleic-acid-tech",
+          "title": "DNA/RNA Techniques (PCR, qPCR, Sequencing)",
+          "summary": "Amplifying, quantifying and sequencing nucleic acids.",
+          "details": "PCR cycles: denaturation, annealing, extension. Real-time qPCR for gene expression. Sanger vs NGS sequencing methods.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "molbio",
+      "section_title": "Molecular Biology",
+      "cards": [
+        {
+          "id": "dna-structure",
+          "title": "DNA & RNA Structure",
+          "summary": "Double helix, base pairing, and structural variations.",
+          "details": "Watson-Crick base pairing (A-T, G-C). Major and minor grooves. RNA secondary structure and stability.",
+          "important": true
+        },
+        {
+          "id": "dna-replication",
+          "title": "DNA Replication",
+          "summary": "Semi-conservative replication machinery and fidelity.",
+          "details": "DNA Pol III holoenzyme (E. coli). Leading vs lagging strands. Priming by primase and Okazaki fragments.",
+          "important": true
+        },
+        {
+          "id": "transcription",
+          "title": "Transcription",
+          "summary": "DNA → RNA: promoters, polymerase, capping and splicing.",
+          "details": "RNA Pol II in eukaryotes; Pol I/III for rRNA and tRNA. Eukaryotic transcription: 5′ cap, polyadenylation, splicing.",
+          "important": true
+        },
+        {
+          "id": "recombinant-dna",
+          "title": "Recombinant DNA Technology",
+          "summary": "Restriction enzymes, cloning and genetic manipulation.",
+          "details": "Restriction sites create sticky/blunt ends. Plasmid vectors & antibiotic selection. Blue-white screening for recombinants.",
+          "important": true
+        },
+        {
+          "id": "crispr",
+          "title": "CRISPR & Genome Editing",
+          "summary": "Modern gene editing with Cas9 and related endonucleases.",
+          "details": "gRNA design for target specificity. On-target vs off-target effects. Prime editing and base editing variations.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "genbio",
+      "section_title": "General Biology",
+      "cards": [
+        {
+          "id": "cell-structure",
+          "title": "Cell Structure & Function",
+          "summary": "Organelles, membranes and compartmentalization in eukaryotes.",
+          "details": "Nucleus, mitochondria, ER, Golgi apparatus. Membrane composition and fluidity. Cell cycle checkpoints.",
+          "important": true
+        },
+        {
+          "id": "bioenergetics",
+          "title": "Bioenergetics & Membranes",
+          "summary": "Energy flow and membrane biology in living systems.",
+          "details": "ATP as the energy currency of the cell. Proton gradients and chemiosmosis. Lipid bilayer composition and membrane proteins.",
+          "important": true
+        },
+        {
+          "id": "photosynthesis",
+          "title": "Photosynthesis",
+          "summary": "Light and dark reactions converting light energy to chemical energy.",
+          "details": "Light reactions produce ATP and NADPH. Calvin cycle fixes CO₂. Chloroplast structure and thylakoids.",
+          "important": true
+        },
+        {
+          "id": "cell-cycle-mitosis",
+          "title": "Cell Cycle & Mitosis",
+          "summary": "Interphase and mitotic division for cell reproduction.",
+          "details": "G1, S, G2 phases. Mitosis produces two identical diploid cells. Checkpoints control progression.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "microbio",
+      "section_title": "Microbiology",
+      "cards": [
+        {
+          "id": "bacterial-structure",
+          "title": "Bacterial Structure & Physiology",
+          "summary": "Cell wall, pili, flagella, plasmids and metabolic modes.",
+          "details": "Peptidoglycan and Gram staining. Plasmids enable conjugation. Aerobic vs anaerobic metabolism.",
+          "important": true
+        },
+        {
+          "id": "viral-replication",
+          "title": "Viruses & Replication Cycles",
+          "summary": "Viral structure, entry, replication and lysis strategies.",
+          "details": "Capsid and envelope composition. Lytic vs lysogenic cycles. Reverse transcriptase in retroviruses.",
+          "important": true
+        },
+        {
+          "id": "antibiotic-resistance",
+          "title": "Antibiotics & Resistance Mechanisms",
+          "summary": "Mechanisms of action and bacterial resistance strategies.",
+          "details": "Cell wall synthesis inhibitors (β-lactams). Protein synthesis inhibitors. Enzymatic inactivation, efflux pumps, and target modification.",
+          "important": true
+        },
+        {
+          "id": "microbial-genetics",
+          "title": "Microbial Genetics & Horizontal Gene Transfer",
+          "summary": "Gene transfer mechanisms unique to bacteria.",
+          "details": "Conjugation via pili. Transformation and transduction. Horizontal gene transfer spreads antibiotic resistance.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "physical",
       "section_title": "Physical Chemistry",
       "cards": [
         {
-          "id": "order-of-reactions-critical",
-          "title": "Order of Reactions",
-          "description": "Understanding zero, first, and second order reaction kinetics.",
-          "key_points": [
-            "Zero order: Rate = k; [A] decreases linearly over time.",
-            "First order: Rate = k[A]; ln[A] vs time is linear.",
-            "Second order: Rate = k[A]²; 1/[A] vs time is linear.",
-            "Half-life: t₁/₂ = 0.693/k (first order), t₁/₂ = [A]₀/2k (second order)",
-            "Integrated rate laws: Used to determine reaction order experimentally."
-          ],
-          "isCritical": true
+          "id": "quantum-basics",
+          "title": "Quantum Chemistry Basics",
+          "summary": "Schrödinger equation and orbital concepts for molecular structure.",
+          "details": "Wave functions and probability densities. Atomic and molecular orbitals (HOMO/LUMO). Hybridization: sp, sp², sp³.",
+          "important": true
         },
         {
-          "id": "half-lifecritical",
-          "title": "Half-life",
-          "description": "The time it takes for a reaction to reach half of its initial concentration.",
-          "key_points": [
-            "First-order reactions: t₁/₂ = 0.693/k (independent of [A]₀)",
-            "Second-order reactions: t₁/₂ = 1/(k[A]₀) (depends on [A]₀)",
-            "Zero-order reactions: t₁/₂ = [A]₀/(2k) (depends on [A]₀)",
-            "Exponential decay: Characteristic of first-order kinetics",
-            "Applications: Radioactive decay, pharmacokinetics"
-          ],
-          "isCritical": true
+          "id": "thermo-advanced",
+          "title": "Advanced Thermodynamics",
+          "summary": "Phase diagrams, activity coefficients, and chemical potential.",
+          "details": "Clausius-Clapeyron equation for phase transitions. Activity vs concentration. Gibbs free energy and phase equilibria.",
+          "important": false
         },
         {
-          "id": "nuclear-chemistry-critical",
-          "title": "Nuclear Chemistry",
-          "description": "Nuclear reactions, radioactive decay, and nuclear energy.",
-          "key_points": [
-            "Types of decay: Alpha (α), Beta (β⁻/β⁺), Gamma (γ)",
-            "Half-life: Time for half the nuclei to decay; exponential decay law",
-            "Nuclear reactions: Fission (splitting) and fusion (combining)",
-            "Binding energy: Mass defect converted to energy (E=mc²)",
-            "Applications: Radiometric dating, medical imaging, nuclear power"
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "mo-theory-critical",
-          "title": "MO theory",
-          "description": "Molecular orbital theory and bonding.",
-          "key_points": [
-            "Bonding MOs: Lower energy, constructive interference of atomic orbitals",
-            "Antibonding MOs: Higher energy, destructive interference",
-            "Bond order: (Number of bonding electrons - Number of antibonding electrons) / 2",
-            "Homonuclear diatomics: e.g., H₂, O₂, N₂; symmetrical MOs",
-            "Heteronuclear diatomics: e.g., CO, NO; asymmetrical MOs due to differing electronegativities"
-          ],
-          "isCritical": true
+          "id": "kinetics-rate",
+          "title": "Chemical Kinetics & Rate Laws",
+          "summary": "Reaction mechanisms, rate constants and temperature dependence.",
+          "details": "Arrhenius equation: k = Ae^(-Ea/RT). Activation energy and transition state theory. Elementary steps and rate-determining step.",
+          "important": true
         }
       ]
     },
-    "genetics": {
+    {
+      "sectionId": "physics",
+      "section_title": "Physics Essentials",
+      "cards": [
+        {
+          "id": "classical-mechanics",
+          "title": "Classical Mechanics",
+          "summary": "Motion, forces and conservation laws needed for problem solving.",
+          "details": "Newton's laws of motion. Conservation of energy and momentum. Rotational dynamics and simple harmonic motion.",
+          "important": true
+        },
+        {
+          "id": "waves-oscillations",
+          "title": "Waves & Oscillations",
+          "summary": "Wave behavior and basic modal analysis.",
+          "details": "Wave equation and v = fλ. Interference and standing waves. Doppler effect.",
+          "important": false
+        },
+        {
+          "id": "thermal-physics",
+          "title": "Thermal Physics & Thermodynamics",
+          "summary": "Laws of thermodynamics, heat transfer and state functions.",
+          "details": "First and Second Laws of Thermodynamics. Entropy and enthalpy. Isothermal and adiabatic processes.",
+          "important": true
+        },
+        {
+          "id": "circuits",
+          "title": "Circuits",
+          "summary": "Basic circuit analysis and component behavior.",
+          "details": "Ohm's law: V = IR. Series and parallel circuit rules. Kirchhoff's laws. Capacitors and inductors.",
+          "important": true
+        },
+        {
+          "id": "fluids",
+          "title": "Fluids",
+          "summary": "Fluid statics and dynamics principles for biological contexts.",
+          "details": "Density ρ = m/V. Pressure P = F/A. Buoyancy and Archimedes' principle. Continuity equation and Bernoulli's principle.",
+          "important": false
+        },
+        {
+          "id": "electricity-magnetism",
+          "title": "Electricity & Magnetism",
+          "summary": "Electrostatics, circuits and magnetic fields relevant to biophysics.",
+          "details": "Coulomb's law for electric force. Electric field E = F/q. Magnetic force F = qvB. Biological applications: nerve impulses.",
+          "important": true
+        },
+        {
+          "id": "modern-physics",
+          "title": "Modern Physics",
+          "summary": "Quantum mechanics and relativity basics for understanding atomic phenomena.",
+          "details": "Photoelectric effect and energy quantization. Heisenberg uncertainty principle. Special relativity time dilation.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "stats",
+      "section_title": "Statistics (Biochemical Data Analysis)",
+      "cards": [
+        {
+          "id": "distributions",
+          "title": "Distributions",
+          "summary": "Choose and interpret probability distributions for experimental data.",
+          "details": "Normal, binomial, and Poisson distributions. Check assumptions before applying tests. Central Limit Theorem.",
+          "important": true
+        },
+        {
+          "id": "descriptive-statistics",
+          "title": "Descriptive Statistics",
+          "summary": "Summarize biological data and communicate variability.",
+          "details": "Mean, median, and standard deviation. SD vs SEM. Report sample size (n) and units; plot individual points.",
+          "important": true
+        },
+        {
+          "id": "biol-vs-tech-replicates",
+          "title": "Biological vs Technical Replicates",
+          "summary": "Designing replicates correctly to separate biological variation from measurement error.",
+          "details": "Apply statistical tests to biological replicates. Technical replicates assess instrument precision.",
+          "important": true
+        },
+        {
+          "id": "hypothesis-testing",
+          "title": "Hypothesis Testing",
+          "summary": "Framework to decide if observed differences are likely real.",
+          "details": "Null hypothesis (H0) vs Alternative (H1). p-value interpretation. α commonly set to 0.05.",
+          "important": true
+        },
+        {
+          "id": "t-anova",
+          "title": "t-Tests & ANOVA",
+          "summary": "Comparing means between two or more groups with appropriate assumptions.",
+          "details": "Unpaired vs paired t-tests. ANOVA for 3+ groups. Post-hoc tests when ANOVA is significant.",
+          "important": true
+        },
+        {
+          "id": "regression-kinetics",
+          "title": "Regression & Enzyme Kinetics",
+          "summary": "Curve fitting for calibration and nonlinear kinetics (Michaelis–Menten).",
+          "details": "Linear regression for calibration curves. Use nonlinear regression for Michaelis-Menten. Report R² and inspect residuals.",
+          "important": true
+        },
+        {
+          "id": "error-analysis",
+          "title": "Error Analysis & Confidence Intervals",
+          "summary": "Quantify uncertainty and combine errors through calculations.",
+          "details": "Random vs systematic error. Error propagation through calculations. Report confidence intervals.",
+          "important": false
+        },
+        {
+          "id": "sampling-power",
+          "title": "Sampling & Power Analysis",
+          "summary": "Plan sample sizes to detect effects reliably.",
+          "details": "Power analysis for experimental design. Effect size and sample size tradeoffs.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "calculus",
+      "section_title": "Calculus",
+      "cards": [
+        {
+          "id": "derivatives",
+          "title": "Derivatives & Rates of Change",
+          "summary": "Rates of change and slopes of functions for modeling biological processes.",
+          "details": "Definition of derivative. Common derivatives (polynomial, exponential, logarithmic). Power, product, and chain rules.",
+          "important": true
+        },
+        {
+          "id": "integrals",
+          "title": "Integrals & Accumulation",
+          "summary": "Area under curves and accumulation functions in biology.",
+          "details": "Definite vs indefinite integrals. Common integrals. Integration by parts and u-substitution.",
+          "important": true
+        },
+        {
+          "id": "differential-equations",
+          "title": "Differential Equations",
+          "summary": "Modeling dynamic systems like population growth or enzyme kinetics.",
+          "details": "First-order separable ODEs. Linear first-order differential equations. Exponential solutions for growth and decay.",
+          "important": true
+        },
+        {
+          "id": "multivariable-calculus",
+          "title": "Multivariable Calculus",
+          "summary": "Functions of multiple variables and partial derivatives for complex systems.",
+          "details": "Partial derivatives and mixed partials. Gradient vectors. Multiple integrals for volume and probability.",
+          "important": false
+        },
+        {
+          "id": "limits",
+          "title": "Limits & Continuity",
+          "summary": "Understanding behavior of functions as inputs approach specific values.",
+          "details": "Limit definition and evaluation (direct substitution, factoring, rationalizing). Limits at infinity and asymptotic behavior.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "genchemlab",
+      "section_title": "General Chemistry Lab",
+      "cards": [
+        {
+          "id": "acid-base-titration",
+          "title": "Acid–Base Titration",
+          "summary": "Quantitative analysis using endpoint determination.",
+          "details": "M1V1 = M2V2 dilution formula. Equivalence point vs endpoint. Choice of indicator based on pH range.",
+          "important": true
+        },
+        {
+          "id": "spectroscopic-analysis",
+          "title": "Spectroscopy (IR, NMR, UV-Vis)",
+          "summary": "Molecular structure elucidation and quantification.",
+          "details": "IR for functional group identification. NMR for structure determination (1H, 13C). Beer-Lambert law A = εbc.",
+          "important": true
+        },
+        {
+          "id": "solution-preparation",
+          "title": "Solutions & Dilutions",
+          "summary": "Making and diluting solutions of precise concentration.",
+          "details": "Molarity, molality, ppm units. Serial dilution practice. Using volumetric glassware correctly.",
+          "important": false
+        },
+        {
+          "id": "lab-safety",
+          "title": "Lab Safety & Data Recording",
+          "summary": "Essential practices for safe and reproducible work.",
+          "details": "PPE and chemical handling. MSDS sheets for hazard information. Proper lab notebook documentation and significant figures.",
+          "important": true
+        }
+      ]
+    },
+    {
+      "sectionId": "ochem-lab",
+      "section_title": "Organic Chemistry Lab",
+      "cards": [
+        {
+          "id": "extraction",
+          "title": "Extraction & Purification",
+          "summary": "Techniques for isolating and purifying organic compounds.",
+          "details": "Liquid-liquid extraction techniques. Chromatography basics (TLC, column). Recrystallization principles.",
+          "important": true
+        },
+        {
+          "id": "synthesis",
+          "title": "Synthesis & Retrosynthesis",
+          "summary": "Planning and executing multi-step organic syntheses.",
+          "details": "Retrosynthetic analysis for planning. Protecting groups for selective reactions. Common reagents and reaction conditions.",
+          "important": true
+        },
+        {
+          "id": "green-chemistry",
+          "title": "Green Chemistry Principles",
+          "summary": "Sustainable practices in organic synthesis and lab work.",
+          "details": "Atom economy and waste minimization. Use of safer solvents and reagents. Energy-efficient reactions.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "analytical",
+      "section_title": "Analytical Chemistry",
+      "cards": [
+        {
+          "id": "calibration-curves",
+          "title": "Calibration & Standard Curves",
+          "summary": "Preparing and using standard curves for quantification.",
+          "details": "Linear regression analysis for curve fitting. Check linearity and goodness of fit (R²). Limits of detection and quantification.",
+          "important": true
+        },
+        {
+          "id": "chromatography-methods",
+          "title": "Chromatography (HPLC, GC)",
+          "summary": "Separation techniques for compound analysis.",
+          "details": "Mobile vs stationary phase selection. Retention time and selectivity optimization. Peak integration and area quantitation.",
+          "important": true
+        },
+        {
+          "id": "mass-spectrometry",
+          "title": "Mass Spectrometry",
+          "summary": "Ionization, separation and detection of molecular masses.",
+          "details": "EI vs ESI ionization methods. m/z ratios and isotope patterns. Fragmentation patterns for compound identification.",
+          "important": true
+        },
+        {
+          "id": "error-propagation",
+          "title": "Error Propagation & Detection Limits",
+          "summary": "Quantifying measurement uncertainty and instrumental limits.",
+          "details": "LOD = 3σ/slope and LOQ = 10σ/slope. Propagation of uncertainty through calculations.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "inorganic",
+      "section_title": "Inorganic Chemistry",
+      "cards": [
+        {
+          "id": "coordination-compounds",
+          "title": "Coordination Compounds & Complexes",
+          "summary": "Ligand types, coordination geometry and stereoisomerism.",
+          "details": "Monodentate vs polydentate ligands. Coordination numbers 4 and 6. Geometric and optical isomers.",
+          "important": true
+        },
+        {
+          "id": "crystal-field-theory",
+          "title": "Crystal Field Theory",
+          "summary": "Splitting of d orbitals and color in transition metal complexes.",
+          "details": "d-orbital splitting in octahedral and tetrahedral fields. High vs low spin complexes. Color from d-d electronic transitions.",
+          "important": true
+        },
+        {
+          "id": "transition-metals",
+          "title": "Transition Metals & Variable Oxidation States",
+          "summary": "Properties and reactivity of transition elements.",
+          "details": "Variable oxidation states and electron configurations. Catalytic activity of transition metals. Colored complexes and magnetism.",
+          "important": true
+        },
+        {
+          "id": "organometallic-catalysis",
+          "title": "Organometallics & Catalysis",
+          "summary": "Metal-carbon bonds and their role in catalysis.",
+          "details": "Metal-ligand bonding and stability. Common catalytic cycles. Green chemistry applications.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "bioinformatics",
+      "section_title": "Bioinformatics",
+      "cards": [
+        {
+          "id": "blast-seq-alignment",
+          "title": "BLAST & Sequence Alignment",
+          "summary": "Finding similar sequences in databases and understanding homology searches.",
+          "details": "BLAST (Basic Local Alignment Search Tool) algorithms. E-values for statistical significance. Sequence identity and similarity scoring.",
+          "important": true
+        },
+        {
+          "id": "molecular-databases",
+          "title": "Molecular Databases",
+          "summary": "Key resources for accessing sequence and structure data.",
+          "details": "GenBank for DNA sequences. UniProt for protein sequences and annotations. PDB for 3D protein structures.",
+          "important": true
+        },
+        {
+          "id": "msa-phylogenetics",
+          "title": "Multiple Sequence Alignment & Phylogenetics",
+          "summary": "Comparing multiple sequences and inferring evolutionary relationships.",
+          "details": "MSA algorithms (Clustal, MUSCLE, MAFFT). Phylogenetic trees from evolutionary distances. Building dendrograms.",
+          "important": true
+        },
+        {
+          "id": "protein-structure-pred",
+          "title": "Protein Structure Prediction",
+          "summary": "Predicting 3D fold from amino acid sequence using computational methods.",
+          "details": "AlphaFold and deep learning approaches. Secondary structure prediction. Validating predictions with experimental data.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "biochem2",
+      "section_title": "Biochemistry II",
+      "cards": [
+        {
+          "id": "signal-transduction",
+          "title": "Signal Transduction Pathways",
+          "summary": "Cell communication via receptors, kinase cascades and second messengers.",
+          "details": "GPCRs & receptor tyrosine kinases. Second messengers (cAMP, Ca²⁺, IP3). MAPK and PI3K pathway signaling.",
+          "important": true
+        },
+        {
+          "id": "protein-synthesis-bio2",
+          "title": "Translation & Protein Synthesis",
+          "summary": "mRNA → protein: codons, tRNA, ribosome and post-translational modifications.",
+          "details": "64 codons: 61 amino acids + 3 stop codons. Initiation at AUG. Aminoacyl-tRNA synthetases ensure fidelity. Post-translational modifications.",
+          "important": true
+        },
+        {
+          "id": "protein-folding",
+          "title": "Protein Folding & Chaperones",
+          "summary": "Thermodynamic and kinetic aspects of protein structure formation.",
+          "details": "Hydrophobic core and hydrogen bonding drive folding. Chaperone proteins (HSP70, GroEL) prevent aggregation. Misfolding causes diseases.",
+          "important": true
+        },
+        {
+          "id": "gene-regulation",
+          "title": "Gene Regulation",
+          "summary": "Transcriptional and translational control of gene expression.",
+          "details": "Promoters, enhancers, silencers. Transcription factors and chromatin remodeling. Operons (lac, trp): inducible and repressible regulation.",
+          "important": true
+        },
+        {
+          "id": "post-translational-mods",
+          "title": "Post-Translational Modifications",
+          "summary": "Chemical modifications that regulate protein function.",
+          "details": "Phosphorylation, ubiquitination, glycosylation, and proteolytic cleavage. These modifications control protein activity, localization, and stability.",
+          "important": false
+        },
+        {
+          "id": "apoptosis-cell-death",
+          "title": "Apoptosis & Programmed Cell Death",
+          "summary": "Regulated cell death pathways and their biochemical triggers.",
+          "details": "Caspase cascades and mitochondrial pathways. BcL family proteins. P53 tumor suppressor role in apoptosis.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "genbio",
+      "section_title": "General Biology",
+      "cards": [
+        {
+          "id": "cell-structure",
+          "title": "Cell Structure & Function",
+          "summary": "Organelles, membranes and compartmentalization in eukaryotes.",
+          "details": "Nucleus, mitochondria, ER, Golgi apparatus. Membrane composition and fluidity. Cell cycle checkpoints.",
+          "important": true
+        },
+        {
+          "id": "bioenergetics",
+          "title": "Bioenergetics & Membranes",
+          "summary": "Energy flow and membrane biology in living systems.",
+          "details": "ATP as the energy currency of the cell. Proton gradients and chemiosmosis. Lipid bilayer composition and membrane proteins.",
+          "important": true
+        },
+        {
+          "id": "photosynthesis-genbio",
+          "title": "Photosynthesis",
+          "summary": "Light and dark reactions converting light energy to chemical energy.",
+          "details": "Light reactions produce ATP and NADPH. Calvin cycle fixes CO₂. Chloroplast structure and thylakoids.",
+          "important": true
+        },
+        {
+          "id": "cell-cycle-mitosis",
+          "title": "Cell Cycle & Mitosis",
+          "summary": "Interphase and mitotic division for cell reproduction.",
+          "details": "G1, S, G2 phases. Mitosis produces two identical diploid cells. Checkpoints control progression.",
+          "important": false
+        },
+        {
+          "id": "meiosis-reproduction",
+          "title": "Meiosis & Sexual Reproduction",
+          "summary": "Reduction division producing haploid gametes.",
+          "details": "Two meiotic divisions. Homologous chromosome recombination. Crossing over and genetic variation.",
+          "important": true
+        }
+      ]
+    },
+    {
+      "sectionId": "microbio",
+      "section_title": "Microbiology",
+      "cards": [
+        {
+          "id": "bacterial-structure",
+          "title": "Bacterial Structure & Physiology",
+          "summary": "Cell wall, pili, flagella, plasmids and metabolic modes.",
+          "details": "Peptidoglycan and Gram staining. Plasmids enable conjugation. Aerobic vs anaerobic metabolism.",
+          "important": true
+        },
+        {
+          "id": "viral-replication",
+          "title": "Viruses & Replication Cycles",
+          "summary": "Viral structure, entry, replication and lysis strategies.",
+          "details": "Capsid and envelope composition. Lytic vs lysogenic cycles. Reverse transcriptase in retroviruses.",
+          "important": true
+        },
+        {
+          "id": "antibiotic-resistance",
+          "title": "Antibiotics & Resistance Mechanisms",
+          "summary": "Mechanisms of action and bacterial resistance strategies.",
+          "details": "Cell wall synthesis inhibitors (β-lactams). Protein synthesis inhibitors. Enzymatic inactivation, efflux pumps, and target modification.",
+          "important": true
+        },
+        {
+          "id": "microbial-genetics",
+          "title": "Microbial Genetics & Horizontal Gene Transfer",
+          "summary": "Gene transfer mechanisms unique to bacteria.",
+          "details": "Conjugation via pili. Transformation and transduction. Horizontal gene transfer spreads antibiotic resistance.",
+          "important": false
+        },
+        {
+          "id": "fermentation-metabolism",
+          "title": "Fermentation & Anaerobic Metabolism",
+          "summary": "Energy production without oxygen.",
+          "details": "Lactate fermentation. Alcohol fermentation. Energetics and products of fermentation pathways.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "molbio",
+      "section_title": "Molecular Biology",
+      "cards": [
+        {
+          "id": "dna-structure",
+          "title": "DNA & RNA Structure",
+          "summary": "Double helix, base pairing, and structural variations.",
+          "details": "Watson-Crick base pairing (A-T, G-C). Major and minor grooves. RNA secondary structure and stability.",
+          "important": true
+        },
+        {
+          "id": "dna-replication",
+          "title": "DNA Replication",
+          "summary": "Semi-conservative replication machinery and fidelity.",
+          "details": "DNA Pol III holoenzyme (E. coli). Leading vs lagging strands. Priming by primase and Okazaki fragments.",
+          "important": true
+        },
+        {
+          "id": "transcription",
+          "title": "Transcription",
+          "summary": "DNA → RNA: promoters, polymerase, capping and splicing.",
+          "details": "RNA Pol II in eukaryotes; Pol I/III for rRNA and tRNA. Eukaryotic transcription: 5′ cap, polyadenylation, splicing.",
+          "important": true
+        },
+        {
+          "id": "recombinant-dna",
+          "title": "Recombinant DNA Technology",
+          "summary": "Restriction enzymes, cloning and genetic manipulation.",
+          "details": "Restriction sites create sticky/blunt ends. Plasmid vectors & antibiotic selection. Blue-white screening for recombinants.",
+          "important": true
+        },
+        {
+          "id": "crispr",
+          "title": "CRISPR & Genome Editing",
+          "summary": "Modern gene editing with Cas9 and related endonucleases.",
+          "details": "gRNA design for target specificity. On-target vs off-target effects. Prime editing and base editing variations.",
+          "important": false
+        },
+        {
+          "id": "rna-splicing",
+          "title": "RNA Splicing & Alternative Processing",
+          "summary": "Post-transcriptional splicing and alternative transcript variants.",
+          "details": "Splice sites and recognition sequences. Snurps and the spliceosome. Alternative splicing for protein diversity.",
+          "important": true
+        }
+      ]
+    },
+    {
+      "sectionId": "bioinformatics",
+      "section_title": "Bioinformatics",
+      "cards": [
+        {
+          "id": "blast-seq-alignment",
+          "title": "BLAST & Sequence Alignment",
+          "summary": "Finding similar sequences in databases and understanding homology searches.",
+          "details": "BLAST (Basic Local Alignment Search Tool) algorithms. E-values for statistical significance. Sequence identity and similarity scoring.",
+          "important": true
+        },
+        {
+          "id": "molecular-databases",
+          "title": "Molecular Databases",
+          "summary": "Key resources for accessing sequence and structure data.",
+          "details": "GenBank for DNA sequences. UniProt for protein sequences and annotations. PDB for 3D protein structures.",
+          "important": true
+        },
+        {
+          "id": "msa-phylogenetics",
+          "title": "Multiple Sequence Alignment & Phylogenetics",
+          "summary": "Comparing multiple sequences and inferring evolutionary relationships.",
+          "details": "MSA algorithms (Clustal, MUSCLE, MAFFT). Phylogenetic trees from evolutionary distances. Building dendrograms.",
+          "important": true
+        },
+        {
+          "id": "protein-structure-pred",
+          "title": "Protein Structure Prediction",
+          "summary": "Predicting 3D fold from amino acid sequence using computational methods.",
+          "details": "AlphaFold and deep learning approaches. Secondary structure prediction. Validating predictions with experimental data.",
+          "important": false
+        },
+        {
+          "id": "hmm-motifs",
+          "title": "Hidden Markov Models & Motifs",
+          "summary": "Pattern recognition in biological sequences.",
+          "details": "HMM principles for sequence modeling. PFAM and domain identification. Motif databases and searches.",
+          "important": false
+        },
+        {
+          "id": "variant-annotation",
+          "title": "Variant Calling & Annotation",
+          "summary": "Identifying and interpreting genetic variants.",
+          "details": "SNP detection from sequencing data. Functional annotation. Disease association and classification.",
+          "important": true
+        }
+      ]
+    },
+    {
+      "sectionId": "genetics",
       "section_title": "Genetics",
       "cards": [
         {
-          "id": "dna-structure-replication-critical",
+          "id": "dna-structure-rep",
           "title": "DNA Structure & Replication",
-          "description": "Know nucleotide chemistry, antiparallel strands, replication machinery and directionality.",
-          "key_points": [
-            "Nucleotides: Base pairing A·T (2 H-bonds), G·C (3 H-bonds), deoxyribose sugar, phosphate backbone.",
-            "Replication: Leading vs lagging strands, Okazaki fragments, DNA polymerase proofreading, ligase.",
-            "Enzymes: Helicase, primase, DNA polymerase I/III (prokaryotes), topoisomerase.",
-            "Repair: Mismatch repair, base excision repair, nucleotide excision repair."
-          ],
-          "isCritical": true
+          "summary": "DNA double helix and semi-conservative replication mechanisms.",
+          "details": "Watson-Crick base pairing (A-T, G-C). DNA polymerases and replication fork machinery. Priming and Okazaki fragments.",
+          "important": true
         },
         {
-          "id": "transcription-translation-critical",
+          "id": "tx-translation-genetics",
           "title": "Transcription & Translation",
-          "description": "From promoter recognition to protein folding — map each step and know regulation points.",
-          "key_points": [
-            "Transcription: Promoter, initiation, elongation, termination; RNA processing in eukaryotes (splicing, cap, poly-A).",
-            "Genetic code: 64 codons, start (AUG), stop codons (UAA/UAG/UGA), wobble at 3rd position.",
-            "Translation: Initiation, elongation, termination; roles of A, P, E ribosomal sites.",
-            "Post-translational: Folding, cleavage, modifications (phosphorylation, glycosylation)."
-          ],
-          "isCritical": true
+          "summary": "From DNA to mRNA to protein: the central dogma of molecular biology.",
+          "details": "RNA polymerase and transcription factor action. Genetic code: 61 codons for amino acids plus 3 stop codons. Translation machinery.",
+          "important": true
         },
         {
-          "id": "genetic-variation-mutation-types",
-          "title": "Genetic Variation & Mutation Types",
-          "description": "Understand how variation arises and the functional consequences of different mutation classes.",
-          "key_points": [
-            "Mutation types: Point (silent, missense, nonsense), frameshift, insertions/deletions, copy-number variants.",
-            "Causes: Replication errors, mutagens, transposons, recombination errors.",
-            "Consequences: Loss-of-function, gain-of-function, dominant-negative effects."
-          ],
-          "isCritical": false
+          "id": "molecular-techniques",
+          "title": "Molecular Techniques (PCR, Sequencing, Cloning)",
+          "summary": "Essential lab methods for manipulating and analyzing DNA.",
+          "details": "PCR: denaturation, annealing, extension cycles. Sanger and NGS sequencing methods. Cloning vectors and transformation.",
+          "important": true
         },
         {
-          "id": "linkage-recombination-mapping",
-          "title": "Linkage, Recombination & Mapping",
-          "description": "How recombination frequency relates to genetic distance and mapping strategies.",
-          "key_points": [
-            "Linkage: Genes closer on a chromosome are less likely to recombine.",
-            "Recombination frequency: Use percent recombination → map units (centimorgans).",
-            "Mapping: Pedigree analysis, linkage maps, SNP markers, LOD scores."
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "molecular-techniques-applications-critical",
-          "title": "Molecular Techniques & Applications",
-          "description": "Key lab methods you will see repeatedly in coursework and modern literature.",
-          "key_points": [
-            "PCR: Denaturation, annealing, extension; quantitative PCR basics.",
-            "Sequencing: Sanger vs NGS principles and read characteristics.",
-            "Cloning & Editing: Restriction enzymes, plasmids, CRISPR-Cas9 overview.",
-            "Genotyping: Gel electrophoresis, Southern blot, microarrays, SNP genotyping."
-          ],
-          "isCritical": true
-        },
-        {
-          "id": "epigenetics-critical",
+          "id": "epigenetics",
           "title": "Epigenetics",
-          "description": "How gene expression is regulated without changes to DNA sequence.",
-          "key_points": [
-            "Chromatin remodeling: Histone modifications, nucleosome positioning.",
-            "DNA methylation: CpG islands, gene silencing mechanisms.",
-            "Non-coding RNAs: miRNA, siRNA, lncRNA roles in gene regulation."
-          ],
-          "isCritical": true
+          "summary": "Heritable changes in gene expression without DNA sequence changes.",
+          "details": "DNA methylation and histone modifications. Chromatin remodeling and gene silencing. Environmental effects on epigenome.",
+          "important": true
+        },
+        {
+          "id": "mendelian-genetics",
+          "title": "Mendelian Genetics & Inheritance Patterns",
+          "summary": "Classical genetic principles and trait inheritance.",
+          "details": "Dominant and recessive alleles. Punnett squares and dihybrid crosses. Linkage and genetic mapping.",
+          "important": true
+        },
+        {
+          "id": "population-genetics",
+          "title": "Population Genetics & Evolution",
+          "summary": "Allele frequencies and evolutionary forces.",
+          "details": "Hardy-Weinberg equilibrium. Selection, mutation, migration and genetic drift. Evolution at molecular level.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "home",
+      "section_title": "Home",
+      "cards": [
+        {
+          "id": "quick-start",
+          "title": "Quick Start Guide",
+          "summary": "Get started with interactive biochemistry tools.",
+          "details": "Explore the 3D molecular viewer, access practice problems, and navigate learning resources by topic.",
+          "important": true
+        }
+      ]
+    },
+    {
+      "sectionId": "degree",
+      "section_title": "Degree Roadmap",
+      "cards": [
+        {
+          "id": "year1-details",
+          "title": "Year 1 — Foundations",
+          "summary": "Essential foundational courses for biochemistry majors.",
+          "details": "General Chemistry, Calculus, Introductory Biology, and laboratory safety protocols. Build mathematical and chemical fundamentals.",
+          "important": true
+        },
+        {
+          "id": "year2-details",
+          "title": "Year 2 — Core Chemical Principles",
+          "summary": "Advanced chemistry and analytical methods.",
+          "details": "Organic Chemistry, Physical Chemistry, Analytical Chemistry. Develop problem-solving and lab technique skills.",
+          "important": true
+        },
+        {
+          "id": "year3-details",
+          "title": "Year 3 — Biochemistry & Techniques",
+          "summary": "Biochemistry fundamentals and laboratory practice.",
+          "details": "Biochemistry I & II, enzyme kinetics, molecular biology lab. Learn bioinformatics and analytical techniques.",
+          "important": true
+        },
+        {
+          "id": "year4-details",
+          "title": "Year 4 — Synthesis & Capstone",
+          "summary": "Advanced topics and independent research.",
+          "details": "Electives in structural biology, bioinformatics, or drug design. Capstone project or internship experience.",
+          "important": false
+        }
+      ]
+    },
+    {
+      "sectionId": "viewer",
+      "section_title": "3D Molecular Viewer",
+      "cards": [
+        {
+          "id": "molecule-glucose",
+          "title": "Glucose Molecule",
+          "summary": "Explore the structure of glucose ($C_6H_{12}O_6$), a key monosaccharide.",
+          "details": "View 3D atomic structure, bond angles, and functional groups. Understand glucose as the substrate for glycolysis.",
+          "important": false
+        },
+        {
+          "id": "molecule-atp",
+          "title": "ATP (Adenosine Triphosphate)",
+          "summary": "The energy currency of the cell in 3D.",
+          "details": "Visualize adenine base, ribose sugar, and high-energy phosphate bonds. ATP hydrolysis: $ATP + H_2O \\rightarrow ADP + P_i$ releases energy.",
+          "important": true
+        },
+        {
+          "id": "saved-views",
+          "title": "Saved Views & Perspectives",
+          "summary": "Store and retrieve favorite molecular views.",
+          "details": "Save camera positions and zoom levels. Access preset views for common molecules across the curriculum.",
+          "important": false
         }
       ]
     }
-  }
+  ]
 }
  

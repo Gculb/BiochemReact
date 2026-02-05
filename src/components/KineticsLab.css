@@ -1,0 +1,332 @@
+/**
+ * KineticsLab Styling
+ * Interactive enzyme kinetics simulation interface
+ */
+
+.kinetics-lab {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #f5f5f5;
+}
+
+.kl-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.kl-header h2 {
+  margin: 0 0 10px;
+  font-size: 2rem;
+  color: #2c3e50;
+}
+
+.kl-header p {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #666;
+}
+
+.kl-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+/* Chart Section */
+.kl-chart-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.kl-chart-wrap {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: 400px;
+}
+
+.kl-chart-wrap canvas {
+  max-height: 400px;
+}
+
+.kl-info {
+  display: grid;
+  gap: 15px;
+}
+
+.kl-info-block {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.kl-info-block h4 {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.kl-info-block p {
+  margin: 6px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.kl-info-block strong {
+  color: #2c3e50;
+}
+
+.kl-info-fit {
+  border-left: 4px solid #2ecc71;
+}
+
+.kl-accuracy {
+  padding: 10px;
+  background: #f0fdf4;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #166534;
+  margin-top: 8px;
+}
+
+/* Controls */
+.kl-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.kl-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.kl-form-group {
+  margin-bottom: 16px;
+}
+
+.kl-form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 6px;
+}
+
+.kl-form-group input[type="number"],
+.kl-form-group input[type="checkbox"] {
+  font-family: inherit;
+}
+
+.kl-form-group input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.9rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.kl-form-group input[type="number"]:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.kl-form-group small {
+  display: block;
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 4px;
+}
+
+.kl-checkbox {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.kl-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.kl-checkbox input[type="checkbox"] {
+  margin: 0;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.kl-checkbox small {
+  display: block;
+  margin-top: 4px;
+  margin-left: 26px;
+}
+
+/* Buttons */
+.kl-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.kl-btn {
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.kl-btn-primary {
+  background: #667eea;
+  color: white;
+}
+
+.kl-btn-primary:hover {
+  background: #5568d3;
+}
+
+.kl-btn-secondary {
+  background: #2ecc71;
+  color: white;
+}
+
+.kl-btn-secondary:hover:not(:disabled) {
+  background: #27ae60;
+}
+
+.kl-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Theory Section */
+.kl-theory {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.kl-theory h4 {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.kl-formula {
+  padding: 15px;
+  background: #f9f9f9;
+  border-left: 4px solid #667eea;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+.kl-definitions {
+  margin: 0 0 15px;
+  padding-left: 20px;
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+.kl-definitions li {
+  margin-bottom: 6px;
+}
+
+.kl-definitions strong {
+  color: #2c3e50;
+}
+
+.kl-interpretation {
+  padding: 12px;
+  background: #f0f4ff;
+  border-radius: 4px;
+}
+
+.kl-interpretation h5 {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  color: #2c3e50;
+}
+
+.kl-interpretation ul {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 0.8rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.kl-interpretation li {
+  margin-bottom: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .kinetics-lab {
+    padding: 15px;
+  }
+
+  .kl-container {
+    grid-template-columns: 1fr;
+  }
+
+  .kl-controls {
+    position: static;
+    top: auto;
+  }
+
+  .kl-chart-wrap {
+    min-height: 300px;
+  }
+
+  .kl-chart-wrap canvas {
+    max-height: 300px;
+  }
+
+  .kl-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .kl-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .kl-form {
+    padding: 15px;
+  }
+
+  .kl-formula {
+    font-size: 1em;
+  }
+}

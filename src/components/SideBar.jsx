@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import navButtons from "../data/navButtons.json";
 import categoriesData from "../data/categories.json";
 import "./SideBar.css";
 
 const SideBar = ({ collapsed, setCollapsed }) => {
-
+  
+useEffect(() => {
+  if (window.innerWidth < 900) setCollapsed(true);
+    }, []);
 
   return (
     <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
@@ -34,7 +37,7 @@ const SideBar = ({ collapsed, setCollapsed }) => {
 
               return (
                 <li key={id}>
-                  <NavLink to={to} className="nav-link">
+                  <NavLink to={to} className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`} >
                     <span
                       className="nav-icon"
                       style={{ color: category.color }}

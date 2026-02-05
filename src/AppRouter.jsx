@@ -1,27 +1,20 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import CategoryPage from './components/CategoryPage';
-import categoriesData from './data/categories.json';
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import CategoryPage from "./pages/CategoryPage";
+import MoleculeViewer from "./components/MoleculeViewer";
+import KineticsLab from "./components/KineticsLab";
 
-const AppRouter = () => {
-  return (
-    <Routes>
-      {/* 3. The Home Page Route */}
-      <Route path="/" element={<div style={{ padding: '40px' }}><h1>Welcome to Biochem Guide</h1><p>Select a subject from the sidebar to begin.</p></div>} />
-      
-      {/* 4. Dynamic routes for all categories in your JSON */}
-      {categoriesData.categories.map((cat) => (
-        <Route 
-          key={cat.id} 
-          path={`/${cat.id}`} 
-          element={<CategoryPage category={cat} />} 
-        />
-      ))}
-
-      {/* Optional: 404 catch-all */}
-      <Route path="*" element={<div style={{ padding: '40px' }}>Section not found.</div>} />
-    </Routes>
-  );
-};
+const AppRouter = () => (
+  <Routes>
+    <Route path="/" element={<HomePage />} />
+    <Route path="/viewer" element={<MoleculeViewer />} />
+    <Route path="/lab" element={<KineticsLab />} />
+    <Route path="/:categoryId" element={<CategoryPage />} />
+    <Route path="*" element={<div style={{ padding: 40, textAlign: "center" }}>
+      <h2>Page Not Found</h2>
+      <p>The requested page does not exist.</p>
+    </div>} />
+  </Routes>
+);
 
 export default AppRouter;
