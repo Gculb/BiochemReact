@@ -103,11 +103,61 @@
   margin-top: 12px;
   animation: fadeSlide 0.2s ease;
 }
-.problem-count {
+.filter-section {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-group {
   display: flex;
   gap: 10px;
   align-items: center;
-  margin-bottom: 24px;
+}
+
+.filter-group label {
+  font-weight: 500;
+  color: #34495e;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.filter-group select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #bdc3c7;
+  background-color: #ffffff;
+  color: #2c3e50;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.filter-group select:hover {
+  border-color: #667eea;
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+@media (max-width: 768px) {
+  .filter-section {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter-group select {
+    width: 100%;
+  }
 }
 
 @keyframes fadeSlide {

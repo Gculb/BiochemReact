@@ -5,6 +5,7 @@ import "./PracticeProblems.css"
 const PracticeProblems = () => {
   const [visible, setVisible] = useState({});
   const [count, setCount] = useState(5);
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const toggle = (id, field) => {
     setVisible((prev) => ({
@@ -15,21 +16,46 @@ const PracticeProblems = () => {
       }
     }));
   };
-  const shuffled = useMemo(() => [...problems].sort(() => Math.random() - 0.5), []); 
+
+  const categories = useMemo(() => {
+    const cats = ["all", ...new Set(problems.map((p) => p.category))];
+    return cats.sort((a, b) => (a === "all" ? -1 : b === "all" ? 1 : a.localeCompare(b)));
+  }, []);
+
+  const filteredProblems = useMemo(() => {
+    return problems.filter((p) =>
+      selectedCategory === "all" || p.category === selectedCategory
+    );
+  }, [selectedCategory]);
+
+  const shuffled = useMemo(() => [...filteredProblems].sort(() => Math.random() - 0.5), [filteredProblems]); 
   return (
     <div className="page">
-      <label className="problem-count">
-        Problems to practice:
-        <select value={count} onChange={(e) => setCount(Number(e.target.value))}>
-          <option value={5}>5</option>
-          <option value={10}>10</option>
-          <option value={20}>20</option>
-          <option value={problems.length}>All</option>
-        </select>
-      </label>
+      <div className="filter-section">
+        <div className="filter-group">
+          <label>Subject/Category:</label>
+          <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat.charAt(0).toUpperCase() + cat.slice(1)}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="filter-group">
+          <label>Problems to practice:</label>
+          <select value={count} onChange={(e) => setCount(Number(e.target.value))}>
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={filteredProblems.length}>All</option>
+          </select>
+        </div>
+      </div>
 
       <p style={{ marginBottom: "1rem", color: "#666" }}>
-  Showing {Math.min(count, problems.length)} of {problems.length} problems
+  Showing {Math.min(count, filteredProblems.length)} of {filteredProblems.length} problems
           </p>
 
       {shuffled.slice(0, count).map((p) => (

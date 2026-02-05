@@ -699,5 +699,315 @@
     "hint": "Count attachments.",
     "answer": "The number of ligands directly bonded to the metal.",
     "solution": "The coordination number refers to how many ligand donor atoms are directly bonded to the central metal ion in a coordination complex."
+  },
+  {
+    "id": 71,
+    "title": "General Chemistry — Molarity Calculation",
+    "difficulty": "Easy",
+    "category": "General Chemistry",
+    "question": "How many grams of NaCl are needed to prepare 500 mL of a 2.0 M solution? (Molar mass of NaCl = 58.5 g/mol)",
+    "hint": "Molarity = moles/volume in liters. Rearrange to find moles, then use molar mass to find grams.",
+    "answer": "58.5 g",
+    "solution": "Molarity = moles/volume. 2.0 M = moles/0.500 L → moles = 1.0 mol. Mass = 1.0 mol × 58.5 g/mol = 58.5 g."
+  },
+  {
+    "id": 72,
+    "title": "General Chemistry — Limiting Reagent",
+    "difficulty": "Medium",
+    "category": "General Chemistry",
+    "question": "In the reaction 2A + 3B → C, 5 moles of A and 10 moles of B are available. Which is the limiting reagent and how many moles of C can be formed?",
+    "hint": "Divide available moles by stoichiometric coefficient for each reactant; smallest value is limiting.",
+    "answer": "A is limiting; 2.5 moles of C",
+    "solution": "5 mol A ÷ 2 = 2.5. 10 mol B ÷ 3 = 3.33. Smallest is 2.5, so A is limiting. From 5 mol A: 5 mol A × (1 mol C / 2 mol A) = 2.5 mol C."
+  },
+  {
+    "id": 73,
+    "title": "Molecular Biology — Genetic Code Degeneracy",
+    "difficulty": "Easy",
+    "category": "Molecular Biology",
+    "question": "Why is the genetic code described as 'degenerate'?",
+    "hint": "Think multiple codons for same amino acid.",
+    "answer": "Multiple codons encode the same amino acid.",
+    "solution": "The genetic code is degenerate because most amino acids are encoded by more than one codon (up to 6 for some). This redundancy provides a buffer against some point mutations."
+  },
+  {
+    "id": 74,
+    "title": "Molecular Biology — Promoter Recognition",
+    "difficulty": "Medium",
+    "category": "Molecular Biology",
+    "question": "In prokaryotes, what are the two conserved sequences in the promoter that RNA polymerase recognizes?",
+    "hint": "Think −35 box and −10 box (Pribnow box).",
+    "answer": "-35 box (TTGACA) and -10 box (TATAAT)",
+    "solution": "Prokaryotic promoters contain the −35 box (TTGACA) and −10 box or Pribnow box (TATAAT) upstream of the transcription start site. These are recognized by the sigma factor of bacterial RNA polymerase."
+  },
+  {
+    "id": 75,
+    "title": "Inorganic Chemistry — Oxidation States",
+    "difficulty": "Easy",
+    "category": "Inorganic Chemistry",
+    "question": "Assign oxidation states to each element in the compound K₂Cr₂O₇.",
+    "hint": "Use rules: alkali metals +1, O usually −2, total charge = 0.",
+    "answer": "K: +1, Cr: +6, O: −2",
+    "solution": "K is +1 (alkali metal). O is −2 (usual). Cr: 2(+1) + 2x + 7(−2) = 0 → 2 + 2x − 14 = 0 → x = +6."
+  },
+  {
+    "id": 76,
+    "title": "Inorganic Chemistry — Complex Ion Formulation",
+    "difficulty": "Medium",
+    "category": "Inorganic Chemistry",
+    "question": "Write the formula for a complex ion with Fe³⁺ coordinated by 6 chloride ligands.",
+    "hint": "Coordination number is 6; include overall charge.",
+    "answer": "[FeCl₆]³⁻",
+    "solution": "With Fe³⁺ and 6 Cl⁻ ligands, the net charge is +3 − 6 = −3, giving [FeCl₆]³⁻."
+  },
+  {
+    "id": 77,
+    "title": "Physics — Work and Energy",
+    "difficulty": "Medium",
+    "category": "Physics",
+    "question": "How much work is done by a force of 50 N applied over a distance of 5 m parallel to the direction of motion?",
+    "hint": "Work = Force × distance × cos(θ); use θ = 0° for parallel motion.",
+    "answer": "250 J",
+    "solution": "Work = F × d × cos(θ) = 50 N × 5 m × cos(0°) = 50 × 5 × 1 = 250 J."
+  },
+  {
+    "id": 78,
+    "title": "Physics — Osmotic Pressure",
+    "difficulty": "Hard",
+    "category": "Physics",
+    "question": "Calculate the osmotic pressure of a 0.1 M solution at 298 K. (R = 8.314 J/(mol·K))",
+    "hint": "Use π = iMRT where i is van't Hoff factor (1 for non-electrolytes).",
+    "answer": "≈ 2.5 atm",
+    "solution": "π = iMRT = 1 × 0.1 mol/L × 8.314 J/(mol·K) × 298 K = 248 J/L = 248 Pa·m³/mol. Convert: 248 J/L ≈ 2.45 atm."
+  },
+  {
+    "id": 79,
+    "title": "Mathematics — Exponential Growth",
+    "difficulty": "Medium",
+    "category": "Mathematics",
+    "question": "A bacterial population doubles every 30 minutes. If initially there are 1000 bacteria, how many will there be after 2 hours?",
+    "hint": "Number of doublings in 2 hours = 120 min / 30 min = 4.",
+    "answer": "16,000",
+    "solution": "2 hours = 120 minutes. Number of doublings = 120/30 = 4. Final population = 1000 × 2⁴ = 1000 × 16 = 16,000."
+  },
+  {
+    "id": 80,
+    "title": "Mathematics — Solving Systems of Equations",
+    "difficulty": "Medium",
+    "category": "Mathematics",
+    "question": "Solve the system: 2x + y = 5 and x − y = 1.",
+    "hint": "Use substitution or elimination.",
+    "answer": "x = 2, y = 1",
+    "solution": "From equation 2: x = y + 1. Substitute into equation 1: 2(y + 1) + y = 5 → 2y + 2 + y = 5 → 3y = 3 → y = 1. Then x = 1 + 1 = 2."
+  },
+  {
+    "id": 81,
+    "title": "Statistics — Hypothesis Testing",
+    "difficulty": "Hard",
+    "category": "Statistics",
+    "question": "In a hypothesis test with α = 0.05 and a p-value of 0.03, what decision should be made?",
+    "hint": "Compare p-value to significance level.",
+    "answer": "Reject the null hypothesis",
+    "solution": "Since p-value (0.03) < α (0.05), we reject the null hypothesis at the 0.05 significance level."
+  },
+  {
+    "id": 82,
+    "title": "Statistics — Probability",
+    "difficulty": "Easy",
+    "category": "Statistics",
+    "question": "If you roll two fair dice, what is the probability of getting a sum of 7?",
+    "hint": "Count favorable outcomes (6 ways) and divide by total outcomes (36).",
+    "answer": "1/6",
+    "solution": "Favorable outcomes: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) = 6 outcomes. Total outcomes = 6 × 6 = 36. Probability = 6/36 = 1/6."
+  },
+  {
+    "id": 83,
+    "title": "Analytical Chemistry — Titration Basics",
+    "difficulty": "Medium",
+    "category": "Analytical Chemistry",
+    "question": "In an acid-base titration, 25 mL of 0.1 M HCl is required to neutralize 50 mL of NaOH. What is the molarity of the NaOH?",
+    "hint": "Use M₁V₁ = M₂V₂ for strong acid-strong base titration.",
+    "answer": "0.05 M",
+    "solution": "M₁V₁ = M₂V₂. (0.1 M)(25 mL) = M₂(50 mL) → 2.5 = 50 M₂ → M₂ = 0.05 M."
+  },
+  {
+    "id": 84,
+    "title": "Analytical Chemistry — pH Calculation from Ka",
+    "difficulty": "Medium",
+    "category": "Analytical Chemistry",
+    "question": "For a weak acid with Ka = 1.8 × 10⁻⁵ and initial concentration 0.1 M, what is the pH?",
+    "hint": "Use Ka = [H⁺]²/(C − [H⁺]) ≈ [H⁺]²/C for weak acids where [H⁺] << C.",
+    "answer": "≈ 2.74",
+    "solution": "Ka = 1.8 × 10⁻⁵ = [H⁺]²/0.1 → [H⁺]² = 1.8 × 10⁻⁶ → [H⁺] = 1.34 × 10⁻³. pH = −log(1.34 × 10⁻³) ≈ 2.87 (exact depends on whether approximation validates)."
+  },
+  {
+    "id": 85,
+    "title": "General Biology — Mitochondrial Function",
+    "difficulty": "Easy",
+    "category": "General Biology",
+    "question": "What is the primary function of the mitochondrial inner membrane?",
+    "hint": "Think electron transport and proton gradient.",
+    "answer": "Hosts the electron transport chain and oxidative phosphorylation",
+    "solution": "The inner mitochondrial membrane contains the electron transport chain complexes and ATP synthase, essential for generating the proton gradient and producing ATP."
+  },
+  {
+    "id": 86,
+    "title": "General Biology — Photosynthesis Light vs Dark Reactions",
+    "difficulty": "Medium",
+    "category": "General Biology",
+    "question": "Which photosynthetic reaction requires light and which does not?",
+    "hint": "Light reactions need light; Calvin cycle (dark reactions) does not require light directly.",
+    "answer": "Light-dependent reactions require light; carbon fixation (Calvin cycle) does not",
+    "solution": "Light-dependent reactions in the thylakoid membrane require light to split water, generate NADPH, and produce ATP. The Calvin cycle in the stroma uses ATP and NADPH but does not directly require light."
+  },
+  {
+    "id": 87,
+    "title": "General Biology — Enzyme Cofactors",
+    "difficulty": "Medium",
+    "category": "General Biology",
+    "question": "What is the difference between a coenzyme and a prosthetic group?",
+    "hint": "Think binding: prosthetic groups are tightly bound; coenzymes are loosely bound.",
+    "answer": "Prosthetic groups are tightly bound; coenzymes are loosely bound or diffusible",
+    "solution": "Prosthetic groups are permanently attached to enzymes (e.g., heme in peroxidase). Coenzymes are small diffusible molecules that bind reversibly to support multiple enzymes (e.g., NAD⁺, ATP)."
+  },
+  {
+    "id": 88,
+    "title": "Genetics — Hardy-Weinberg Equilibrium",
+    "difficulty": "Hard",
+    "category": "Genetics",
+    "question": "In a population at Hardy-Weinberg equilibrium, the frequency of allele A is 0.6. What is the expected frequency of heterozygotes (Aa)?",
+    "hint": "Use p² + 2pq + q² = 1, where p = 0.6, q = 0.4.",
+    "answer": "0.48",
+    "solution": "p = 0.6, q = 0.4. Frequency of Aa = 2pq = 2(0.6)(0.4) = 0.48."
+  },
+  {
+    "id": 89,
+    "title": "Genetics — Gene Mapping with Recombination Frequency",
+    "difficulty": "Hard",
+    "category": "Genetics",
+    "question": "In a Drosophila cross, two genes show a recombination frequency of 12%. What does this tell you about their map distance?",
+    "hint": "Recombination frequency (in %) ≈ map distance in centiMorgans (cM).",
+    "answer": "The genes are 12 cM apart",
+    "solution": "A recombination frequency of 12% indicates the genes are 12 map units (centiMorgans) apart on the chromosome."
+  },
+  {
+    "id": 90,
+    "title": "Genetics — Linkage and Crossing Over",
+    "difficulty": "Medium",
+    "category": "Genetics",
+    "question": "When two genes are linked, do their alleles always stay together during gamete formation? Explain.",
+    "hint": "Consider crossing over.",
+    "answer": "No; crossing over can separate linked alleles.",
+    "solution": "Although linked genes are on the same chromosome, crossing over (recombination) can exchange DNA segments between homologous chromosomes, producing recombinant gametes with separated allele combinations."
+  },
+  {
+    "id": 91,
+    "title": "Cell Biology — Apoptosis vs Necrosis",
+    "difficulty": "Medium",
+    "category": "Cell Biology",
+    "question": "What is the primary difference between apoptosis and necrosis?",
+    "hint": "Apoptosis is programmed; necrosis is traumatic.",
+    "answer": "Apoptosis is controlled programmed cell death; necrosis is uncontrolled death from injury",
+    "solution": "Apoptosis is an orderly, energy-dependent process that cleanly packages cellular contents without inflammatory response. Necrosis is traumatic cell death from injury, causing cell lysis and inflammation."
+  },
+  {
+    "id": 92,
+    "title": "Cell Biology — Carbohydrate Recognition",
+    "difficulty": "Easy",
+    "category": "Cell Biology",
+    "question": "What are lectins and what do they recognize on cells?",
+    "hint": "Think sugar-binding proteins.",
+    "answer": "Proteins that specifically bind carbohydrates on cell surfaces",
+    "solution": "Lectins are proteins that recognize and bind specific carbohydrate structures on glycoproteins and glycolipids; they mediate cell-cell interactions and immune responses."
+  },
+  {
+    "id": 71,
+    "title": "General Chemistry — Acid-Base Nomenclature",
+    "difficulty": "Easy",
+    "category": "General Chemistry",
+    "question": "Name the compound HNO₃ and identify it as an acid or base.",
+    "hint": "This common strong acid contains H⁺ and a polyatomic anion.",
+    "answer": "Nitric acid; strong acid",
+    "solution": "HNO₃ is nitric acid, a strong monoprotic acid that completely ionizes in water to produce H⁺ and NO₃⁻ ions."
+  },
+  {
+    "id": 93,
+    "title": "Physical Chemistry — Vapor Pressure",
+    "difficulty": "Medium",
+    "category": "Physical Chemistry",
+    "question": "What does Raoult's law state about a solution of two volatile liquids?",
+    "hint": "Partial pressure equals mole fraction times pure component vapor pressure.",
+    "answer": "Partial pressure of each component equals its mole fraction times its pure vapor pressure",
+    "solution": "Raoult's law: P_A = X_A × P_A°, where P_A is partial pressure, X_A is mole fraction, and P_A° is the pure component vapor pressure."
+  },
+  {
+    "id": 94,
+    "title": "Organic Chemistry — Functional Group Priorities",
+    "difficulty": "Medium",
+    "category": "Organic Chemistry",
+    "question": "In IUPAC nomenclature, which functional group has higher priority: aldehyde or ketone?",
+    "hint": "Consider oxidation state of carbonyl carbon.",
+    "answer": "Aldehyde",
+    "solution": "In IUPAC nomenclature, aldehyde (−CHO) has higher priority than ketone (−CO−) because the carbonyl carbon is bonded to more hydrogen atoms (oxidation state difference)."
+  },
+  {
+    "id": 95,
+    "title": "Organic Chemistry — Ester Hydrolysis",
+    "difficulty": "Medium",
+    "category": "Organic Chemistry",
+    "question": "What is produced when an ester is hydrolyzed in basic conditions (saponification)?",
+    "hint": "Think carboxylate salt and alcohol.",
+    "answer": "Carboxylate salt (soap) and alcohol",
+    "solution": "Base-catalyzed ester hydrolysis produces a carboxylic acid salt (often called soap when using long-chain esters) and the corresponding alcohol."
+  },
+  {
+    "id": 96,
+    "title": "Biochemistry I — NAD⁺/NADH Ratio",
+    "difficulty": "Medium",
+    "category": "Biochemistry I",
+    "question": "Why is the NAD⁺/NADH ratio kept high in the cell?",
+    "hint": "Think about oxidation-reduction reactions and energy status.",
+    "answer": "High NAD⁺/NADH ratio favors catabolic oxidation reactions",
+    "solution": "A high NAD⁺/NADH ratio drives oxidation reactions forward, allowing glycolysis and the citric acid cycle to proceed efficiently. The cell maintains this by transferring NADH electrons to the electron transport chain."
+  },
+  {
+    "id": 97,
+    "title": "Physical Chemistry — Le Chatelier's Principle",
+    "difficulty": "Medium",
+    "category": "Physical Chemistry",
+    "question": "If a system at equilibrium is subjected to increased pressure, how will it respond according to Le Chatelier's principle?",
+    "hint": "System shifts to decrease the number of gas moles.",
+    "answer": "Equilibrium shifts toward the side with fewer moles of gas",
+    "solution": "Increased pressure favors the side with fewer moles of particles (gases). The system shifts in that direction to reduce pressure and re-establish equilibrium."
+  },
+  {
+    "id": 98,
+    "title": "Analytical Chemistry — Spectrophotometry",
+    "difficulty": "Hard",
+    "category": "Analytical Chemistry",
+    "question": "A solution shows maximum absorbance at 550 nm. What color light is being absorbed and what color would the solution appear?",
+    "hint": "Absorbed light color is complementary to observed color.",
+    "answer": "Absorbs green light (550 nm); appears magenta/red",
+    "solution": "550 nm corresponds to green light. When green is absorbed, the complementary color—magenta—is transmitted/reflected, making the solution appear magenta or reddish."
+  },
+  {
+    "id": 99,
+    "title": "Immunology — MHC and Antigen Presentation",
+    "difficulty": "Hard",
+    "category": "Immunology",
+    "question": "Explain the difference between MHC Class I and MHC Class II presentation.",
+    "hint": "Class I presents intracellular antigens to CTLs; Class II presents exogenous antigens to helper T cells.",
+    "answer": "Class I presents intracellular/viral peptides to CD8⁺ T cells; Class II presents exogenous peptides to CD4⁺ T cells",
+    "solution": "MHC Class I molecules (found on all cells) present internally-produced antigens (viral, tumor) to cytotoxic T lymphocytes (CD8⁺). MHC Class II molecules (APCs) present exogenous antigens to helper T cells (CD4⁺)."
+  },
+  {
+    "id": 100,
+    "title": "Neurobiology — Synaptic Plasticity",
+    "difficulty": "Hard",
+    "category": "Neurobiology",
+    "question": "Define long-term potentiation (LTP) and explain its molecular basis.",
+    "hint": "Think AMPA/NMDA receptors and calcium influx.",
+    "answer": "Persistent increase in synaptic strength via NMDA receptor activation and AMPA receptor insertion",
+    "solution": "LTP is prolonged enhancement of synaptic efficacy. Upon repeated stimulation, NMDA receptors (normally blocked by Mg²⁺) open, allowing Ca²⁺ influx. This triggers PKA/CaMKII cascades that insert additional AMPA receptors, strengthening future responses."
   }
 ]
