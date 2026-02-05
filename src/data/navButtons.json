@@ -1,0 +1,9 @@
+
+[
+  { "label": "Main", "ids": ["home", "degree", "viewer"] },                      
+  { "label": "Practice & Labs", "ids": ["problems", "lab", "bioinformatics"] },
+  { "label": "Chemistry", "ids": ["genchem", "genchemlab", "ochem", "ochem-lab", "analytical", "inorganic"] },
+  { "label": "Life Sciences", "ids": ["genbio", "biochem1", "biochem2", "biochem-lab", "molbio", "microbio", "genetics"] },
+  { "label": "Quantitative", "ids": ["calculus", "physical", "stats"] },
+  { "label": "Support", "ids": ["resources", "glossary", "about", "contact"] }
+]

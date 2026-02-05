@@ -1,0 +1,409 @@
+{
+  "meta": {
+    "title": "Interactive Biochemistry Guide - Categories",
+    "version": "1.0"
+  },
+  "categories": [
+    {
+      "id": "home",
+      "title": "Home",
+      "icon": "fa-house",
+      "color": "#667eea",
+      "description": "Landing page: quick-start, saved views, and entry points to tools.",
+      "order": 0,
+      "topics": [
+        { "id": "quick-start", "title": "Quick-start", "summary": "Open the 3D viewer, try virtual lab, and explore resources." }
+      ]
+    },
+    {
+      "id": "degree",
+      "title": "Degree Roadmap",
+      "icon": "fa-road",
+      "color": "#4b6cb7",
+      "description": "Suggested 4-year roadmap with semester-by-semester guidance and milestones.",
+      "order": 1,
+      "topics": [
+        { "id": "year1", "title": "Year 1 — Foundations", "summary": "Gen Chem, calculus/statistics, intro bio, lab safety." },
+        { "id": "year2", "title": "Year 2 — Core Chemical Principles", "summary": "Organic chemistry, physical chemistry intro, analytical methods." },
+        { "id": "year3", "title": "Year 3 — Biochemistry & Techniques", "summary": "Enzyme kinetics, molecular biology, lab techniques." },
+        { "id": "year4", "title": "Year 4 — Synthesis & Capstone", "summary": "Advanced electives, capstone research, bioinformatics." }
+      ]
+    },
+    {
+      "id": "viewer",
+      "title": "3D Molecular Viewer",
+      "icon": "fa-atom",
+      "color": "#9b59b6",
+      "description": "Three.js-based 3D viewer: example molecules, saved views, rotation/zoom controls (desktop-optimized).",
+      "order": 2,
+      "topics": [
+        { "id": "molecule-glucose", "title": "Glucose", "summary": "Monosaccharide example (C6H12O6)." },
+        { "id": "molecule-atp", "title": "ATP", "summary": "Energy currency example." },
+        { "id": "saved-views", "title": "Saved Views", "summary": "LocalStorage-backed camera/view presets." }
+      ]
+    },
+    {
+      "id": "genchem",
+      "title": "General Chemistry",
+      "icon": "fa-flask",
+      "color": "#ff6b6b",
+      "description": "Atomic structure, periodic trends, thermodynamics, acid-base chemistry, bonding and equilibrium.",
+      "order": 3,
+      "topics": [
+        { "id": "atomic-structure", "title": "Atomic Structure & Periodic Trends", "important": true },
+        { "id": "bonding", "title": "Chemical Bonding & Molecular Geometry" },
+        { "id": "acid-base", "title": "Acid–Base Chemistry", "important": true },
+        { "id": "thermodynamics", "title": "Thermodynamics & Equilibrium" },
+        { "id": "redox", "title": "Redox Reactions" },
+        { "id": "stoichiometry", "title": "Stoichiometry & Limiting Reagents", "important": true },
+        { "id": "equilibrium-constant", "title": "Equilibrium Constants (Kc, Kp)" },
+        { "id": "le-chatelier", "title": "Le Châtelier’s Principle" },
+        { "id": "gas-laws", "title": "Gas Laws & Partial Pressures" },
+        { "id": "colligative", "title": "Colligative Properties" },
+        { "id": "phase-diagrams", "title": "Phase Diagrams & Phase Changes" }
+
+      ]
+    },
+    {
+      "id": "physics",
+      "title": "Physics Essentials",
+      "icon": "fa-wave-square",
+      "color": "#ff8a65",
+      "description": "Classical mechanics, waves & oscillations, thermal physics, intro electromagnetism, diagrams.",
+      "order": 4,
+      "topics": [
+        { "id": "mechanics", "title": "Classical Mechanics", "important": true },
+        { "id": "waves", "title": "Waves & Oscillations" },
+        { "id": "thermal", "title": "Thermal Physics" },
+        { "id": "electromagnetism", "title": "Electromagnetism (Intro)" },
+        { "id": "diagrams", "title": "Free-body & Energy Diagrams" },
+        { "id": "lenses", "title": "Lenses & Optics", "important": true }
+      ]
+    },
+    {
+      "id": "stats",
+      "title": "Statistics",
+      "icon": "fa-chart-pie",
+      "color": "#ffc107",
+      "description": "Biochemical data analysis: descriptive stats, hypothesis testing, regression, power & sampling.",
+      "order": 5,
+      "topics": [
+        { "id": "descriptive", "title": "Descriptive Statistics", "important": true },
+        { "id": "replicates", "title": "Biological vs Technical Replicates", "important": true },
+        { "id": "hypothesis", "title": "Hypothesis Testing (t-tests, ANOVA)" },
+        { "id": "regression", "title": "Regression & Enzyme Kinetics" },
+        { "id": "error-analysis", "title": "Error Analysis & Confidence Intervals" },
+        { "id": "fluids", "title": "Fluids & Bernoulli’s Principle", "important": true },
+        { "id": "work-energy", "title": "Work–Energy Theorem" },
+        { "id": "power", "title": "Power & Efficiency" },
+        { "id": "torque", "title": "Torque & Rotational Equilibrium" }
+
+      ]
+    },
+    {
+      "id": "genchemlab",
+      "title": "General Chemistry Lab",
+      "icon": "fa-vial",
+      "color": "#2ecc71",
+      "description": "Practical lab skills: titration, dilutions, spectroscopy, sample prep, safety and data handling.",
+      "order": 6,
+      "topics": [
+        { "id": "titration", "title": "Titration", "important": true },
+        { "id": "dilutions", "title": "Dilutions & Molarity" },
+        { "id": "spectroscopy", "title": "IR / NMR / UV-Vis Spectroscopy" },
+        { "id": "orbital-basics", "title": "Electron Orbitals & Configurations" },
+        { "id": "safety", "title": "Lab Safety & Data Recording" }
+      ]
+    },
+    {
+      "id": "ochem",
+      "title": "Organic Chemistry",
+      "icon": "fa-circle-nodes",
+      "color": "#f39c12",
+      "description": "Functional groups, reaction mechanisms, stereochemistry, spectroscopy for organic compounds.",
+      "order": 7,
+      "topics": [
+        { "id": "functional-groups", "title": "Functional Groups" },
+        { "id": "mech", "title": "Reaction Mechanisms" },
+        { "id": "stereochem", "title": "Stereochemistry" },
+        { "id": "org-spectroscopy", "title": "Organic Spectroscopy (NMR, IR)" },
+        { "id": "acid-base-org", "title": "Acid–Base Chemistry in Organic Reactions", "important": true },
+        { "id": "aromaticity", "title": "Aromaticity & Huckel’s Rule" },
+        { "id": "carbonyl", "title": "Carbonyl Chemistry (Aldehydes, Ketones)" },
+        { "id": "reaction-energy", "title": "Reaction Energy Diagrams & Transition States" }
+
+      ]
+    },
+    {
+      "id": "ochem-lab",
+      "title": "Organic Chemistry Lab",
+      "icon": "fa-flask-vial",
+      "color": "#e67e22",
+      "description": "Hands-on organic lab techniques: synthesis, purification, spectroscopy, and green chemistry principles.",
+      "order": 8,
+      "topics": [
+        { "id": "extraction", "title": "Liquid–Liquid Extraction", "important": true },
+        { "id": "chromatography", "title": "Chromatography (TLC, Column)", "important": true },
+        { "id": "recrystallization", "title": "Recrystallization & Purification" },
+        { "id": "synthesis", "title": "Organic Synthesis & Retrosynthesis", "important": true },
+        { "id": "spectroscopy-lab", "title": "IR / NMR / MS in Organic Lab" },
+        { "id": "green-chemistry", "title": "Green Chemistry Principles" }
+      ]
+    },
+    {
+      "id": "analytical",
+      "title": "Analytical Chemistry",
+      "icon": "fa-chart-line",
+      "color": "#3b82f6",
+      "description": "Quantitative methods, calibration curves, instrument-specific workflows (LC-MS, NMR basics).",
+      "order": 9,
+      "topics": [
+        { "id": "calibration", "title": "Calibration & Standard Curves", "important": true },
+        { "id": "instrument-methods", "title": "Instrument Methods (LC-MS, UV-Vis)" },
+        { "id": "error-propagation", "title": "Error Propagation & Limits of Detection" },
+        { "id": "lod-loq", "title": "Limits of Detection & Quantification", "important": true },
+        { "id": "chromatography", "title": "Chromatography (HPLC, GC)" },
+        { "id": "mass-spec", "title": "Mass Spectrometry Fundamentals" },
+        { "id": "electrochem", "title": "Electrochemistry & Sensors" }
+
+      ]
+    },
+    {
+      "id": "inorganic",
+      "title": "Inorganic Chemistry",
+      "icon": "fa-cubes-stacked",
+      "color": "#f97316",
+      "description": "Coordination compounds, crystal field theory, organometallics, and catalysis basics.",
+      "order": 10,
+      "topics": [
+        { "id": "coordination", "title": "Coordination Compounds & Nomenclature" },
+        { "id": "crystal-field", "title": "Crystal Field Theory" },
+        { "id": "organometallics", "title": "Organometallic Chemistry Basics" },
+        { "id": "catalysis", "title": "Catalysis & Reaction Mechanisms", "important": true }
+      ]
+    },
+    {
+      "id": "biochem1",
+      "title": "Biochemistry I",
+      "icon": "fa-microscope",
+      "color": "#e74c3c",
+      "description": "Core metabolism and enzyme function: glycolysis, TCA, electron transport, Michaelis–Menten kinetics.",
+      "order": 11,
+      "topics": [
+        { "id": "glycolysis", "title": "Glycolysis", "important": true },
+        { "id": "tca", "title": "Citric Acid Cycle (TCA)" },
+        { "id": "mm-kinetics", "title": "Michaelis–Menten Kinetics", "important": true },
+        { "id": "etc", "title": "Electron Transport Chain" },
+        { "id": "gluconeogenesis", "title": "Gluconeogenesis" },
+        { "id": "glycogen", "title": "Glycogen Metabolism" },
+        { "id": "fatty-acids", "title": "Fatty Acid Oxidation" },
+        { "id": "regulation", "title": "Metabolic Regulation & Control", "important": true }
+
+      ]
+    },
+    {
+      "id": "biochem2",
+      "title": "Biochemistry II",
+      "icon": "fa-vials",
+      "color": "#9b59b6",
+      "description": "Regulation, signaling, pathways, advanced lab techniques, and structural biology basics.",
+      "order": 12,
+      "topics": [
+        { "id": "regulation", "title": "Pathway Regulation & Signaling" },
+        { "id": "structural-bio", "title": "Structural Biology (PDB, protein folding)" },
+        { "id": "lab-tech", "title": "Lab Techniques (PCR, gels, cloning)", "important": true }
+      ]
+    },
+    {
+      "id": "biochem-lab",
+      "title": "Biochemistry Lab",
+      "icon": "fa-vials",
+      "color": "#c0392b",
+      "description": "Experimental biochemistry techniques: protein purification, enzyme kinetics, nucleic acid analysis, and cell culture.",
+      "order": 13,
+      "topics": [
+        { "id": "protein-purification", "title": "Protein Purification & Analysis", "important": true },
+        { "id": "enzyme-assays", "title": "Enzyme Assays & Kinetics", "important": true },
+        { "id": "gel-electrophoresis", "title": "SDS-PAGE & Gel Electrophoresis" },
+        { "id": "western-blot", "title": "Western Blotting" },
+        { "id": "nucleic-acid-techniques", "title": "DNA/RNA Techniques (PCR, Quantification)", "important": true },
+        { "id": "cell-culture", "title": "Cell Culture Techniques" }
+      ]
+    },
+    {
+      "id": "calculus",
+      "title": "Calculus for Chemists",
+      "icon": "fa-calculator",
+      "color": "#6c5ce7",
+      "description": "Partial derivatives, total differentials, integrals, DEs and approximations used in physical chemistry/stat mech.",
+      "order": 14,
+      "topics": [
+        { "id": "partial-derivatives", "title": "Partial Derivatives & Thermo" },
+        { "id": "differential-eq", "title": "Differential Equations & Rate Laws" },
+        { "id": "integrals-partitions", "title": "Integrals & Partition Functions" }
+      ]
+    },
+    {
+      "id": "physical",
+      "title": "Physical Chemistry",
+      "icon": "fa-wave-square",
+      "color": "#3498db",
+      "description": "Quantum chemistry, statistical mechanics, thermodynamics and kinetics with math toolkit.",
+      "order": 15,
+      "topics": [
+        { "id": "quantum", "title": "Quantum Chemistry & MO Theory" },
+        { "id": "statmech", "title": "Statistical Mechanics" },
+        { "id": "thermo-advanced", "title": "Advanced Thermodynamics" }
+      ]
+    },
+    {
+      "id": "genbio",
+      "title": "General Biology",
+      "icon": "fa-leaf",
+      "color": "#16a085",
+      "description": "Cell structure, physiology, molecular biology basics relevant to biochemistry.",
+      "order": 16,
+      "topics": [
+        { "id": "cell-bio", "title": "Cell Structure & Function" },
+        { "id": "bioenergetics", "title": "Bioenergetics & Membranes" }
+      ]
+    },
+    {
+      "id": "molbio",
+      "title": "Molecular Biology",
+      "icon": "fa-helix",
+      "color": "#e67e22",
+      "description": "DNA/RNA structure, replication, transcription/translation, and recombinant DNA technology.",
+      "order": 17,
+      "topics": [
+        { "id": "dna-rna", "title": "DNA & RNA Structure" },
+        { "id": "replication", "title": "DNA Replication" },
+        { "id": "tx-translation", "title": "Transcription & Translation" },
+        { "id": "recombinant-dna", "title": "Recombinant DNA Technology", "important": true },
+        { "id": "rna-processing", "title": "RNA Processing & Splicing" },
+        { "id": "gene-regulation", "title": "Gene Regulation (Operons, Enhancers)", "important": true },
+        { "id": "crispr", "title": "CRISPR & Genome Editing" },
+        { "id": "rna-interference", "title": "RNA Interference (siRNA, miRNA)" }
+
+      ]
+    },
+    {
+      "id": "microbio",
+      "title": "Microbiology",
+      "icon": "fa-bacteria",
+      "color": "#27ae60",
+      "description": "Bacterial structure, viral life cycles, antimicrobial mechanisms, and lab methods.",
+      "order": 18,
+      "topics": [
+        { "id": "bacterial-structure", "title": "Bacterial Structure & Physiology" },
+        { "id": "viruses", "title": "Viruses & Replication Cycles" },
+        { "id": "antibiotics", "title": "Antibiotics & Mechanisms", "important": true }
+      ]
+    },
+    {
+      "id": "bioinformatics",
+      "title": "Bioinformatics",
+      "icon": "fa-code",
+      "color": "#1abc9c",
+      "description": "Sequence analysis, alignments, and structure databases.",
+      "order": 19,
+      "topics": [
+        { "id": "blast", "title": "BLAST & Sequence Alignment" },
+        { "id": "databases", "title": "GenBank, UniProt, PDB" },
+        { "id": "msa", "title": "Multiple Sequence Alignment (Clustal, MUSCLE)" },
+        { "id": "phylogenetics", "title": "Phylogenetics & Evolutionary Trees" },
+        { "id": "motifs", "title": "Motifs, Domains & HMMs" },
+        { "id": "structure-pred", "title": "Protein Structure Prediction (AlphaFold)" },
+        { "id": "variant-analysis", "title": "Variant Calling & Annotation" }
+      ]
+    },
+    {
+      "id": "genetics",
+      "title": "Genetics",
+      "icon": "fa-dna",
+      "color": "#ff6b6b",
+      "description": "DNA structure & replication, transcription/translation, molecular techniques and epigenetics.",
+      "order": 20,
+      "topics": [
+        { "id": "dna-structure", "title": "DNA Structure & Replication", "important": true },
+        { "id": "tx-translation", "title": "Transcription & Translation" },
+        { "id": "molecular-techniques", "title": "PCR, Sequencing, Cloning", "important": true },
+        { "id": "epigenetics", "title": "Epigenetics" }
+      ]
+    },
+    {
+      "id": "problems",
+      "title": "Practice Problems",
+      "icon": "fa-pen-to-square",
+      "color": "#764ba2",
+      "description": "Problem sets and worked solutions across modules (calcs, kinetics, titrations, genetics problems).",
+      "order": 21,
+      "topics": [
+        { "id": "kinetics-problems", "title": "Enzyme Kinetics Practice" },
+        { "id": "acid-base-problems", "title": "Acid–Base & Titration Problems" },
+        { "id": "stats-problems", "title": "Statistics & Hypothesis Testing" }
+      ]
+    },
+    {
+      "id": "lab",
+      "title": "Virtual Lab",
+      "icon": "fa-laptop-code",
+      "color": "#2bcbba",
+      "description": "Interactive enzyme kinetics simulations, noise toggles, fitting Km & Vmax, and chart outputs.",
+      "order": 22,
+      "topics": [
+        { "id": "enzyme-sim", "title": "Enzyme Kinetics Simulator", "important": true },
+        { "id": "data-fit", "title": "Curve Fitting (Km & Vmax)" }
+      ]
+    },
+    {
+      "id": "about",
+      "title": "About",
+      "icon": "fa-circle-info",
+      "color": "#95a5a6",
+      "description": "Project description, technical focus, author & contributions.",
+      "order": 23,
+      "topics": [
+        { "id": "author", "title": "Author & Technical Focus" },
+        { "id": "why-project", "title": "Why This Project" }
+      ]
+    },
+    {
+      "id": "resources",
+      "title": "Resources & Links",
+      "icon": "fa-book",
+      "color": "#4b6cb7",
+      "description": "Collections of authoritative databases, visualization tools, virtual labs, and references.",
+      "order": 24,
+      "topics": [
+        { "id": "databases", "title": "Databases & Molecular References" },
+        { "id": "visualization", "title": "3D Visualization Tools (Mol*, NGL, PyMOL)" },
+        { "id": "virtual-labs", "title": "Virtual Labs & Simulations" }
+      ]
+    },
+    {
+      "id": "glossary",
+      "title": "Glossary",
+      "icon": "fa-book-open",
+      "color": "#8e44ad",
+      "description": "Key terms and definitions across biochemistry, chemistry, and molecular biology.",
+      "order": 25,
+      "topics": [
+        { "id": "terms", "title": "Key Terms & Definitions" }
+      ]
+    },
+    {
+      "id": "contact",
+      "title": "Contact",
+      "icon": "fa-envelope",
+      "color": "#27ae60",
+      "description": "Get in touch for questions, feedback, or support.",
+      "order": 26,
+      "topics": [
+        { "id": "general", "title": "General Inquiries" },
+        { "id": "feedback", "title": "Feedback" }
+      ]
+    }
+
+  ]
+}

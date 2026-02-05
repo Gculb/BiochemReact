@@ -1,0 +1,16 @@
+.app-layout {
+  display: flex;
+}
+
+/* default sidebar width */
+.main-content {
+  margin-left: 260px;
+  padding: 24px;
+  transition: margin-left 0.25s ease;
+}
+
+/* when sidebar collapses */
+.sidebar.collapsed ~ .main-content {
+  margin-left: 70px;
+}
+ 

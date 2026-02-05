@@ -1,0 +1,703 @@
+[
+{
+"id": 1,
+"title": "Buffer System Calculation",
+"difficulty": "Medium",
+"category": "General Chemistry",
+"question": "A buffer solution contains 0.50 M acetic acid (CH₃COOH) and 0.30 M sodium acetate (CH₃COONa). The pKa of acetic acid is 4.76. Calculate the pH of this buffer solution.",
+"hint": "Use the Henderson–Hasselbalch equation: pH = pKa + log([A⁻]/[HA]) and plug in the ratio 0.30/0.50.",
+"answer": "pH = 4.54",
+"solution": "Use the Henderson–Hasselbalch equation: pH = pKa + log([A⁻]/[HA]). pH = 4.76 + log(0.30/0.50) = 4.76 + log(0.6) = 4.76 + (-0.22) = 4.54."
+},
+{
+"id": 2,
+"title": "Stoichiometry",
+"difficulty": "Easy",
+"category": "General Chemistry",
+"question": "How many molecules of water are produced when 2 moles of hydrogen gas react completely with oxygen gas according to the balanced equation: 2H₂ + O₂ → 2H₂O?",
+"hint": "Use the stoichiometric mole ratio (2 mol H₂ → 2 mol H₂O) and multiply moles of H₂O by Avogadro's number (6.022×10²³).",
+"answer": "1.2044 × 10^24 molecules",
+"solution": "From the balanced equation 2H₂ → 2H₂O, 2 moles H₂ produce 2 moles H₂O. 1 mole = 6.022 × 10^23 molecules. Therefore 2 moles = 2 × 6.022 × 10^23 = 1.2044 × 10^24 molecules."
+},
+{
+"id": 3,
+"title": "ATP Yield from Glucose",
+"difficulty": "Hard",
+"category": "Biochemistry I",
+"question": "Calculate the total ATP yield from the complete oxidation of one molecule of glucose through glycolysis, the citric acid cycle, and oxidative phosphorylation. Assume the malate-aspartate shuttle.",
+"hint": "Count ATP, NADH, and FADH₂ produced at each stage; convert NADH→2.5 ATP and FADH₂→1.5 ATP (P/O ratios) and sum.",
+"answer": "~30–32 ATP per glucose",
+"solution": "Detailed breakdown (assuming malate–aspartate shuttle and P/O ratios NADH→2.5 ATP, FADH2→1.5 ATP): Glycolysis: 2 ATP (substrate-level) + 2 NADH → 5 ATP. Pyruvate→Acetyl-CoA (×2): 2 NADH → 5 ATP. Citric acid cycle (×2): 6 NADH → 15 ATP, 2 FADH2 → 3 ATP, 2 GTP → 2 ATP. Total = 2 + 5 + 5 + 15 + 3 + 2 = 32 ATP. Actual yield may vary (30–32) due to shuttle efficiency and proton leak."
+},
+{
+"id": 4,
+"title": "Free Energy and Equilibrium",
+"difficulty": "Hard",
+"category": "Physical Chemistry",
+"question": "For a reaction at 298 K, the equilibrium constant Keq = 2.5 × 10^4. Calculate ΔG° for this reaction. (R = 8.314 J/mol·K)",
+"hint": "Use ΔG° = −RT ln(Keq). Compute ln(2.5×10⁴) first, then multiply by −RT.",
+"answer": "ΔG° = −25.2 kJ/mol",
+"solution": "Use ΔG° = −RT ln(Keq). ΔG° = −(8.314 J·mol⁻¹·K⁻¹)(298 K) × ln(2.5 × 10^4) = −2477.6 × 10.127 ≈ −25,088 J/mol = −25.2 kJ/mol."
+},
+{
+"id": 5,
+"title": "Stereochemistry",
+"difficulty": "Medium",
+"category": "Organic Chemistry",
+"question": "How many stereoisomers are possible for a molecule with 3 chiral centers?",
+"hint": "Use the maximum formula 2ⁿ where n is number of chiral centers; check for meso forms which reduce the count.",
+"answer": "8 stereoisomers",
+"solution": "Maximum stereoisomers = 2^n where n is the number of chiral centers. For n = 3: 2^3 = 8. (Note: the actual number may be less if meso forms are present.)"
+},
+{
+"id": 6,
+"title": "Amino Acid at Physiological pH",
+"difficulty": "Easy",
+"category": "Biochemistry I",
+"question": "Glycine has pKa₁ = 2.34 (carboxyl group) and pKa₂ = 9.60 (amino group). What is the predominant form of glycine at pH 7.4 (physiological pH)?",
+"hint": "Compare pH to each pKa: if pH > pKa the group is deprotonated; if pH < pKa it's protonated.",
+"answer": "Zwitterion form (⁺H₃N-CH₂-COO⁻)",
+"solution": "At pH 7.4: pH > pKa₁ (2.34) so the carboxyl group is deprotonated (COO⁻). pH < pKa₂ (9.60) so the amino group is protonated (NH₃⁺). Result: ⁺H₃N-CH₂-COO⁻ (zwitterion)."
+},
+{
+"id": 7,
+"title": "Michaelis–Menten Kinetics",
+"difficulty": "Medium",
+"category": "Biochemistry II",
+"question": "An enzyme has a Km of 2.0 mM and a Vmax of 100 μmol/min. Calculate the reaction velocity when the substrate concentration is 6.0 mM.",
+"hint": "Use v = (Vmax × [S]) / (Km + [S]). Plug in Vmax=100, Km=2.0, [S]=6.0.",
+"answer": "v = 75 μmol/min",
+"solution": "Use v = (Vmax × [S]) / (Km + [S]). v = (100 × 6.0) / (2.0 + 6.0) = 600 / 8 = 75 μmol/min. At [S] = 3×Km, velocity is 75% of Vmax."
+},
+{
+"id": 8,
+"title": "β-Oxidation Energy Yield",
+"difficulty": "Hard",
+"category": "Biochemistry II",
+"question": "Calculate the total ATP yield from the complete oxidation of palmitic acid (16:0). Include β-oxidation and the citric acid cycle.",
+"hint": "β-oxidation cycles = (n/2)−1 for even chain; count NADH/FADH₂ from cycles and NADH/FADH₂/GTP from CAC per acetyl-CoA; subtract activation cost (−2 ATP).",
+"answer": "106 ATP",
+"solution": "β-Oxidation (7 cycles for 16C): 7 FADH2 → 10.5 ATP (1.5 each), 7 NADH → 17.5 ATP (2.5 each). Produces 8 acetyl-CoA. Citric acid cycle (8 acetyl-CoA): 24 NADH → 60 ATP, 8 FADH2 → 12 ATP, 8 GTP → 8 ATP. Activation cost: −2 ATP. Total = 10.5 + 17.5 + 60 + 12 + 8 − 2 = 106 ATP."
+},
+{
+"id": 9,
+"title": "DNA Replication — Complementary Strand",
+"difficulty": "Easy",
+"category": "Genetics",
+"question": "A DNA strand has the sequence 5'-ATGCTAGC-3'. What is the sequence of the complementary strand?",
+"hint": "Pair bases A↔T and G↔C, then write the complementary sequence in the antiparallel (3'→5') direction.",
+"answer": "3'-TACGATCG-5'",
+"solution": "Base pairing: A↔T, G↔C. Complement of 5'-ATGCTAGC-3' is 3'-TACGATCG-5' (written antiparallel)."
+},
+{
+"id": 10,
+"title": "Translation",
+"difficulty": "Medium",
+"category": "Genetics",
+"question": "An mRNA sequence reads: 5'-AUGGCUAAAUAA-3'. What is the amino acid sequence of the resulting peptide? (AUG=Met, GCU=Ala, AAA=Lys, UAA=Stop)",
+"hint": "Translate codons sequentially from 5' until you hit a stop codon.",
+"answer": "Met-Ala-Lys",
+"solution": "Read codons 5'→3': AUG → Met (start), GCU → Ala, AAA → Lys, UAA → Stop (terminates translation). Peptide: Met-Ala-Lys."
+},
+{
+"id": 11,
+"title": "Signal Transduction",
+"difficulty": "Medium",
+"category": "Biochemistry II",
+"question": "A hormone binds to a GPCR that activates adenylyl cyclase. Describe the signaling cascade that follows and name the key molecules involved.",
+"hint": "Follow the chain: GPCR → heterotrimeric G protein (Gs) → adenylyl cyclase → cAMP → PKA → phosphorylation of targets.",
+"answer": "GPCR → Gs protein → Adenylyl cyclase → cAMP → PKA",
+"solution": "1) Hormone binds GPCR. 2) GPCR activates Gs (heterotrimeric G protein). 3) Gs activates adenylyl cyclase. 4) Adenylyl cyclase converts ATP → cAMP (second messenger). 5) cAMP activates protein kinase A (PKA). 6) PKA phosphorylates downstream targets; the cascade amplifies the signal."
+},
+{
+"id": 12,
+"title": "R/S Configuration",
+"difficulty": "Easy",
+"category": "Organic Chemistry",
+"question": "Determine the R/S configuration of the chiral center in the molecule with substituents NH2, COOH, CH2SH, and H. (Image: images/config_problem.png)",
+"image_url": "images/config_problem.png",
+"hint": "Assign CIP priorities by atomic number, orient the lowest-priority group away, then trace 1→2→3: clockwise = R, counterclockwise = S.",
+"answer": "R",
+"solution": "Assign priorities (highest to lowest) based on atomic number: NH2, COOH, CH2SH, H. Orient lowest priority (H) away and trace from highest → second → third. The path NH2 → COOH → CH2SH is clockwise, so configuration is R."
+},
+{
+"id": 13,
+"title": "Biochemistry — Electron Transport Chain",
+"difficulty": "Easy",
+"category": "Biochemistry I",
+"question": "During the electron transport chain, which compound acts as the final electron acceptor?",
+"hint": "What small diatomic molecule accepts electrons and combines with protons to form water?",
+"answer": "O₂",
+"solution": "Oxygen (O₂) accepts electrons at the end of the electron transport chain and combines with protons to form water (H₂O)."
+},
+{
+"id": 14,
+"title": "Metabolic Pathways — NADPH and Ribose-5-Phosphate",
+"difficulty": "Easy",
+"category": "Biochemistry I",
+"question": "Which metabolic pathway is primarily responsible for generating NADPH and ribose-5-phosphate in cells?",
+"hint": "This pathway has an oxidative phase producing NADPH and a non-oxidative phase producing pentoses.",
+"answer": "Pentose Phosphate Pathway",
+"solution": "The Pentose Phosphate Pathway (PPP) produces NADPH (for reductive biosynthesis) and ribose-5-phosphate (for nucleotide synthesis)."
+},
+{
+"id": 15,
+"title": "Metabolic Pathways — Key Regulatory Enzyme in Glycolysis",
+"difficulty": "Easy",
+"category": "Biochemistry I",
+"question": "Which enzyme is the key regulatory step in glycolysis?",
+"hint": "It's the enzyme that converts fructose-6-phosphate to fructose-1,6-bisphosphate and is allosterically regulated by ATP and AMP.",
+"answer": "Phosphofructokinase (PFK)",
+"solution": "Phosphofructokinase catalyzes fructose-6-phosphate → fructose-1,6-bisphosphate (the committed, highly regulated step) and is regulated by the cell's energy status."
+},
+{
+"id": 16,
+"title": "DNA Replication — Polymerase",
+"difficulty": "Easy",
+"category": "Genetics",
+"question": "During DNA replication, which enzyme is responsible for synthesizing the new DNA strand by adding nucleotides to the 3' end?",
+"hint": "This enzyme requires a primer and extends from a free 3'-OH.",
+"answer": "DNA polymerase",
+"solution": "DNA polymerase synthesizes the new strand by adding nucleotides to the free 3'-OH end; it ensures accurate replication of genetic material."
+},
+{
+"id": 17,
+"title": "DNA vs RNA",
+"difficulty": "Easy",
+"category": "General Biology",
+"question": "Which of the following nucleotides is found in RNA but not in DNA?",
+"hint": "It's the base that pairs with adenine in RNA and is structurally different from thymine (no methyl group).",
+"answer": "Uracil",
+"solution": "RNA contains uracil (U) instead of thymine (T), which is present in DNA."
+},
+{
+"id": 18,
+"title": "Cell Organelles — SER",
+"difficulty": "Easy",
+"category": "General Biology",
+"question": "What is the role of the Smooth Endoplasmic Reticulum (SER) in cells?",
+"hint": "Think lipid metabolism and detoxification — which ER is smooth and lacks ribosomes?",
+"answer": "Lipid synthesis and detoxification",
+"solution": "The SER is involved in lipid synthesis, carbohydrate metabolism, and detoxification of drugs and poisons."
+},
+{
+"id": 19,
+"title": "Cell Organelles — Golgi",
+"difficulty": "Easy",
+"category": "General Biology",
+"question": "What is the role of the Golgi apparatus in cells?",
+"hint": "It receives vesicles from the ER and modifies/sorts proteins for secretion or delivery to organelles.",
+"answer": "Protein modification and sorting",
+"solution": "The Golgi modifies, sorts, and packages proteins and lipids for secretion or delivery to organelles."
+},
+{
+"id": 20,
+"title": "Enzyme Kinetics — Overcome by Substrate Increase",
+"difficulty": "Easy",
+"category": "Biochemistry II",
+"question": "Which type of inhibition can be overcome by increasing substrate concentration?",
+"hint": "If adding more substrate outcompetes the inhibitor at the active site, which inhibition is that?",
+"answer": "Competitive inhibition",
+"solution": "Competitive inhibitors compete with substrate for the active site; adding more substrate outcompetes the inhibitor, restoring activity."
+},
+{
+"id": 21,
+"title": "Enzyme Kinetics — Inhibition That Decreases Vmax Only",
+"difficulty": "Easy",
+"category": "Biochemistry II",
+"question": "Given an enzyme that follows Michaelis–Menten kinetics, which type of inhibition decreases the Vmax but does not affect the Km?",
+"hint": "An inhibitor that binds to an allosteric site and reduces active enzyme population without changing substrate binding affinity.",
+"answer": "Non-competitive inhibition",
+"solution": "Non-competitive inhibitors bind an allosteric site and reduce the fraction of active enzyme, lowering Vmax while leaving Km (substrate affinity) unchanged."
+},
+{
+"id": 22,
+"title": "Physical Chemistry — First-Order Reaction (Integrated Rate Law)",
+"difficulty": "Hard",
+"category": "Physical Chemistry",
+"question": "A first-order reaction A → products follows −d[A]/dt = k[A] where k = 0.693 min⁻¹. (a) Derive the integrated rate law using separation of variables. (b) Determine the time required for [A] to decrease to 25% of initial value. (c) Show why the half-life is independent of [A]₀.",
+"hint": "Separate variables: −d[A]/[A] = k dt, integrate to get ln([A]₀/[A]) = kt; plug [A]=0.25[A]₀ for part (b).",
+"answer": "(a) ln([A]₀/[A]) = kt (b) t = ln(4)/0.693 ≈ 2.00 min (c) t₁/₂ = ln(2)/k, independent of [A]₀",
+"solution": "(a) Separate: −d[A]/[A] = k dt; integrate: ln([A]₀/[A]) = kt. (b) For [A] = 0.25[A]₀: ln(4) = kt → t = ln(4)/0.693 ≈ 2.00 min. (c) For half-life set [A] = 0.5[A]₀: ln(2) = kt₁/₂ → t₁/₂ = ln(2)/k, [A]₀ cancels so t₁/₂ is independent of initial concentration."
+},
+{
+"id": 23,
+"title": "Physical Chemistry — Helmholtz Free Energy and Pressure",
+"difficulty": "Hard",
+"category": "Physical Chemistry",
+"question": "For a real gas, the Helmholtz free energy is A(T,V) = −nRT ln(V − nb) − a(n²/V) with positive constants a and b. (a) Derive pressure as a function of V and T using the appropriate thermodynamic derivative. (b) Show it reduces to the van der Waals equation. (c) Determine the condition for mechanical instability by evaluating (∂P/∂V)_T.",
+"hint": "Use P = −(∂A/∂V)_T to get P = nRT/(V − nb) − a n²/V²; rearrange to the van der Waals form and differentiate for (∂P/∂V)_T.",
+"answer": "(a) P = nRT/(V − nb) − a n²/V² (b) Rearranged gives (P + a n²/V²)(V − nb) = nRT (van der Waals) (c) (∂P/∂V)_T = −nRT/(V − nb)² + 2a n²/V³; mechanical instability when this ≥ 0 (spinodal when = 0).",
+"solution": "(a) P = −(∂A/∂V)_T. Compute ∂A/∂V = −nRT/(V − nb) + a n²/V², so P = nRT/(V − nb) − a n²/V². (b) Multiply both sides: (P + a n²/V²)(V − nb) = nRT → van der Waals form. (c) Differentiate: (∂P/∂V)_T = −nRT/(V − nb)² + 2a n²/V³. Mechanical instability (spinodal) occurs when this derivative equals zero (changes sign)."
+},
+{
+"id": 24,
+"title": "Genetics — Simple Mendelian Cross",
+"difficulty": "Easy",
+"category": "Genetics",
+"question": "In a species where T (tall) is dominant over t (short), if two heterozygous tall plants (Tt × Tt) are crossed, what is the probability that their offspring will be short?",
+"hint": "Draw a Punnett square for Tt × Tt; count how many of the four equally likely genotypes are tt.",
+"answer": "1/4",
+"solution": "Punnett square for Tt × Tt gives genotypes TT, Tt, tT, tt (4 equally likely). Only tt is short → probability = 1/4."
+},
+{
+"id": 25,
+"title": "Genetics — tRNA vs mRNA",
+"difficulty": "Medium",
+"category": "Genetics",
+"question": "What makes tRNA different from mRNA in terms of structure and function?",
+"hint": "Think cloverleaf secondary structure, anticodon loop, and amino acid attachment for tRNA vs linear coding sequence for mRNA.",
+"answer": "tRNA is shorter and has a cloverleaf structure with anticodons; mRNA is longer and carries genetic information to ribosomes.",
+"solution": "tRNA (transfer RNA) is relatively short, folds into a cloverleaf secondary structure with an anticodon loop that pairs to mRNA codons and carries specific amino acids. mRNA (messenger RNA) is a linear, typically longer molecule that encodes the amino acid sequence of proteins and serves as the template for translation."
+},
+{
+"id": 26,
+"title": "Analytical Chemistry — Calibration Curve",
+"difficulty": "Medium",
+"category": "Analytical Chemistry",
+"question": "Given a calibration curve y = 2.5x + 0.5 (y = absorbance, x = concentration in mg/mL), what is the concentration of a sample with absorbance 3.0? With an R² of 0.98, how reliable is the calibration for predicting concentrations?",
+"hint": "Solve x = (y − intercept)/slope → x = (3.0 − 0.5)/2.5. R² = 0.98 implies a strong linear fit but check residuals for systematic deviations.",
+"answer": "Concentration = 1.0 mg/mL. R² = 0.98 indicates very high reliability.",
+"solution": "Plug y = 3.0: 3.0 = 2.5x + 0.5 → 2.5 = 2.5x → x = 1.0 mg/mL. R² = 0.98 implies the calibration explains 98% of variance in the data; it's a very good fit and reliable for predicting concentrations within the calibration range (but consider residuals and experimental error for exact uncertainty)."
+},
+{
+"id": 27,
+"title": "Organic Chemistry — Nucleophilic Substitution",
+"difficulty": "Medium",
+"category": "Organic Chemistry",
+"question": "In an SN2 reaction, how does the structure of the alkyl halide affect the reaction rate? Compare primary, secondary, and tertiary alkyl halides.",
+"hint": "Consider steric hindrance: SN2 reactions proceed via backside attack, so less hindered substrates react faster.",
+"answer": "Primary > Secondary >> Tertiary in SN2 reaction rate.",
+"solution": "In SN2 reactions, the nucleophile attacks the electrophilic carbon from the opposite side of the leaving group. Primary alkyl halides have the least steric hindrance, allowing for faster nucleophilic attack, followed by secondary alkyl halides which have moderate hindrance. Tertiary alkyl halides are highly hindered, making SN2 reactions very slow or negligible. Thus, the order of reactivity is Primary > Secondary >> Tertiary."
+},
+{
+"id": 28,
+"title": "Organic Chemistry — IR Spectroscopy",
+"difficulty": "Medium",
+"category": "Organic Chemistry",
+"question": "In an IR spectrum, a strong absorption is observed around 1700 cm⁻¹. What functional group is likely present in the molecule?",
+"hint": "Consider common functional groups with characteristic C=O stretching frequencies.",
+"answer": "Carbonyl group (C=O)",
+"solution": "A strong absorption around 1700 cm⁻¹ in an IR spectrum is characteristic of the C=O stretching vibration found in carbonyl-containing functional groups such as aldehydes, ketones, carboxylic acids, and esters."
+},
+{
+"id": 29,
+"title": "Physical Chemistry — Colligative Properties",
+"difficulty": "Medium",
+"category": "Physical Chemistry",
+"question": "How does the addition of a non-volatile solute affect the boiling point of a solvent? Calculate the boiling point elevation for 1 mol of NaCl dissolved in 1 kg of water (Kb for water = 0.512 °C·kg/mol).",
+"hint": "Use the boiling point elevation formula ΔTb = iKb m, where i is the van't Hoff factor (2 for NaCl) and m is molality.",
+"answer": "ΔTb = 1.024 °C; New boiling point = 101.024 °C",
+"solution": "For NaCl, i = 2 (dissociates into Na⁺ and Cl⁻). Molality m = 1 mol / 1 kg = 1 mol/kg. ΔTb = iKb m = 2 × 0.512 °C·kg/mol × 1 mol/kg = 1.024 °C. Normal boiling point of water is 100 °C, so new boiling point = 100 + 1.024 = 101.024 °C."
+},
+{
+"id": 30,
+"title": "General Chemistry — Gas Laws",
+"difficulty": "Easy",
+"category": "General Chemistry",
+"question": "A sample of gas occupies 2.0 L at 1.0 atm and 300 K. What volume will it occupy at 2.0 atm and 400 K? (Use the combined gas law: P1V1/T1 = P2V2/T2)",
+"hint": "Rearrange the combined gas law to solve for V2: V2 = (P1V1T2)/(P2T1).",
+"answer": "V2 = 1.33 L",
+"solution": "Using the combined gas law: V2 = (P1V1T2)/(P2T1) = (1.0 atm × 2.0 L × 400 K) / (2.0 atm × 300 K) = (800) / (600) = 1.33 L."
+},
+{
+    "id": 31,
+    "title": "Allosteric Regulation — Sigmoidal Kinetics",
+    "difficulty": "Medium",
+    "category": "Biochemistry II",
+    "question": "An enzyme displays sigmoidal (S-shaped) kinetics instead of Michaelis–Menten behavior. What does this indicate about the enzyme, and how do allosteric activators affect its activity curve?",
+    "hint": "Think cooperativity and quaternary structure; compare hyperbolic vs sigmoidal curves.",
+    "answer": "The enzyme is allosteric and exhibits cooperativity; activators shift the curve left.",
+    "solution": "Sigmoidal kinetics indicate an allosteric enzyme with multiple subunits exhibiting cooperativity. Binding of substrate to one active site affects affinity at others. Allosteric activators stabilize the high-affinity (R) state, shifting the sigmoidal curve left and increasing activity at lower substrate concentrations."
+  },
+  {
+    "id": 32,
+    "title": "Glycolysis vs Gluconeogenesis Regulation",
+    "difficulty": "Hard",
+    "category": "Biochemistry I",
+    "question": "Name two enzymes that are reciprocally regulated between glycolysis and gluconeogenesis, and explain why this regulation is necessary.",
+    "hint": "Focus on irreversible steps and prevention of futile cycles.",
+    "answer": "PFK-1 vs fructose-1,6-bisphosphatase; pyruvate kinase vs pyruvate carboxylase/PEPCK.",
+    "solution": "PFK-1 (glycolysis) and fructose-1,6-bisphosphatase (gluconeogenesis) are reciprocally regulated to prevent futile cycling. Similarly, pyruvate kinase is inhibited when pyruvate carboxylase and PEPCK are active. This regulation ensures energy efficiency and directional control depending on metabolic state."
+  },
+  {
+    "id": 33,
+    "title": "Redox Carriers — NADH vs NADPH",
+    "difficulty": "Easy",
+    "category": "Biochemistry I",
+    "question": "Why do cells use NADH and NADPH for different purposes despite their similar structures?",
+    "hint": "One is primarily catabolic; the other anabolic.",
+    "answer": "NADH is used for ATP production; NADPH is used for biosynthesis and antioxidant defense.",
+    "solution": "NADH primarily donates electrons to the electron transport chain for ATP generation (catabolic processes). NADPH provides reducing power for anabolic reactions (fatty acid synthesis, nucleotide synthesis) and antioxidant defense (e.g., glutathione reduction). Separate pools allow independent regulation."
+  },
+  {
+    "id": 34,
+    "title": "Protein Structure — Disulfide Bonds",
+    "difficulty": "Medium",
+    "category": "Biochemistry I",
+    "question": "Where are disulfide bonds most commonly found: cytosolic proteins or secreted proteins? Explain why.",
+    "hint": "Consider cellular redox environments.",
+    "answer": "Secreted proteins",
+    "solution": "Disulfide bonds are most common in secreted and extracellular proteins because the extracellular environment and ER lumen are oxidizing. The cytosol is reducing, which disfavors disulfide bond formation."
+  },
+  {
+    "id": 35,
+    "title": "Membrane Transport — GLUT vs SGLT",
+    "difficulty": "Medium",
+    "category": "Biochemistry II",
+    "question": "Compare GLUT transporters and SGLT transporters in terms of energy usage and mechanism.",
+    "hint": "Facilitated diffusion vs secondary active transport.",
+    "answer": "GLUT uses facilitated diffusion; SGLT uses secondary active transport with Na⁺.",
+    "solution": "GLUT transporters move glucose down its concentration gradient via facilitated diffusion and do not require energy. SGLT transporters couple glucose uptake to Na⁺ movement down its electrochemical gradient, making them secondary active transporters."
+  },
+  {
+    "id": 36,
+    "title": "ETC Inhibition — Cyanide Poisoning",
+    "difficulty": "Hard",
+    "category": "Biochemistry II",
+    "question": "Cyanide inhibits cytochrome c oxidase (Complex IV). Explain why this rapidly leads to death despite oxygen being present.",
+    "hint": "Think electron flow, proton gradient, and ATP synthesis.",
+    "answer": "Electron transport stops, ATP synthesis halts, causing cellular hypoxia.",
+    "solution": "Cyanide blocks electron transfer to oxygen at Complex IV, stopping the electron transport chain. This collapses the proton gradient, halts oxidative phosphorylation, and prevents ATP synthesis. Cells experience functional hypoxia despite normal oxygen levels, leading to rapid energy failure."
+  },
+  {
+    "id": 37,
+    "title": "Amino Acid Properties — pI Conceptual Trap",
+    "difficulty": "Medium",
+    "category": "Biochemistry I",
+    "question": "At its isoelectric point (pI), will an amino acid migrate in an electric field? Why or why not?",
+    "hint": "Net charge matters, not presence of charges.",
+    "answer": "No, it has zero net charge.",
+    "solution": "At the isoelectric point, an amino acid has equal positive and negative charges, resulting in zero net charge. Because migration in an electric field depends on net charge, the amino acid will not migrate."
+  },
+  {
+    "id": 38,
+    "title": "Western Blot Interpretation",
+    "difficulty": "Hard",
+    "category": "Biochemistry II",
+    "question": "A Western blot shows a protein band at a higher molecular weight than expected after after treatment with a modifying enzyme or signaling stimulus. Give a likely explanation.",
+    "hint": "Think post-translational modifications.",
+    "answer": "Post-translational modification such as phosphorylation or glycosylation.",
+    "solution": "An upward shift in molecular weight on a Western blot often indicates post-translational modification. Glycosylation, ubiquitination, or multiple phosphorylations can increase apparent molecular mass."
+  },
+  {
+    "id": 39,
+    "title": "Metabolic Integration — Fed State",
+    "difficulty": "Medium",
+    "category": "Biochemistry I",
+    "question": "In the fed state, which pathways are upregulated in the liver, and which hormone is primarily responsible?",
+    "hint": "High glucose, storage mode.",
+    "answer": "Glycolysis, glycogenesis, fatty acid synthesis; insulin.",
+    "solution": "In the fed state, insulin levels are high. Insulin promotes glycolysis, glycogen synthesis, and fatty acid synthesis in the liver while inhibiting gluconeogenesis and glycogen breakdown."
+  },
+  {
+    "id": 40,
+    "title": "Enzyme Specificity — Lock-and-Key vs Induced Fit",
+    "difficulty": "Easy",
+    "category": "Biochemistry I",
+    "question": "Which enzyme model better explains catalytic efficiency: lock-and-key or induced fit, and why?",
+    "hint": "Consider transition state stabilization.",
+    "answer": "Induced fit",
+    "solution": "The induced-fit model better explains catalysis because enzyme binding induces conformational changes that stabilize the transition state, lowering activation energy. The lock-and-key model does not account for this dynamic interaction."
+  },
+    {
+    "id": 41,
+    "title": "Biochemical Thermodynamics — ΔG vs ΔG°′",
+    "difficulty": "Medium",
+    "category": "Biochemistry I",
+    "question": "A reaction has a ΔG°′ of +5.7 kJ/mol but proceeds spontaneously in the cell. Explain how this is possible.",
+    "hint": "Consider actual metabolite concentrations and coupling.",
+    "answer": "Because ΔG depends on concentrations, not just ΔG°′.",
+    "solution": "ΔG = ΔG°′ + RT ln Q. Even if ΔG°′ is positive, a reaction can proceed spontaneously if the reaction quotient Q is kept low (products removed) or if the reaction is coupled to a highly exergonic process such as ATP hydrolysis."
+  },
+  {
+    "id": 42,
+    "title": "Enzyme Catalysis — Mechanistic Strategies",
+    "difficulty": "Medium",
+    "category": "Biochemistry I",
+    "question": "Name three common strategies enzymes use to lower activation energy.",
+    "hint": "Think chemistry, not pathways.",
+    "answer": "General acid–base catalysis, covalent catalysis, metal ion catalysis.",
+    "solution": "Enzymes lower activation energy through strategies including general acid–base catalysis (proton transfer), covalent catalysis (temporary covalent enzyme–substrate intermediate), metal ion catalysis (stabilization of negative charges), and transition state stabilization."
+  },
+  {
+    "id": 43,
+    "title": "Lineweaver–Burk Plot Interpretation",
+    "difficulty": "Hard",
+    "category": "Biochemistry II",
+    "question": "On a Lineweaver–Burk plot, how does competitive inhibition change the slope and intercepts?",
+    "hint": "Recall how Km and Vmax change.",
+    "answer": "Slope increases, y-intercept unchanged, x-intercept shifts right.",
+    "solution": "Competitive inhibition increases apparent Km without affecting Vmax. On a Lineweaver–Burk plot, this increases the slope (Km/Vmax), leaves the y-intercept (1/Vmax) unchanged, and shifts the x-intercept toward zero."
+  },
+  {
+    "id": 44,
+    "title": "Metabolic Compartmentalization",
+    "difficulty": "Medium",
+    "category": "Biochemistry I",
+    "question": "Why does fatty acid synthesis occur in the cytosol while β-oxidation occurs in the mitochondria?",
+    "hint": "Think regulation and futile cycles.",
+    "answer": "To prevent futile cycling and allow independent regulation.",
+    "solution": "Separating fatty acid synthesis (cytosol) from β-oxidation (mitochondria) prevents futile cycling and allows independent hormonal and energetic regulation of anabolic and catabolic pathways."
+  },
+  {
+    "id": 45,
+    "title": "Urea Cycle — Nitrogen Disposal",
+    "difficulty": "Hard",
+    "category": "Biochemistry I",
+    "question": "Why is ammonia converted to urea before excretion?",
+    "hint": "Compare toxicity and solubility.",
+    "answer": "Urea is far less toxic than ammonia.",
+    "solution": "Ammonia is highly toxic, especially to the brain. The urea cycle converts ammonia into urea, a far less toxic and water-soluble compound that can be safely transported in blood and excreted by the kidneys."
+  },
+  {
+    "id": 46,
+    "title": "Transamination Reactions",
+    "difficulty": "Medium",
+    "category": "Biochemistry I",
+    "question": "What is the role of pyridoxal phosphate (PLP) in amino acid metabolism?",
+    "hint": "Think vitamin B6 and nitrogen transfer.",
+    "answer": "PLP carries amino groups during transamination.",
+    "solution": "PLP (derived from vitamin B6) acts as a coenzyme that temporarily accepts and donates amino groups during transamination reactions, enabling the interconversion of amino acids and keto acids."
+  },
+  {
+    "id": 47,
+    "title": "Membrane Fluidity",
+    "difficulty": "Medium",
+    "category": "Biochemistry I",
+    "question": "How do unsaturated fatty acids affect membrane fluidity?",
+    "hint": "Consider packing efficiency.",
+    "answer": "They increase fluidity.",
+    "solution": "Unsaturated fatty acids introduce kinks into lipid tails, preventing tight packing and increasing membrane fluidity, especially at lower temperatures."
+  },
+  {
+    "id": 48,
+    "title": "Protein Folding — Chaperones",
+    "difficulty": "Medium",
+    "category": "Biochemistry I",
+    "question": "What is the role of molecular chaperones in protein folding?",
+    "hint": "They do not encode structure.",
+    "answer": "They prevent aggregation and assist proper folding.",
+    "solution": "Molecular chaperones help proteins fold correctly by preventing misfolding and aggregation, especially under stress conditions, but they do not determine the final structure."
+  },
+  {
+    "id": 49,
+    "title": "Protein Denaturation",
+    "difficulty": "Easy",
+    "category": "Biochemistry I",
+    "question": "Which levels of protein structure are disrupted by denaturation?",
+    "hint": "Think non-covalent interactions.",
+    "answer": "Secondary, tertiary, and quaternary structures.",
+    "solution": "Denaturation disrupts non-covalent interactions, affecting secondary, tertiary, and quaternary structure, while primary structure (peptide bonds) remains intact."
+  },
+  {
+    "id": 50,
+    "title": "Oxidative Stress — Glutathione",
+    "difficulty": "Medium",
+    "category": "Biochemistry I",
+    "question": "What role does glutathione play in protecting cells from oxidative damage?",
+    "hint": "Think redox buffering.",
+    "answer": "It reduces reactive oxygen species.",
+    "solution": "Glutathione acts as a major cellular antioxidant by donating electrons to reactive oxygen species, reducing them while glutathione itself becomes oxidized and is later regenerated using NADPH."
+  },
+  {
+    "id": 51,
+    "title": "Experimental Design — Enzyme Assays",
+    "difficulty": "Hard",
+    "category": "Biochemistry II",
+    "question": "Why must enzyme assays be performed under initial rate conditions?",
+    "hint": "Avoid reverse reactions and substrate depletion.",
+    "answer": "To ensure measured rates reflect enzyme kinetics.",
+    "solution": "Initial rate conditions minimize substrate depletion, product inhibition, and reverse reactions, ensuring the measured velocity accurately reflects intrinsic enzyme kinetics."
+  },
+  {
+    "id": 52,
+    "title": "Signal Amplification",
+    "difficulty": "Easy",
+    "category": "Biochemistry II",
+    "question": "Why do signaling cascades allow signal amplification?",
+    "hint": "One activates many.",
+    "answer": "Each step activates multiple downstream molecules.",
+    "solution": "Signal amplification occurs because one activated receptor or enzyme can activate many downstream molecules, allowing a small signal to produce a large cellular response."
+  },
+  {
+    "id": 53,
+    "title": "ATP as Energy Currency",
+    "difficulty": "Medium",
+    "category": "Biochemistry I",
+    "question": "Why is ATP hydrolysis highly exergonic?",
+    "hint": "Stability of products.",
+    "answer": "Products are more stable due to resonance and hydration.",
+    "solution": "ATP hydrolysis is exergonic because ADP and inorganic phosphate are more stable than ATP due to increased resonance stabilization, reduced electrostatic repulsion, and better hydration."
+  },
+  {
+    "id": 54,
+    "title": "Metabolic Flux Control",
+    "difficulty": "Hard",
+    "category": "Biochemistry I",
+    "question": "Why do small changes in enzyme activity sometimes have little effect on pathway output?",
+    "hint": "Control is distributed.",
+    "answer": "Flux control is shared across multiple enzymes.",
+    "solution": "Metabolic control analysis shows that flux control is distributed across multiple enzymes rather than dominated by a single step. Therefore, altering one enzyme often has limited effect unless it has a high control coefficient."
+  },
+  {
+    "id": 55,
+    "title": "Coupled Transport",
+    "difficulty": "Medium",
+    "category": "Biochemistry II",
+    "question": "How does the proton gradient drive ATP synthesis?",
+    "hint": "Chemiosmotic theory.",
+    "answer": "Proton flow through ATP synthase drives rotation.",
+    "solution": "The proton gradient across the inner mitochondrial membrane stores potential energy. Proton flow through ATP synthase drives conformational changes that catalyze ATP formation from ADP and Pi."
+  },
+  {
+    "id": 56,
+    "title": "Physics — Diffusion Time Scale",
+    "difficulty": "Medium",
+    "category": "Physics",
+    "question": "The average diffusion time is approximated by t ≈ x²/(2D). If a small molecule diffuses 10 μm in cytoplasm with D = 10⁻¹⁰ m²/s, estimate the diffusion time.",
+    "hint": "Convert micrometers to meters before squaring.",
+    "answer": "≈ 0.5 seconds",
+    "solution": "Convert distance: 10 μm = 1×10⁻⁵ m. t ≈ (1×10⁻⁵ m)² / (2×10⁻¹⁰ m²/s) = 1×10⁻¹⁰ / 2×10⁻¹⁰ = 0.5 s. Diffusion is fast at cellular scales."
+  },
+  {
+    "id": 57,
+    "title": "Physics — Electric Potential Energy",
+    "difficulty": "Easy",
+    "category": "Physics",
+    "question": "What happens to the electric potential energy of a positive ion as it moves down its electrochemical gradient?",
+    "hint": "Movement toward lower potential reduces stored energy.",
+    "answer": "It decreases",
+    "solution": "As a positive ion moves down its electrochemical gradient, electric potential energy is converted into kinetic or chemical work, so potential energy decreases."
+  },
+  {
+    "id": 58,
+    "title": "Mathematics — Logarithmic Relationships",
+    "difficulty": "Easy",
+    "category": "Mathematics",
+    "question": "If log₁₀(x) = −3, what is the value of x?",
+    "hint": "Rewrite in exponential form.",
+    "answer": "0.001",
+    "solution": "log₁₀(x) = −3 → x = 10⁻³ = 0.001."
+  },
+  {
+    "id": 59,
+    "title": "Mathematics — Linearization of Exponentials",
+    "difficulty": "Medium",
+    "category": "Mathematics",
+    "question": "Why is taking the natural logarithm useful when analyzing exponential growth or decay data?",
+    "hint": "Think straight lines.",
+    "answer": "It linearizes exponential relationships.",
+    "solution": "Taking the natural logarithm converts exponential relationships into linear ones, allowing slope and intercept extraction using linear regression."
+  },
+  {
+    "id": 60,
+    "title": "Statistics — Standard Deviation Meaning",
+    "difficulty": "Easy",
+    "category": "Statistics",
+    "question": "What does a larger standard deviation indicate about a dataset?",
+    "hint": "Think spread.",
+    "answer": "Greater variability",
+    "solution": "A larger standard deviation indicates that data points are more widely spread around the mean, reflecting greater variability."
+  },
+  {
+    "id": 61,
+    "title": "Statistics — Correlation vs Causation",
+    "difficulty": "Medium",
+    "category": "Statistics",
+    "question": "A strong correlation is observed between variable A and variable B. Why does this not necessarily imply causation?",
+    "hint": "Consider confounders.",
+    "answer": "Correlation does not prove causality.",
+    "solution": "Correlation may arise from confounding variables, reverse causation, or coincidence. Controlled experiments are required to establish causation."
+  },
+  {
+    "id": 62,
+    "title": "Cell Biology — Cytoskeleton Function",
+    "difficulty": "Easy",
+    "category": "Cell Biology",
+    "question": "Which cytoskeletal component is primarily responsible for intracellular transport via motor proteins?",
+    "hint": "Think kinesin and dynein.",
+    "answer": "Microtubules",
+    "solution": "Microtubules serve as tracks for kinesin and dynein motor proteins, enabling directed intracellular transport."
+  },
+  {
+    "id": 63,
+    "title": "Cell Biology — Cell Cycle Checkpoints",
+    "difficulty": "Medium",
+    "category": "Cell Biology",
+    "question": "What is the primary role of cell cycle checkpoints?",
+    "hint": "Prevent propagation of errors.",
+    "answer": "Ensure conditions are favorable before progression.",
+    "solution": "Cell cycle checkpoints verify DNA integrity, replication completion, and spindle attachment before allowing progression, preventing transmission of damaged DNA."
+  },
+  {
+    "id": 64,
+    "title": "Molecular Biology — Transcription Regulation",
+    "difficulty": "Medium",
+    "category": "Molecular Biology",
+    "question": "How do transcription factors increase gene expression in eukaryotes?",
+    "hint": "Recruitment matters.",
+    "answer": "They recruit RNA polymerase and coactivators.",
+    "solution": "Transcription factors bind regulatory DNA sequences and recruit RNA polymerase II and coactivators, increasing transcription initiation efficiency."
+  },
+  {
+    "id": 65,
+    "title": "Immunology — Antibody Structure",
+    "difficulty": "Easy",
+    "category": "Immunology",
+    "question": "Which region of an antibody determines antigen specificity?",
+    "hint": "Variable vs constant regions.",
+    "answer": "Variable region",
+    "solution": "The variable regions of the heavy and light chains form the antigen-binding site and determine specificity."
+  },
+  {
+    "id": 66,
+    "title": "Immunology — Innate vs Adaptive Immunity",
+    "difficulty": "Medium",
+    "category": "Immunology",
+    "question": "Name one key difference between innate and adaptive immunity.",
+    "hint": "Speed vs specificity.",
+    "answer": "Adaptive immunity is antigen-specific and has memory.",
+    "solution": "Innate immunity is rapid and nonspecific, while adaptive immunity is slower, highly specific, and generates immunological memory."
+  },
+  {
+    "id": 67,
+    "title": "Neurobiology — Action Potential Propagation",
+    "difficulty": "Medium",
+    "category": "Neurobiology",
+    "question": "Why does myelination increase the speed of action potential conduction?",
+    "hint": "Saltatory conduction.",
+    "answer": "It reduces ion leakage and allows saltatory conduction.",
+    "solution": "Myelin insulates axons, forcing action potentials to jump between nodes of Ranvier (saltatory conduction), greatly increasing conduction speed."
+  },
+  {
+    "id": 68,
+    "title": "Neurobiology — Neurotransmitter Release",
+    "difficulty": "Medium",
+    "category": "Neurobiology",
+    "question": "What directly triggers neurotransmitter release at a synapse?",
+    "hint": "Think calcium.",
+    "answer": "Ca²⁺ influx",
+    "solution": "Arrival of an action potential opens voltage-gated Ca²⁺ channels, and Ca²⁺ influx triggers vesicle fusion and neurotransmitter release."
+  },
+  {
+    "id": 69,
+    "title": "Analytical Chemistry — Beer–Lambert Law Assumptions",
+    "difficulty": "Medium",
+    "category": "Analytical Chemistry",
+    "question": "List one condition under which the Beer–Lambert law breaks down.",
+    "hint": "High concentration effects.",
+    "answer": "At high solute concentrations",
+    "solution": "Beer–Lambert law breaks down at high concentrations due to molecular interactions, stray light, or deviations from linear absorbance–concentration behavior."
+  },
+  {
+    "id": 70,
+    "title": "Inorganic Chemistry — Coordination Number",
+    "difficulty": "Medium",
+    "category": "Inorganic Chemistry",
+    "question": "What does the coordination number of a metal complex describe?",
+    "hint": "Count attachments.",
+    "answer": "The number of ligands directly bonded to the metal.",
+    "solution": "The coordination number refers to how many ligand donor atoms are directly bonded to the central metal ion in a coordination complex."
+  }
+]
