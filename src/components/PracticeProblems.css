@@ -33,3 +33,90 @@
   padding: 10px;
   border-radius: 2rem;
 }
+.hintButton span,
+.solutionButton span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.hintButton i,
+.solutionButton i {
+  margin-left: 10px; 
+}
+.problem-card {
+  background: linear-gradient(145deg, #22313f, #1b2834);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  color: #ecf0f1;
+}
+
+.problem-card h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+
+.problem-meta {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge.category {
+  background: #34495e;
+}
+
+.badge.difficulty.easy {
+  background: #2ecc71;
+  color: #0b3d1e;
+}
+
+.badge.difficulty.medium {
+  background: #f1c40f;
+  color: #4a3b00;
+}
+
+.badge.difficulty.hard {
+  background: #8e2b2b; 
+  color: #fbecec;        
+}
+
+.problem-card p {
+  line-height: 1.6;
+  margin: 12px 0;
+  color: #dce3e8;
+}
+
+
+.hint,
+.solution {
+  margin-top: 12px;
+  animation: fadeSlide 0.2s ease;
+}
+.problem-count {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

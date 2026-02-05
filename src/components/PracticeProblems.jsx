@@ -4,6 +4,7 @@ import "./PracticeProblems.css"
 
 const PracticeProblems = () => {
   const [visible, setVisible] = useState({});
+  const [count, setCount] = useState(5);
 
   const toggle = (id, field) => {
     setVisible((prev) => ({
@@ -17,20 +18,46 @@ const PracticeProblems = () => {
 
   return (
     <div className="page">
-      <h1>Practice Problems</h1>
+      <label className="problem-count">
+        Problems to practice:
+        <select value={count} onChange={(e) => setCount(Number(e.target.value))}>
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+          <option value={20}>20</option>
+          <option value={problems.length}>All</option>
+        </select>
+      </label>
 
-      {problems.map((p) => (
+
+      {problems.slice(0, count).map((p) => (
         <div key={p.id} className="problem-card">
           <h3>{p.title}</h3>
-
-          <p><strong>Category:</strong> {p.category}</p>
-          <p><strong>Difficulty:</strong> {p.difficulty}</p>
+          <div className="problem-meta">
+            <span className="badge category">{p.category}</span>
+            <span className={`badge difficulty ${p.difficulty.toLowerCase()}`}>
+              {p.difficulty}
+            </span>
+          </div>
 
           <p>{p.question}</p>
-
+          {p.image_url && (
+          <div className="problem-image">
+            <img
+              src={process.env.PUBLIC_URL + "/" + p.image_url}
+              alt={`${p.title} diagram`}
+            />
+          </div>
+        )}
           {/* Hint button */}
-          <button className = "hintButton"  onClick={() => toggle(p.id, "hint")}>
-            {visible[p.id]?.hint ? "Hide Hint" : "Reveal Hint"}
+          <button
+            className="hintButton"
+            onClick={() => toggle(p.id, "hint")}
+          >
+            
+            <span>
+              {visible[p.id]?.hint ? "Hide Hint" : "Reveal Hint"}
+              <i className={`fa-solid ${visible[p.id]?.hint ? "fa-eye-slash" : "fa-lightbulb"}`} />
+            </span>
           </button>
 
           {visible[p.id]?.hint && (
@@ -40,9 +67,17 @@ const PracticeProblems = () => {
           )}
 
           {/* Solution button */}
-          <button className = "solutionButton"  onClick={() => toggle(p.id, "solution")}>
-            {visible[p.id]?.solution ? "Hide Solution" : "Reveal Solution"}
+          <button
+            className="solutionButton"
+            onClick={() => toggle(p.id, "solution")}
+          >
+
+            <span>
+              {visible[p.id]?.solution ? "Hide Solution" : "Reveal Solution"}
+              <i className={`fa-solid ${visible[p.id]?.solution ? "fa-eye-slash" : "fa-circle-check"}`} />
+            </span>
           </button>
+
 
           {visible[p.id]?.solution && (
             <div className="solution">
