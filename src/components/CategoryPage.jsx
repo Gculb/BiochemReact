@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PracticeProblems from "./PracticeProblems";
 const CategoryPage = ({ category }) => {
   if (!category) return <div>Category not found.</div>;
 
@@ -15,31 +15,40 @@ const CategoryPage = ({ category }) => {
         </p>
       </header>
 
-      {/* Topics List */}
-      <section>
-        <h2 style={{ color: '#333' }}>Topics & Key Concepts</h2>
-        <div style={{ display: 'grid', gap: '15px', marginTop: '20px' }}>
-          {category.topics.map((topic) => (
-            <div 
-              key={topic.id} 
-              style={{ 
-                padding: '15px', 
-                borderRadius: '8px', 
-                background: '#f9f9f9',
-                borderLeft: topic.important ? `5px solid ${category.color}` : '1px solid #ddd',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
-              }}
-            >
-              <h3 style={{ margin: '0 0 5px 0', color: topic.important ? category.color : '#2c3e50' }}>
-                {topic.title} {topic.important && '⭐'}
-              </h3>
-              {topic.summary && <p style={{ margin: 0, fontSize: '0.95rem' }}>{topic.summary}</p>}
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Content */}
+      {category.id === "problems" ? (
+        <PracticeProblems />
+      ) : (
+        <section>
+          <h2 style={{ color: '#333' }}>Topics & Key Concepts</h2>
+          <div style={{ display: 'grid', gap: '15px', marginTop: '20px' }}>
+            {category.topics.map((topic) => (
+              <div 
+                key={topic.id} 
+                style={{ 
+                  padding: '15px', 
+                  borderRadius: '8px', 
+                  background: '#f9f9f9',
+                  borderLeft: topic.important
+                    ? `5px solid ${category.color}`
+                    : '1px solid #ddd',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                }}
+              >
+                <h3 style={{ margin: '0 0 5px 0', color: topic.important ? category.color : '#2c3e50' }}>
+                  {topic.title} {topic.important && '⭐'}
+                </h3>
+                {topic.summary && (
+                  <p style={{ margin: 0, fontSize: '0.95rem' }}>
+                    {topic.summary}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 };
-
 export default CategoryPage; 

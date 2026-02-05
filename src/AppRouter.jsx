@@ -8,7 +8,7 @@ const AppRouter = () => {
     <Routes>
       {/* 3. The Home Page Route */}
       <Route path="/" element={<div style={{ padding: '40px' }}><h1>Welcome to Biochem Guide</h1><p>Select a subject from the sidebar to begin.</p></div>} />
-
+      
       {/* 4. Dynamic routes for all categories in your JSON */}
       {categoriesData.categories.map((cat) => (
         <Route 

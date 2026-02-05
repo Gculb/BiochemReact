@@ -2,15 +2,11 @@
   display: flex;
 }
 
-/* default sidebar width */
 .main-content {
-  margin-left: 260px;
-  padding: 24px;
+  margin-left: 260px; /* default sidebar width */
+  padding: 20px;
   transition: margin-left 0.25s ease;
+  white-space: normal;       /* allow wrapping */
+  overflow-wrap: break-word; /* wrap long words */
+  word-break: break-word;    /* break very long words */
 }
-
-/* when sidebar collapses */
-.sidebar.collapsed ~ .main-content {
-  margin-left: 70px;
-}
- 

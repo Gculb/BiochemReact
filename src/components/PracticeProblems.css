@@ -1,0 +1,34 @@
+.hint {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  background: #2c3e50;
+  padding: 10px;
+  border-left: 4px solid #f1c40f;
+  border-radius: 4px;
+}
+
+.solution {
+  margin-top: 10px;
+  background: #243444;
+  padding: 12px;
+  border-left: 4px solid #2ecc71;
+  border-radius: 4px;
+}
+
+.main-content {
+  margin-left: 260px;
+  transition: margin-left 0.25s ease;
+}
+
+.hintButton {
+  background: #4ea0f2;
+  padding: 10px;
+  border-radius: 2rem;
+}
+
+.solutionButton {
+  margin-left: 1em;
+  background: #2ecc71;
+  padding: 10px;
+  border-radius: 2rem;
+}
