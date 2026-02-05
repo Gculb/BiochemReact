@@ -77,7 +77,11 @@
         { "id": "thermal", "title": "Thermal Physics" },
         { "id": "electromagnetism", "title": "Electromagnetism (Intro)" },
         { "id": "diagrams", "title": "Free-body & Energy Diagrams" },
-        { "id": "lenses", "title": "Lenses & Optics", "important": true }
+        { "id": "lenses", "title": "Lenses & Optics", "important": true },
+        { "id": "fluids", "title": "Fluids & Bernoulli’s Principle", "important": true },
+        { "id": "work-energy", "title": "Work–Energy Theorem" },
+        { "id": "power", "title": "Power & Efficiency" },
+        { "id": "torque", "title": "Torque & Rotational Equilibrium" }
       ]
     },
     {
@@ -92,12 +96,7 @@
         { "id": "replicates", "title": "Biological vs Technical Replicates", "important": true },
         { "id": "hypothesis", "title": "Hypothesis Testing (t-tests, ANOVA)" },
         { "id": "regression", "title": "Regression & Enzyme Kinetics" },
-        { "id": "error-analysis", "title": "Error Analysis & Confidence Intervals" },
-        { "id": "fluids", "title": "Fluids & Bernoulli’s Principle", "important": true },
-        { "id": "work-energy", "title": "Work–Energy Theorem" },
-        { "id": "power", "title": "Power & Efficiency" },
-        { "id": "torque", "title": "Torque & Rotational Equilibrium" }
-
+        { "id": "error-analysis", "title": "Error Analysis & Confidence Intervals" }
       ]
     },
     {
@@ -271,7 +270,7 @@
     {
       "id": "molbio",
       "title": "Molecular Biology",
-      "icon": "fa-helix",
+      "icon": "fa-dna",
       "color": "#e67e22",
       "description": "DNA/RNA structure, replication, transcription/translation, and recombinant DNA technology.",
       "order": 17,

@@ -16,7 +16,18 @@
 .sidebar.collapsed {
   width: 70px;
 }
+.app-layout.collapsed .main-content {
+  margin-left: 70px;
+}
 
+.sidebar.collapsed .nav-link {
+  justify-content: center;
+}
+
+.main-content {
+  margin-left: 260px;
+  transition: margin-left 0.25s ease;
+}
 /* Header */
 .sidebar-header {
   display: flex;

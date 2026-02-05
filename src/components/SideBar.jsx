@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import navButtons from "../data/navButtons.json";
 import categoriesData from "../data/categories.json";
 import "./SideBar.css";
 
-const SideBar = () => {
-  const [collapsed, setCollapsed] = useState(false);
+const SideBar = ({ collapsed, setCollapsed }) => {
+
 
   return (
     <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
