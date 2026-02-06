@@ -1,149 +1,219 @@
-.hint {
-  margin: 1em 0;
-  background: #eaf3ff;         
-  color: #1f2d3d;               
-  padding: 12px;
-  border-left: 5px solid #4ea0f2;
-  border-radius: 1em;
-}
+  .hint {
+    margin: 1em 0;
+    background: #eaf3ff;         
+    color: #1f2d3d;               
+    padding: 12px;
+    border-left: 5px solid #4ea0f2;
+    border-radius: 1em;
+  }
 
-.solution {
-  margin-top: 10px;
-  background: #e9f7ef;          
-  color: #1f3a2d;              
-  padding: 12px;
-  border-left: 5px solid #2ecc71;
-  border-radius: 1em;
-}
+  .solution {
+    margin-top: 10px;
+    background: #e9f7ef;          
+    color: #1f3a2d;              
+    padding: 12px;
+    border-left: 5px solid #2ecc71;
+    border-radius: 1em;
+  }
 
-.main-content {
-  margin-left: 260px;
-  transition: margin-left 0.25s ease;
-}
+  .main-content {
+    margin-left: 260px;
+    transition: margin-left 0.25s ease;
+  }
 
-.hintButton {
-  background: #4ea0f2;
-  padding: 10px;
-  border-radius: 2rem;
-}
+  .hintButton {
+    background: #4ea0f2;
+    padding: 10px;
+    border-radius: 2rem;
+  }
 
-.solutionButton {
-  margin-left: 1em;
-  background: #2ecc71;
-  padding: 10px;
-  border-radius: 2rem;
-}
-.hintButton span,
-.solutionButton span {
-  display: inline-flex;
-  align-items: center;
-}
+  .solutionButton {
+    margin-left: 1em;
+    background: #2ecc71;
+    padding: 10px;
+    border-radius: 2rem;
+  }
+  .hintButton span,
+  .solutionButton span {
+    display: inline-flex;
+    align-items: center;
+  }
 
-.hintButton i,
-.solutionButton i {
-  margin-left: 10px; 
-}
-.problem-card {
-  background: linear-gradient(145deg, #22313f, #1b2834);
-  border-radius: 14px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  max-width: 700px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-  color: #ecf0f1;
-}
+  .hintButton i,
+  .solutionButton i {
+    margin-left: 10px; 
+  }
+  .problem-card {
+    background: linear-gradient(145deg, #22313f, #1b2834);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    color: #ecf0f1;
+  }
 
-.problem-card h3 {
-  margin-top: 0;
-  font-size: 1.4rem;
-  color: #ffffff;
-}
+  .problem-card h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: #ffffff;
+  }
 
-.problem-meta {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 14px;
-}
+  .problem-meta {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
 
-.badge {
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
+  .badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
 
-.badge.category {
-  background: #34495e;
-}
+  .badge.category {
+    background: #34495e;
+  }
 
-.badge.difficulty.easy {
-  background: #2ecc71;
-  color: #0b3d1e;
-}
+  .badge.difficulty.easy {
+    background: #2ecc71;
+    color: #0b3d1e;
+  }
 
-.badge.difficulty.medium {
-  background: #f1c40f;
-  color: #4a3b00;
-}
+  .badge.difficulty.medium {
+    background: #f1c40f;
+    color: #4a3b00;
+  }
 
-.badge.difficulty.hard {
-  background: #8e2b2b; 
-  color: #fbecec;        
-}
+  .badge.difficulty.hard {
+    background: #8e2b2b; 
+    color: #fbecec;        
+  }
 
-.problem-card p {
-  line-height: 1.6;
-  margin: 12px 0;
-  color: #dce3e8;
-}
+  .problem-card p {
+    line-height: 1.6;
+    margin: 12px 0;
+    color: #dce3e8;
+  }
 
 
-.hint,
-.solution {
-  margin-top: 12px;
-  animation: fadeSlide 0.2s ease;
-}
-.filter-section {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-  align-items: center;
-}
+  .hint,
+  .solution {
+    margin-top: 12px;
+    animation: fadeSlide 0.2s ease;
+  }
+  .filter-section {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 
-.filter-group {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
+  .filter-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
 
-.filter-group label {
-  font-weight: 500;
-  color: #34495e;
-  display: block;
-  margin-bottom: 6px;
-}
+  .filter-group label {
+    font-weight: 500;
+    color: #34495e;
+    display: block;
+    margin-bottom: 6px;
+  }
 
-.filter-group select {
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #bdc3c7;
-  background-color: #ffffff;
-  color: #2c3e50;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: border-color 0.2s ease;
-}
+  .filter-group select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #bdc3c7;
+    background-color: #ffffff;
+    color: #2c3e50;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+  }
 
-.filter-group select:hover {
-  border-color: #667eea;
-}
+  .filter-group select:hover {
+    border-color: #667eea;
+  }
 
-.filter-group select:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  .filter-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+  .completeButton {
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 1.5rem;
+    margin-left: 1em;
+    background: #2cd905;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  .completeButton span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; 
+  }
+
+  .completeButton.done {
+    background: #e8f5e9;
+    border-color: #4caf50;
+    color: #2e7d32;
+  }
+
+.problem-card.completed {
+  opacity: 0.7;
 }
+  .resetButton {
+    margin: 0.75rem 0 1.5rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 1.5rem;
+    border: 1px solid #bdc3c7;
+    background: #f8f9fa;
+    color: #2c3e50;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.15s ease, transform 0.1s ease;
+  }
+
+  .resetButton:hover {
+    background: #eceff1;
+  }
+
+  .resetButton:active {
+    transform: scale(0.97);
+  }
+
+  .shuffleButton {
+    margin: 0.75rem 0 1.5rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 1.5rem;
+    border: 1px solid #bdc3c7;
+    background: #f8f9fa;
+    color: #2c3e50;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.15s ease, transform 0.1s ease;
+  }
+
+  .shuffleButton:hover {
+    background: #eceff1;
+  }
+
+  .shuffleButton:active {
+    transform: scale(0.97);
+  }
+
 
 @media (max-width: 768px) {
   .filter-section {

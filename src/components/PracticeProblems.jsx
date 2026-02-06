@@ -6,7 +6,12 @@ const PracticeProblems = () => {
   const [visible, setVisible] = useState({});
   const [count, setCount] = useState(5);
   const [selectedCategory, setSelectedCategory] = useState("all");
-
+  const [isShuffled, setIsShuffled] = useState(false);
+  const [completed, setCompleted] = useState(() => {
+    const saved = localStorage.getItem("completedProblems");
+    return saved ? JSON.parse(saved) : {};
+  });
+  
   const toggle = (id, field) => {
     setVisible((prev) => ({
       ...prev,
@@ -16,6 +21,25 @@ const PracticeProblems = () => {
       }
     }));
   };
+
+  const toggleCompleted = (id) => {
+    setCompleted((prev) => {
+      const updated = {
+        ...prev,
+        [id]: !prev[id],
+      };
+      localStorage.setItem(
+        "completedProblems",
+        JSON.stringify(updated)
+      );
+      return updated;
+    });
+  };
+    const resetCompletion = () => {
+    localStorage.removeItem("completedProblems");
+    setCompleted({});
+  };
+
 
   const categories = useMemo(() => {
     const cats = ["all", ...new Set(problems.map((p) => p.category))];
@@ -28,7 +52,18 @@ const PracticeProblems = () => {
     );
   }, [selectedCategory]);
 
-  const shuffled = useMemo(() => [...filteredProblems].sort(() => Math.random() - 0.5), [filteredProblems]); 
+  const displayProblems = useMemo(() => {
+    if (!isShuffled) return filteredProblems;
+    
+    // Fisher-Yates shuffle
+    const arr = [...filteredProblems];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }, [filteredProblems, isShuffled]);
+
   return (
     <div className="page">
       <div className="filter-section">
@@ -55,13 +90,36 @@ const PracticeProblems = () => {
       </div>
 
       <p style={{ marginBottom: "1rem", color: "#666" }}>
-  Showing {Math.min(count, filteredProblems.length)} of {filteredProblems.length} problems
-          </p>
+        Showing {Math.min(count, filteredProblems.length)} of {filteredProblems.length} problems
+      </p>
 
-      {shuffled.slice(0, count).map((p) => (
-        <div key={p.id} className="problem-card">
+      <p style={{ color: "#666" }}>
+        Completed {filteredProblems.filter((p) => completed[p.id]).length} / {filteredProblems.length} problems
+      </p>
+      <div style={{ display: "flex", gap: "0.5rem", marginBottom: "1rem" }}>
+        <button
+          className="resetButton"
+          onClick={resetCompletion}
+        >
+          <i className="fa-solid fa-rotate-left" />
+          Reset Completion
+        </button>
+        <button
+          className="shuffleButton"
+          onClick={() => setIsShuffled(!isShuffled)}
+        >
+          <i className="fa-solid fa-shuffle" />
+          Shuffle
+        </button>
+      </div>
+      {displayProblems.slice(0, count).map((p) => (
+        <div
+              key={p.id}
+              className={`problem-card ${completed[p.id] ? "completed" : ""}`}
+            >
           <h3>{p.title}</h3>
           <div className="problem-meta">
+
             <span className="badge category">{p.category}</span>
             <span className={`badge difficulty ${p.difficulty.toLowerCase()}`}>
               {p.difficulty}
@@ -106,8 +164,16 @@ const PracticeProblems = () => {
               <i className={`fa-solid ${visible[p.id]?.solution ? "fa-eye-slash" : "fa-circle-check"}`} />
             </span>
           </button>
-
-
+              <button
+              type="button"
+              className={`completeButton ${completed[p.id] ? "done" : ""}`}
+              onClick={() => toggleCompleted(p.id)}
+            >
+              <span>
+                <i className={`fa-solid ${completed[p.id] ? "fa-check-circle" : "fa-circle"}`} />
+                {completed[p.id] ? "Completed" : "Mark as Complete"}
+              </span>
+            </button>
           {visible[p.id]?.solution && (
             <div className="solution">
               <strong>Answer:</strong> {p.answer}

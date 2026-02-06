@@ -1,13 +1,21 @@
+import heroMolecule from "../images/hero_molecule.jpg";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import FeatureCard from "../components/FeatureCard"; 
+import FeatureCard from "../components/FeatureCard";
 
 
 const HomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <main className="content" style={{ padding: 40, maxWidth: 1000 }}>
+    <main
+      className="content"
+      style={{
+        padding: "48px 40px",
+        maxWidth: 1100,
+        margin: "0 auto"
+      }}
+    >
       <section className="section active">
 
         {/* HERO */}
@@ -16,59 +24,124 @@ const HomePage = () => {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: 24,
+            gap: 32,
             flexWrap: "wrap",
-            padding: 28,
-            background: "linear-gradient(135deg,#f7fbff,#eef6ff)",
-            borderRadius: 12,
-            marginBottom: 18
+            padding: 36,
+            background:
+              "linear-gradient(135deg, #eef4ff 0%, #f8fbff 100%)",
+            borderRadius: 16,
+            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+            marginBottom: 32
           }}
         >
-          <div style={{ flex: 1, minWidth: 260 }}>
-            <h2 style={{ fontSize: "1.8rem", margin: "0 0 8px" }}>
-              Welcome to the Interactive Biochemistry Guide
-            </h2>
+          {/* LEFT */}
+          <div style={{ flex: 1, minWidth: 280 }}>
+            <h1
+              style={{
+                fontSize: "2.2rem",
+                fontWeight: 700,
+                marginBottom: 12
+              }}
+            >
+              Explore Biochemistry in 3D
+            </h1>
 
-            <p style={{ color: "#444", marginBottom: 16 }}>
-              Explore 3D molecules, run virtual labs, and practice core concepts
-              with interactive modules. Start by opening the 3D viewer or
-              launching a virtual lab.
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: "#444",
+                marginBottom: 24,
+                maxWidth: 520
+              }}
+            >
+              Visualize molecules in real time, rotate structures, and explore
+              biochemical interactions through an interactive 3D viewer and
+              virtual labs.
             </p>
 
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            {/* CTA GROUP */}
+            <div
+              style={{
+                display: "flex",
+                gap: 14,
+                flexWrap: "wrap",
+                alignItems: "center"
+              }}
+            >
+              {/* PRIMARY CTA */}
               <button
-                className="cta"
                 onClick={() => navigate("/viewer")}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  padding: "14px 22px",
+                  fontSize: "1rem",
+                  fontWeight: 600,
+                  color: "#fff",
+                  background:
+                    "linear-gradient(135deg, #667eea, #5a67d8)",
+                  border: "none",
+                  borderRadius: 10,
+                  cursor: "pointer",
+                  boxShadow: "0 8px 20px rgba(102,126,234,0.35)"
+                }}
               >
-                Launch 3D Viewer
+                🧬 Open 3D Molecular Viewer
               </button>
 
+              {/* SECONDARY */}
               <button
-                className="cta-outline"
                 onClick={() => navigate("/lab")}
+                style={{
+                  padding: "12px 18px",
+                  fontSize: "0.95rem",
+                  fontWeight: 500,
+                  background: "#fff",
+                  border: "1px solid #ccc",
+                  borderRadius: 8,
+                  cursor: "pointer"
+                }}
               >
                 Try Virtual Lab
               </button>
 
               <button
-                className="cta-link"
                 onClick={() => navigate("/resources")}
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: "#5a67d8",
+                  fontWeight: 500,
+                  cursor: "pointer"
+                }}
               >
-                Resources
+                Browse Resources →
               </button>
             </div>
+
+            <p
+              style={{
+                marginTop: 14,
+                fontSize: "0.85rem",
+                color: "#666"
+              }}
+            >
+              No setup required • Interactive rotation • Save views
+            </p>
           </div>
 
-          <div style={{ flex: "0 0 220px", textAlign: "center" }}>
+          {/* RIGHT */}
+          <div style={{ flex: "0 0 240px", textAlign: "center" }}>
             <img
-              src="/images/hero_molecule.jpg"
-              alt="Molecule illustration"
-              style={{ maxWidth: 200, borderRadius: 8 }}
+              src={heroMolecule}
+              alt="3D molecule illustration"
+              style={{
+                maxWidth: 220,
+                borderRadius: 12,
+                boxShadow: "0 6px 16px rgba(0,0,0,0.15)"
+              }}
             />
-            <p style={{ fontSize: "0.9rem", color: "#666", marginTop: 10 }}>
-              Tip: Every molecule is interactive. A full 3D molecular builder
-              lives on a separate page — more features coming soon.
-            </p>
           </div>
         </div>
 
@@ -76,26 +149,26 @@ const HomePage = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
-            gap: 12
+            gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))",
+            gap: 18
           }}
         >
           <FeatureCard
             color="#667eea"
-            title="Quick-start"
-            text="Open the 3D viewer to load example molecules and save views."
+            title="3D Molecular Viewer"
+            text="Load molecules, rotate structures, and inspect atomic details."
           />
 
           <FeatureCard
             color="#2ecc71"
             title="Virtual Lab"
-            text="Run enzyme kinetics experiments and fit Km & Vmax."
+            text="Run enzyme kinetics experiments and estimate Km and Vmax."
           />
 
           <FeatureCard
             color="#f39c12"
             title="Practice Problems"
-            text="Problems aligned to each course module."
+            text="Concept checks aligned with each biochemistry topic."
           />
         </div>
 
@@ -105,4 +178,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
- 
