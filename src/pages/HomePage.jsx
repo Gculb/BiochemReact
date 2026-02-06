@@ -145,6 +145,7 @@ const HomePage = () => {
           </div>
         </div>
 
+
         {/* FEATURE CARDS */}
         <div
           style={{
@@ -171,7 +172,45 @@ const HomePage = () => {
             text="Concept checks aligned with each biochemistry topic."
           />
         </div>
+                  {/* INFO ACTIONS */}
+<div
+  style={{
+    marginTop: 20,
+    display: "flex",
+    gap: 16,
+    flexWrap: "wrap"
+  }}
+>
+    <button
+      onClick={() => navigate("/about")}
+      style={{
+        background: "none",
+        border: "none",
+        color: "#444",
+        fontSize: "0.9rem",
+        cursor: "pointer",
+        padding: 0
+      }}
+    >
+      About This Project
+    </button>
 
+    <span style={{ color: "#bbb" }}>•</span>
+
+    <button
+      onClick={() => navigate("/contact")}
+      style={{
+        background: "none",
+        border: "none",
+        color: "#444",
+        fontSize: "0.9rem",
+        cursor: "pointer",
+        padding: 0
+      }}
+    >
+      Contact
+    </button>
+  </div>
       </section>
     </main>
   );
