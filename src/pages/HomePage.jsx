@@ -2,158 +2,70 @@ import heroMolecule from "../images/hero_molecule.jpg";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import FeatureCard from "../components/FeatureCard";
-
+import "./HomePage.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <main
-      className="content"
-      style={{
-        padding: "48px 40px",
-        maxWidth: 1100,
-        margin: "0 auto"
-      }}
-    >
+    <main className="content home-page">
       <section className="section active">
 
         {/* HERO */}
-        <div
-          className="home-hero"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 32,
-            flexWrap: "wrap",
-            padding: 36,
-            background:
-              "linear-gradient(135deg, #eef4ff 0%, #f8fbff 100%)",
-            borderRadius: 16,
-            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-            marginBottom: 32
-          }}
-        >
+        <div className="home-hero">
           {/* LEFT */}
-          <div style={{ flex: 1, minWidth: 280 }}>
-            <h1
-              style={{
-                fontSize: "2.2rem",
-                fontWeight: 700,
-                marginBottom: 12
-              }}
-            >
+          <div className="hero-left">
+            <h1 className="hero-title">
               Explore Biochemistry in 3D
             </h1>
 
-            <p
-              style={{
-                fontSize: "1.05rem",
-                color: "#444",
-                marginBottom: 24,
-                maxWidth: 520
-              }}
-            >
+            <p className="hero-description">
               Visualize molecules in real time, rotate structures, and explore
               biochemical interactions through an interactive 3D viewer and
               virtual labs.
             </p>
 
             {/* CTA GROUP */}
-            <div
-              style={{
-                display: "flex",
-                gap: 14,
-                flexWrap: "wrap",
-                alignItems: "center"
-              }}
-            >
-              {/* PRIMARY CTA */}
+            <div className="hero-cta-group">
               <button
+                className="cta-primary"
                 onClick={() => navigate("/viewer")}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  padding: "14px 22px",
-                  fontSize: "1rem",
-                  fontWeight: 600,
-                  color: "#fff",
-                  background:
-                    "linear-gradient(135deg, #667eea, #5a67d8)",
-                  border: "none",
-                  borderRadius: 10,
-                  cursor: "pointer",
-                  boxShadow: "0 8px 20px rgba(102,126,234,0.35)"
-                }}
               >
                 🧬 Open 3D Molecular Viewer
               </button>
 
-              {/* SECONDARY */}
               <button
+                className="cta-secondary"
                 onClick={() => navigate("/lab")}
-                style={{
-                  padding: "12px 18px",
-                  fontSize: "0.95rem",
-                  fontWeight: 500,
-                  background: "#fff",
-                  border: "1px solid #ccc",
-                  borderRadius: 8,
-                  cursor: "pointer"
-                }}
               >
                 Try Virtual Lab
               </button>
 
               <button
+                className="cta-link"
                 onClick={() => navigate("/resources")}
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: "#5a67d8",
-                  fontWeight: 500,
-                  cursor: "pointer"
-                }}
               >
                 Browse Resources →
               </button>
             </div>
 
-            <p
-              style={{
-                marginTop: 14,
-                fontSize: "0.85rem",
-                color: "#666"
-              }}
-            >
+            <p className="hero-subtext">
               No setup required • Interactive rotation • Save views
             </p>
           </div>
 
           {/* RIGHT */}
-          <div style={{ flex: "0 0 240px", textAlign: "center" }}>
+          <div className="hero-right">
             <img
               src={heroMolecule}
               alt="3D molecule illustration"
-              style={{
-                maxWidth: 220,
-                borderRadius: 12,
-                boxShadow: "0 6px 16px rgba(0,0,0,0.15)"
-              }}
+              className="hero-image"
             />
           </div>
         </div>
 
-
         {/* FEATURE CARDS */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))",
-            gap: 18
-          }}
-        >
+        <div className="feature-grid">
           <FeatureCard
             color="#667eea"
             title="3D Molecular Viewer"
@@ -172,45 +84,26 @@ const HomePage = () => {
             text="Concept checks aligned with each biochemistry topic."
           />
         </div>
-                  {/* INFO ACTIONS */}
-<div
-  style={{
-    marginTop: 20,
-    display: "flex",
-    gap: 16,
-    flexWrap: "wrap"
-  }}
->
-    <button
-      onClick={() => navigate("/about")}
-      style={{
-        background: "none",
-        border: "none",
-        color: "#444",
-        fontSize: "0.9rem",
-        cursor: "pointer",
-        padding: 0
-      }}
-    >
-      About This Project
-    </button>
 
-    <span style={{ color: "#bbb" }}>•</span>
+        {/* INFO ACTIONS */}
+        <div className="info-actions">
+          <button
+            className="info-link"
+            onClick={() => navigate("/about")}
+          >
+            About This Project
+          </button>
 
-    <button
-      onClick={() => navigate("/contact")}
-      style={{
-        background: "none",
-        border: "none",
-        color: "#444",
-        fontSize: "0.9rem",
-        cursor: "pointer",
-        padding: 0
-      }}
-    >
-      Contact
-    </button>
-  </div>
+          <span className="info-separator">•</span>
+
+          <button
+            className="info-link"
+            onClick={() => navigate("/contact")}
+          >
+            Contact
+          </button>
+        </div>
+
       </section>
     </main>
   );

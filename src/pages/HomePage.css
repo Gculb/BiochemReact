@@ -1,0 +1,203 @@
+/* =========================
+   Layout
+   ========================= */
+.home-page {
+  padding: 48px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* =========================
+   HERO
+   ========================= */
+.home-hero {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 36px;
+  background: linear-gradient(135deg, #eef4ff 0%, #f8fbff 100%);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin-bottom: 32px;
+}
+
+.hero-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.hero-description {
+  font-size: 1.05rem;
+  color: #444;
+  margin-bottom: 24px;
+  max-width: 520px;
+}
+
+/* =========================
+   CTA GROUP
+   ========================= */
+.hero-cta-group {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* --- Primary CTA --- */
+.cta-primary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #667eea, #5a67d8);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.35);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+}
+
+.cta-primary:hover {
+  transform: translateY(-2px);
+  background: #5ab1f8;
+  box-shadow: 0 16px 36px rgba(90, 103, 216, 0.55);
+}
+
+
+.cta-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(102, 126, 234, 0.35);
+  filter: brightness(0.97);
+}
+
+/* --- Secondary CTA --- */
+.cta-secondary {
+  padding: 12px 18px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.cta-secondary:hover {
+  background-color: #f5f7ff;
+  border-color: #5a67d8;
+}
+
+.cta-secondary:active {
+  background-color: #e9edff;
+  transform: scale(0.98);
+}
+
+/* --- Link CTA --- */
+.cta-link {
+  background: none;
+  border: none;
+  color: #4c51bf; /* darker for contrast */
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.cta-link:hover {
+  color: #3730a3;
+  text-decoration: underline;
+}
+
+.cta-link:active {
+  transform: translateY(1px);
+}
+
+.hero-subtext {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* =========================
+   HERO IMAGE
+   ========================= */
+.hero-right {
+  flex: 0 0 240px;
+  text-align: center;
+}
+
+.hero-image {
+  max-width: 220px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   FEATURES
+   ========================= */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+/* =========================
+   INFO ACTIONS
+   ========================= */
+.info-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.info-link {
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.info-link:hover {
+  color: #111;
+  text-decoration: underline;
+}
+
+.info-link:active {
+  transform: translateY(1px);
+}
+
+.info-separator {
+  color: #bbb;
+}
+
+/* =========================
+   ACCESSIBILITY
+   ========================= */
+button:focus-visible {
+  outline: 3px solid rgba(90, 103, 216, 0.6);
+  outline-offset: 3px;
+}
