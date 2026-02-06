@@ -683,9 +683,202 @@
           "keyPoints": ["DNA methylation and histone modifications", "Chromatin remodeling and gene silencing", "Environmental effects on epigenome"]
         }
       ]
+    },
+    {
+    "sectionId": "metabolic-cycles",
+    "sectionTitle": "Metabolic Cycles",
+    "items": [
+    {
+    "id": "glycolysis",
+    "title": "Glycolysis",
+    "description": "10-step pathway converting glucose → pyruvate; central entry point to carbohydrate metabolism.",
+    "keyPoints": [
+    "Net 2 ATP, 2 NADH per glucose (anaerobic → lactate regenerates NAD⁺)",
+    "Key regulatory enzymes: hexokinase/glucokinase, PFK-1 (major control), pyruvate kinase",
+    "Important branch points: G6P → PPP, F6P ↔ F2,6BP regulation"
+    ]
+    },
+    {
+    "id": "pdh",
+    "title": "Pyruvate Dehydrogenase (PDH) Complex",
+    "description": "Links glycolysis to the TCA by converting pyruvate → acetyl-CoA; a major control point.",
+    "keyPoints": [
+    "Cofactors: TPP, lipoate, FAD, NAD⁺, CoA (TLC FN)",
+    "Inhibited by high ATP, NADH, acetyl-CoA; activated by ADP, Ca²⁺ (tissue-specific)",
+    "Block → pyruvate→lactate buildup (lactic acidosis) and reduced TCA flux"
+    ]
+    },
+    {
+    "id": "tca-cycle",
+    "title": "Citric Acid Cycle (TCA / Krebs)",
+    "description": "Oxidizes acetyl-CoA to CO₂ while producing reducing equivalents for the ETC.",
+    "keyPoints": [
+    "Per acetyl-CoA: 3 NADH, 1 FADH₂, 1 GTP (or ATP)",
+    "Regulatory enzymes: citrate synthase, isocitrate dehydrogenase, α-ketoglutarate dehydrogenase",
+    "Anaplerotic reactions (e.g., pyruvate → oxaloacetate) maintain intermediate pools"
+    ]
+    },
+    {
+    "id": "electron-transport-chain",
+    "title": "ETC & Oxidative Phosphorylation",
+    "description": "Complexes I–IV transfer electrons, pump protons, and drive ATP synthesis via ATP synthase.",
+    "keyPoints": [
+    "Complexes I–IV & ATP synthase: proton motive force (Δψ + ΔpH) drives ATP production",
+    "Approximate P/O: ~2.5 ATP/NADH, ~1.5 ATP/FADH₂ (use for rough energy accounting)",
+    "Uncouplers collapse gradient → heat; inhibitors block electron flow (clinical/toxicology relevance)"
+    ]
+    },
+    {
+    "id": "gluconeogenesis",
+    "title": "Gluconeogenesis",
+    "description": "Pathway creating glucose from non-carbohydrate precursors; circumvents irreversible glycolysis steps.",
+    "keyPoints": [
+    "Key bypass enzymes: pyruvate carboxylase, PEP carboxykinase, fructose-1,6-bisphosphatase, glucose-6-phosphatase",
+    "Reciprocal regulation with glycolysis (F2,6BP central regulator)",
+    "Major substrates: lactate, alanine, glycerol, TCA intermediates"
+    ]
+    },
+    {
+    "id": "glycogen-metabolism",
+    "title": "Glycogen Synthesis & Breakdown",
+    "description": "Storage and rapid mobilization of glucose; hormonally controlled.",
+    "keyPoints": [
+    "Glycogen synthase = synthesis (activated by insulin); glycogen phosphorylase = breakdown (activated by glucagon/epinephrine)",
+    "Branching enzyme and debranching enzyme are essential for structure and mobilization",
+    "Clinical ties: glycogen storage diseases alter blood glucose and muscle energy"
+    ]
+    },
+    {
+    "id": "ppp",
+    "title": "Pentose Phosphate Pathway (PPP)",
+    "description": "Generates NADPH for biosynthesis/antioxidant defense and ribose-5-phosphate for nucleotide synthesis.",
+    "keyPoints": [
+    "Rate-limiting enzyme: G6PD (clinical relevance: G6PD deficiency → hemolysis)",
+    "NADPH used for fatty acid synthesis, glutathione reduction, detoxification",
+    "Non-oxidative branch provides ribose or feeds back into glycolysis"
+    ]
+    },
+    {
+    "id": "fatty-acid-metabolism",
+    "title": "Fatty Acid Oxidation & Synthesis",
+    "description": "β-oxidation (mitochondria) catabolizes fatty acids to acetyl-CoA; synthesis (cytosol) builds fatty acids from acetyl-CoA.",
+    "keyPoints": [
+    "β-oxidation uses carnitine shuttle for long-chain FA entry into mitochondria",
+    "Products: acetyl-CoA, NADH, FADH₂ (feed into TCA/ETC)",
+    "ACC (acetyl-CoA carboxylase) is rate-limiting for FA synthesis; regulated by citrate, AMPK, insulin"
+    ]
+    },
+    {
+    "id": "ketogenesis",
+    "title": "Ketogenesis",
+    "description": "Liver generates ketone bodies from acetyl-CoA during prolonged fasting or low insulin states.",
+    "keyPoints": [
+    "Primary ketones: acetoacetate, β-hydroxybutyrate (transportable fuels for brain/heart)",
+    "Occurs when acetyl-CoA accumulates and TCA capacity is limited (low OAA)",
+    "Clinical: diabetic ketoacidosis — high ketones + metabolic acidosis"
+    ]
+    },
+    {
+    "id": "urea-cycle",
+    "title": "Urea Cycle & Nitrogen Disposal",
+    "description": "Removes excess nitrogen by converting ammonia → urea (primarily in liver).",
+    "keyPoints": [
+    "Key enzymes: carbamoyl phosphate synthetase I (CPS I), ornithine transcarbamylase",
+    "Interconnects with TCA via fumarate; defects cause hyperammonemia",
+    "Clinically relevant: urea cycle disorders present with neurologic symptoms from ammonia toxicity"
+    ]
+    }
+    ]
+    },
+    {
+    "sectionId": "mcat-prep",
+    "sectionTitle": "MCAT Prep — High-Yield Metabolism Concepts & Strategy",
+    "items": [
+    {
+    "id": "regulation-signaling",
+    "title": "Regulation & Hormonal Control",
+    "description": "How hormones and allosteric signals shift metabolic flux: insulin vs glucagon/epinephrine, energy charge signaling.",
+    "keyPoints": [
+    "Insulin generally promotes storage (glycogen, FA synthesis); glucagon/epinephrine promote mobilization (glycogenolysis, gluconeogenesis, lipolysis)",
+    "Allosteric regulators: ATP/AMP, citrate, F2,6BP; Ca²⁺ activates PDH/kinases in muscle",
+    "Exam focus: predict directional change when a regulator or hormone changes"
+    ]
+    },
+    {
+    "id": "compartmentalization",
+    "title": "Cellular Compartments & Pathway Locations",
+    "description": "Where pathways occur matters: cytosol vs mitochondria vs peroxisome vs ER.",
+    "keyPoints": [
+    "Glycolysis & PPP: cytosol; TCA & β-oxidation: mitochondria; FA synthesis: cytosol/ER; peroxisomes: very-long chain FA oxidation",
+    "Shuttles (e.g., malate–aspartate, glycerol-3-phosphate) move reducing equivalents across membranes",
+    "MCAT likes questions linking location to mechanism or pathology"
+    ]
+    },
+    {
+    "id": "energy-redox",
+    "title": "Energy Accounting & Redox Roles",
+    "description": "Practical ATP estimation and roles of NADH vs NADPH in catabolism vs anabolism/antioxidant defense.",
+    "keyPoints": [
+    "Be able to approximate ATP yield from glucose (glycolysis + PDH + TCA + ETC)",
+    "NADH → ATP via ETC; NADPH used for biosynthesis and glutathione regeneration",
+    "Recognize oxidized vs reduced forms and consequences of redox imbalance"
+    ]
+    },
+    {
+    "id": "pathway-integration",
+    "title": "Pathway Integration & Physiologic States",
+    "description": "How metabolism shifts during fed, fasting, exercise, and starvation states.",
+    "keyPoints": [
+    "Fed: insulin ↑ → glycolysis, glycogen & FA synthesis; Fasting: glucagon ↑ → gluconeogenesis, glycogenolysis, ketogenesis",
+    "Exercise: muscle increases glycolysis, PDH activation via Ca²⁺/AMP",
+    "Practice mapping flux changes for given hormonal or substrate changes"
+    ]
+    },
+    {
+    "id": "clinical-links",
+    "title": "Clinical & Deficiency Implications",
+    "description": "Common metabolic defects and their biochemical consequences (high-yield for MCAT).",
+    "keyPoints": [
+    "Examples: PDH deficiency → lactic acidosis; G6PD deficiency → hemolysis with oxidative stress",
+    "Glycogen storage diseases cause hypoglycemia or myopathy depending on enzyme/location",
+    "MCAT may ask mechanistic reasons for clinical phenotypes"
+    ]
+    },
+    {
+    "id": "experimental-reasoning",
+    "title": "Graphs, Experiments & Kinetics",
+    "description": "How to read rate curves, enzyme kinetics, and interpret experimental manipulations.",
+    "keyPoints": [
+    "Be comfortable with Michaelis–Menten basics and how Vmax/Km change with inhibitors",
+    "Interpreting metabolic flux from labeling experiments or enzyme activity assays is common",
+    "Practice passage-style questions that require data interpretation"
+    ]
+    },
+    {
+    "id": "acid-base-ties",
+    "title": "Acid–Base & Buffering Relevance",
+    "description": "Metabolism affects blood pH (e.g., lactic acid, ketoacids); know buffer systems and clinical consequences.",
+    "keyPoints": [
+    "Lactic acidosis from anaerobic glycolysis/exercise or PDH block",
+    "Ketone production in prolonged fasting or uncontrolled diabetes → metabolic acidosis",
+    "MCAT may couple metabolic flux to pH changes and physiological compensation"
+    ]
+    },
+    {
+    "id": "mnemonics-study-actions",
+    "title": "Mnemonics & High-Yield Study Actions",
+    "description": "Concise study tactics and memory aids to prepare efficiently.",
+    "keyPoints": [
+    "Mnemonics: 'Citrate Is Kreb’s Starting Substrate For Making Oxaloacetate' for TCA order; 'TLC FN' for PDH cofactors",
+    "Study actions: draw cycles from memory, active recall flashcards (enzymes/locations/regulators), timed passage practice",
+    "Practice ~6–8 AAMC-style passages weekly and make a one-page cheat sheet of net yields & regulation"
+        ]
+    }
+    ]
     }
   ]
 }
+  
     
 
  

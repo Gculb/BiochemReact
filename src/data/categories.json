@@ -402,7 +402,44 @@
         { "id": "general", "title": "General Inquiries" },
         { "id": "feedback", "title": "Feedback" }
       ]
-    }
-
+    },
+    {
+  "id": "metabolic-cycles",
+  "title": "Metabolic Cycles",
+  "icon": "fa-retweet",
+  "color": "#d35400",
+  "description": "Pathway maps and cycle-by-cycle breakdowns: enzymes, regulation points, stoichiometry, and integration with central metabolism.",
+  "order": 27,
+  "topics": [
+    { "id": "glycolysis-map", "title": "Glycolysis — Map & Key Enzymes", "important": true },
+    { "id": "tca-cycle", "title": "TCA / Citric Acid Cycle", "important": true },
+    { "id": "etc-oxphos", "title": "Electron Transport & Oxidative Phosphorylation", "important": true },
+    { "id": "pentose-phosphate", "title": "Pentose Phosphate Pathway (PPP)" },
+    { "id": "urea-cycle", "title": "Urea Cycle & Nitrogen Disposal" },
+    { "id": "fatty-acid-oxidation", "title": "Fatty Acid β-oxidation" },
+    { "id": "fatty-acid-synthesis", "title": "Fatty Acid Synthesis & Lipogenesis" },
+    { "id": "gluconeogenesis", "title": "Gluconeogenesis & Regulation" },
+    { "id": "amino-acid-metabolism", "title": "Amino Acid Catabolism & Key Transaminations" },
+    { "id": "integrated-maps", "title": "Integrated Metabolic Maps (interactive)" }
+  ]
+   },
+   {
+  "id": "mcat-prep",
+  "title": "MCAT Prep",
+  "icon": "fa-graduation-cap",
+  "color": "#2c3e50",
+  "description": "High-yield concept reviews, practice passages, timing strategies, and exam-style question banks mapped to AAMC topics.",
+  "order": 28,
+  "topics": [
+    { "id": "chem-phys-foundations", "title": "Chemical & Physical Foundations" , "important": true},
+    { "id": "bio-biochem-foundations", "title": "Biological & Biochemical Foundations", "important": true },
+    { "id": "psych-soc", "title": "Psychology & Sociology Foundations" },
+    { "id": "cars-strategies", "title": "CARS — Comprehension & Strategy" },
+    { "id": "practice-passages", "title": "Practice Passages & Explanations", "important": true },
+    { "id": "full-lengths", "title": "Full-Length Exam Simulations" },
+    { "id": "high-yield-facts", "title": "High-Yield Facts & Cheat Sheets", "important": true },
+    { "id": "timing-test-day", "title": "Timing, Breaks & Test-Day Logistics" }
+  ]
+}
   ]
 }

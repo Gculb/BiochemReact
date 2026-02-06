@@ -1,9 +1,35 @@
-
 [
-  { "label": "Main", "ids": ["home", "degree", "viewer"] },                      
+  { "label": "Main", "ids": ["home", "degree", "viewer"] },
+
   { "label": "Practice & Labs", "ids": ["problems", "lab"] },
-  { "label": "Chemistry", "ids": ["genchem", "genchemlab", "ochem", "ochem-lab", "analytical", "inorganic","physical"] },
-  { "label": "Life Sciences", "ids": ["genbio", "biochem1", "biochem2", "biochem-lab", "molbio", "microbio", "genetics","bioinformatics"] },
-  { "label": "Quantitative", "ids": ["calculus", "stats"] },
-  { "label": "Support", "ids": ["resources", "glossary", "about", "contact"] }
+
+  {
+    "label": "Chemistry",
+    "ids": ["genchem", "genchemlab", "ochem", "ochem-lab", "analytical", "inorganic", "physical"]
+  },
+
+  {
+    "label": "Life Sciences",
+    "ids": ["genbio", "biochem1", "biochem2", "biochem-lab", "molbio", "microbio", "genetics", "bioinformatics"]
+  },
+
+  {
+    "label": "Metabolism",
+    "ids": ["metabolic-cycles"]
+  },
+
+  {
+    "label": "MCAT Prep",
+    "ids": ["mcat-prep"]
+  },
+
+  {
+    "label": "Quantitative",
+    "ids": ["calculus", "stats"]
+  },
+
+  {
+    "label": "Support",
+    "ids": ["resources", "glossary", "about", "contact"]
+  }
 ]

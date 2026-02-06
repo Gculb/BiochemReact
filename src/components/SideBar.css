@@ -1,59 +1,71 @@
+:root{
+  --sidebar-bg: #1a252f;
+  --sidebar-color: #ecf0f1;
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 56px; /* narrower */
+  --nav-hover-bg: #138496; /* high-contrast accent */
+  --nav-hover-color: #ffffff;
+  --nav-active-bg: #0f6b7a;
+  --focus-ring: 3px solid rgba(26,37,47,0.85);
+  --transition: 200ms ease;
+}
+
+/* Base layout */
 .sidebar {
   position: fixed;
   left: 0;
   top: 0;
   height: 100vh;
-  width: 260px;
-  background: #1a252f;
-  color: white;
-  padding: 16px;
-  transition: width 0.25s ease;
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  color: var(--sidebar-color);
+  padding: 12px;
+  transition: width var(--transition), background var(--transition);
   overflow-x: hidden;
   overflow-y: auto;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+  box-shadow: 2px 0 5px rgba(0,0,0,0.35);
   z-index: 100;
 }
 
+/* Collapsed sizing */
 .sidebar.collapsed {
-  width: 70px;
+  width: var(--sidebar-collapsed-width);
+}
+
+/* Main content margin updates */
+.app-layout .main-content {
+  margin-left: var(--sidebar-width);
+  transition: margin-left var(--transition);
 }
 .app-layout.collapsed .main-content {
-  margin-left: 70px;
+  margin-left: var(--sidebar-collapsed-width);
 }
 
-.sidebar.collapsed .nav-link {
-  justify-content: center;
-}
-
-.main-content {
-  margin-left: 260px;
-  transition: margin-left 0.25s ease;
-}
 /* Header */
 .sidebar-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
-
 .sidebar-title {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   margin: 0;
+  transition: opacity var(--transition), transform var(--transition);
 }
 
-/* Toggle button */
+/* Toggle */
 .sidebar-toggle {
   background: none;
   border: none;
-  color: #ecf0f1;
+  color: var(--sidebar-color);
   font-size: 1.1rem;
   cursor: pointer;
 }
 
 /* Groups */
 .group-label {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
   color: #7f8c8d;
   margin: 12px 0 8px;
@@ -67,33 +79,124 @@
 }
 
 .nav-link {
+  position: relative; /* for tooltip */
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 8px;
-  border-radius: 6px;
-  color: #ecf0f1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--sidebar-color);
   text-decoration: none;
-  transition: background 0.15s;
+  transition: background 120ms, color 120ms, padding 120ms;
   margin-bottom: 6px;
+  font-size: 0.95rem;
 }
+
+/* Hover (high contrast) */
+.nav-link:hover,
+.nav-link:focus {
+  background: var(--nav-hover-bg);
+  color: var(--nav-hover-color);
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* Active/selected */
 .nav-link.active {
-  background: #34495e;
+  background: var(--nav-active-bg);
   font-weight: 600;
-  border-radius: 1em;
+  border-radius: 12px;
+  box-shadow: inset 4px 0 0 var(--nav-hover-bg);
 }
 
-.nav-link:hover {
-  background: #2c3e50;
-  border-radius: 1em;
+/* Keyboard focus visible for accessibility */
+.nav-link:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring), 0 2px 6px rgba(0,0,0,0.25);
+  border-radius: 8px;
 }
 
+/* Icon and text */
 .nav-icon {
-  width: 22px;
+  width: 28px;
   text-align: center;
   font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Text label */
 .nav-text {
   white-space: nowrap;
+  opacity: 1;
+  transition: opacity var(--transition), transform var(--transition), width var(--transition);
+}
+
+/* COLLAPSED STATE tweaks */
+.sidebar.collapsed .sidebar-title { opacity: 0; transform: translateX(-6px); pointer-events:none; }
+.sidebar.collapsed .group-label { display: none; }
+
+/* keep icons in a single column and center them */
+.sidebar.collapsed .nav-link {
+  justify-content: center;
+  padding: 8px 0;
+}
+
+/* hide text but keep it for screen readers */
+.sidebar.collapsed .nav-text {
+  opacity: 0;
+  transform: translateX(-6px);
+  width: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* make icons slightly bigger when collapsed for visual clarity */
+.sidebar.collapsed .nav-icon { font-size: 1.15rem; }
+
+/* Optional: compact active style when collapsed */
+.sidebar.collapsed .nav-link.active {
+  background: rgba(255,255,255,0.06);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.02);
+}
+
+/* TOOLTIP for collapsed nav (shows text on hover) */
+.sidebar.collapsed .nav-link::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: calc(var(--sidebar-collapsed-width) + 10px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: rgba(20,20,20,0.95);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms, transform 120ms;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  z-index: 200;
+}
+
+/* show tooltip on hover/focus when collapsed */
+.sidebar.collapsed .nav-link:hover::after,
+.sidebar.collapsed .nav-link:focus::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* small helper for screen-reader-only text if you prefer */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
