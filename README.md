@@ -117,7 +117,7 @@ BiochemReact/
 │   │   ├── HomePage.jsx             # Landing page with features
 │   │   └── CategoryPage.jsx         # Category view with topic cards
 │   ├── data/
-│   │   ├── categories.json          # 27 category definitions
+│   │   ├── categories.json          # 29 category definitions
 │   │   ├── topicCards.json          # 100+ topic cards (18+ sections)
 │   │   ├── criticalConcepts.json    # Key concepts by section
 │   │   ├── problems.json            # Practice problems
@@ -202,14 +202,14 @@ Each category has:
 ## 🔮 Future Enhancements
 
 ### Planned Features
-- [ ] 3D Alpha Helix and secondary structure visualization
-- [ ] Polydimethylsiloxane (PDMS) polymer molecule
+- [ ] 3D Alpha Helix and secondary structure visualization (Add bonds and make more accurate visulizations
 - [ ] More interactive labs (titration, spectroscopy simulation)
-- [ ] Student problem-solving with code execution
+- [ ] Student problem-solving with code execution  (Bioinformatics)
 - [ ] Dark mode toggle
 - [*] Activity logging and progress tracking 
 - [*] Glossary with searchable terms
 - [ ] PDF export for study guides
+- [ ] Add more sections
 * = partial implementation
 
 ### Potential Additions
