@@ -7,7 +7,7 @@ A modern, interactive React-based educational platform for learning biochemistry
 ## 🎯 Features
 
 ### 📚 Learning Modules
-- **27 Topic Categories** covering General Chemistry, Organic Chemistry, Biochemistry I & II, Molecular Biology, Genetics, Bioinformatics, and more
+- **29 Topic Categories** covering General Chemistry, Organic Chemistry, Biochemistry I & II, Molecular Biology, Genetics, Bioinformatics, and more
 - **100+ Interactive Topic Cards** with expandable details and LaTeX-rendered mathematical equations
 - **Critical Concepts** section highlighting essential topics with color-coded importance indicators
 - **Practice Problem Bank** with categorized problems and detailed solutions
@@ -117,7 +117,7 @@ BiochemReact/
 │   │   ├── HomePage.jsx             # Landing page with features
 │   │   └── CategoryPage.jsx         # Category view with topic cards
 │   ├── data/
-│   │   ├── categories.json          # 27 category definitions
+│   │   ├── categories.json          # 29 category definitions
 │   │   ├── topicCards.json          # 100+ topic cards (18+ sections)
 │   │   ├── criticalConcepts.json    # Key concepts by section
 │   │   ├── problems.json            # Practice problems
@@ -202,14 +202,15 @@ Each category has:
 ## 🔮 Future Enhancements
 
 ### Planned Features
-- [ ] 3D Alpha Helix and secondary structure visualization
-- [ ] Polydimethylsiloxane (PDMS) polymer molecule
+- [ ] 3D Alpha Helix and secondary structure visualization (Add bonds and make more accurate visulizations
 - [ ] More interactive labs (titration, spectroscopy simulation)
-- [ ] Student problem-solving with code execution
+- [ ] Student problem-solving with code execution  (Bioinformatics)
 - [ ] Dark mode toggle
-- [ ] Activity logging and progress tracking
-- [ ] Glossary with searchable terms
+- [*] Activity logging and progress tracking 
+- [*] Glossary with searchable terms
 - [ ] PDF export for study guides
+- [ ] Add more sections
+* = partial implementation
 
 ### Potential Additions
 - WebGL performance optimization for mobile
@@ -235,7 +236,7 @@ This project is licensed under the ISC License. See package.json for details.
 
 **Grant Culbertson**
 - GitHub: [@gculb](https://github.com/gculb)
-- Portfolio: [Interactive Biochemistry Guide](https://gculb.github.io/BiochemReact)
+- Portfolio: N/A
 
 ## 🙏 Acknowledgments
 
