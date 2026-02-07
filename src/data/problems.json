@@ -1129,5 +1129,213 @@
 "hint": "Cardiac output = heart rate × stroke volume. Convert mL to L.",
 "answer": "≈ 4.90 L/min",
 "solution": "CO = 70 beats/min × 70 mL/beat = 4900 mL/min = 4.90 L/min."
-} 
+},
+ {
+    "id": 113,
+    "title": "MCAT Passage 1 — Enzyme Regulation Q1",
+    "difficulty": "Medium",
+    "category": "Biochemistry II",
+    "question": "A researcher studies enzyme Z, which catalyzes reaction S → P in liver cells. Enzyme Z is allosterically regulated: ATP binds an inhibitory site, while fructose-2,6-bisphosphate (F2,6BP) acts as an activator. In vitro assays show that at low substrate concentrations, addition of F2,6BP increases the apparent affinity for S (lower Km) without changing the maximum velocity. Addition of ATP decreases Vmax but does not change Km. A phosphorylation event on enzyme Z (by a kinase active during fasting) reduces F2,6BP sensitivity.Question 1: Based on the assay results, what types of regulation do F2,6BP and ATP represent (respectively)?",
+    "hint": "Consider effects on Km and Vmax for classic inhibition/activation types.",
+    "answer": "F2,6BP is an allosteric activator (decreases apparent Km); ATP acts like a noncompetitive inhibitor (decreases Vmax).",
+    "solution": "F2,6BP increases substrate affinity (lower Km) without changing Vmax — characteristic of an allosteric activator that affects Km. ATP decreases Vmax without affecting Km, which is consistent with noncompetitive inhibition (or an allosteric inhibitor that reduces catalytic turnover)."
+  },
+  {
+    "id": 114,
+    "title": "MCAT Passage 1 — Enzyme Regulation Q2",
+    "difficulty": "Medium",
+    "category": "Biochemistry II",
+    "question": "A researcher studies enzyme Z, which catalyzes reaction S → P in liver cells. Enzyme Z is allosterically regulated: ATP binds an inhibitory site, while fructose-2,6-bisphosphate (F2,6BP) acts as an activator. In vitro assays show that at low substrate concentrations, addition of F2,6BP increases the apparent affinity for S (lower Km) without changing the maximum velocity. Addition of ATP decreases Vmax but does not change Km. A phosphorylation event on enzyme Z (by a kinase active during fasting) reduces F2,6BP sensitivity.Question 2: How would the Michaelis–Menten velocity vs [S] curve change in the presence of F2,6BP?",
+    "hint": "Think about Km (horizontal position) and Vmax (plateau).",
+    "answer": "Curve shifts left (smaller Km) with the same Vmax; at low [S] velocity increases relative to control.",
+    "solution": "Lower Km means higher affinity, so the hyperbolic curve reaches the same Vmax but does so at lower [S] — visually a leftward shift. Vmax unchanged."
+  },
+  {
+    "id": 115,
+    "title": "MCAT Passage 1 — Enzyme Regulation Q3",
+    "difficulty": "Hard",
+    "category": "Biochemistry II",
+    "question": "A researcher studies enzyme Z, which catalyzes reaction S → P in liver cells. Enzyme Z is allosterically regulated: ATP binds an inhibitory site, while fructose-2,6-bisphosphate (F2,6BP) acts as an activator. In vitro assays show that at low substrate concentrations, addition of F2,6BP increases the apparent affinity for S (lower Km) without changing the maximum velocity. Addition of ATP decreases Vmax but does not change Km. A phosphorylation event on enzyme Z (by a kinase active during fasting) reduces F2,6BP sensitivity.Question 3: During fasting the kinase phosphorylates enzyme Z, reducing sensitivity to F2,6BP. Predict the metabolic consequence for the pathway S→P in the liver during fasting.",
+    "hint": "Fasting typically lowers glycolysis and raises gluconeogenesis; consider F2,6BP levels in fasting.",
+    "answer": "Reduced activation by F2,6BP will lower glycolytic flux through Z during fasting, contributing to decreased glycolysis and favoring gluconeogenesis.",
+    "solution": "F2,6BP is a potent activator of glycolytic enzymes; phosphorylation that reduces sensitivity to F2,6BP makes enzyme Z less active at physiological F2,6BP levels, lowering glycolytic throughput in fasting when gluconeogenesis is preferred."
+  },
+  {
+    "id": 116,
+    "title": "MCAT Passage 2 — Acid–Base Q1",
+    "difficulty": "Medium",
+    "category": "General Biology",
+    "question": "A 45-year-old man presents with shortness of breath and is found to have arterial blood gas values: pH = 7.25, PaCO₂ = 55 mm Hg, HCO₃⁻ (calculated) = 24 mM. He has a history of chronic bronchitis. No evidence of metabolic acidosis is present on initial labs.Question 1: What primary acid–base disorder does this ABG picture indicate (acute or chronic), and why?",
+    "hint": "High PaCO₂ with low pH suggests respiratory acidosis. Consider chronic bronchitis (chronic CO₂ retention) and expected HCO₃⁻ compensation.",
+    "answer": "Respiratory acidosis — likely acute on chronic respiratory acidosis because PaCO₂ is elevated and HCO₃⁻ is not fully compensated (normal HCO₃⁻ suggests acute component).",
+    "solution": "Elevated PaCO₂ (55 mm Hg) causes primary respiratory acidosis. In chronic respiratory acidosis (chronic bronchitis) kidneys elevate HCO₃⁻ to compensate; a normal HCO₃⁻ of 24 mM suggests inadequate renal compensation => acute on chronic respiratory acidosis or an acute exacerbation."
+  },
+  {
+    "id": 117,
+    "title": "MCAT Passage 2 — Acid–Base Q2",
+    "difficulty": "Hard",
+    "category": "General Biology",
+    "question": "A 45-year-old man presents with shortness of breath and is found to have arterial blood gas values: pH = 7.25, PaCO₂ = 55 mm Hg, HCO₃⁻ (calculated) = 24 mM. He has a history of chronic bronchitis. No evidence of metabolic acidosis is present on initial labs.Question 2: Using Henderson–Hasselbalch and respiratory physiology rules of compensation, estimate whether the expected renal compensation (chronic) would raise HCO₃⁻ above 24 mM for PaCO₂ = 55 mm Hg. (Short answer: yes or no, and why.)",
+    "hint": "For chronic respiratory acidosis, HCO₃⁻ increases ~4 mEq/L for every 10 mm Hg rise in PaCO₂ above 40 mm Hg.",
+    "answer": "Yes — expected chronic compensation would raise HCO₃⁻ above 24 mM (by ~6 mEq/L → ~30 mM), so a measured 24 mM suggests inadequate compensation.",
+    "solution": "PaCO₂ is 15 mm Hg above normal (55 − 40). For chronic compensation, HCO₃⁻ increases ≈4 mEq/L per 10 mm Hg rise, so ~6 mEq/L increase expected → HCO₃⁻ ≈ 24 + 6 = 30 mM. Therefore measured 24 mM is lower than expected, supporting acute on chronic exacerbation."
+  },
+  {
+    "id": 118,
+    "title": "MCAT Passage 2 — Acid–Base Q3",
+    "difficulty": "Medium",
+    "category": "General Biology",
+    "question": "A 45-year-old man presents with shortness of breath and is found to have arterial blood gas values: pH = 7.25, PaCO₂ = 55 mm Hg, HCO₃⁻ (calculated) = 24 mM. He has a history of chronic bronchitis. No evidence of metabolic acidosis is present on initial labs.Question 3: If this patient were to hyperventilate and reduce PaCO₂ to 35 mm Hg rapidly, what immediate shift in pH would you expect (qualitative)?",
+    "hint": "Lower PaCO₂ leads to respiratory alkalosis (higher pH) if metabolic compensation hasn't occurred.",
+    "answer": "pH would increase toward normal (become less acid), producing a respiratory alkalinizing effect; immediate partial correction of acidosis is expected.",
+    "solution": "Reducing PaCO₂ removes CO₂ (acidifying driver), shifting bicarbonate/CO₂ equilibrium toward less H⁺ and increasing pH. Rapid respiratory changes alter pH quickly before renal compensation."
+  },
+  {
+    "id": 119,
+    "title": "Titration Curve — Weak Acid",
+    "difficulty": "Medium",
+    "category": "Analytical Chemistry",
+    "question": "You are given a titration curve image of 50 mL of a weak monoprotic acid (HA) being titrated with 0.100 M NaOH (image_url provided). The half-equivalence point occurs at pH 4.8. Estimate the pKa of HA and explain why the equivalence point pH is >7.",
+    "hint": "At half-equivalence, pH = pKa. Weak acid titrated with strong base yields basic equivalence due to conjugate base hydrolysis.",
+    "answer": "pKa ≈ 4.8; equivalence pH >7 because the conjugate base A⁻ hydrolyzes to produce OH⁻.",
+    "solution": "At half-equivalence [HA] = [A⁻] so pH = pKa = 4.8. After neutralization, solution contains A⁻ which is basic (hydrolyzes to OH⁻), so equivalence pH is >7.",
+    "image_url": "images/titration_weak_acid.png"
+  },
+  {
+    "id": 120,
+    "title": "Enzyme Michaelis–Menten Plot",
+    "difficulty": "Medium",
+    "category": "Biochemistry II",
+    "question": "An enzyme velocity vs substrate concentration plot (image provided) shows two curves: control and after addition of an inhibitor. The inhibitor curve reaches the same Vmax but requires higher [S] to reach half-max. Identify the inhibitor type and explain.",
+    "hint": "Same Vmax, higher Km indicates competitive inhibition.",
+    "answer": "Competitive inhibitor — increases apparent Km without changing Vmax.",
+    "solution": "Competitive inhibitors compete with substrate for the active site, so higher [S] is required to reach same velocity; Vmax unchanged because high [S] outcompetes inhibitor.",
+    "image_url": "images/v_vs_s_inhibitor.png"
+  },
+  {
+    "id": 121,
+    "title": "IR Spectrum Interpretation",
+    "difficulty": "Medium",
+    "category": "Organic Chemistry",
+    "question": "An IR spectrum (image provided) shows a strong sharp peak at ~1715 cm⁻¹ and a broad strong band 2500–3300 cm⁻¹. What functional groups are present?",
+    "hint": "1715 cm⁻¹ = C=O stretch; broad 2500–3300 typical of carboxylic acid O–H.",
+    "answer": "A carboxylic acid (–COOH).",
+    "solution": "The carbonyl stretch near 1715 cm⁻¹ plus the very broad O–H band that extends to lower wavenumbers is diagnostic of carboxylic acids.",
+    "image_url": "images/ir_spectrum.png"
+  },
+  {
+    "id": 122,
+    "title": "Gel Electrophoresis — DNA Fragments",
+    "difficulty": "Medium",
+    "category": "Molecular Biology",
+    "question": "An agarose gel image shows bands at 2.0 kb, 1.0 kb, and 500 bp for treated sample, while control shows only 2.0 kb. What could explain the additional bands after restriction digest?",
+    "hint": "Consider restriction enzymes cutting at multiple sites in the plasmid or genome.",
+    "answer": "The restriction enzyme cut the original 2.0 kb fragment into smaller fragments (1.0 kb and 0.5 kb); multiple recognition sites present.",
+    "solution": "If the enzyme recognizes two sites within the 2.0 kb fragment, digestion yields smaller fragments. Multiple bands reflect discrete fragment sizes from cleavage.",
+    "image_url": "images/gel_digest.png"
+  },
+  {
+    "id": 123,
+    "title": "qPCR Amplification Plot",
+    "difficulty": "Medium",
+    "category": "Molecular Biology",
+    "question": "A qPCR amplification plot (image provided) shows sample A crosses threshold at cycle 18, sample B at cycle 21. Which sample has higher initial template, and by what factor (approx)?",
+    "hint": "Each cycle ~2-fold difference; ΔCt = 3 cycles.",
+    "answer": "Sample A has higher initial template by ≈ 2^3 = 8-fold.",
+    "solution": "Lower Ct indicates more starting template. Difference of 3 cycles corresponds to ~2^3 = 8-fold higher abundance in sample A.",
+    "image_url": "images/qpcr_plot.png"
+  },
+  {
+    "id": 124,
+    "title": "Spectrophotometry — Peak Absorbance",
+    "difficulty": "Medium",
+    "category": "Analytical Chemistry",
+    "question": "UV–Vis spectrum image shows absorbance maximum at 280 nm with high A280/A260 ratio. What does this suggest about sample purity?",
+    "hint": "Proteins absorb at 280 nm primarily due to aromatic residues; nucleic acids absorb strongly at 260 nm.",
+    "answer": "High protein content / contamination or a protein-rich sample; sample likely protein and not pure nucleic acid.",
+    "solution": "High A280 relative to A260 suggests protein presence; pure DNA has A260/A280 ≈ 1.8, so a higher A280 suggests protein contamination or a protein sample.",
+    "image_url": "images/uvvis_280.png"
+  },
+  {
+    "id": 125,
+    "title": "Enzyme Lineweaver–Burk Plot — Inhibitor Type",
+    "difficulty": "Hard",
+    "category": "Biochemistry II",
+    "question": "A Lineweaver–Burk plot image shows lines for control and inhibitor intersecting at the x-axis but different y-intercepts (inhibitor increases y-intercept). Identify inhibitor type.",
+    "hint": "Consider how Km and Vmax change and their effects on intercepts.",
+    "answer": "Noncompetitive inhibition (Vmax decreased, Km unchanged).",
+    "solution": "A noncompetitive inhibitor reduces Vmax (raising 1/Vmax on y-axis) without affecting Km (so x-intercept unchanged). Thus the lines intersect on the x-axis.",
+    "image_url": "images/lineweaver_plot.png"
+  },
+  {
+    "id": 126,
+    "title": "Titration Curve — Polyprotic Acid",
+    "difficulty": "Medium",
+    "category": "Analytical Chemistry",
+    "question": "A titration curve image for 0.050 M polyprotic acid shows two equivalence points. Explain why two equivalence points appear and what their pH ranges indicate about pKa values.",
+    "hint": "Two titratable protons yield two equivalence points; buffer regions correspond to pKa values.",
+    "answer": "Each equivalence point corresponds to neutralization of one acidic proton; midpoints between start and equivalence give pKa values; pH at each equivalence reflects strength of remaining conjugate base.",
+    "solution": "A diprotic acid has two ionizable protons; titration shows two equivalence points. The pH at half-equivalence points equals pKa1 and pKa2. If spaced well, you can estimate both pKa values from buffer plateaus.",
+    "image_url": "images/titration_polyprotic.png"
+  },
+  {
+    "id": 127,
+    "title": "Buffer Capacity After Addition of Strong Acid",
+    "difficulty": "Hard",
+    "category": "Analytical Chemistry",
+    "question": "You have 1.00 L of a buffer containing 0.200 M acetic acid and 0.100 M acetate. Calculate the pH before and after adding 0.010 mol HCl. (pKa acetic acid = 4.76).",
+    "hint": "Use Henderson–Hasselbalch initially; for addition, convert moles and recalc ratio.",
+    "answer": "Initial pH = 4.46; after HCl pH ≈ 4.39",
+    "solution": "Initial ratio [A⁻]/[HA]=0.100/0.200=0.5 → pH=4.76+log(0.5)=4.76−0.301=4.459≈4.46. Moles: HA=0.200 mol, A⁻=0.100 mol. Add 0.010 mol HCl: HCl reacts with A⁻ making HA: new HA=0.200+0.010=0.210 mol; A⁻=0.100−0.010=0.090 mol. New ratio=0.090/0.210=0.4286 → pH=4.76+log(0.4286)=4.76−0.368=4.392≈4.39."
+  },
+  {
+    "id": 128,
+    "title": "Odd-chain Fatty Acid ATP Yield",
+    "difficulty": "Hard",
+    "category": "Biochemistry I",
+    "question": "Calculate the ATP yield from complete β-oxidation and oxidation (TCA + oxidative phosphorylation) of a 15-carbon saturated fatty acid (odd-chain, 15:0). Assume P/O NADH=2.5, FADH2=1.5 and activation cost 2 ATP.",
+    "hint": "Odd-chain yields propionyl-CoA which is converted to succinyl-CoA (glucogenic) producing one additional ATP equivalent after TCA processing; compute β-oxidation cycles = (n−1)/2.",
+    "answer": "Approx ≈ 101 ATP (estimate).",
+    "solution": "For 15C: number of acetyl-CoA = 7 acetyl-CoA + 1 propionyl-CoA. β-oxidation cycles = 7 cycles producing 7 FADH2 and 7 NADH → 7*(1.5+2.5)=28 ATP. Acetyl-CoA (7) through TCA: 7×10 = 70 ATP. Propionyl-CoA processing yields ~3 ATP equivalents. Subtract 2 ATP activation → ≈ 28+70+3−2 ≈ 99–101; common accepted ≈101 depending on rounding."
+  },
+  {
+    "id": 129,
+    "title": "Design an Experiment — Enzyme Inhibition Mechanism",
+    "difficulty": "Hard",
+    "category": "Biochemistry II",
+    "question": "Design a minimal experimental plan (assays and plots) to distinguish competitive versus noncompetitive inhibition for an enzymatic inhibitor X. What data will you collect and how will you interpret it?",
+    "hint": "Measure initial velocities at multiple substrate concentrations with and without inhibitor; use Lineweaver–Burk or Michaelis–Menten analysis.",
+    "answer": "Measure v vs [S] at several [S] with and without inhibitor; plot Lineweaver–Burk: competitive shows lines intersect at y-axis (same 1/Vmax), noncompetitive intersects at x-axis (same −1/Km).",
+    "solution": "Perform enzyme assays across a range of [S] in absence and presence of fixed [inhibitor]. Plot 1/v vs 1/[S]. Competitive increases apparent Km (lines intersect at y), noncompetitive decreases Vmax (y-intercept increases) with unchanged Km."
+  },
+  {
+    "id": 130,
+    "title": "Metabolic Flux — Small Change in Enzyme Activity",
+    "difficulty": "Hard",
+    "category": "Biochemistry I",
+    "question": "A pathway has three enzymes A→B→C→D. Control analysis shows enzyme 1 contributes 10% of flux control (C₁ = 0.10), enzyme 2 contributes 70% and enzyme 3 contributes 20%. If you increase the activity of enzyme 1 by 100% (double its activity), what approximate percent change in steady-state pathway flux would you expect?",
+    "hint": "Flux change ≈ control coefficient × fractional change in enzyme activity.",
+    "answer": "Approximately 10% increase in flux (0.10 × 100% = 10%).",
+    "solution": "ΔJ/J ≈ C_i × Δv_i/v_i = 0.10 × 1 = 0.10 → 10% increase in flux."
+  },
+  {
+    "id": 131,
+    "title": "Lineweaver–Burk Data Calculation",
+    "difficulty": "Hard",
+    "category": "Biochemistry II",
+    "question": "Given two data points for an enzyme assay: at [S]=2 mM, v=40 μM/min; at [S]=8 mM, v=80 μM/min. Use these to estimate Km and Vmax assuming Michaelis–Menten kinetics.",
+    "hint": "Use Michaelis–Menten form: v = Vmax[S]/(Km + [S]). Solve two equations for two unknowns.",
+    "answer": "Vmax ≈ 120 μM/min; Km ≈ 4 mM (approx).",
+    "solution": "From equations derive Km = 4 mM; then Vmax = 120 μM/min (see algebraic steps)."
+  },
+  {
+    "id": 132,
+    "title": "Coupled Reaction — ΔG and Keq",
+    "difficulty": "Hard",
+    "category": "Biochemistry I",
+    "question": "Reaction A ↔ B has ΔG°′ = +7.0 kJ/mol. Reaction B ↔ C has ΔG°′ = −15.0 kJ/mol. Can A be converted to C spontaneously when coupled? Calculate overall ΔG°′ and comment.",
+    "hint": "ΔG°′ total = sum of component ΔG°′; spontaneous if total ΔG°′ < 0.",
+    "answer": "Overall ΔG°′ = −8.0 kJ/mol; yes, coupled reaction is spontaneous.",
+    "solution": "Sum ΔG°′: +7.0 + (−15.0) = −8.0 kJ/mol → negative → spontaneous."
+  } 
 ]
