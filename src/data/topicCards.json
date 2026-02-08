@@ -1100,7 +1100,7 @@
           "id": "fatty-acid-beta-oxidation",
           "title": "Fatty Acid β-Oxidation",
           "summary": "Stepwise shortening of fatty acids to acetyl-CoA with FAD/NAD+ reduction.",
-          "details": "\\[\\begin{aligned}\\textbf{Fatty Acid \\beta-oxidation (overview)} \\\\[6pt] & \\text{Activation: }\\;\\mathrm{FA + CoA \\rightarrow Acyl{-}CoA\\ (Acyl{-}CoA\\ synthetase;\\ ATP \\rightarrow AMP)} \\\\ & \\text{Transport: carnitine shuttle (CPT1/CPT2); CPT1 inhibited by malonyl{-}CoA} \\\\ & \\text{Cycle (per 2C removed): dehydrogenation (FAD \\rightarrow FADH_2) \\rightarrow hydration \\rightarrow dehydrogenation (NAD^+ \\rightarrow NADH) \\rightarrow thiolysis (acetyl{-}CoA produced)} \\end{aligned}\\]",
+          "details": "\\[\\begin{aligned}\\textbf{Fatty Acid \\beta\\text{-}Oxidation (overview)} \\\\[6pt] 1.\\;& \\text{Activation: }\\mathrm{FA + CoA \\rightarrow Acyl\\text{-}CoA} \\\\ & \\quad (\\text{Acyl\\text{-}CoA synthetase; ATP} \\rightarrow \\text{AMP}) \\\\ 2.\\;& \\text{Transport: Carnitine shuttle (CPT1/CPT2); CPT1 inhibited by malonyl\\text{-}CoA} \\\\ 3.\\;& \\text{Cycle (per 2C removed):} \\\\ & \\text{Dehydrogenation (FAD} \\rightarrow \\text{FADH}_2) \\\\ & \\rightarrow \\text{Hydration} \\\\ & \\rightarrow \\text{Dehydrogenation (NAD}^+ \\rightarrow \\text{NADH)} \\\\ & \\rightarrow \\text{Thiolysis (acetyl\\text{-}CoA released)} \\end{aligned}\\]",
           "render": "katex",
           "important": false
         },
