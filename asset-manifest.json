@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/BiochemReact/static/css/main.1c5ff41e.css",
-    "main.js": "/BiochemReact/static/js/main.7dc50448.js",
+    "main.css": "/BiochemReact/static/css/main.82a678e7.css",
+    "main.js": "/BiochemReact/static/js/main.61968913.js",
     "static/media/KaTeX_AMS-Regular.ttf": "/BiochemReact/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/KaTeX_Main-Regular.ttf": "/BiochemReact/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
     "static/media/KaTeX_Main-Bold.ttf": "/BiochemReact/static/media/KaTeX_Main-Bold.8169508bf58f8bd92ad8.ttf",
@@ -63,11 +63,11 @@
     "static/media/KaTeX_Size3-Regular.woff": "/BiochemReact/static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
     "static/media/KaTeX_Size3-Regular.woff2": "/BiochemReact/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/BiochemReact/index.html",
-    "main.1c5ff41e.css.map": "/BiochemReact/static/css/main.1c5ff41e.css.map",
-    "main.7dc50448.js.map": "/BiochemReact/static/js/main.7dc50448.js.map"
+    "main.82a678e7.css.map": "/BiochemReact/static/css/main.82a678e7.css.map",
+    "main.61968913.js.map": "/BiochemReact/static/js/main.61968913.js.map"
   },
   "entrypoints": [
-    "static/css/main.1c5ff41e.css",
-    "static/js/main.7dc50448.js"
+    "static/css/main.82a678e7.css",
+    "static/js/main.61968913.js"
   ]
 }
