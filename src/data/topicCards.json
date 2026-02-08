@@ -1060,70 +1060,80 @@
           "id": "glycolysis-map",
           "title": "Glycolysis — Map & Key Enzymes",
           "summary": "Step-by-step map of glycolysis highlighting regulatory enzymes and flux points.",
-          "details": "10-step pathway converting glucose → pyruvate. Highlights: hexokinase, PFK-1 (major rate-limiting step), pyruvate kinase. Shows ATP/NADH stoichiometry and branch points to PPP and fermentation.",
+          "details": "\\[\\begin{aligned}\\textbf{Glycolysis (10 steps)} \\\\[6pt] 1.\\;& \\mathrm{Glucose} \\rightarrow \\mathrm{G6P} \\quad (\\text{Hexokinase / Glucokinase}) \\\\ 2.\\;& \\mathrm{G6P} \\leftrightarrow \\mathrm{F6P} \\\\ 3.\\;& \\mathrm{F6P} \\rightarrow \\mathrm{F1,6BP} \\quad (\\text{PFK-1; rate-limiting, ATP used}) \\\\ 4.\\;& \\mathrm{F1,6BP} \\rightarrow \\mathrm{DHAP} + \\mathrm{G3P} \\\\ 5.\\;& \\mathrm{DHAP} \\leftrightarrow \\mathrm{G3P} \\\\ 6.\\;& \\mathrm{G3P} \\rightarrow 1,3\\text{-}\\mathrm{BPG} \\quad (\\text{GAPDH; } \\mathrm{NAD^+ \\rightarrow NADH}) \\\\ 7.\\;& 1,3\\text{-}\\mathrm{BPG} \\rightarrow 3\\text{-}\\mathrm{PG} \\quad (\\text{PGK; ATP formed}) \\\\ 8.\\;& 3\\text{-}\\mathrm{PG} \\rightarrow 2\\text{-}\\mathrm{PG} \\\\ 9.\\;& 2\\text{-}\\mathrm{PG} \\rightarrow \\mathrm{PEP} \\\\ 10.\\;& \\mathrm{PEP} \\rightarrow \\mathrm{Pyruvate} \\quad (\\text{Pyruvate kinase; ATP formed}) \\\\[6pt] \\textbf{Net:}\\;& \\mathbf{2\\ ATP},\\; 2\\ \\mathrm{NADH},\\; 2\\ \\mathrm{Pyruvate} \\end{aligned}\\]",
+          "render": "katex",
           "important": true
         },
         {
           "id": "tca-cycle-map",
           "title": "TCA / Citric Acid Cycle",
           "summary": "Complete TCA cycle map with inputs, outputs and regulation nodes.",
-          "details": "Entry of acetyl-CoA, 8 enzymatic steps, production of 3 NADH, 1 FADH2, 1 GTP per turn. Emphasizes regulation by citrate synthase, isocitrate dehydrogenase, and α-ketoglutarate dehydrogenase.",
+          "details": "\\[\\begin{aligned}\\textbf{TCA / Citric Acid Cycle (per acetyl-CoA)} \\\\[6pt] & \\mathrm{Entry:\\ Pyruvate \\rightarrow Acetyl{-}CoA\\ (PDH;\\ CO_2\\ released;\\ NAD^+ \\rightarrow NADH)} \\\\ 1.\\;& \\mathrm{Acetyl{-}CoA + OAA \\rightarrow Citrate\\ (Citrate\\ synthase)} \\\\ 2.\\;& \\mathrm{Citrate \\leftrightarrow Isocitrate\\ (Aconitase)} \\\\ 3.\\;& \\mathrm{Isocitrate \\rightarrow \\alpha{-}KG\\ (Isocitrate\\ dehydrogenase;\\ NAD^+ \\rightarrow NADH;\\ CO_2)} \\\\ 4.\\;& \\mathrm{\\alpha{-}KG \\rightarrow Succinyl{-}CoA\\ (\\alpha{-}KGDH;\\ NAD^+ \\rightarrow NADH;\\ CO_2)} \\\\ 5.\\;& \\mathrm{Succinyl{-}CoA \\rightarrow Succinate\\ (Succinyl{-}CoA\\ synthetase;\\ GTP)} \\\\ 6.\\;& \\mathrm{Succinate \\rightarrow Fumarate\\ (Succinate\\ dehydrogenase;\\ FAD \\rightarrow FADH_2)} \\\\ 7.\\;& \\mathrm{Fumarate \\rightarrow Malate\\ (Fumarase)} \\\\ 8.\\;& \\mathrm{Malate \\rightarrow OAA\\ (Malate\\ dehydrogenase;\\ NAD^+ \\rightarrow NADH)} \\\\[6pt] \\text{Per turn: }& \\;3\\ \\mathrm{NADH},\\;1\\ \\mathrm{FADH_2},\\;1\\ \\mathrm{GTP} \\end{aligned}\\]",
+          "render": "katex",
           "important": true
         },
         {
           "id": "etc-oxphos-map",
           "title": "Electron Transport & Oxidative Phosphorylation",
           "summary": "Complexes I–IV, proton pumping and ATP synthase coupling.",
-          "details": "Electron flow from NADH/FADH2 through complexes I–IV; proton motive force (ΔΨ, ΔpH) used by ATP synthase. Typical P/O ratios and ROS generation brief.",
+          "details": "\\[\\begin{aligned}\\textbf{ETC \\& OxPhos — key steps} \\\\[6pt] & \\mathrm{Complex\\ I:\\ NADH \\rightarrow NAD^+;\\ electrons \\rightarrow CoQ;\\ pumps\\ protons} \\\\ & \\mathrm{Complex\\ II:\\ Succinate \\rightarrow Fumarate;\\ FADH_2 \\rightarrow CoQ;\\ (no\\ proton\\ pumping)} \\\\ & \\mathrm{CoQ\\ shuttles\\ electrons\\ to\\ Complex\\ III} \\\\ & \\mathrm{Complex\\ III:\\ transfers\\ to\\ Cytochrome\\ c;\\ pumps\\ protons} \\\\ & \\mathrm{Cytochrome\\ c:\\ mobile\\ electron\\ carrier} \\\\ & \\mathrm{Complex\\ IV:\\ O_2 \\rightarrow H_2O;\\ pumps\\ protons\\ (terminal\\ acceptor)} \\\\ & \\mathrm{ATP\\ synthase:\\ proton\\ return \\rightarrow ADP + Pi \\rightarrow ATP} \\\\[6pt] \\text{Note: proton motive force }(\\Delta\\Psi + \\Delta pH) ;\\ \\text{ROS formed as side-reactions.} \\end{aligned}\\]",
+          "render": "katex",
           "important": true
         },
         {
           "id": "pentose-phosphate-pathway",
           "title": "Pentose Phosphate Pathway (PPP)",
           "summary": "NADPH & ribose-5-phosphate production and oxidative/non-oxidative branches.",
-          "details": "Oxidative branch generates NADPH for biosynthesis; non-oxidative interconverts sugars for nucleotide biosynthesis. Links to detoxification and lipid synthesis.",
+          "details": "\\[\\begin{aligned}\\textbf{PPP — key branches} \\\\[6pt] & \\text{Oxidative: }\\;\\mathrm{G6P \\rightarrow 6{-}phosphogluconate \\rightarrow Ribulose{-}5{-}P\\ (G6PD;\\ produces\\ NADPH)} \\\\ & \\text{Non-oxidative: transketolase / transaldolase interconversions; supplies ribose-5-P or returns carbons to glycolysis} \\end{aligned}\\]",
+          "render": "katex",
           "important": false
         },
         {
           "id": "urea-cycle",
           "title": "Urea Cycle & Nitrogen Disposal",
           "summary": "Ammonia detoxification and urea synthesis pathway.",
-          "details": "Ornithine cycle in liver; key steps: carbamoyl phosphate synthetase I, ornithine transcarbamylase. Shows inputs from amino-acid catabolism and fumarate link to TCA.",
+          "details": "\\[\\begin{aligned}\\textbf{Urea Cycle (hepatic)} \\\\[6pt] 1.\\;& \\mathrm{NH_4^+ + HCO_3^- \\rightarrow Carbamoyl\\ phosphate\\ (CPS\\text{ I};\\ ATP)} \\\\ 2.\\;& \\mathrm{Carbamoyl\\ phosphate + Ornithine \\rightarrow Citrulline\\ (OTC)} \\\\ 3.\\;& \\mathrm{Citrulline + Aspartate \\rightarrow Argininosuccinate\\ (Argininosuccinate\\ synthetase;\\ ATP)} \\\\ 4.\\;& \\mathrm{Argininosuccinate \\rightarrow Arginine + Fumarate\\ (links\\ to\\ TCA)} \\\\ 5.\\;& \\mathrm{Arginine \\rightarrow Ornithine + Urea\\ (Arginase)} \\end{aligned}\\]",
+          "render": "katex",
           "important": false
         },
         {
           "id": "fatty-acid-beta-oxidation",
           "title": "Fatty Acid β-Oxidation",
           "summary": "Stepwise shortening of fatty acids to acetyl-CoA with FAD/NAD+ reduction.",
-          "details": "Four-step cycle (dehydrogenation, hydration, dehydrogenation, thiolysis) producing acetyl-CoA each round; per-cycle ATP yield overview and regulation by malonyl-CoA on CPT1.",
+          "details": "\\[\\begin{aligned}\\textbf{Fatty Acid \\beta-oxidation (overview)} \\\\[6pt] & \\text{Activation: }\\;\\mathrm{FA + CoA \\rightarrow Acyl{-}CoA\\ (Acyl{-}CoA\\ synthetase;\\ ATP \\rightarrow AMP)} \\\\ & \\text{Transport: carnitine shuttle (CPT1/CPT2); CPT1 inhibited by malonyl{-}CoA} \\\\ & \\text{Cycle (per 2C removed): dehydrogenation (FAD \\rightarrow FADH_2) \\rightarrow hydration \\rightarrow dehydrogenation (NAD^+ \\rightarrow NADH) \\rightarrow thiolysis (acetyl{-}CoA produced)} \\end{aligned}\\]",
+          "render": "katex",
           "important": false
         },
         {
           "id": "fatty-acid-synthesis",
           "title": "Fatty Acid Synthesis & Lipogenesis",
           "summary": "Fatty-acid chain assembly from acetyl-CoA using NADPH.",
-          "details": "Acetyl-CoA carboxylase (ACC) commits to lipogenesis; fatty acid synthase complex elongates chain using NADPH (from PPP and malic enzyme).",
+          "details": "\\[\\begin{aligned}\\textbf{Fatty Acid Synthesis (cytosol)} \\\\[6pt] & \\text{Citrate shuttle: citrate exported to cytosol \\rightarrow ATP{-}citrate lyase \\rightarrow acetyl{-}CoA} \\\\ & \\text{Commitment: acetyl{-}CoA \\rightarrow malonyl{-}CoA (ACC; rate-limiting; regulated)} \\\\ & \\text{Elongation: Fatty Acid Synthase catalyzes iterative 2-C additions; NADPH consumed (PPP, malic enzyme sources)} \\end{aligned}\\]",
+          "render": "katex",
           "important": false
         },
         {
           "id": "gluconeogenesis-map",
           "title": "Gluconeogenesis & Regulation",
           "summary": "Pathway for glucose synthesis and control points opposing glycolysis.",
-          "details": "Key bypass enzymes: pyruvate carboxylase, PEP carboxykinase, FBPase, and glucose-6-phosphatase. Emphasizes hormonal regulation (insulin/glucagon) and energetic cost.",
+          "details": "\\[\\begin{aligned}\\textbf{Gluconeogenesis — bypasses of glycolysis} \\\\[6pt] & \\mathrm{Pyruvate \\rightarrow Oxaloacetate\\ (Pyruvate\\ carboxylase;\\ ATP;\\ mitochondrial;\\ activated\\ by\\ acetyl{-}CoA)} \\\\ & \\mathrm{Oxaloacetate \\rightarrow PEP\\ (PEPCK;\\ GTP)} \\\\ & \\mathrm{Fructose{-}1,6{-}BP \\rightarrow Fructose{-}6{-}P\\ (FBPase)} \\\\ & \\mathrm{Glucose{-}6{-}P \\rightarrow Glucose\\ (Glucose{-}6{-}phosphatase;\\ liver/kidney)} \\\\[6pt] \\text{Energetic cost: }& \\approx 6\\;\\text{ATP equivalents per glucose} \\end{aligned}\\]",
+          "render": "katex",
           "important": true
         },
         {
           "id": "amino-acid-metabolism",
           "title": "Amino Acid Catabolism & Transaminations",
           "summary": "Major routes for amino-acid breakdown and nitrogen shuttling.",
-          "details": "Transamination reactions funnel amino groups to glutamate; oxidative deamination by glutamate dehydrogenase; common entry points to TCA (e.g., α-ketoglutarate, oxaloacetate).",
+          "details": "\\[\\begin{aligned}\\textbf{Amino Acid Catabolism — key reactions} \\\\[6pt] & \\text{Transamination: }\\;\\mathrm{AA + \\alpha{-}KG \\rightleftharpoons \\alpha{-}ketoacid + Glutamate\\ (Aminotransferases; e.g., ALT/AST)} \\\\ & \\text{Oxidative deamination: }\\;\\mathrm{Glutamate \\rightarrow \\alpha{-}KG + NH_4^+\\ (Glutamate\\ dehydrogenase)} \\\\ & \\text{Carbon skeletons funnel into TCA at multiple entry points (pyruvate, Acetyl{-}CoA, \\alpha{-}KG, succinyl{-}CoA, fumarate, OAA)} \\end{aligned}\\]",
+          "render": "katex",
           "important": false
         },
         {
           "id": "integrated-metabolic-maps",
           "title": "Integrated Metabolic Maps (Interactive)",
           "summary": "Clickable maps showing cross-talk between pathways and compartmentalization.",
-          "details": "Interactive resources that link glycolysis, TCA, PPP, FA metabolism and amino-acid catabolism; indicate cellular compartments (cytosol, mitochondria) and transport shuttles (malate/aspartate).",
+          "details": "\\[\\begin{aligned}\\textbf{Integrated Map — display recommendations} \\\\[6pt] & \\text{Show compartments: cytosol vs mitochondrion; indicate citrate/malate shuttles} \\\\ & \\text{Mark branch points: G6P (PPP), Citrate (FA synthesis), Pyruvate (TCA/alanine/lactate)} \\\\ & \\text{Label transporters: GLUT, MPC (mitochondrial pyruvate carrier), CPT1/CPT2} \\end{aligned}\\]",
+          "render": "katex",
           "important": false
         }
       ]

@@ -6,6 +6,7 @@ import TopicCard from "../components/TopicCard";
 import categoriesData from "../data/categories.json";
 import topicCardsData from "../data/topicCards.json";
 
+
 const CategoryPage = () => {
   const { categoryId } = useParams();
   const category = categoriesData.categories.find((c) => c.id === categoryId);

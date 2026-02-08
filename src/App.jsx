@@ -3,6 +3,7 @@ import { HashRouter } from 'react-router-dom';
 import Sidebar from './components/SideBar';
 import { useState } from 'react'
 import AppRouter from './AppRouter';
+import "katex/dist/katex.min.css";
 
 function App() {
   const [collapsed, setCollapsed] = useState(false);

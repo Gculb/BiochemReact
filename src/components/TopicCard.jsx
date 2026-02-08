@@ -1,67 +1,58 @@
 import React, { useState } from "react";
 import { InlineMath, BlockMath } from "react-katex";
-import "katex/dist/katex.min.css";
 import "./TopicCard.css";
 
-// Utility function to parse text and render math expressions
+const stripKatexDelimiters = (latex) =>
+  latex
+    .replace(/^\\\[/, "")
+    .replace(/\\\]$/, "")
+    .trim();
+ 
 const renderWithMath = (text) => {
-  if (!text) return text;
+  if (!text) return null;
 
-  const blockMathRegex = /\$\$(.*?)\$\$/g;
+  // FULL block LaTeX (your metabolic pathways)
+  if (text.trim().startsWith("\\begin{")) {
+    return <BlockMath math={text} />;
+  }
+
+  const blockMathRegex = /\$\$(.*?)\$\$/gs;
   const inlineMathRegex = /\$(.*?)\$/g;
-  
+
   const parts = [];
   let lastIndex = 0;
   let match;
 
-  // First pass: extract block math
-  const blockMatches = [];
   while ((match = blockMathRegex.exec(text)) !== null) {
-    blockMatches.push({
-      start: match.index,
-      end: match.index + match[0].length,
-      content: match[1],
-      type: "block"
-    });
-  }
-
-  // Second pass: extract inline math (avoiding block math)
-  const inlineMatches = [];
-  blockMathRegex.lastIndex = 0;
-  while ((match = inlineMathRegex.exec(text)) !== null) {
-    const isInsideBlock = blockMatches.some(
-      b => match.index >= b.start && match.index < b.end
+    if (match.index > lastIndex) {
+      parts.push(text.substring(lastIndex, match.index));
+    }
+    parts.push(
+      <BlockMath key={match.index} math={match[1]} />
     );
-    if (!isInsideBlock) {
-      inlineMatches.push({
-        start: match.index,
-        end: match.index + match[0].length,
-        content: match[1],
-        type: "inline"
-      });
-    }
+    lastIndex = match.index + match[0].length;
   }
 
-  const allMatches = [...blockMatches, ...inlineMatches].sort((a, b) => a.start - b.start);
+  const remaining = text.substring(lastIndex);
+  let inlineLast = 0;
 
-  allMatches.forEach((m, idx) => {
-    if (m.start > lastIndex) {
-      parts.push(text.substring(lastIndex, m.start));
+  while ((match = inlineMathRegex.exec(remaining)) !== null) {
+    if (match.index > inlineLast) {
+      parts.push(remaining.substring(inlineLast, match.index));
     }
-    if (m.type === "block") {
-      parts.push(<BlockMath key={`math-${idx}`}>{m.content}</BlockMath>);
-    } else {
-      parts.push(<InlineMath key={`math-${idx}`}>{m.content}</InlineMath>);
-    }
-    lastIndex = m.end;
-  });
-
-  if (lastIndex < text.length) {
-    parts.push(text.substring(lastIndex));
+    parts.push(
+      <InlineMath key={`inline-${match.index}`} math={match[1]} />
+    );
+    inlineLast = match.index + match[0].length;
   }
 
-  return parts.length > 0 ? parts : text;
+  if (inlineLast < remaining.length) {
+    parts.push(remaining.substring(inlineLast));
+  }
+
+  return parts;
 };
+
 
 const TopicCard = ({ topic, categoryColor }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -104,11 +95,13 @@ const TopicCard = ({ topic, categoryColor }) => {
           {topic.summary && (
             <p className="topic-card__summary">{renderWithMath(topic.summary)}</p>
           )}
-          {topic.details && (
-            <div className="topic-card__details">
-              <p>{renderWithMath(topic.details)}</p>
-            </div>
-          )}
+          <div className="topic-card__details">
+            {topic.render === "katex" ? (
+              <BlockMath math={stripKatexDelimiters(topic.details)} />
+            ) : (
+              renderWithMath(topic.details)
+            )}
+          </div>
         </div>
       )}
     </article>
