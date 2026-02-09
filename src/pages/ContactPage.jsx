@@ -64,7 +64,7 @@ const ContactPage = () => {
       console.error("Email error:", error);
       
       // Fallback: Open email client
-      const mailtoLink = `mailto:grant.culbertson@example.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      const mailtoLink = `mailto:grantc24@vt.edu?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )}`;
       
@@ -99,7 +99,7 @@ const ContactPage = () => {
             <div className="info-item">
               <h4>GitHub</h4>
               <p>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/Gculb" target="_blank" rel="noopener noreferrer">
                   github.com
                 </a>
               </p>
@@ -107,7 +107,7 @@ const ContactPage = () => {
             <div className="info-item">
               <h4>LinkedIn</h4>
               <p>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/grant-c-017666197/" target="_blank" rel="noopener noreferrer">
                   linkedin.com
                 </a>
               </p>

@@ -352,6 +352,126 @@
       "category": "Energy Production",
       "definition": "The synthesis of ATP driven by the proton gradient across the inner mitochondrial membrane. Proposed by Peter Mitchell.",
       "example": "The electrochemical potential of ~180 mV drives ATP synthase to produce ATP."
-    }
+    },
+      {
+    "term": "Glycolytic Enzymes",
+    "category": "Metabolism / Enzyme Kinetics",
+    "definition": "Key enzymes that catalyze steps in glycolysis, often regulated allosterically or via covalent modification.",
+    "example": "Hexokinase, phosphofructokinase-1 (PFK-1), and pyruvate kinase are rate-limiting glycolytic enzymes."
+  },
+  {
+    "term": "Pyruvate Dehydrogenase Complex (PDC)",
+    "category": "Metabolism / Metabolic Intermediates",
+    "definition": "A multi-enzyme complex that converts pyruvate to acetyl-CoA, linking glycolysis to the citric acid cycle. Requires TPP, lipoamide, FAD, CoA, and NAD+.",
+    "example": "Pyruvate + CoA + NAD⁺ → Acetyl-CoA + CO₂ + NADH."
+  },
+  {
+    "term": "Ketogenesis",
+    "category": "Metabolism",
+    "definition": "The formation of ketone bodies (acetoacetate, β-hydroxybutyrate, acetone) in the liver during prolonged fasting or low-carbohydrate intake.",
+    "example": "Fatty acids are converted to acetyl-CoA, which is then used to produce ketone bodies for energy in the brain."
+  },
+  {
+    "term": "Glucagon",
+    "category": "Hormones / Metabolic Regulation",
+    "definition": "A peptide hormone secreted by pancreatic α-cells that raises blood glucose by stimulating glycogenolysis and gluconeogenesis.",
+    "example": "During fasting, glucagon promotes liver glycogen breakdown to maintain plasma glucose."
+  },
+  {
+    "term": "Insulin",
+    "category": "Hormones / Metabolic Regulation",
+    "definition": "A peptide hormone secreted by pancreatic β-cells that lowers blood glucose by promoting glucose uptake, glycogenesis, and lipogenesis.",
+    "example": "After a carbohydrate-rich meal, insulin stimulates GLUT4-mediated glucose uptake in muscle and adipose tissue."
+  },
+  {
+    "term": "AMP-Activated Protein Kinase (AMPK)",
+    "category": "Metabolic Regulation",
+    "definition": "A cellular energy sensor activated by high AMP/ATP ratio; stimulates catabolic pathways and inhibits anabolic pathways to restore energy balance.",
+    "example": "AMPK activates glucose uptake and fatty acid oxidation during low-energy states."
+  },
+  {
+    "term": "G-Protein Coupled Receptors (GPCRs)",
+    "category": "Cell Signaling",
+    "definition": "Membrane receptors that activate heterotrimeric G-proteins upon ligand binding, initiating second-messenger signaling (cAMP, IP₃/DAG).",
+    "example": "Epinephrine binds β-adrenergic receptors to activate adenylate cyclase via Gs proteins."
+  },
+  {
+    "term": "Second Messengers",
+    "category": "Cell Signaling",
+    "definition": "Intracellular molecules that relay signals from receptors to target proteins, amplifying the signal. Common examples include cAMP, cGMP, IP₃, DAG, and Ca²⁺.",
+    "example": "cAMP activates protein kinase A (PKA), which phosphorylates target proteins."
+  },
+  {
+    "term": "Protein Kinase / Phosphatase",
+    "category": "Protein Modification / Enzyme Regulation",
+    "definition": "Protein kinases add phosphate groups to proteins; phosphatases remove them. These reversible modifications regulate protein activity and signaling pathways.",
+    "example": "PKA phosphorylates glycogen phosphorylase kinase, activating glycogen breakdown."
+  },
+  {
+    "term": "Oxidative Stress",
+    "category": "Cellular Biology / Redox Biology",
+    "definition": "Imbalance between reactive oxygen species (ROS) production and antioxidant defense, leading to cellular damage.",
+    "example": "Superoxide dismutase converts superoxide radicals to hydrogen peroxide, reducing oxidative stress."
+  },
+  {
+    "term": "Pentose Phosphate Pathway (PPP)",
+    "category": "Metabolism",
+    "definition": "A cytosolic pathway that generates NADPH for biosynthesis and ribose-5-phosphate for nucleotide synthesis.",
+    "example": "Glucose-6-phosphate → NADPH + ribose-5-phosphate; important in rapidly dividing cells."
+  },
+  {
+    "term": "Fructose-2,6-Bisphosphate",
+    "category": "Metabolic Regulation",
+    "definition": "A potent allosteric activator of phosphofructokinase-1 (glycolysis) and inhibitor of fructose-1,6-bisphosphatase (gluconeogenesis).",
+    "example": "High F2,6BP levels favor glycolysis over gluconeogenesis in the fed state."
+  },
+  {
+    "term": "Acid-Base Regulation",
+    "category": "Physiology / Solution Chemistry",
+    "definition": "The control of blood pH (~7.4) through buffer systems, respiratory CO₂ removal, and renal H⁺/HCO₃⁻ handling.",
+    "example": "Carbonic anhydrase facilitates CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻."
+  },
+  {
+    "term": "Zymogen",
+    "category": "Enzyme Regulation",
+    "definition": "An inactive precursor of an enzyme that requires cleavage to become active. Prevents uncontrolled enzymatic activity.",
+    "example": "Trypsinogen (from pancreas) is converted to trypsin in the small intestine."
+  },
+  {
+    "term": "Ubiquitination",
+    "category": "Protein Modification",
+    "definition": "Covalent attachment of ubiquitin to lysine residues on proteins, targeting them for degradation via the proteasome.",
+    "example": "Misfolded proteins in the ER are ubiquitinated and degraded by the 26S proteasome."
+  },
+  {
+    "term": "Signal Peptide",
+    "category": "Protein Targeting",
+    "definition": "Short N-terminal amino acid sequence that directs a nascent protein to the ER for secretion or membrane insertion.",
+    "example": "Secreted hormones like insulin are synthesized with an ER signal peptide."
+  },
+  {
+    "term": "Lipid Rafts",
+    "category": "Membrane Structure",
+    "definition": "Cholesterol- and sphingolipid-rich microdomains in the plasma membrane that organize signaling molecules.",
+    "example": "Receptors and G-proteins localize in lipid rafts to enhance signaling efficiency."
+  },
+  {
+    "term": "Chaperone Proteins",
+    "category": "Protein Folding",
+    "definition": "Proteins that assist the correct folding of other proteins, prevent aggregation, and aid in refolding misfolded proteins.",
+    "example": "Heat shock proteins (Hsp70, Hsp90) assist folding under stress conditions."
+  },
+  {
+    "term": "Glycosylation",
+    "category": "Protein Modification",
+    "definition": "Addition of carbohydrate groups to proteins (N-linked or O-linked), critical for protein folding, stability, and cell recognition.",
+    "example": "Erythropoietin is N-glycosylated, which increases its half-life in circulation."
+  },
+  {
+    "term": "Lactate Dehydrogenase (LDH)",
+    "category": "Metabolism / Enzyme",
+    "definition": "Enzyme that interconverts pyruvate and lactate, regenerating NAD⁺ under anaerobic conditions.",
+    "example": "Pyruvate + NADH ⇌ Lactate + NAD⁺ in muscle during intense exercise."
+  }
   ]
 }
