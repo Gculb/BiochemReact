@@ -190,6 +190,43 @@
   .resetButton:active {
     transform: scale(0.97);
   }
+  /* ---------- MULTIPLE CHOICE ---------- */
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+    .choiceButton {
+      background: #2c3e50;
+      color: #ecf0f1;
+      border: 1px solid #34495e;
+      border-radius: 10px;
+      padding: 10px 14px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .choiceButton:hover {
+      background: #34495e;
+    }
+
+    .choiceButton.selected {
+      border-color: #4ea0f2;
+      box-shadow: 0 0 0 2px rgba(78,160,242,0.25);
+    }
+
+    .choiceButton.correct {
+      background: #2ecc71;
+      color: #0b3d1e;
+    }
+
+    .choiceButton.incorrect {
+      background: #8e2b2b;
+      color: #fbecec;
+    }
 
   .shuffleButton {
     margin: 0.75rem 0 1.5rem;

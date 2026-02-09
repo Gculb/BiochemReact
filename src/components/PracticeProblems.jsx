@@ -1,17 +1,33 @@
 import React, { useState, useMemo } from "react";
 import problems from "../data/problems.json";
+import multipleChoiceProblems from "../data/multipleChoiceProblems.json"
 import "./PracticeProblems.css"
 
 const PracticeProblems = () => {
   const [visible, setVisible] = useState({});
   const [count, setCount] = useState(5);
+  const [selectedAnswers, setSelectedAnswers] = useState({});
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [isShuffled, setIsShuffled] = useState(false);
   const [completed, setCompleted] = useState(() => {
     const saved = localStorage.getItem("completedProblems");
     return saved ? JSON.parse(saved) : {};
   });
+const selectChoice = (problemId, choiceLabel, correctChoice) => {
+  setSelectedAnswers((prev) => ({
+    ...prev,
+    [problemId]: choiceLabel,
+  }));
+
   
+  if (choiceLabel === correctChoice && !completed[problemId]) {
+    toggleCompleted(problemId);
+  }
+};
+
+const allProblems = useMemo(() => {
+  return [...problems, ...multipleChoiceProblems];
+}, []);
   const toggle = (id, field) => {
     setVisible((prev) => ({
       ...prev,
@@ -41,16 +57,17 @@ const PracticeProblems = () => {
   };
 
 
-  const categories = useMemo(() => {
-    const cats = ["all", ...new Set(problems.map((p) => p.category))];
-    return cats.sort((a, b) => (a === "all" ? -1 : b === "all" ? 1 : a.localeCompare(b)));
-  }, []);
+const categories = useMemo(() => {
+  const cats = ["all", ...new Set(allProblems.map((p) => p.category))];
+  return cats.sort((a, b) => (a === "all" ? -1 : b === "all" ? 1 : a.localeCompare(b)));
+}, []);
 
-  const filteredProblems = useMemo(() => {
-    return problems.filter((p) =>
-      selectedCategory === "all" || p.category === selectedCategory
-    );
-  }, [selectedCategory]);
+// Filtered problems
+const filteredProblems = useMemo(() => {
+  return allProblems.filter(
+    (p) => selectedCategory === "all" || p.category === selectedCategory
+  );
+}, [selectedCategory, allProblems]);
 
   const displayProblems = useMemo(() => {
     if (!isShuffled) return filteredProblems;
@@ -134,7 +151,32 @@ const PracticeProblems = () => {
               alt={`${p.title} diagram`}
             />
           </div>
+
         )}
+      {p.type === "multiple_choice" && (
+        <div className="choices">
+          {p.choices.map((c) => {
+            const selected = selectedAnswers[p.id] === c.label;
+            const isCorrect = c.label === p.correct_choice;
+
+            return (
+              <button
+                key={c.label}
+                className={`choiceButton
+                  ${selected && isCorrect ? "correct" : ""}
+                  ${selected && !isCorrect ? "incorrect" : ""}
+                `}
+                onClick={() => selectChoice(p.id, c.label, p.correct_choice)}
+              >
+                <strong>{c.label}.</strong> {c.text}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+
+
           {/* Hint button */}
           <button
             className="hintButton"
@@ -176,11 +218,22 @@ const PracticeProblems = () => {
             </button>
           {visible[p.id]?.solution && (
             <div className="solution">
-              <strong>Answer:</strong> {p.answer}
-              <br />
-              <strong>Explanation:</strong> {p.solution}
+              {p.type === "multiple_choice" ? (
+                <>
+                  <strong>Correct Answer:</strong> {p.correct_choice}
+                  <br />
+                  <strong>Explanation:</strong> {p.solution}
+                </>
+              ) : (
+                <>
+                  <strong>Answer:</strong> {p.answer}
+                  <br />
+                  <strong>Explanation:</strong> {p.solution}
+                </>
+              )}
             </div>
           )}
+
         </div>
       ))}
     </div>

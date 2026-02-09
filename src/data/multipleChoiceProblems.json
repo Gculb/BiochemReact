@@ -1,0 +1,190 @@
+[
+  {
+    "id": 12,
+    "title": "Titration — Half-Equivalence Point",
+    "difficulty": "Medium",
+    "category": "General Chemistry",
+    "type": "multiple_choice",
+    "question": "You titrate 0.100 M acetic acid with 0.100 M NaOH. At the half-equivalence point (half of the acid neutralized), what is the pH of the solution? (pKa acetic acid = 4.76)",
+    "choices": [
+      {"label": "A", "text": "pH = 4.76"},
+      {"label": "B", "text": "pH = 7.00"},
+      {"label": "C", "text": "pH = 3.54"},
+      {"label": "D", "text": "pH = 5.52"}
+    ],
+    "correct_choice": "A",
+    "hint": "At half-equivalence [A⁻] = [HA]; Henderson–Hasselbalch simplifies to pH = pKa.",
+    "solution": "At the half-equivalence point [A⁻] = [HA], so pH = pKa + log([A⁻]/[HA]) = pKa + log(1) = pKa = 4.76."
+  },
+  {
+    "id": 13,
+    "title": "Ideal Gas Law — Moles",
+    "difficulty": "Easy",
+    "category": "General Chemistry",
+    "type": "multiple_choice",
+    "question": "A 2.46 L container holds an ideal gas at 1.50 atm and 298 K. Using R = 0.082057 L·atm·mol⁻¹·K⁻¹, how many moles of gas are present?",
+    "choices": [
+      {"label": "A", "text": "0.101 mol"},
+      {"label": "B", "text": "0.151 mol"},
+      {"label": "C", "text": "0.202 mol"},
+      {"label": "D", "text": "0.303 mol"}
+    ],
+    "correct_choice": "B",
+    "hint": "Use PV = nRT → n = PV / (RT).",
+    "solution": "Compute n = PV / (RT).\nStep 1 (numerator): P × V = 1.50 atm × 2.46 L = 3.6900 (atm·L).\nStep 2 (denominator): R × T = 0.082057 L·atm·mol⁻¹·K⁻¹ × 298 K = 24.452986 (L·atm·mol⁻¹).\nStep 3: n = 3.6900 / 24.452986 = 0.150895 ≈ 0.151 mol."
+  },
+  {
+    "id": 14,
+    "title": "Colligative Properties — Freezing Point Depression",
+    "difficulty": "Medium",
+    "category": "Physical Chemistry",
+    "type": "multiple_choice",
+    "question": "What is the freezing point of an aqueous solution that is 3.00 m (molal) in NaCl, assuming complete dissociation (i = 2)? (Kf for water = 1.86 °C·kg·mol⁻¹)",
+    "choices": [
+      {"label": "A", "text": "-5.58 °C"},
+      {"label": "B", "text": "-11.16 °C"},
+      {"label": "C", "text": "-3.72 °C"},
+      {"label": "D", "text": "-7.44 °C"}
+    ],
+    "correct_choice": "B",
+    "hint": "ΔTf = i · Kf · m; freezing point = 0 °C − ΔTf.",
+    "solution": "ΔTf = i × Kf × m = 2 × 1.86 °C·kg·mol⁻¹ × 3.00 m = 11.16 °C. Freezing point = 0.00 °C − 11.16 °C = −11.16 °C (≈ −11.2 °C)."
+  },
+  {
+    "id": 15,
+    "title": "Electrochemistry — Cell Potential",
+    "difficulty": "Easy",
+    "category": "Analytical Chemistry",
+    "type": "multiple_choice",
+    "question": "Given the standard reduction potentials: Cu²⁺ + 2e⁻ → Cu (E° = +0.34 V) and Zn²⁺ + 2e⁻ → Zn (E° = −0.76 V), what is the standard cell potential (E°cell) for a Daniell cell where Zn(s) | Zn²⁺ || Cu²⁺ | Cu(s)?",
+    "choices": [
+      {"label": "A", "text": "−1.10 V"},
+      {"label": "B", "text": "0.34 V"},
+      {"label": "C", "text": "1.10 V"},
+      {"label": "D", "text": "−0.42 V"}
+    ],
+    "correct_choice": "C",
+    "hint": "E°cell = E°(cathode) − E°(anode). Zn is oxidized (anode), Cu is reduced (cathode).",
+    "solution": "Cathode: Cu²⁺/Cu E° = +0.34 V. Anode: Zn²⁺/Zn E° = −0.76 V. E°cell = E°cathode − E°anode = 0.34 − (−0.76) = 1.10 V."
+  },
+  {
+    "id": 16,
+    "title": "Reaction Kinetics — First-Order Half-Life",
+    "difficulty": "Medium",
+    "category": "Physical Chemistry",
+    "type": "multiple_choice",
+    "question": "A first-order reaction has a rate constant k = 0.023 s⁻¹. What is the half-life t₁/₂ of the reaction?",
+    "choices": [
+      {"label": "A", "text": "30.1 s"},
+      {"label": "B", "text": "0.031 s"},
+      {"label": "C", "text": "23.0 s"},
+      {"label": "D", "text": "3.01 s"}
+    ],
+    "correct_choice": "A",
+    "hint": "For first order, t₁/₂ = ln(2) / k. Use ln(2) ≈ 0.693147.",
+    "solution": "t₁/₂ = ln(2) / k = 0.693147 / 0.023. Compute: 0.693147 ÷ 0.023 = 30.13465 s ≈ 30.1 s."
+  },
+  {
+    "id": 17,
+    "title": "Spectroscopy — IR Identification",
+    "difficulty": "Easy",
+    "category": "Analytical Chemistry",
+    "type": "multiple_choice",
+    "question": "Which IR absorption band region is most characteristic of a carbonyl (C=O) stretch in a typical ketone or aldehyde?",
+    "choices": [
+      {"label": "A", "text": "≈1700 cm⁻¹"},
+      {"label": "B", "text": "≈3300 cm⁻¹"},
+      {"label": "C", "text": "≈2100 cm⁻¹"},
+      {"label": "D", "text": "≈1450 cm⁻¹"}
+    ],
+    "correct_choice": "A",
+    "hint": "Look for a strong sharp band for C=O.",
+    "solution": "Carbonyl (C=O) stretches typically appear near 1700 cm⁻¹ (range ≈1680–1750 cm⁻¹ depending on conjugation and environment)."
+  },
+  {
+    "id": 18,
+    "title": "Enzyme Inhibition — Kinetic Effects",
+    "difficulty": "Medium",
+    "category": "Biochemistry II",
+    "type": "multiple_choice",
+    "question": "Which description correctly matches competitive and noncompetitive inhibition effects on Km and Vmax?",
+    "choices": [
+      {"label": "A", "text": "Competitive: Km increases, Vmax unchanged. Noncompetitive: Km unchanged, Vmax decreases."},
+      {"label": "B", "text": "Competitive: Km decreases, Vmax decreases. Noncompetitive: Km increases, Vmax increases."},
+      {"label": "C", "text": "Competitive: Km unchanged, Vmax decreases. Noncompetitive: Km increases, Vmax unchanged."},
+      {"label": "D", "text": "Competitive: Km and Vmax both decrease. Noncompetitive: Km and Vmax both increase."}
+    ],
+    "correct_choice": "A",
+    "hint": "Competitive inhibitors compete with substrate for active site; noncompetitive inhibitors reduce catalytic efficiency regardless of substrate concentration.",
+    "solution": "Competitive inhibitors raise the apparent Km (lower affinity) because more substrate is needed to reach the same velocity; Vmax is unchanged (can be reached at high [S]). Noncompetitive inhibitors bind elsewhere and reduce the effective concentration of active enzyme, decreasing Vmax while Km is unchanged."
+  },
+  {
+    "id": 19,
+    "title": "Molecular Biology — PCR Steps",
+    "difficulty": "Easy",
+    "category": "Molecular Biology",
+    "type": "multiple_choice",
+    "question": "Place the core steps of PCR in the correct order for one cycle.",
+    "choices": [
+      {"label": "A", "text": "Extension → Denaturation → Annealing"},
+      {"label": "B", "text": "Denaturation → Annealing → Extension"},
+      {"label": "C", "text": "Annealing → Denaturation → Extension"},
+      {"label": "D", "text": "Denaturation → Extension → Annealing"}
+    ],
+    "correct_choice": "B",
+    "hint": "Think: separate strands, primers bind, polymerase extends.",
+    "solution": "Correct order: Denaturation (high temp to separate strands) → Annealing (lower temp for primers to bind) → Extension (DNA polymerase synthesizes new strand)."
+  },
+  {
+    "id": 20,
+    "title": "Genetics — Dihybrid Cross Probability",
+    "difficulty": "Medium",
+    "category": "Genetics",
+    "type": "multiple_choice",
+    "question": "For a cross AaBb × AaBb (independent assortment), what is the probability that an offspring will be homozygous recessive for both traits (aabb)?",
+    "choices": [
+      {"label": "A", "text": "1/4"},
+      {"label": "B", "text": "1/8"},
+      {"label": "C", "text": "1/16"},
+      {"label": "D", "text": "1/32"}
+    ],
+    "correct_choice": "C",
+    "hint": "Treat the two loci independently: probability aabb = P(aa) × P(bb). For Aa × Aa, P(aa)=1/4.",
+    "solution": "P(aa) = 1/4 (from Aa×Aa). P(bb) = 1/4. Multiply independent probabilities: (1/4) × (1/4) = 1/16 = 0.0625."
+  },
+  {
+    "id": 21,
+    "title": "Membrane Potential — Nernst Calculation",
+    "difficulty": "Hard",
+    "category": "Cell Physiology",
+    "type": "multiple_choice",
+    "question": "Using the Nernst equation at 37 °C (use 61.5 mV · log₁₀), calculate the equilibrium potential for K⁺ when [K⁺]₍in₎ = 140 mM and [K⁺]₍out₎ = 4 mM. (Give the sign and approximate magnitude.)",
+    "choices": [
+      {"label": "A", "text": "+95.0 mV"},
+      {"label": "B", "text": "−95.0 mV"},
+      {"label": "C", "text": "−61.5 mV"},
+      {"label": "D", "text": "+61.5 mV"}
+    ],
+    "correct_choice": "B",
+    "hint": "E = 61.5 mV × log₁₀([out]/[in]) for a monovalent cation at 37 °C.",
+    "solution": "Compute ratio: [out]/[in] = 4 / 140 = 0.02857142857.\nlog₁₀(0.02857142857) = −1.544068044.\nMultiply: 61.5 mV × (−1.544068044) = −95.0 mV (approx). So Eₖ ≈ −95 mV."
+  },
+  {
+    "id": 22,
+    "title": "Oxidative Phosphorylation — Uncoupler Effect",
+    "difficulty": "Medium",
+    "category": "Biochemistry II",
+    "type": "multiple_choice",
+    "question": "If a protonophoric uncoupler (e.g., DNP) is added to mitochondria, which of the following describes the expected effects on the proton gradient, ATP synthesis rate, and O₂ consumption?",
+    "choices": [
+      {"label": "A", "text": "Proton gradient dissipates; ATP synthesis decreases; O₂ consumption increases."},
+      {"label": "B", "text": "Proton gradient increases; ATP synthesis increases; O₂ consumption decreases."},
+      {"label": "C", "text": "Proton gradient unchanged; ATP synthesis increases; O₂ consumption unchanged."},
+      {"label": "D", "text": "Proton gradient dissipates; ATP synthesis increases; O₂ consumption decreases."}
+    ],
+    "correct_choice": "A",
+    "hint": "Uncouplers carry protons across membrane bypassing ATP synthase.",
+    "solution": "Uncouplers collapse (dissipate) the proton gradient by shuttling protons back into the matrix without driving ATP synthase. This lowers ATP synthesis rate. The electron transport chain works harder (faster) to try to restore the gradient, so O₂ consumption increases."
+  }
+]
+  
