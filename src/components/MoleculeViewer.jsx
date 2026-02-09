@@ -441,153 +441,288 @@ const MoleculeViewer = () => {
     return group;
   };
 
-  const makeTryptophan = () => {
-    const group = new THREE.Group();
+          const makeTryptophan = () => {
+            const group = new THREE.Group();
+            const SCALE = 1.6;
 
-    // Amino acid backbone
-    const nPos = [-2.5, 0.6, 0];
-    const n = createAtom(...nPos, 0x0000ff, 0.45);
-    group.add(n);
+            const at = (x, y, z, el) => {
+              const styles = {
+                C: [0x404040, 0.4],
+                N: [0x3050f8, 0.45],
+                O: [0xff3030, 0.45],
+                H: [0xffffff, 0.25]
+              };
+              const [c, r] = styles[el];
+              const m = createAtom(x * SCALE, y * SCALE, z * SCALE, c, r);
+              group.add(m);
+              return m;
+            };
 
-    const caPos = [0, 0, 0];
-    const ca = createAtom(...caPos, 0xaaaaaa, 0.5);
-    group.add(ca);
-    group.add(createBond(n.position, ca.position));
+            const link = (a, b) => group.add(createBond(a.position, b.position));
 
-    const cPos = [2.3, 0.6, 0];
-    const c = createAtom(...cPos, 0x333333, 0.45);
-    group.add(c);
-    group.add(createBond(ca.position, c.position));
+            // Backbone
+            const ca = at(0, 0, 0, "C");
+            const n = at(-1.2, 0.8, 0, "N");
+            const h1 = at(-2.0, 1.3, 0, "H");
+            const h2 = at(-1.2, 1.8, 0, "H");
 
-    const oPos = [3.2, 1.4, 0];
-    const o = createAtom(...oPos, 0xff3030, 0.5);
-    group.add(o);
-    group.add(createBond(c.position, o.position));
+            link(ca, n);
+            link(n, h1);
+            link(n, h2);
 
-    // Indole aromatic side chain
-    const cbPos = [0, -1.5, 0];
-    const cb = createAtom(...cbPos, 0x404040, 0.45);
-    group.add(cb);
-    group.add(createBond(ca.position, cb.position));
+            const c = at(1.4, 0, 0, "C");
+            const o1 = at(2.4, 0.8, 0, "O");
+            const o2 = at(2.4, -0.8, 0, "O");
 
-    // 6-membered benzene-like ring
-    const benzeneAtoms = [];
-    const benzenePos = [
-      [-1, -2.4], [-1.9, -1.8], [-1.9, -0.6], 
-      [-1, 0], [0, -0.6], [0, -2.4]
-    ];
-    benzenePos.forEach((pos, i) => {
-      const isN = i === 4;
-      const atom = createAtom(pos[0], pos[1], 0, isN ? 0x0000ff : 0x404040, 0.35);
-      benzeneAtoms.push(atom);
-      group.add(atom);
-    });
-    for (let i = 0; i < benzeneAtoms.length; i++) {
-      group.add(createBond(benzeneAtoms[i].position, benzeneAtoms[(i + 1) % benzeneAtoms.length].position));
-    }
+            link(ca, c);
+            link(c, o1);
+            link(c, o2);
 
-    // 5-membered pyrrole ring (fused)
-    const pyrroleAtoms = [];
-    const pyrrolePos = [
-      [0, -1.5], [1, -2.1], [1.5, -0.9], 
-      [0.7, 0], [-0.2, -0.5]
-    ];
-    pyrrolePos.forEach((pos, i) => {
-      const isN = i === 4;
-      const atom = createAtom(pos[0], pos[1], 0, isN ? 0x0000ff : 0x404040, 0.35);
-      pyrroleAtoms.push(atom);
-      group.add(atom);
-    });
-    for (let i = 0; i < pyrroleAtoms.length; i++) {
-      group.add(createBond(pyrroleAtoms[i].position, pyrroleAtoms[(i + 1) % pyrroleAtoms.length].position));
-    }
+            // Side chain CH2
+            const cb = at(0, -1.5, 0, "C");
+            link(ca, cb);
 
-    return group;
+            // Indole ring (simplified)
+            const ring = [
+              at(0.8, -3.0, 0, "C"),
+              at(2.2, -3.0, 0, "C"),
+              at(3.0, -4.2, 0, "C"),
+              at(2.2, -5.4, 0, "C"),
+              at(0.8, -5.4, 0, "C"),
+              at(0.0, -4.2, 0, "C")
+            ];
+
+            link(cb, ring[0]);
+            ring.forEach((a, i) => link(a, ring[(i + 1) % ring.length]));
+
+            const indoleN = at(1.0, -6.8, 0, "N");
+            link(ring[4], indoleN);
+
+            return group;
+          };
+const makeCholesterol = () => {
+  const group = new THREE.Group();
+  const SCALE = 0.9;
+
+  // ---------- Helpers ----------
+  const rotateAroundAxis = (v, axis, angle) => {
+    const q = new THREE.Quaternion();
+    q.setFromAxisAngle(axis, angle);
+    return v.clone().applyQuaternion(q);
   };
 
-  const makeCholesterol = () => {
-    const group = new THREE.Group();
-    const SCALE = 0.8;
-
-    // 4 fused rings (simplified as columns of atoms)
-    const ringA = [];
-    const ringB = [];
-    const ringC = [];
-    const ringD = [];
-
-    // Ring A (6 atoms)
-    for (let i = 0; i < 6; i++) {
-      const angle = (i * Math.PI * 2) / 6;
-      const x = i * 0.8 * SCALE;
-      const y = Math.sin(angle) * 1.2 * SCALE;
-      const atom = createAtom(x, y, 0, 0x404040, 0.35);
-      ringA.push(atom);
-      group.add(atom);
-    }
-
-    // Ring B (6 atoms) - fused with ring A
-    for (let i = 0; i < 6; i++) {
-      const x = 3 * 0.8 * SCALE + i * 0.6 * SCALE;
-      const y = 1.5 * SCALE * Math.sin(i * 0.5);
-      const atom = createAtom(x, y, 0, 0x4d4d4d, 0.35);
-      ringB.push(atom);
-      group.add(atom);
-    }
-
-    // Ring C (6 atoms)
-    for (let i = 0; i < 6; i++) {
-      const x = 6 * 0.8 * SCALE + i * 0.6 * SCALE;
-      const y = 1.5 * SCALE * Math.sin(i * 0.5 + 1);
-      const atom = createAtom(x, y, 0, 0x595959, 0.35);
-      ringC.push(atom);
-      group.add(atom);
-    }
-
-    // Ring D (5 atoms) - 5-membered ring
-    for (let i = 0; i < 5; i++) {
-      const angle = (i * Math.PI * 2) / 5;
-      const x = 8.5 * SCALE + Math.cos(angle) * SCALE;
-      const y = 1.2 * SCALE + Math.sin(angle) * SCALE;
-      const atom = createAtom(x, y, 0, 0x666666, 0.35);
-      ringD.push(atom);
-      group.add(atom);
-    }
-
-    // Bond rings
-    for (let i = 0; i < ringA.length - 1; i++) {
-      group.add(createBond(ringA[i].position, ringA[i + 1].position));
-    }
-    for (let i = 0; i < ringB.length - 1; i++) {
-      group.add(createBond(ringB[i].position, ringB[i + 1].position));
-    }
-    for (let i = 0; i < ringC.length - 1; i++) {
-      group.add(createBond(ringC[i].position, ringC[i + 1].position));
-    }
-    for (let i = 0; i < ringD.length - 1; i++) {
-      group.add(createBond(ringD[i].position, ringD[i + 1].position));
-    }
-    group.add(createBond(ringD[ringD.length - 1].position, ringD[0].position));
-
-    // Connect fused system
-    group.add(createBond(ringA[ringA.length - 1].position, ringB[0].position));
-    group.add(createBond(ringB[ringB.length - 1].position, ringC[0].position));
-    group.add(createBond(ringC[ringC.length - 1].position, ringD[0].position));
-
-    // Hydroxyl group
-    const ohAtom = createAtom(-1.2 * SCALE, -1.5 * SCALE, 0, 0xff3030, 0.4);
-    group.add(ohAtom);
-    group.add(createBond(ringA[0].position, ohAtom.position));
-
-    // Alkyl side chain
-    const chainStart = ringD[2].position.clone();
-    const chain1 = createAtom(chainStart.x + 1.2 * SCALE, chainStart.y, 0, 0x404040, 0.3);
-    const chain2 = createAtom(chainStart.x + 2 * SCALE, chainStart.y + 0.6 * SCALE, 0, 0x404040, 0.3);
-    group.add(chain1, chain2);
-    group.add(createBond(chainStart, chain1.position));
-    group.add(createBond(chain1.position, chain2.position));
-
-    return group;
+  // Ensure an atom Mesh is added to the group exactly once
+  const ensureAtomInGroup = (atom) => {
+    if (!atom.parent) group.add(atom);
   };
+
+  // Build a fused cyclohexane (chair) given two adjacent existing atoms (anchorA -> anchorB)
+  const buildFusedChairHexagon = ({
+    anchorA,              // THREE.Mesh (existing atom)
+    anchorB,              // THREE.Mesh (existing atom, adjacent to anchorA)
+    bondLength = 1.05 * SCALE,
+    puckers = [0.45, -0.45, 0.45, -0.45, 0.45, -0.45].map(v => v * SCALE),
+    angleSign = 1         // 1 or -1 to choose orientation
+  }) => {
+    const atoms = new Array(6);
+    atoms[0] = anchorA;
+    atoms[1] = anchorB;
+
+    // Guarantee anchors live in our group
+    ensureAtomInGroup(anchorA);
+    ensureAtomInGroup(anchorB);
+
+    const p0 = anchorA.position.clone();
+    const p1 = anchorB.position.clone();
+    let prevPos = p1.clone();
+    let prevDir = p1.clone().sub(p0).normalize();
+
+    // Choose an approximate "up" vector for puckering. If ring direction is close to Z, use X.
+    let worldUp = new THREE.Vector3(0, 0, 1);
+    if (Math.abs(prevDir.dot(worldUp)) > 0.9) worldUp = new THREE.Vector3(1, 0, 0);
+
+    // plane normal (perpendicular to ring plane) => use cross(dir, up)
+    let planeNormal = new THREE.Vector3().crossVectors(prevDir, worldUp);
+    if (planeNormal.lengthSq() < 1e-6) planeNormal = new THREE.Vector3(0, 0, 1);
+    planeNormal.normalize();
+
+    const angle = angleSign * (Math.PI / 3); // 60 degrees for hexagon
+
+    // Walk: atoms[0], atoms[1] are anchors; compute atoms[2..5]
+    for (let i = 2; i < 6; i++) {
+      const newDir = rotateAroundAxis(prevDir, planeNormal, angle).normalize();
+      const pos = prevPos.clone()
+        .add(newDir.clone().multiplyScalar(bondLength))
+        .addScaledVector(planeNormal, puckers[i]); // puckering perpendicular to ring plane
+
+      const atom = createAtom(pos.x, pos.y, pos.z, 0x404040, 0.35);
+      group.add(atom);
+
+      // bond from prevPos (which is the previous atom) to current
+      group.add(createBond(prevPos, pos));
+
+      atoms[i] = atom;
+      prevPos = pos.clone();
+      prevDir = newDir.clone();
+    }
+
+    // close ring: bond between last atom and atoms[0]
+    group.add(createBond(atoms[5].position, atoms[0].position));
+
+    return atoms;
+  };
+
+  // Build a fused cyclopentane (5-membered) given two adjacent existing atoms (anchorA -> anchorB)
+  const buildFusedPentagon = ({
+    anchorA,
+    anchorB,
+    bondLength = 0.95 * SCALE,
+    puckers = [0.25, -0.25, 0.25, -0.25, 0.25].map(v => v * SCALE),
+    angleSign = 1
+  }) => {
+    const n = 5;
+    const atoms = new Array(n);
+    atoms[0] = anchorA;
+    atoms[1] = anchorB;
+
+    ensureAtomInGroup(anchorA);
+    ensureAtomInGroup(anchorB);
+
+    let p0 = anchorA.position.clone();
+    let p1 = anchorB.position.clone();
+    let prevPos = p1.clone();
+    let prevDir = p1.clone().sub(p0).normalize();
+
+    // choose world up
+    let worldUp = new THREE.Vector3(0, 0, 1);
+    if (Math.abs(prevDir.dot(worldUp)) > 0.9) worldUp = new THREE.Vector3(1, 0, 0);
+
+    let planeNormal = new THREE.Vector3().crossVectors(prevDir, worldUp);
+    if (planeNormal.lengthSq() < 1e-6) planeNormal = new THREE.Vector3(0, 0, 1);
+    planeNormal.normalize();
+
+    const angle = angleSign * (2 * Math.PI / n); // 72° for pentagon
+
+    for (let i = 2; i < n; i++) {
+      const newDir = rotateAroundAxis(prevDir, planeNormal, angle).normalize();
+      const pos = prevPos.clone()
+        .add(newDir.clone().multiplyScalar(bondLength))
+        .addScaledVector(planeNormal, puckers[i]); // small pucker
+      const atom = createAtom(pos.x, pos.y, pos.z, 0x404040, 0.35);
+      group.add(atom);
+      group.add(createBond(prevPos, pos));
+      atoms[i] = atom;
+      prevPos = pos.clone();
+      prevDir = newDir.clone();
+    }
+
+    // close ring
+    group.add(createBond(atoms[n - 1].position, atoms[0].position));
+
+    return atoms;
+  };
+
+  // ---------- Build scaffold (steroid fused rings) ----------
+  // Slightly different coordinates than your original centers: we will place two seed atoms for ring A,
+  // then build the rest by fusion. This is robust and removes long diagonals.
+
+  // Seed two atoms for ring A
+  const a0 = createAtom(0.0 * SCALE, 0.0 * SCALE, 0.45 * SCALE, 0x404040, 0.35); // up
+  const a1 = createAtom(1.05 * SCALE, 0.0 * SCALE, -0.45 * SCALE, 0x404040, 0.35); // down
+  group.add(a0);
+  group.add(a1);
+  group.add(createBond(a0.position, a1.position));
+
+  // Ring A (hexagon) built from anchors a0->a1
+  const ringA = buildFusedChairHexagon({
+    anchorA: a0,
+    anchorB: a1,
+    bondLength: 1.05 * SCALE,
+    puckers: [0.45, -0.45, 0.45, -0.45, 0.45, -0.45].map(v => v * SCALE),
+    angleSign: 1
+  });
+
+  // Ring B fused to ringA at atoms 4 & 5 (use ringA[4], ringA[5])
+  const ringB = buildFusedChairHexagon({
+    anchorA: ringA[4],
+    anchorB: ringA[5],
+    bondLength: 1.05 * SCALE,
+    puckers: [0.45, -0.45, 0.45, -0.45, 0.45, -0.45].map(v => v * SCALE),
+    angleSign: 1
+  });
+
+  // Ring C fused to ringB at atoms 4 & 5 (the standard steroid connectivity)
+  const ringC = buildFusedChairHexagon({
+    anchorA: ringB[4],
+    anchorB: ringB[5],
+    bondLength: 1.05 * SCALE,
+    puckers: [0.45, -0.45, 0.45, -0.45, 0.45, -0.45].map(v => v * SCALE),
+    angleSign: -1 // flip orientation if you need the ring to bend the other way
+  });
+
+  // Ring D (pentagon) fused to ringC using ringC[2] & ringC[3]
+  const ringD = buildFusedPentagon({
+    anchorA: ringC[2],
+    anchorB: ringC[3],
+    bondLength: 0.95 * SCALE,
+    puckers: [0.25, -0.25, 0.25, -0.25, 0.25].map(v => v * SCALE),
+    angleSign: 1
+  });
+
+  // ---------- Add substituents similar to your original routine ----------
+
+  // OH on C3 -> choose ringA[2] (beta: up)
+  const c3 = ringA[2];
+  const ohPos = c3.position.clone().add(new THREE.Vector3(0, 0, 1.0 * SCALE));
+  const oh = createAtom(ohPos.x, ohPos.y, ohPos.z, 0xff3030, 0.38);
+  group.add(oh);
+  group.add(createBond(c3.position, oh.position));
+
+  // Methyl at approx ringB[2] (C10)
+  const methyl10Pos = ringB[2].position.clone().add(new THREE.Vector3(0, 0, 0.95 * SCALE));
+  const methyl10 = createAtom(methyl10Pos.x, methyl10Pos.y, methyl10Pos.z, 0x404040, 0.32);
+  group.add(methyl10);
+  group.add(createBond(ringB[2].position, methyl10.position));
+
+  // Methyl at approx ringC[1] (C13)
+  const methyl13Pos = ringC[1].position.clone().add(new THREE.Vector3(0, 0, 0.95 * SCALE));
+  const methyl13 = createAtom(methyl13Pos.x, methyl13Pos.y, methyl13Pos.z, 0x404040, 0.32);
+  group.add(methyl13);
+  group.add(createBond(ringC[1].position, methyl13.position));
+
+  // Alkyl tail from ringD[2] (C17) — zig-zag, alternate puckering for clarity
+  let prev = ringD[2].position.clone();
+  const tailSteps = [
+    new THREE.Vector3(1.05 * SCALE, 0.05 * SCALE, 0.65 * SCALE),
+    new THREE.Vector3(1.05 * SCALE, -0.15 * SCALE, -0.6 * SCALE),
+    new THREE.Vector3(1.05 * SCALE, 0.2 * SCALE, 0.55 * SCALE),
+    new THREE.Vector3(0.95 * SCALE, -0.05 * SCALE, -0.45 * SCALE),
+    new THREE.Vector3(0.95 * SCALE, 0.15 * SCALE, 0.35 * SCALE)
+  ];
+
+  for (let i = 0; i < tailSteps.length; i++) {
+    const pos = prev.clone().add(tailSteps[i]);
+    const t = createAtom(pos.x, pos.y, pos.z, 0x404040, 0.30);
+    group.add(t);
+    group.add(createBond(prev, t.position));
+    prev = t.position.clone();
+  }
+
+  // Small hydrogens for silhouette
+  const h1Pos = ringA[1].position.clone().add(new THREE.Vector3(-0.45 * SCALE, -0.25 * SCALE, -0.25 * SCALE));
+  const h1 = createAtom(h1Pos.x, h1Pos.y, h1Pos.z, 0xffffff, 0.22);
+  group.add(h1);
+  group.add(createBond(ringA[1].position, h1.position));
+
+  const h2Pos = ringC[4].position.clone().add(new THREE.Vector3(0.45 * SCALE, 0.25 * SCALE, 0.25 * SCALE));
+  const h2 = createAtom(h2Pos.x, h2Pos.y, h2Pos.z, 0xffffff, 0.22);
+  group.add(h2);
+  group.add(createBond(ringC[4].position, h2.position));
+
+  return group;
+};
+
+
 
   const moleculeBuilders = {
     glucose: makeGlucose,
