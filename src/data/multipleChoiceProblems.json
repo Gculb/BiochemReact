@@ -372,6 +372,215 @@
     "correct_choice": "A",
     "hint": "Uncouplers carry protons across membrane bypassing ATP synthase.",
     "solution": "Uncouplers collapse (dissipate) the proton gradient by shuttling protons back into the matrix without driving ATP synthase. This lowers ATP synthesis rate. The electron transport chain works harder (faster) to try to restore the gradient, so O₂ consumption increases."
-  }
+  },
+  {
+    "id": 23,
+    "title": "Thermodynamics — ΔG° to Keq",
+    "difficulty": "Medium",
+    "category": "Physical Chemistry",
+    "type": "multiple_choice",
+    "question": "For a reaction at 298 K the standard free energy change is ΔG° = −5.70 kJ·mol⁻¹. What is the equilibrium constant K at 298 K? (Use R = 8.314 J·mol⁻¹·K⁻¹.)",
+    "choices": [
+      { "label": "A", "text": "K ≈ 0.10" },
+      { "label": "B", "text": "K ≈ 1.00" },
+      { "label": "C", "text": "K ≈ 10.0" },
+      { "label": "D", "text": "K ≈ 100.0" }
+    ],
+    "correct_choice": "C",
+    "hint": "Use ΔG° = −RT ln K; convert kJ → J.",
+    "solution": "ΔG° = −5700 J·mol⁻¹. ln K = −ΔG°/(RT) = 5700 / (8.314×298) ≈ 2.301. K = e^{2.301} ≈ 9.99 ≈ 10.0."
+  },
+  {
+    "id": 24,
+    "title": "Glycolysis — Rate-Limiting Enzyme",
+    "difficulty": "Easy",
+    "category": "Biochemistry I",
+    "type": "multiple_choice",
+    "question": "Which enzyme is considered the primary rate-limiting (allosterically regulated) step of glycolysis in most tissues?",
+    "choices": [
+      { "label": "A", "text": "Hexokinase" },
+      { "label": "B", "text": "Pyruvate kinase" },
+      { "label": "C", "text": "Phosphofructokinase-1 (PFK-1)" },
+      { "label": "D", "text": "Aldolase" }
+    ],
+    "correct_choice": "C",
+    "hint": "Think of the committed step consuming ATP to phosphorylate fructose-6-phosphate.",
+    "solution": "PFK-1 catalyzes the conversion of fructose-6-phosphate → fructose-1,6-bisphosphate and is the major regulated/committed step in glycolysis."
+  },
+  {
+    "id": 25,
+    "title": "Kinematics — Constant Acceleration",
+    "difficulty": "Easy",
+    "category": "Physics",
+    "type": "multiple_choice",
+    "question": "A car starts from rest and accelerates uniformly at 3.00 m·s⁻² for 5.00 s. What distance does it travel during that time?",
+    "choices": [
+      { "label": "A", "text": "15.0 m" },
+      { "label": "B", "text": "37.5 m" },
+      { "label": "C", "text": "75.0 m" },
+      { "label": "D", "text": "40.0 m" }
+    ],
+    "correct_choice": "B",
+    "hint": "Use s = v₀t + ½ a t² with v₀ = 0.",
+    "solution": "s = 0 + 0.5 × 3.00 × (5.00)² = 0.5 × 3 × 25 = 37.5 m."
+  },
+  {
+    "id": 26,
+    "title": "Organic Chemistry — SN1 vs SN2",
+    "difficulty": "Medium",
+    "category": "Organic Chemistry",
+    "type": "multiple_choice",
+    "question": "A tertiary alkyl bromide reacts rapidly in a polar protic solvent to give substitution products; which mechanism is most likely?",
+    "choices": [
+      { "label": "A", "text": "SN1 (unimolecular nucleophilic substitution)" },
+      { "label": "B", "text": "SN2 (bimolecular nucleophilic substitution)" },
+      { "label": "C", "text": "E2 elimination only" },
+      { "label": "D", "text": "Radical substitution (SRN1)" }
+    ],
+    "correct_choice": "A",
+    "hint": "Tertiary centers stabilize carbocations; polar protic solvents stabilize leaving groups and favor stepwise mechanisms.",
+    "solution": "Tertiary substrates form stable carbocations and polar protic solvents favor SN1 (carbocation intermediate), so SN1 is most likely."
+  },
+  {
+    "id": 27,
+    "title": "Hemoglobin — Bohr Effect",
+    "difficulty": "Medium",
+    "category": "Cell Physiology",
+    "type": "multiple_choice",
+    "question": "During heavy exercise tissues produce more CO₂ and H⁺. According to the Bohr effect, how does a decrease in pH affect hemoglobin–O₂ binding?",
+    "choices": [
+      { "label": "A", "text": "Affinity for O₂ increases (left shift)" },
+      { "label": "B", "text": "Affinity for O₂ decreases (right shift)" },
+      { "label": "C", "text": "No change in affinity" },
+      { "label": "D", "text": "Hemoglobin permanently denatures and cannot bind O₂" }
+    ],
+    "correct_choice": "B",
+    "hint": "Lower pH favors protonation states that stabilize the deoxy form of hemoglobin.",
+    "solution": "A decrease in pH (more H⁺) shifts the oxygen–hemoglobin dissociation curve to the right (Bohr effect), lowering O₂ affinity and promoting O₂ release to tissues."
+  },
+  {
+    "id": 28,
+    "title": "Memory — Timescale of Storage",
+    "difficulty": "Easy",
+    "category": "Cognitive Psychology",
+    "type": "multiple_choice",
+    "question": "Which memory system typically holds information for only a few seconds to about a minute and is used for immediate tasks (e.g., mental arithmetic)?",
+    "choices": [
+      { "label": "A", "text": "Sensory memory" },
+      { "label": "B", "text": "Short-term / working memory" },
+      { "label": "C", "text": "Long-term memory" },
+      { "label": "D", "text": "Implicit procedural memory" }
+    ],
+    "correct_choice": "B",
+    "hint": "This system actively maintains/manipulates small amounts of information for ongoing cognitive tasks.",
+    "solution": "Short-term or working memory holds information for seconds to a minute and is used for tasks like mental arithmetic or holding a phone number briefly."
+  },
+  {
+    "id": 29,
+    "title": "Chemical Equilibrium — Temperature Effect",
+    "difficulty": "Medium",
+    "category": "General Chemistry",
+    "type": "multiple_choice",
+    "question": "For the endothermic reaction A ⇌ B (ΔH° > 0), what is the effect of increasing the temperature on the position of equilibrium and the equilibrium constant K?",
+    "choices": [
+      { "label": "A", "text": "Equilibrium shifts left; K decreases" },
+      { "label": "B", "text": "Equilibrium shifts left; K increases" },
+      { "label": "C", "text": "Equilibrium shifts right; K increases" },
+      { "label": "D", "text": "Equilibrium shifts right; K decreases" }
+    ],
+    "correct_choice": "C",
+    "hint": "Treat temperature as adding energy; Le Chatelier predicts the system will absorb added heat for endothermic reactions.",
+    "solution": "Increasing T supplies heat, which for an endothermic reaction favors product formation (shift right) and increases K (more product at equilibrium)."
+  },
+  {
+    "id": 30,
+    "title": "Electrostatics — Point Charge Potential",
+    "difficulty": "Medium",
+    "category": "Physics",
+    "type": "multiple_choice",
+    "question": "Which statement about the electric potential V due to a single point charge q in vacuum is correct (using Coulomb constant k)?",
+    "choices": [
+      { "label": "A", "text": "V ∝ r (potential increases linearly with distance r)" },
+      { "label": "B", "text": "V ∝ 1/r (potential decreases inversely with distance)" },
+      { "label": "C", "text": "V ∝ 1/r² (potential decreases with the square of distance)" },
+      { "label": "D", "text": "V is independent of distance from the charge" }
+    ],
+    "correct_choice": "B",
+    "hint": "Electric potential of a point charge: V = k q / r (relative to infinity).",
+    "solution": "Electric potential due to a point charge is V = kq/r; thus V decreases as the inverse of r (1/r)."
+  },
+  {
+  "id": 31,
+  "title": "Working Memory — Capacity Limits",
+  "difficulty": "Easy",
+  "category": "Cognitive Psychology",
+  "type": "multiple_choice",
+  "question": "According to Miller’s classic findings, the capacity of working memory is approximately how many items?",
+  "choices": [
+    {"label": "A", "text": "3 ± 1 items"},
+    {"label": "B", "text": "7 ± 2 items"},
+    {"label": "C", "text": "12 ± 2 items"},
+    {"label": "D", "text": "20 ± 5 items"}
+  ],
+  "correct_choice": "B",
+  "hint": "Miller referred to this as 'the magical number.'",
+  "solution": "Miller (1956) proposed a working memory capacity of roughly 7 ± 2 items, meaning about 5–9 chunks."
+},
+{
+  "id": 32,
+  "title": "Memory Systems — Declarative vs. Procedural",
+  "difficulty": "Easy",
+  "category": "Cognitive Psychology",
+  "type": "multiple_choice",
+  "question": "Riding a bicycle is an example of which type of memory?",
+  "choices": [
+    {"label": "A", "text": "Semantic memory"},
+    {"label": "B", "text": "Episodic memory"},
+    {"label": "C", "text": "Procedural memory"},
+    {"label": "D", "text": "Working memory"}
+  ],
+  "correct_choice": "C",
+  "hint": "This type of memory is often preserved in amnesia.",
+  "solution": "Procedural memory supports skills and habits like riding a bike or typing; it is non-declarative."
+},
+{
+  "id": 33,
+  "title": "Attention — Stroop Effect",
+  "difficulty": "Medium",
+  "category": "Cognitive Psychology",
+  "type": "multiple_choice",
+  "question": "The Stroop effect primarily demonstrates interference between which two processes?",
+  "choices": [
+    {"label": "A", "text": "Semantic processing and phonological processing"},
+    {"label": "B", "text": "Automatic reading and controlled color naming"},
+    {"label": "C", "text": "Visual perception and motor execution"},
+    {"label": "D", "text": "Long-term memory and working memory"}
+  ],
+  "correct_choice": "B",
+  "hint": "Reading is automatic; naming ink color is controlled.",
+  "solution": "The Stroop effect occurs because automatic word reading interferes with controlled color naming, slowing response times."
+},
+{
+  "id": 34,
+  "title": "Learning — Classical Conditioning",
+  "difficulty": "Easy",
+  "category": "Cognitive Psychology",
+  "type": "multiple_choice",
+  "question": "In classical conditioning, the learned response to a previously neutral stimulus is called the:",
+  "choices": [
+    {"label": "A", "text": "Unconditioned response"},
+    {"label": "B", "text": "Conditioned stimulus"},
+    {"label": "C", "text": "Conditioned response"},
+    {"label": "D", "text": "Neutral response"}
+  ],
+  "correct_choice": "C",
+  "hint": "This response occurs only after pairing the neutral and unconditioned stimuli.",
+  "solution": "After conditioning, the organism responds to the conditioned stimulus with a conditioned response."
+}
+
+
+
+
+
 ]
   
