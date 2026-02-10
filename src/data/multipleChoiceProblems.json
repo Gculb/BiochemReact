@@ -1,5 +1,192 @@
 [
   {
+    "id": 1,
+    "title": "Stoichiometry — Limiting Reagent",
+    "difficulty": "Easy",
+    "category": "General Chemistry",
+    "type": "multiple_choice",
+    "question": "For the reaction 2 H₂(g) + O₂(g) → 2 H₂O(l), you start with 4.00 mol H₂ and 1.50 mol O₂. Which is the limiting reagent?",
+    "choices": [
+    { "label": "A", "text": "H₂ is limiting" },
+    { "label": "B", "text": "O₂ is limiting" },
+    { "label": "C", "text": "Neither — both are in stoichiometric amounts" },
+    { "label": "D", "text": "Both are in excess" }
+    ],
+    "correct_choice": "B",
+    "hint": "Compare required O₂ for given H₂: need 1 mol O₂ per 2 mol H₂.",
+    "solution": "For 4.00 mol H₂ the required O₂ = (4.00 mol H₂) × (1 mol O₂ / 2 mol H₂) = 2.00 mol O₂. Available O₂ = 1.50 mol < 2.00 mol required, so O₂ is limiting."
+    },
+    {
+    "id": 2,
+    "title": "pH — Strong Acid Solution",
+    "difficulty": "Easy",
+    "category": "Analytical Chemistry",
+    "type": "multiple_choice",
+    "question": "What is the pH of a 0.0500 M HCl solution (assume complete dissociation)?",
+    "choices": [
+    { "label": "A", "text": "pH = 1.30" },
+    { "label": "B", "text": "pH = 2.00" },
+    { "label": "C", "text": "pH = 0.30" },
+    { "label": "D", "text": "pH = 1.70" }
+    ],
+    "correct_choice": "A",
+    "hint": "pH = −log₁₀[H⁺].",
+    "solution": "For a strong acid [H⁺] = 0.0500 M. pH = −log₁₀(0.0500) = −(log₁₀(5.00) − 2) = 2 − log₁₀(5.00). log₁₀(5.00) ≈ 0.69897 so pH ≈ 2 − 0.69897 = 1.30103 ≈ 1.30."
+    },
+    {
+    "id": 3,
+    "title": "Calorimetry — Heating Water",
+    "difficulty": "Easy",
+    "category": "Physical Chemistry",
+    "type": "multiple_choice",
+    "question": "How much heat (q) is required to raise the temperature of 25.0 g of liquid water from 20.0 °C to 80.0 °C? (Use c = 4.184 J·g⁻¹·°C⁻¹.)",
+    "choices": [
+    { "label": "A", "text": "6.28 kJ" },
+    { "label": "B", "text": "3.14 kJ" },
+    { "label": "C", "text": "1.05 kJ" },
+    { "label": "D", "text": "12.56 kJ" }
+    ],
+    "correct_choice": "A",
+    "hint": "q = m · c · ΔT. Convert J to kJ for answers.",
+    "solution": "m = 25.0 g, c = 4.184 J·g⁻¹·°C⁻¹, ΔT = 80.0 − 20.0 = 60.0 °C.\nq = 25.0 × 4.184 × 60.0 = 25.0 × 251.04 = 6276.0 J = 6.276 kJ ≈ 6.28 kJ."
+    },
+    {
+    "id": 4,
+    "title": "Buffer — Henderson–Hasselbalch",
+    "difficulty": "Medium",
+    "category": "Analytical Chemistry",
+    "type": "multiple_choice",
+    "question": "Calculate the pH of a buffer made from 0.100 M acetic acid (HA) and 0.150 M sodium acetate (A⁻). (pKa = 4.76.)",
+    "choices": [
+    { "label": "A", "text": "pH = 4.24" },
+    { "label": "B", "text": "pH = 4.76" },
+    { "label": "C", "text": "pH = 4.94" },
+    { "label": "D", "text": "pH = 5.16" }
+    ],
+    "correct_choice": "C",
+    "hint": "Use Henderson–Hasselbalch: pH = pKa + log([A⁻]/[HA]).",
+    "solution": "pH = 4.76 + log(0.150 / 0.100) = 4.76 + log(1.50). log₁₀(1.50) ≈ 0.17609. pH ≈ 4.76 + 0.17609 = 4.936 ≈ 4.94."
+    },
+    {
+    "id": 5,
+    "title": "Ideal Gas — Molar Mass Determination",
+    "difficulty": "Medium",
+    "category": "General Chemistry",
+    "type": "multiple_choice",
+    "question": "A 0.500 g sample of an unknown gaseous compound occupies 112.0 mL at 1.00 atm and 298 K. What is its molar mass? (R = 0.082057 L·atm·mol⁻¹·K⁻¹)",
+    "choices": [
+    { "label": "A", "text": "54.6 g·mol⁻¹" },
+    { "label": "B", "text": "109.2 g·mol⁻¹" },
+    { "label": "C", "text": "218.4 g·mol⁻¹" },
+    { "label": "D", "text": "27.3 g·mol⁻¹" }
+    ],
+    "correct_choice": "B",
+    "hint": "Find n from PV = nRT, then M = mass / n. Convert mL → L.",
+    "solution": "V = 112.0 mL = 0.1120 L. n = PV / (RT) = (1.00 atm × 0.1120 L) / (0.082057 × 298 K) = 0.1120 / 24.452986 ≈ 0.0045802 mol. Molar mass = 0.500 g / 0.0045802 mol ≈ 109.17 g·mol⁻¹ ≈ 109.2 g·mol⁻¹."
+    },
+    {
+    "id": 6,
+    "title": "Kinetics — Second-Order Half-Life",
+    "difficulty": "Medium",
+    "category": "Physical Chemistry",
+    "type": "multiple_choice",
+    "question": "For a second-order reaction with rate law rate = k[A]², the half-life is t₁/₂ = 1/(k[A]₀). If k = 0.250 M⁻¹·s⁻¹ and [A]₀ = 0.200 M, what is t₁/₂?",
+    "choices": [
+    { "label": "A", "text": "20.0 s" },
+    { "label": "B", "text": "0.020 s" },
+    { "label": "C", "text": "2.00 s" },
+    { "label": "D", "text": "40.0 s" }
+    ],
+    "correct_choice": "A",
+    "hint": "Plug values into t₁/₂ = 1 / (k [A]₀).",
+    "solution": "t₁/₂ = 1 / (0.250 M⁻¹·s⁻¹ × 0.200 M) = 1 / 0.0500 s⁻¹ = 20.0 s."
+    },
+    {
+    "id": 7,
+    "title": "Genetics — Monohybrid Cross",
+    "difficulty": "Easy",
+    "category": "Genetics",
+    "type": "multiple_choice",
+    "question": "If an organism with genotype Aa is crossed with aa, what fraction of offspring are expected to be heterozygous (Aa)?",
+    "choices": [
+    { "label": "A", "text": "0 (none)" },
+    { "label": "B", "text": "1/4" },
+    { "label": "C", "text": "1/2" },
+    { "label": "D", "text": "1 (all)" }
+    ],
+    "correct_choice": "C",
+    "hint": "List gametes from each parent: Aa → A or a; aa → a only.",
+    "solution": "Parent genotypes: Aa × aa. Gametes: Aa → {A, a} each 1/2, aa → {a}. Offspring: 1/2 × a → Aa, 1/2 × a → aa → so 1/2 of offspring are Aa."
+    },
+    {
+    "id": 8,
+    "title": "Electrochemistry — Nernst Equation",
+    "difficulty": "Medium",
+    "category": "Analytical Chemistry",
+    "type": "multiple_choice",
+    "question": "For the Cu²⁺/Cu half-reaction (Cu²⁺ + 2e⁻ → Cu) with E° = +0.34 V, what is the electrode potential at 25.0 °C when [Cu²⁺] = 0.0100 M? (Use E = E° − (0.05916/2)·log₁₀(Q).)",
+    "choices": [
+    { "label": "A", "text": "E = +0.280 V" },
+    { "label": "B", "text": "E = +0.340 V" },
+    { "label": "C", "text": "E = +0.400 V" },
+    { "label": "D", "text": "E = +0.220 V" }
+    ],
+    "correct_choice": "A",
+    "hint": "Q = 1 / [Cu²⁺] for the reduction as written (solid Cu activity = 1).",
+    "solution": "Q = 1 / [Cu²⁺] = 1 / 0.0100 = 100. log₁₀(Q) = log₁₀(100) = 2. E = 0.34 − (0.05916/2) × 2 = 0.34 − 0.05916 = 0.28084 V ≈ 0.280 V."
+    },
+    {
+    "id": 9,
+    "title": "Enzyme Kinetics — Michaelis–Menten",
+    "difficulty": "Easy",
+    "category": "Biochemistry I",
+    "type": "multiple_choice",
+    "question": "An enzyme has Km = 5.0 μM. If [S] = 5.0 μM, what fraction of Vmax is the reaction velocity v (assuming Michaelis–Menten kinetics)?",
+    "choices": [
+    { "label": "A", "text": "v = Vmax" },
+    { "label": "B", "text": "v = 0.25 × Vmax" },
+    { "label": "C", "text": "v = 0.50 × Vmax" },
+    { "label": "D", "text": "v = 0.75 × Vmax" }
+    ],
+    "correct_choice": "C",
+    "hint": "When [S] = Km, the Michaelis–Menten equation yields v = Vmax/2.",
+    "solution": "By definition, when [S] = Km, v = (Vmax [S]) / (Km + [S]) = Vmax × Km / (Km + Km) = Vmax × 1/2 = 0.50 × Vmax."
+    },
+    {
+    "id": 10,
+    "title": "Spectroscopy — ¹H NMR Chemical Shift",
+    "difficulty": "Easy",
+    "category": "Organic Chemistry",
+    "type": "multiple_choice",
+    "question": "In ¹H NMR spectroscopy, which type of proton typically appears downfield near 9–10 ppm?",
+    "choices": [
+    { "label": "A", "text": "Aromatic (Ar–H) protons" },
+    { "label": "B", "text": "Alkene (C=CH) protons" },
+    { "label": "C", "text": "Aldehyde (CHO) protons" },
+    { "label": "D", "text": "Alcohol (OH) protons" }
+    ],
+    "correct_choice": "C",
+    "hint": "Look for the proton on a carbonyl carbon in aldehydes.",
+    "solution": "Aldehyde protons (–CHO) are deshielded by the adjacent carbonyl and typically appear around 9–10 ppm in ¹H NMR."
+    },
+    {
+    "id": 11,
+    "title": "Osmolarity — Ionic Dissociation",
+    "difficulty": "Medium",
+    "category": "Cell Physiology",
+    "type": "multiple_choice",
+    "question": "What is the osmolarity (in Osm·L⁻¹) of a 0.150 M Na₂SO₄ solution assuming complete dissociation into ions?",
+    "choices": [
+    { "label": "A", "text": "0.150 Osm·L⁻¹" },
+    { "label": "B", "text": "0.300 Osm·L⁻¹" },
+    { "label": "C", "text": "0.450 Osm·L⁻¹" },
+    { "label": "D", "text": "0.600 Osm·L⁻¹" }
+    ],
+    "correct_choice": "C",
+    "hint": "Na₂SO₄ dissociates into 3 ions (2 Na⁺ + SO₄²⁻) per formula unit; osmolarity = concentration × i.",
+    "solution": "Van't Hoff factor i = 3. Osmolarity = 0.150 M × 3 = 0.450 Osm·L⁻¹."
+    },
+  {
     "id": 12,
     "title": "Titration — Half-Equivalence Point",
     "difficulty": "Medium",
