@@ -15,16 +15,19 @@
   position: fixed;
   left: 0;
   top: 0;
-  height: 100vh;
+  bottom: 0;              
+  height: auto;          
   width: var(--sidebar-width);
   background: var(--sidebar-bg);
   color: var(--sidebar-color);
   padding: 12px;
   transition: width var(--transition), background var(--transition);
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: auto;       
+  -webkit-overflow-scrolling: touch; 
   box-shadow: 2px 0 5px rgba(0,0,0,0.35);
   z-index: 100;
+  overscroll-behavior: contain;
 }
 
 /* Collapsed sizing */
@@ -35,6 +38,8 @@
 /* Main content margin updates */
 .app-layout .main-content {
   margin-left: var(--sidebar-width);
+  min-height: 100vh; 
+  box-sizing: border-box;
   transition: margin-left var(--transition);
 }
 .app-layout.collapsed .main-content {
@@ -76,6 +81,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  padding-bottom: max(20px, env(safe-area-inset-bottom)); 
 }
 
 .nav-link {

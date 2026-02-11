@@ -7,8 +7,11 @@ import "./SideBar.css";
 const SideBar = ({ collapsed, setCollapsed }) => {
   
 useEffect(() => {
-  if (window.innerWidth < 900) setCollapsed(true);
-    }, []);
+  const onResize = () => setCollapsed(window.innerWidth < 900);
+  onResize();
+  window.addEventListener("resize", onResize);
+  return () => window.removeEventListener("resize", onResize);
+}, [setCollapsed]);
 
   return (
     <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
@@ -36,21 +39,25 @@ useEffect(() => {
               const to = id === "home" ? "/" : `/${id}`;
 
               return (
-                <li key={id}>
-                  <NavLink to={to} className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`} >
-                    <span
-                      className="nav-icon"
-                      style={{ color: category.color }}
+                  <li key={id}>
+                    <NavLink
+                      to={to}
+                      data-tooltip={category.title}             // <-- add this
+                      className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
                     >
-                      <i className={`fa-solid ${category.icon}`} />
-                    </span>
+                      <span
+                        className="nav-icon"
+                        style={{ color: category.color }}
+                      >
+                        <i className={`fa-solid ${category.icon}`} />
+                      </span>
 
-                    {!collapsed && (
-                      <span className="nav-text">{category.title}</span>
-                    )}
-                  </NavLink>
-                </li>
-              );
+                      {!collapsed && (
+                        <span className="nav-text">{category.title}</span>
+                      )}
+                    </NavLink>
+                  </li>
+                );
             })}
           </ul>
         </nav>
