@@ -576,11 +576,176 @@
   "correct_choice": "C",
   "hint": "This response occurs only after pairing the neutral and unconditioned stimuli.",
   "solution": "After conditioning, the organism responds to the conditioned stimulus with a conditioned response."
-}
-
-
-
-
-
+},
+  {
+    "id": 35,
+    "title": "Acid–Base — Weak Acid Equilibrium",
+    "difficulty": "Medium",
+    "category": "General Chemistry",
+    "type": "multiple_choice",
+    "question": "A 0.100 M solution of a weak acid HA has Ka = 1.0 × 10⁻⁵. What is the approximate pH?",
+    "choices": [
+      {"label": "A", "text": "pH ≈ 2.00"},
+      {"label": "B", "text": "pH ≈ 3.00"},
+      {"label": "C", "text": "pH ≈ 4.00"},
+      {"label": "D", "text": "pH ≈ 5.00"}
+    ],
+    "correct_choice": "B",
+    "hint": "Use the approximation [H⁺] ≈ √(Ka·C) for weak acids.",
+    "solution": "[H⁺] ≈ √(Ka·C) = √(1.0×10⁻⁵ × 0.100) = √(1.0×10⁻⁶) = 1.0×10⁻³ M. pH = 3.00."
+  },
+  {
+    "id": 36,
+    "title": "Thermodynamics — Entropy Change Sign",
+    "difficulty": "Easy",
+    "category": "Physical Chemistry",
+    "type": "multiple_choice",
+    "question": "For the reaction 2 NO₂(g) ⇌ N₂O₄(g), what is the sign of ΔS° for the forward reaction?",
+    "choices": [
+      {"label": "A", "text": "ΔS° > 0"},
+      {"label": "B", "text": "ΔS° < 0"},
+      {"label": "C", "text": "ΔS° = 0"},
+      {"label": "D", "text": "Cannot be determined"}
+    ],
+    "correct_choice": "B",
+    "hint": "Consider change in number of gas molecules.",
+    "solution": "2 mol gas → 1 mol gas decreases disorder; therefore ΔS° < 0."
+  },
+  {
+    "id": 37,
+    "title": "Organic Chemistry — E2 Mechanism",
+    "difficulty": "Medium",
+    "category": "Organic Chemistry",
+    "type": "multiple_choice",
+    "question": "Which condition most strongly favors an E2 elimination reaction?",
+    "choices": [
+      {"label": "A", "text": "Primary substrate with weak nucleophile"},
+      {"label": "B", "text": "Tertiary substrate with strong base"},
+      {"label": "C", "text": "Methyl halide in polar protic solvent"},
+      {"label": "D", "text": "Secondary substrate in water"}
+    ],
+    "correct_choice": "B",
+    "hint": "E2 requires strong base and steric hindrance disfavors SN2.",
+    "solution": "A strong base and tertiary substrate favor concerted E2 elimination."
+  },
+  {
+    "id": 38,
+    "title": "Michaelis–Menten — Effect of Increased Enzyme",
+    "difficulty": "Medium",
+    "category": "Biochemistry I",
+    "type": "multiple_choice",
+    "question": "If enzyme concentration is doubled (all else constant), what happens to Km and Vmax?",
+    "choices": [
+      {"label": "A", "text": "Km doubles; Vmax unchanged"},
+      {"label": "B", "text": "Km unchanged; Vmax doubles"},
+      {"label": "C", "text": "Km halves; Vmax doubles"},
+      {"label": "D", "text": "Both unchanged"}
+    ],
+    "correct_choice": "B",
+    "hint": "Km is intrinsic to enzyme–substrate affinity.",
+    "solution": "Km remains unchanged (affinity constant), but Vmax ∝ [E], so Vmax doubles."
+  },
+  {
+    "id": 39,
+    "title": "Cell Physiology — Resting Membrane Potential",
+    "difficulty": "Medium",
+    "category": "Cell Physiology",
+    "type": "multiple_choice",
+    "question": "Which ion contributes most to the resting membrane potential of neurons?",
+    "choices": [
+      {"label": "A", "text": "Na⁺"},
+      {"label": "B", "text": "Cl⁻"},
+      {"label": "C", "text": "K⁺"},
+      {"label": "D", "text": "Ca²⁺"}
+    ],
+    "correct_choice": "C",
+    "hint": "Think about relative membrane permeability at rest.",
+    "solution": "Membranes are most permeable to K⁺ at rest; thus K⁺ largely determines resting potential."
+  },
+  {
+    "id": 40,
+    "title": "Genetics — Test Cross",
+    "difficulty": "Easy",
+    "category": "Genetics",
+    "type": "multiple_choice",
+    "question": "What genotype is used in a test cross to determine if a dominant phenotype is homozygous or heterozygous?",
+    "choices": [
+      {"label": "A", "text": "Homozygous dominant"},
+      {"label": "B", "text": "Heterozygous"},
+      {"label": "C", "text": "Homozygous recessive"},
+      {"label": "D", "text": "Any genotype works equally"}
+    ],
+    "correct_choice": "C",
+    "hint": "The recessive phenotype reveals hidden alleles.",
+    "solution": "A homozygous recessive (aa) reveals whether the dominant phenotype parent carries a recessive allele."
+  },
+  {
+    "id": 41,
+    "title": "Molecular Biology — DNA Replication",
+    "difficulty": "Easy",
+    "category": "Molecular Biology",
+    "type": "multiple_choice",
+    "question": "Which enzyme synthesizes short RNA primers during DNA replication?",
+    "choices": [
+      {"label": "A", "text": "DNA polymerase III"},
+      {"label": "B", "text": "Helicase"},
+      {"label": "C", "text": "Primase"},
+      {"label": "D", "text": "Ligase"}
+    ],
+    "correct_choice": "C",
+    "hint": "Primers are short RNA sequences.",
+    "solution": "Primase synthesizes RNA primers required for DNA polymerase to begin replication."
+  },
+  {
+    "id": 42,
+    "title": "Physics — Work–Energy Theorem",
+    "difficulty": "Medium",
+    "category": "Physics",
+    "type": "multiple_choice",
+    "question": "According to the work–energy theorem, the net work done on an object equals:",
+    "choices": [
+      {"label": "A", "text": "Its potential energy change"},
+      {"label": "B", "text": "Its kinetic energy change"},
+      {"label": "C", "text": "Force times velocity"},
+      {"label": "D", "text": "Momentum change"}
+    ],
+    "correct_choice": "B",
+    "hint": "W_net = ΔK.",
+    "solution": "The work–energy theorem states W_net = ΔK (change in kinetic energy)."
+  },
+  {
+    "id": 43,
+    "title": "Cognitive Psychology — Encoding Specificity",
+    "difficulty": "Medium",
+    "category": "Cognitive Psychology",
+    "type": "multiple_choice",
+    "question": "The encoding specificity principle suggests memory retrieval is best when:",
+    "choices": [
+      {"label": "A", "text": "Information is repeated many times"},
+      {"label": "B", "text": "Retrieval context matches encoding context"},
+      {"label": "C", "text": "Material is emotionally neutral"},
+      {"label": "D", "text": "Working memory capacity is increased"}
+    ],
+    "correct_choice": "B",
+    "hint": "Context-dependent memory effects.",
+    "solution": "Memory is strongest when contextual cues present during encoding are also present at retrieval."
+  },
+  {
+    "id": 44,
+    "title": "Analytical Chemistry — Beer–Lambert Law",
+    "difficulty": "Medium",
+    "category": "Analytical Chemistry",
+    "type": "multiple_choice",
+    "question": "According to Beer–Lambert law (A = εbc), if path length and molar absorptivity are constant, doubling concentration will:",
+    "choices": [
+      {"label": "A", "text": "Double absorbance"},
+      {"label": "B", "text": "Halve absorbance"},
+      {"label": "C", "text": "Square absorbance"},
+      {"label": "D", "text": "Not change absorbance"}
+    ],
+    "correct_choice": "A",
+    "hint": "Absorbance is directly proportional to concentration.",
+    "solution": "Since A ∝ c (with ε and b constant), doubling concentration doubles absorbance."
+  }
 ]
   
