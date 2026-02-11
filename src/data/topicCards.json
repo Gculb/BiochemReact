@@ -1199,7 +1199,172 @@
           "important": false
         }
       ]
+    },
+    {
+  "sectionId": "cell-biology",
+  "section_title": "Cell Biology",
+  "cards": [
+    {
+      "id": "membrane-structure",
+      "title": "Membrane Structure & Fluid Mosaic Model",
+      "summary": "Phospholipid bilayers, cholesterol, and membrane protein organization.",
+      "details": "Amphipathic phospholipids form bilayers. Membrane fluidity depends on fatty acid saturation and cholesterol content. Integral vs peripheral membrane proteins regulate transport and signaling.",
+      "important": true
+    },
+    {
+      "id": "membrane-transport",
+      "title": "Membrane Transport Mechanisms",
+      "summary": "Passive diffusion, facilitated transport, and active transport.",
+      "details": "Simple diffusion, facilitated diffusion (channels/carriers), primary active transport (ATP-dependent), and secondary active transport (symport/antiport). Osmosis and tonicity relationships included.",
+      "important": true
+    },
+    {
+      "id": "cytoskeleton",
+      "title": "Cytoskeleton & Motor Proteins",
+      "summary": "Microfilaments, microtubules, intermediate filaments.",
+      "details": "Actin filaments (cell motility), microtubules (kinesin/dynein transport), intermediate filaments (structural integrity). Important in mitosis and intracellular trafficking.",
+      "important": false
+    },
+    {
+      "id": "cell-cycle",
+      "title": "Cell Cycle & Regulation",
+      "summary": "G1, S, G2, M phases and checkpoint control.",
+      "details": "Cyclins and CDKs regulate progression. Tumor suppressors (p53, Rb) monitor DNA integrity. Apoptosis mechanisms included.",
+      "important": true
     }
+  ]
+},
+{
+  "sectionId": "neurobiology",
+  "section_title": "Neurobiology",
+  "cards": [
+    {
+      "id": "neuron-structure",
+      "title": "Neuron Structure & Function",
+      "summary": "Dendrites, axon, myelin and synapses.",
+      "details": "Neurons transmit electrical signals. Myelination increases conduction velocity. Nodes of Ranvier enable saltatory conduction.",
+      "important": true
+    },
+    {
+      "id": "action-potentials",
+      "title": "Action Potentials",
+      "summary": "Depolarization, repolarization and refractory periods.",
+      "details": "Voltage-gated Na+ channels open during depolarization; K+ channels mediate repolarization. All-or-none phenomenon. Absolute and relative refractory periods.",
+      "important": true
+    },
+    {
+      "id": "synaptic-transmission",
+      "title": "Synaptic Transmission",
+      "summary": "Chemical signaling across synapses.",
+      "details": "Neurotransmitter release triggered by Ca2+ influx. Excitatory vs inhibitory postsynaptic potentials. Reuptake and degradation mechanisms.",
+      "important": true
+    },
+    {
+      "id": "neurotransmitters",
+      "title": "Major Neurotransmitters",
+      "summary": "Glutamate, GABA, dopamine, serotonin.",
+      "details": "Excitatory vs inhibitory transmitters. Roles in reward, mood, motor control, and learning.",
+      "important": false
+    }
+  ]
+},
+{
+  "sectionId": "immunology",
+  "section_title": "Immunology",
+  "cards": [
+    {
+      "id": "innate-immunity",
+      "title": "Innate Immunity",
+      "summary": "Immediate, nonspecific defense mechanisms.",
+      "details": "Physical barriers, macrophages, neutrophils, NK cells, complement system. Pattern recognition receptors (TLRs).",
+      "important": true
+    },
+    {
+      "id": "adaptive-immunity",
+      "title": "Adaptive Immunity",
+      "summary": "Antigen-specific immune response.",
+      "details": "B cells (antibody production), T cells (helper and cytotoxic). Clonal expansion and memory cell formation.",
+      "important": true
+    },
+    {
+      "id": "antibodies",
+      "title": "Antibody Structure & Classes",
+      "summary": "IgG, IgA, IgM, IgE, IgD.",
+      "details": "Heavy and light chains, variable regions, antigen binding specificity. Isotype switching and affinity maturation.",
+      "important": false
+    }
+  ]
+},
+{
+  "sectionId": "cognitive-psychology",
+  "section_title": "Cognitive Psychology",
+  "cards": [
+    {
+      "id": "memory-systems",
+      "title": "Memory Systems",
+      "summary": "Working, short-term and long-term memory.",
+      "details": "Encoding, storage, retrieval processes. Hippocampus role in consolidation. Declarative vs procedural memory.",
+      "important": true
+    },
+    {
+      "id": "learning-theories",
+      "title": "Learning Theories",
+      "summary": "Classical and operant conditioning.",
+      "details": "Pavlovian conditioning, reinforcement schedules, extinction, and behavioral shaping.",
+      "important": false
+    }
+  ]
+},{
+  "sectionId": "cell-physiology",
+  "section_title": "Cell Physiology",
+  "cards": [
+    {
+      "id": "membrane-potentials",
+      "title": "Membrane Potentials",
+      "summary": "Electrical potential differences across cellular membranes.",
+      "details": "Resting membrane potential arises from selective permeability to K+ and Na+ and the Na+/K+ ATPase pump. Described quantitatively by the Nernst equation and Goldman equation.",
+      "important": true
+    },
+    {
+      "id": "ion-channels",
+      "title": "Ion Channels & Gating",
+      "summary": "Voltage-gated, ligand-gated, and mechanically gated channels.",
+      "details": "Voltage-gated channels respond to membrane potential changes. Ligand-gated channels respond to neurotransmitters or intracellular messengers. Channel kinetics determine excitability.",
+      "important": true
+    },
+    {
+      "id": "osmosis-tonicity",
+      "title": "Osmosis & Tonicity",
+      "summary": "Water movement across semipermeable membranes.",
+      "details": "Water moves toward higher solute concentration. Hypotonic, isotonic, and hypertonic environments influence cell volume. Osmotic pressure can be approximated using π = iMRT.",
+      "important": true
+    },
+    {
+      "id": "signal-transduction",
+      "title": "Signal Transduction Pathways",
+      "summary": "Cellular communication via receptors and second messengers.",
+      "details": "GPCR pathways activate cAMP or IP3/DAG cascades. Receptor tyrosine kinases trigger phosphorylation cascades. Amplification allows small extracellular signals to generate large intracellular responses.",
+      "important": true
+    },
+    {
+      "id": "calcium-signaling",
+      "title": "Calcium Signaling",
+      "summary": "Ca2+ as a universal intracellular second messenger.",
+      "details": "Calcium release from ER via IP3 receptors and ryanodine receptors regulates muscle contraction, secretion, and enzyme activation.",
+      "important": false
+    },
+    {
+      "id": "apoptosis",
+      "title": "Apoptosis & Cell Death",
+      "summary": "Programmed cell death pathways.",
+      "details": "Intrinsic pathway involves mitochondrial cytochrome c release and caspase activation. Extrinsic pathway involves death receptors (e.g., Fas). Essential for development and homeostasis.",
+      "important": false
+    }
+  ]
+}
+
+
+
   ]
 }
  

@@ -875,7 +875,191 @@
         ]
     }
     ]
-    }
+    },
+      {
+    "sectionId": "cell-biology",
+    "sectionTitle": "Cell Biology",
+    "items": [
+      {
+        "id": "membrane-composition",
+        "title": "Membrane Composition & Fluidity",
+        "description": "Phospholipid bilayer architecture, amphipathic lipids, membrane proteins (integral vs peripheral), and factors controlling fluidity (cholesterol, temperature, fatty-acid saturation).",
+        "priority": true
+      },
+      {
+        "id": "membrane-transport-concepts",
+        "title": "Transport Mechanisms & Energetics",
+        "description": "Distinguish passive diffusion, facilitated diffusion, primary and secondary active transport; understand ATP-coupled pumps and electrochemical gradients as energy stores.",
+        "priority": true
+      },
+      {
+        "id": "cytoskeleton-functions",
+        "title": "Cytoskeleton & Intracellular Transport",
+        "description": "Roles of actin, microtubules and intermediate filaments; motor proteins (kinesin, dynein, myosin) and their roles in trafficking and cell motility.",
+        "priority": false
+      },
+      {
+        "id": "organelle-functions",
+        "title": "Organelle Specialization",
+        "description": "Functional roles and key biochemistry of nucleus, mitochondria, ER, Golgi, lysosomes, and peroxisomes; compartmentation as a driver of metabolic control.",
+        "priority": true
+      },
+      {
+        "id": "cell-cycle-checkpoints",
+        "title": "Cell Cycle Control & Checkpoints",
+        "description": "Cyclin/CDK regulation, G1/S and G2/M checkpoints, DNA damage response (p53/Rb), and links between cell-cycle failure and disease.",
+        "priority": true
+      }
+    ]
+  },
+
+  {
+    "sectionId": "cell-physiology",
+    "sectionTitle": "Cell Physiology — Critical Concepts",
+    "items": [
+      {
+        "id": "nernst-goldman",
+        "title": "Nernst & Goldman Principles",
+        "description": "Quantitative description of membrane potentials: Nernst equation for single ions and Goldman equation for multi-ion permeabilities; intuition for how ion gradients set resting potential.",
+        "priority": true
+      },
+      {
+        "id": "ion-channel-mechanisms",
+        "title": "Ion Channel Types & Gating",
+        "description": "Differences between voltage-gated, ligand-gated and mechanosensitive channels; gating kinetics and impact on excitability and signal propagation.",
+        "priority": true
+      },
+      {
+        "id": "osmosis-tonicity-practice",
+        "title": "Osmosis, Tonicity & Cell Volume",
+        "description": "Predict volume/shape changes in hypo-, iso-, and hypertonic environments; use osmotic pressure approximations where needed.",
+        "priority": false
+      },
+      {
+        "id": "signal-transduction-core",
+        "title": "Signal Transduction & Second Messengers",
+        "description": "GPCR vs RTK signaling, common second messengers (cAMP, IP3/DAG, Ca2+), amplification cascades, and termination mechanisms.",
+        "priority": true
+      },
+      {
+        "id": "calcium-role",
+        "title": "Calcium as a Universal Messenger",
+        "description": "Sources of intracellular Ca2+ (ER, extracellular), Ca2+-binding proteins, and common cellular outcomes (contraction, secretion, enzyme activation).",
+        "priority": false
+      }
+    ]
+  },
+
+  {
+    "sectionId": "neurobiology",
+    "sectionTitle": "Neurobiology — Critical Concepts",
+    "items": [
+      {
+        "id": "resting-action",
+        "title": "Resting & Action Potentials",
+        "description": "Ion movements underlying resting potential and the all-or-none action potential; role of voltage-gated Na+ and K+ channels and refractory periods.",
+        "priority": true
+      },
+      {
+        "id": "synaptic-transmission-core",
+        "title": "Synaptic Transmission & Plasticity",
+        "description": "Mechanism of neurotransmitter release (Ca2+-dependent), EPSPs vs IPSPs, basics of LTP/LTD as substrates for learning and memory.",
+        "priority": true
+      },
+      {
+        "id": "major-neurotransmitters",
+        "title": "Major Neurotransmitter Systems",
+        "description": "Functional roles and general properties of glutamate, GABA, dopamine, serotonin, acetylcholine; common receptors and reuptake/degradation processes.",
+        "priority": false
+      },
+      {
+        "id": "myelination-conduction",
+        "title": "Myelination & Conduction Velocity",
+        "description": "How myelin and nodes of Ranvier enable saltatory conduction; physiological consequences of demyelination.",
+        "priority": false
+      },
+      {
+        "id": "sensory-motor-pathways",
+        "title": "Basic Circuit Organization",
+        "description": "Orientation to simple sensory and motor pathways, integration centers, and how synaptic summation shapes neuronal output.",
+        "priority": false
+      }
+    ]
+  },
+
+  {
+    "sectionId": "immunology",
+    "sectionTitle": "Immunology — Critical Concepts",
+    "items": [
+      {
+        "id": "innate-adaptive",
+        "title": "Innate vs Adaptive Immunity",
+        "description": "Contrast speed and specificity: innate immunity provides rapid, nonspecific defenses (macrophages, neutrophils, complement) while adaptive immunity (B/T cells) is specific and memory-forming.",
+        "priority": true
+      },
+      {
+        "id": "antigen-presentation",
+        "title": "Antigen Presentation & MHC",
+        "description": "MHC I vs MHC II pathways, cross-presentation, and how antigen presentation links infected cells/antigen-presenting cells to T-cell activation.",
+        "priority": true
+      },
+      {
+        "id": "antibody-classes",
+        "title": "Antibody Structure & Isotypes",
+        "description": "IgG, IgM, IgA, IgE, IgD — major functions, basic structure (variable vs constant regions), and processes: somatic hypermutation & class switching.",
+        "priority": false
+      },
+      {
+        "id": "immune-memory-vaccines",
+        "title": "Clonal Expansion & Memory",
+        "description": "How exposure produces long-lived memory B and T cells and the basis for vaccine protection and booster requirements.",
+        "priority": false
+      },
+      {
+        "id": "inflammation-role",
+        "title": "Inflammation & Innate Sensors",
+        "description": "PRRs (TLRs, NLRs), cytokine cascades, acute vs chronic inflammation and clinical consequences.",
+        "priority": false
+      }
+    ]
+  },
+
+  {
+    "sectionId": "cognitive-psychology",
+    "sectionTitle": "Cognitive Psychology — Critical Concepts",
+    "items": [
+      {
+        "id": "memory-systems-contrast",
+        "title": "Memory Systems (Working vs Long-Term)",
+        "description": "Distinguish working memory, short-term memory, episodic and semantic long-term memory; hippocampus role in consolidation vs cortex for storage.",
+        "priority": true
+      },
+      {
+        "id": "learning-conditioning",
+        "title": "Learning Principles & Conditioning",
+        "description": "Classical (Pavlovian) and operant conditioning basics, reinforcement schedules, extinction and generalization phenomena.",
+        "priority": false
+      },
+      {
+        "id": "attention-processing",
+        "title": "Attention & Perception",
+        "description": "Selective attention mechanisms, bottleneck models (early vs late selection), and how attention affects perception and memory encoding.",
+        "priority": false
+      },
+      {
+        "id": "decision-biases",
+        "title": "Decision Making & Cognitive Biases",
+        "description": "Common heuristics and biases (availability, anchoring, confirmation) that influence reasoning — useful for MCAT-style passages.",
+        "priority": false
+      },
+      {
+        "id": "neurocog-links",
+        "title": "Neurocognitive Foundations (bridge to neurobiology)",
+        "description": "How cognitive constructs map to brain systems (e.g., hippocampus for memory, prefrontal cortex for working memory/executive control).",
+        "priority": false
+      }
+    ]
+  }
   ]
 }
   

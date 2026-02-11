@@ -440,6 +440,91 @@
     { "id": "high-yield-facts", "title": "High-Yield Facts & Cheat Sheets", "important": true },
     { "id": "timing-test-day", "title": "Timing, Breaks & Test-Day Logistics" }
   ]
-}
+},
+  {
+    "id": "cell-biology",
+    "title": "Cell Biology",
+    "icon": "fa-microscope",
+    "color": "#1abc9c",
+    "description": "Cell structure, membranes, organelles, transport, cytoskeleton, and signalling.",
+    "order": 29,
+    "includeInPractice": true,
+    "topics": [
+      { "id": "membrane-transport", "title": "Membrane Transport & Channels" },
+      { "id": "organelles", "title": "Organelles & Function" },
+      { "id": "cytoskeleton", "title": "Cytoskeleton & Motility" },
+      { "id": "cell-division", "title": "Cell Cycle & Mitosis/Meiosis" },
+      { "id": "cell-signaling", "title": "Cell Signaling Pathways" },
+      { "id": "membrane-dynamics", "title": "Endocytosis/Exocytosis & Vesicle Trafficking" }
+    ]
+  },
+
+  {
+    "id": "cell-physiology",
+    "title": "Cell Physiology",
+    "icon": "fa-heart-pulse",
+    "color": "#16a085",
+    "description": "Physiological processes at the cellular level: membrane potentials, excitability, transport energetics.",
+    "order": 30,
+    "includeInPractice": true,
+    "topics": [
+      { "id": "membrane-potential", "title": "Membrane Potential & Nernst Equation" },
+      { "id": "ion-transport", "title": "Ion Pumps and Transport Energetics" },
+      { "id": "cell-volume", "title": "Osmosis & Cell Volume Regulation" },
+      { "id": "electrophysiology", "title": "Basic Electrophysiology (action potentials)" },
+      { "id": "cell-metabolism", "title": "Cellular Energy & Metabolic Integration" }
+    ]
+  },
+
+  {
+    "id": "immunology",
+    "title": "Immunology",
+    "icon": "fa-shield-virus",
+    "color": "#c0392b",
+    "description": "Innate and adaptive immunity, antibody structure, antigen presentation, and immune responses.",
+    "order": 31,
+    "includeInPractice": true,
+    "topics": [
+      { "id": "innate-immunity", "title": "Innate Immunity & Inflammation" },
+      { "id": "adaptive-immunity", "title": "Adaptive Immunity (B & T cells)" },
+      { "id": "antibodies", "title": "Antibody Structure & Function" },
+      { "id": "antigen-presentation", "title": "Antigen Presentation & MHC" },
+      { "id": "vaccines", "title": "Vaccines & Immunological Memory" }
+    ]
+  },
+
+  {
+    "id": "cognitive-psychology",
+    "title": "Cognitive Psychology",
+    "icon": "fa-brain",
+    "color": "#8e44ad",
+    "description": "Foundational cognitive science topics: memory, attention, perception, and learning relevant to neuro/behavioral modules.",
+    "order": 32,
+    "includeInPractice": true,
+    "topics": [
+      { "id": "memory", "title": "Memory Systems & Models" },
+      { "id": "attention", "title": "Attention & Perception" },
+      { "id": "learning", "title": "Learning & Conditioning" },
+      { "id": "decision-making", "title": "Decision Making & Cognitive Biases" },
+      { "id": "cognition-neuro", "title": "Neurocognitive Bases (overview)" }
+    ]
+  },
+
+  {
+    "id": "neurobiology",
+    "title": "Neurobiology",
+    "icon": "fa-brain",
+    "color": "#2c3e50",
+    "description": "Cellular and systems neuroscience: neurons, synapses, signaling, neurotransmitters, and circuits.",
+    "order": 33,
+    "includeInPractice": true,
+    "topics": [
+      { "id": "neuron-structure", "title": "Neuron Structure & Ion Channels" },
+      { "id": "synaptic-transmission", "title": "Synaptic Transmission & Plasticity" },
+      { "id": "nt-systems", "title": "Neurotransmitters & Receptor Types" },
+      { "id": "sensory-systems", "title": "Sensory Systems & Pathways" },
+      { "id": "neurophysiology", "title": "Systems Neurophysiology (basic circuits)" }
+    ]
+  }
   ]
 }
