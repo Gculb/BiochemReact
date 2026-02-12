@@ -472,6 +472,156 @@
     "category": "Metabolism / Enzyme",
     "definition": "Enzyme that interconverts pyruvate and lactate, regenerating NAD⁺ under anaerobic conditions.",
     "example": "Pyruvate + NADH ⇌ Lactate + NAD⁺ in muscle during intense exercise."
+  },
+   {
+    "term": "Hill Coefficient",
+    "category": "Enzyme Kinetics / Protein Binding",
+    "definition": "A measure of cooperativity in ligand binding. A Hill coefficient (nH) > 1 indicates positive cooperativity; nH = 1 indicates non-cooperative binding; nH < 1 indicates negative cooperativity.",
+    "example": "Hemoglobin has a Hill coefficient of ~2.8, reflecting cooperative O2 binding."
+  },
+  {
+    "term": "Bohr Effect",
+    "category": "Protein Physiology",
+    "definition": "The phenomenon where decreased pH (increased CO2) reduces hemoglobin’s affinity for oxygen, promoting O2 release in metabolically active tissues.",
+    "example": "During exercise, increased CO2 lowers pH and shifts the O2 dissociation curve to the right."
+  },
+  {
+    "term": "Oxygen Dissociation Curve",
+    "category": "Protein Physiology",
+    "definition": "A sigmoidal curve describing hemoglobin saturation as a function of partial pressure of oxygen (pO2). Reflects cooperative binding.",
+    "example": "A right shift indicates decreased oxygen affinity (high CO2, low pH, high temperature, high 2,3-BPG)."
+  },
+  {
+    "term": "2,3-Bisphosphoglycerate (2,3-BPG)",
+    "category": "Metabolic Regulation",
+    "definition": "A glycolytic intermediate that binds deoxygenated hemoglobin, decreasing its affinity for oxygen and promoting oxygen release.",
+    "example": "At high altitude, 2,3-BPG levels increase to enhance oxygen delivery to tissues."
+  },
+  {
+    "term": "Competitive Inhibition",
+    "category": "Enzyme Kinetics",
+    "definition": "An inhibitor competes with the substrate for the active site. Increases apparent Km but does not change Vmax.",
+    "example": "Statins competitively inhibit HMG-CoA reductase."
+  },
+  {
+    "term": "Noncompetitive Inhibition",
+    "category": "Enzyme Kinetics",
+    "definition": "An inhibitor binds to a site other than the active site, reducing Vmax without changing Km.",
+    "example": "Heavy metals can act as noncompetitive enzyme inhibitors."
+  },
+  {
+    "term": "Uncompetitive Inhibition",
+    "category": "Enzyme Kinetics",
+    "definition": "An inhibitor binds only to the enzyme-substrate complex, decreasing both Km and Vmax.",
+    "example": "Rare in physiology but tested conceptually on Lineweaver-Burk plots."
+  },
+  {
+    "term": "Lineweaver-Burk Plot",
+    "category": "Enzyme Kinetics",
+    "definition": "Double reciprocal plot (1/v vs 1/[S]) used to determine Km and Vmax and visualize inhibition patterns.",
+    "example": "Competitive inhibition increases the slope but keeps the same y-intercept."
+  },
+  {
+    "term": "Isoelectric Point (pI)",
+    "category": "Protein Chemistry",
+    "definition": "The pH at which a molecule carries no net electric charge. Important for electrophoresis and protein purification.",
+    "example": "At pH below its pI, a protein is positively charged."
+  },
+  {
+    "term": "Electrophoresis",
+    "category": "Biochemical Techniques",
+    "definition": "A technique that separates molecules based on size and charge using an electric field.",
+    "example": "SDS-PAGE separates proteins primarily by molecular weight."
+  },
+  {
+    "term": "SDS-PAGE",
+    "category": "Biochemical Techniques",
+    "definition": "Sodium dodecyl sulfate polyacrylamide gel electrophoresis; denatures proteins and gives them uniform negative charge to separate by size.",
+    "example": "Smaller proteins migrate further down the gel."
+  },
+  {
+    "term": "Western Blot",
+    "category": "Biochemical Techniques",
+    "definition": "Technique that uses antibodies to detect specific proteins after gel electrophoresis.",
+    "example": "Used to detect expression of a signaling protein."
+  },
+  {
+    "term": "Southern Blot",
+    "category": "Biochemical Techniques",
+    "definition": "Method for detecting specific DNA sequences using labeled probes.",
+    "example": "Used to identify gene insertions."
+  },
+  {
+    "term": "Northern Blot",
+    "category": "Biochemical Techniques",
+    "definition": "Technique used to detect specific RNA molecules.",
+    "example": "Used to measure mRNA expression levels."
+  },
+  {
+    "term": "PCR (Polymerase Chain Reaction)",
+    "category": "Molecular Biology",
+    "definition": "A technique that amplifies specific DNA sequences using thermal cycling, primers, and DNA polymerase.",
+    "example": "Denaturation → Annealing → Extension cycles exponentially amplify DNA."
+  },
+  {
+    "term": "Restriction Enzymes",
+    "category": "Molecular Biology",
+    "definition": "Endonucleases that cut DNA at specific palindromic sequences.",
+    "example": "EcoRI cuts at GAATTC."
+  },
+  {
+    "term": "Operon",
+    "category": "Gene Regulation",
+    "definition": "A cluster of genes under control of a single promoter in prokaryotes.",
+    "example": "The lac operon is inducible; the trp operon is repressible."
+  },
+  {
+    "term": "Lac Operon",
+    "category": "Gene Regulation",
+    "definition": "An inducible operon in E. coli regulated by lactose and glucose levels.",
+    "example": "Allolactose binds the repressor, allowing transcription."
+  },
+  {
+    "term": "Trp Operon",
+    "category": "Gene Regulation",
+    "definition": "A repressible operon regulated by tryptophan levels.",
+    "example": "High tryptophan activates the repressor to shut down transcription."
+  },
+  {
+    "term": "Apoptosis",
+    "category": "Cell Biology",
+    "definition": "Programmed cell death involving caspases, DNA fragmentation, and membrane blebbing without inflammation.",
+    "example": "Cytochrome c release from mitochondria activates caspase cascade."
+  },
+  {
+    "term": "Necrosis",
+    "category": "Cell Biology",
+    "definition": "Uncontrolled cell death caused by injury, leading to inflammation.",
+    "example": "Ischemic tissue damage results in necrosis."
+  },
+  {
+    "term": "Tight Junction",
+    "category": "Cellular Structure",
+    "definition": "Cell junction that prevents paracellular movement of molecules between epithelial cells.",
+    "example": "Intestinal epithelial cells form tight junction barriers."
+  },
+  {
+    "term": "Gap Junction",
+    "category": "Cellular Structure",
+    "definition": "Channels between adjacent cells allowing passage of ions and small molecules.",
+    "example": "Cardiac muscle cells use gap junctions for synchronized contraction."
+  },
+  {
+    "term": "Michaelis-Menten Assumptions",
+    "category": "Enzyme Kinetics",
+    "definition": "Model assumptions include steady-state approximation, [S] >> [E], and negligible product formation during initial velocity measurement.",
+    "example": "Initial velocity experiments satisfy steady-state conditions."
+  },
+  {
+    "term": "Redox Reaction",
+    "category": "Thermodynamics / Metabolism",
+    "definition": "A chemical reaction involving transfer of electrons; oxidation is loss, reduction is gain.",
+    "example": "NAD+ is reduced to NADH during glycolysis."
   }
   ]
 }
