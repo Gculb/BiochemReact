@@ -622,6 +622,126 @@
     "category": "Thermodynamics / Metabolism",
     "definition": "A chemical reaction involving transfer of electrons; oxidation is loss, reduction is gain.",
     "example": "NAD+ is reduced to NADH during glycolysis."
+  },
+    {
+    "term": "Allosteric Enzyme",
+    "category": "Enzyme Regulation",
+    "definition": "An enzyme whose activity is modulated by binding of effectors at sites other than the active site, often exhibiting sigmoidal kinetics.",
+    "example": "Aspartate transcarbamoylase is allosterically inhibited by CTP and activated by ATP."
+  },
+  {
+    "term": "Isozyme (Isoenzyme)",
+    "category": "Enzyme Kinetics",
+    "definition": "Different molecular forms of an enzyme that catalyze the same reaction but may differ in kinetics, regulation, or tissue distribution.",
+    "example": "Lactate dehydrogenase has LDH-1 in heart and LDH-5 in liver."
+  },
+  {
+    "term": "Glycosaminoglycans (GAGs)",
+    "category": "Carbohydrates / Structural Biology",
+    "definition": "Long unbranched polysaccharides with repeating disaccharide units; often sulfated and negatively charged, forming part of extracellular matrix.",
+    "example": "Heparin, chondroitin sulfate, and hyaluronic acid are GAGs."
+  },
+  {
+    "term": "Proteoglycan",
+    "category": "Proteins / Structural Biology",
+    "definition": "A core protein covalently attached to one or more glycosaminoglycan chains; major components of the extracellular matrix.",
+    "example": "Aggrecan in cartilage provides hydration and resistance to compression."
+  },
+  {
+    "term": "Lipopolysaccharide (LPS)",
+    "category": "Lipids / Cell Biology",
+    "definition": "Large glycolipid component of the outer membrane of Gram-negative bacteria; potent activator of the immune system.",
+    "example": "LPS triggers Toll-like receptor 4 (TLR4) signaling and cytokine release."
+  },
+  {
+    "term": "cAMP-Dependent Protein Kinase (PKA)",
+    "category": "Cell Signaling / Enzyme Regulation",
+    "definition": "A serine/threonine kinase activated by cAMP that phosphorylates target proteins to mediate cellular responses.",
+    "example": "PKA phosphorylates glycogen synthase kinase to regulate glycogen metabolism."
+  },
+  {
+    "term": "Nitric Oxide (NO)",
+    "category": "Cell Signaling / Redox Biology",
+    "definition": "A gaseous signaling molecule synthesized by nitric oxide synthase; diffuses across membranes and activates guanylate cyclase.",
+    "example": "NO mediates vasodilation in endothelial cells."
+  },
+  {
+    "term": "cGMP (Cyclic Guanosine Monophosphate)",
+    "category": "Cell Signaling / Second Messengers",
+    "definition": "A second messenger produced by guanylate cyclase; activates protein kinase G (PKG) and regulates ion channels.",
+    "example": "NO stimulates cGMP production to relax smooth muscle."
+  },
+  {
+    "term": "Apoptosome",
+    "category": "Cell Biology / Apoptosis",
+    "definition": "A multiprotein complex formed by cytochrome c and Apaf-1 that activates caspase-9, initiating the intrinsic apoptosis pathway.",
+    "example": "Mitochondrial outer membrane permeabilization leads to apoptosome assembly."
+  },
+  {
+    "term": "Necroptosis",
+    "category": "Cell Biology",
+    "definition": "Programmed necrosis mediated by RIPK1/RIPK3 and MLKL, leading to regulated cell death with inflammatory signaling.",
+    "example": "Viral infections can trigger necroptosis in host cells."
+  },
+  {
+    "term": "Proteasome",
+    "category": "Protein Degradation",
+    "definition": "A large protease complex that degrades ubiquitinated proteins into peptides, regulating protein turnover.",
+    "example": "Misfolded ER proteins are targeted to the 26S proteasome for degradation."
+  },
+  {
+    "term": "Autophagy",
+    "category": "Cellular Biology",
+    "definition": "A catabolic process where cells degrade and recycle cytoplasmic contents and organelles via autophagosomes and lysosomes.",
+    "example": "Starvation induces autophagy to provide amino acids and energy."
+  },
+  {
+    "term": "mTOR (Mechanistic Target of Rapamycin)",
+    "category": "Cell Signaling / Metabolic Regulation",
+    "definition": "A kinase that integrates nutrient, energy, and growth factor signals to regulate protein synthesis, autophagy, and metabolism.",
+    "example": "mTORC1 activation stimulates ribosomal protein synthesis and inhibits autophagy."
+  },
+  {
+    "term": "Glycation",
+    "category": "Protein Chemistry / Pathophysiology",
+    "definition": "Non-enzymatic covalent attachment of sugars to proteins or lipids, often leading to advanced glycation end products (AGEs).",
+    "example": "Hemoglobin A1c is a glycated form of hemoglobin used to monitor long-term blood glucose."
+  },
+  {
+    "term": "Reactive Oxygen Species (ROS)",
+    "category": "Cellular Biology / Redox Biology",
+    "definition": "Chemically reactive molecules containing oxygen (e.g., superoxide, hydrogen peroxide) that can damage DNA, lipids, and proteins.",
+    "example": "Mitochondrial electron transport leaks electrons, generating ROS."
+  },
+  {
+    "term": "Calcium-Induced Calcium Release (CICR)",
+    "category": "Cell Signaling",
+    "definition": "A process where small Ca²⁺ influx triggers release of more Ca²⁺ from the endoplasmic or sarcoplasmic reticulum.",
+    "example": "Cardiac myocytes use CICR for excitation-contraction coupling."
+  },
+  {
+    "term": "G-Protein Alpha Subunits (Gs, Gi, Gq)",
+    "category": "Cell Signaling",
+    "definition": "Subunits of heterotrimeric G-proteins that determine signaling output: Gs stimulates adenylate cyclase, Gi inhibits it, Gq activates PLC.",
+    "example": "β-adrenergic receptor activates Gs, increasing cAMP and PKA activity."
+  },
+  {
+    "term": "Signal Transduction Cascade",
+    "category": "Cell Signaling",
+    "definition": "A series of biochemical events triggered by receptor activation, often involving phosphorylation, second messengers, and transcriptional regulation.",
+    "example": "MAPK/ERK pathway regulates cell proliferation and differentiation."
+  },
+  {
+    "term": "Histone Modification",
+    "category": "Epigenetics / Protein Modification",
+    "definition": "Post-translational modifications (acetylation, methylation, phosphorylation) of histones that regulate chromatin structure and gene expression.",
+    "example": "H3K27 acetylation is associated with transcriptionally active chromatin."
+  },
+  {
+    "term": "Chromatin Remodeling Complexes",
+    "category": "Epigenetics / Gene Regulation",
+    "definition": "Multiprotein machines that reposition nucleosomes to allow or block access to DNA for transcription, replication, and repair.",
+    "example": "SWI/SNF complex slides nucleosomes to expose promoter regions."
   }
   ]
 }
