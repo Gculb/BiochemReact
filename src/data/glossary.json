@@ -742,6 +742,120 @@
     "category": "Epigenetics / Gene Regulation",
     "definition": "Multiprotein machines that reposition nucleosomes to allow or block access to DNA for transcription, replication, and repair.",
     "example": "SWI/SNF complex slides nucleosomes to expose promoter regions."
-  }
+  },
+  {
+  "term": "Anaplerotic Reactions",
+  "category": "Metabolism",
+  "definition": "Reactions that replenish intermediates of the citric acid cycle to maintain metabolic flux.",
+  "example": "Pyruvate carboxylase converts pyruvate to oxaloacetate to replenish TCA intermediates."
+},
+{
+  "term": "Cori Cycle",
+  "category": "Metabolism",
+  "definition": "Metabolic pathway in which lactate produced by anaerobic glycolysis in muscle is transported to the liver and converted back to glucose.",
+  "example": "During intense exercise, muscle lactate is converted to glucose in the liver."
+},
+{
+  "term": "Malate-Aspartate Shuttle",
+  "category": "Metabolism",
+  "definition": "Mechanism that transfers cytosolic NADH electrons into the mitochondria via malate and aspartate intermediates.",
+  "example": "Predominant shuttle in heart and liver cells."
+},
+{
+  "term": "Glycerol-3-Phosphate Shuttle",
+  "category": "Metabolism",
+  "definition": "Electron shuttle that transfers cytosolic NADH electrons to FAD in mitochondria.",
+  "example": "Common in skeletal muscle and brain."
+},
+{
+  "term": "Uncoupling Proteins (UCP1)",
+  "category": "Energy Production",
+  "definition": "Proteins in the inner mitochondrial membrane that dissipate the proton gradient to produce heat instead of ATP.",
+  "example": "Brown adipose tissue uses UCP1 for thermogenesis."
+},
+{
+  "term": "Enhancer",
+  "category": "Gene Regulation",
+  "definition": "DNA sequence that increases transcription of associated genes by binding transcription factors.",
+  "example": "Enhancers can function thousands of base pairs away from a promoter."
+},
+{
+  "term": "Epigenetics",
+  "category": "Gene Regulation",
+  "definition": "Heritable changes in gene expression that do not involve alterations in DNA sequence.",
+  "example": "DNA methylation and histone acetylation regulate gene accessibility."
+},
+{
+  "term": "DNA Methylation",
+  "category": "Epigenetics",
+  "definition": "Addition of methyl groups to cytosine residues, typically repressing gene transcription.",
+  "example": "Hypermethylation of tumor suppressor genes can contribute to cancer."
+},
+{
+  "term": "Alternative Splicing",
+  "category": "Gene Expression",
+  "definition": "Process by which different combinations of exons are joined to produce multiple mRNA variants from a single gene.",
+  "example": "Tropomyosin has tissue-specific splice variants."
+},
+{
+  "term": "Catalytic Efficiency",
+  "category": "Enzyme Kinetics",
+  "definition": "Measure of enzyme performance defined as kcat/Km.",
+  "example": "Enzymes approaching diffusion limit (~10^8-10^9 M^-1s^-1) are considered catalytically perfect."
+},
+{
+  "term": "Transition State",
+  "category": "Enzyme Kinetics",
+  "definition": "High-energy intermediate state during a chemical reaction.",
+  "example": "Enzymes stabilize the transition state to lower activation energy."
+},
+{
+  "term": "Irreversible Inhibition",
+  "category": "Enzyme Kinetics",
+  "definition": "Inhibitor forms covalent bond with enzyme, permanently inactivating it.",
+  "example": "Aspirin irreversibly inhibits cyclooxygenase."
+},
+{
+  "term": "Insulin Receptor",
+  "category": "Cell Signaling",
+  "definition": "A receptor tyrosine kinase that autophosphorylates upon insulin binding and activates PI3K/Akt pathway.",
+  "example": "Insulin signaling promotes GLUT4 translocation."
+},
+{
+  "term": "GLUT Transporters",
+  "category": "Membrane Transport",
+  "definition": "Facilitated glucose transporters with tissue-specific expression.",
+  "example": "GLUT4 is insulin-sensitive and found in muscle and adipose tissue."
+},
+{
+  "term": "Ketone Bodies",
+  "category": "Metabolism",
+  "definition": "Water-soluble molecules (acetoacetate, β-hydroxybutyrate, acetone) produced from fatty acids during fasting.",
+  "example": "Brain adapts to use ketone bodies during prolonged starvation."
+},
+{
+  "term": "HMG-CoA Reductase",
+  "category": "Lipid Metabolism",
+  "definition": "Rate-limiting enzyme in cholesterol synthesis pathway.",
+  "example": "Statins inhibit HMG-CoA reductase."
+},
+{
+  "term": "Lipoproteins",
+  "category": "Lipid Metabolism",
+  "definition": "Complexes that transport lipids in blood (chylomicrons, VLDL, LDL, HDL).",
+  "example": "LDL delivers cholesterol to tissues; HDL removes excess cholesterol."
+},
+{
+  "term": "Respiratory Quotient (RQ)",
+  "category": "Metabolism",
+  "definition": "Ratio of CO2 produced to O2 consumed; indicates type of fuel being metabolized.",
+  "example": "RQ = 1.0 for carbohydrates; ~0.7 for fats."
+},
+{
+  "term": "Anion Gap",
+  "category": "Acid-Base Physiology",
+  "definition": "Calculated value used to identify metabolic acidosis causes.",
+  "example": "Anion gap = Na+ − (Cl− + HCO3−)."
+}
   ]
 }
