@@ -746,6 +746,142 @@
     "correct_choice": "A",
     "hint": "Absorbance is directly proportional to concentration.",
     "solution": "Since A ∝ c (with ε and b constant), doubling concentration doubles absorbance."
+  },
+    {
+    "id": 45,
+    "title": "Enzyme Kinetics — Effect of Enzyme Concentration",
+    "difficulty": "Medium",
+    "category": "Biochemistry I",
+    "type": "multiple_choice",
+    "question": "If enzyme concentration increases while substrate concentration remains in excess, what happens to Vmax?",
+    "choices": [
+      { "label": "A", "text": "Vmax decreases" },
+      { "label": "B", "text": "Vmax increases" },
+      { "label": "C", "text": "Vmax remains unchanged" },
+      { "label": "D", "text": "Vmax becomes zero" }
+    ],
+    "correct_choice": "B",
+    "hint": "Vmax depends on total enzyme concentration.",
+    "solution": "Vmax increases because more enzyme molecules are available to catalyze reactions simultaneously."
+  },
+  {
+    "id": 46,
+    "title": "Cell Membrane — Passive Transport",
+    "difficulty": "Easy",
+    "category": "Cell Biology",
+    "type": "multiple_choice",
+    "question": "Which transport mechanism does NOT require energy?",
+    "choices": [
+      { "label": "A", "text": "Active transport" },
+      { "label": "B", "text": "Primary transport" },
+      { "label": "C", "text": "Facilitated diffusion" },
+      { "label": "D", "text": "Sodium-potassium pump" }
+    ],
+    "correct_choice": "C",
+    "hint": "Passive transport does not use ATP.",
+    "solution": "Facilitated diffusion moves substances down their concentration gradient using transport proteins without ATP."
+  },
+  {
+    "id": 47,
+    "title": "Physics — Kinetic Energy",
+    "difficulty": "Easy",
+    "category": "Physics",
+    "type": "multiple_choice",
+    "question": "What is the kinetic energy of a 4.0 kg object moving at 3.0 m/s?",
+    "choices": [
+      { "label": "A", "text": "6 J" },
+      { "label": "B", "text": "12 J" },
+      { "label": "C", "text": "18 J" },
+      { "label": "D", "text": "24 J" }
+    ],
+    "correct_choice": "C",
+    "hint": "Use KE = ½mv².",
+    "solution": "KE = ½ × 4.0 × (3.0)² = ½ × 4 × 9 = 18 J."
+  },
+  {
+    "id": 48,
+    "title": "Acid–Base — Strong Acid Property",
+    "difficulty": "Easy",
+    "category": "General Chemistry",
+    "type": "multiple_choice",
+    "question": "Which characteristic defines a strong acid?",
+    "choices": [
+      { "label": "A", "text": "Partially dissociates in water" },
+      { "label": "B", "text": "Completely dissociates in water" },
+      { "label": "C", "text": "Does not release protons" },
+      { "label": "D", "text": "Has a high pH" }
+    ],
+    "correct_choice": "B",
+    "hint": "Strong acids fully ionize.",
+    "solution": "Strong acids completely dissociate into ions in aqueous solution."
+  },
+  {
+    "id": 49,
+    "title": "Genetics — Protein Synthesis Location",
+    "difficulty": "Easy",
+    "category": "Molecular Biology",
+    "type": "multiple_choice",
+    "question": "Where does translation occur in eukaryotic cells?",
+    "choices": [
+      { "label": "A", "text": "Nucleus" },
+      { "label": "B", "text": "Ribosome" },
+      { "label": "C", "text": "Golgi apparatus" },
+      { "label": "D", "text": "Lysosome" }
+    ],
+    "correct_choice": "B",
+    "hint": "This structure reads mRNA.",
+    "solution": "Translation occurs at ribosomes, where mRNA is decoded into protein."
+  },
+  {
+    "id": 50,
+    "title": "Thermodynamics — Spontaneity",
+    "difficulty": "Medium",
+    "category": "Physical Chemistry",
+    "type": "multiple_choice",
+    "question": "Which condition guarantees a spontaneous process?",
+    "choices": [
+      { "label": "A", "text": "ΔG > 0" },
+      { "label": "B", "text": "ΔG = 0" },
+      { "label": "C", "text": "ΔG < 0" },
+      { "label": "D", "text": "ΔH > 0" }
+    ],
+    "correct_choice": "C",
+    "hint": "Spontaneity depends on Gibbs free energy.",
+    "solution": "A negative Gibbs free energy change indicates a spontaneous process."
+  },
+  {
+    "id": 51,
+    "title": "Neuroscience — Resting Membrane Potential",
+    "difficulty": "Medium",
+    "category": "Neuroscience",
+    "type": "multiple_choice",
+    "question": "What is the approximate resting membrane potential of a neuron?",
+    "choices": [
+      { "label": "A", "text": "+70 mV" },
+      { "label": "B", "text": "0 mV" },
+      { "label": "C", "text": "−70 mV" },
+      { "label": "D", "text": "−140 mV" }
+    ],
+    "correct_choice": "C",
+    "hint": "The inside of the neuron is negative relative to outside.",
+    "solution": "The resting membrane potential is approximately −70 mV."
+  },
+  {
+    "id": 52,
+    "title": "Organic Chemistry — Hydrocarbon Type",
+    "difficulty": "Easy",
+    "category": "Organic Chemistry",
+    "type": "multiple_choice",
+    "question": "Which type of hydrocarbon contains only single bonds?",
+    "choices": [
+      { "label": "A", "text": "Alkene" },
+      { "label": "B", "text": "Alkyne" },
+      { "label": "C", "text": "Alkane" },
+      { "label": "D", "text": "Aromatic compound" }
+    ],
+    "correct_choice": "C",
+    "hint": "These are saturated hydrocarbons.",
+    "solution": "Alkanes contain only single bonds and are saturated hydrocarbons."
   }
 ]
   
