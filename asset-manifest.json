@@ -1,10 +1,14 @@
 {
   "files": {
     "main.css": "/BiochemReact/static/css/main.831f7b40.css",
-    "main.js": "/BiochemReact/static/js/main.0e28ceb4.js",
+    "main.js": "/BiochemReact/static/js/main.68d0404c.js",
+    "static/media/periodic_table.png": "/BiochemReact/static/media/periodic_table.3b1ba0e9241d7cd18626.png",
+    "static/media/uvvis_280.png": "/BiochemReact/static/media/uvvis_280.229d63f47e69c1a94ad4.png",
     "static/media/KaTeX_AMS-Regular.ttf": "/BiochemReact/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/KaTeX_Main-Regular.ttf": "/BiochemReact/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
     "static/media/KaTeX_Main-Bold.ttf": "/BiochemReact/static/media/KaTeX_Main-Bold.8169508bf58f8bd92ad8.ttf",
+    "static/media/ir_spectra.png": "/BiochemReact/static/media/ir_spectra.011e08b222514eb0950d.png",
+    "static/media/gel_digest.png": "/BiochemReact/static/media/gel_digest.512f12e717661f786e16.png",
     "static/media/KaTeX_Main-Italic.ttf": "/BiochemReact/static/media/KaTeX_Main-Italic.fa675e5e4bec9eb250b6.ttf",
     "static/media/KaTeX_AMS-Regular.woff": "/BiochemReact/static/media/KaTeX_AMS-Regular.d562e886c52f12660a41.woff",
     "static/media/KaTeX_Main-BoldItalic.ttf": "/BiochemReact/static/media/KaTeX_Main-BoldItalic.828abcb200061cffbaae.ttf",
@@ -36,6 +40,7 @@
     "static/media/KaTeX_Typewriter-Regular.woff2": "/BiochemReact/static/media/KaTeX_Typewriter-Regular.c295e7f71970f03c0549.woff2",
     "static/media/KaTeX_Fraktur-Bold.woff": "/BiochemReact/static/media/KaTeX_Fraktur-Bold.354501bac435c3264834.woff",
     "static/media/KaTeX_Fraktur-Regular.woff": "/BiochemReact/static/media/KaTeX_Fraktur-Regular.6fdf0ac577be0ba82a4c.woff",
+    "static/media/titration_weak_acid.png": "/BiochemReact/static/media/titration_weak_acid.cb21a9b89b50f902a5b6.png",
     "static/media/KaTeX_Caligraphic-Bold.ttf": "/BiochemReact/static/media/KaTeX_Caligraphic-Bold.7489a2fbfb9bfe704420.ttf",
     "static/media/KaTeX_Caligraphic-Regular.ttf": "/BiochemReact/static/media/KaTeX_Caligraphic-Regular.7e873d3833eb108a0758.ttf",
     "static/media/KaTeX_SansSerif-Regular.woff": "/BiochemReact/static/media/KaTeX_SansSerif-Regular.02271ec5cb9f5b4588ac.woff",
@@ -64,10 +69,10 @@
     "static/media/KaTeX_Size3-Regular.woff2": "/BiochemReact/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/BiochemReact/index.html",
     "main.831f7b40.css.map": "/BiochemReact/static/css/main.831f7b40.css.map",
-    "main.0e28ceb4.js.map": "/BiochemReact/static/js/main.0e28ceb4.js.map"
+    "main.68d0404c.js.map": "/BiochemReact/static/js/main.68d0404c.js.map"
   },
   "entrypoints": [
     "static/css/main.831f7b40.css",
-    "static/js/main.0e28ceb4.js"
+    "static/js/main.68d0404c.js"
   ]
 }
