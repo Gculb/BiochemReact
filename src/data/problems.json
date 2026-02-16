@@ -114,11 +114,11 @@
 "title": "R/S Configuration",
 "difficulty": "Easy",
 "category": "Organic Chemistry",
-"question": "Determine the R/S configuration of the chiral center in the molecule with substituents NH2, COOH, CH2SH, and H. (Image: images/config_problem.png)",
-"image_url": "images/config_problem.png",
+"question": "Determine the R/S configuration of the chiral center in the molecule with substituents NH2, COOH, CH2SH, and H.",
 "hint": "Assign CIP priorities by atomic number, orient the lowest-priority group away, then trace 1→2→3: clockwise = R, counterclockwise = S.",
 "answer": "R",
-"solution": "Assign priorities (highest to lowest) based on atomic number: NH2, COOH, CH2SH, H. Orient lowest priority (H) away and trace from highest → second → third. The path NH2 → COOH → CH2SH is clockwise, so configuration is R."
+"solution": "Assign priorities (highest to lowest) based on atomic number: NH2, COOH, CH2SH, H. Orient lowest priority (H) away and trace from highest → second → third. The path NH2 → COOH → CH2SH is clockwise, so configuration is R.",
+"image": "problems/config_problem.png"
 },
 {
 "id": 13,
@@ -1195,11 +1195,11 @@
     "title": "Titration Curve — Weak Acid",
     "difficulty": "Medium",
     "category": "Analytical Chemistry",
-    "question": "You are given a titration curve image of 50 mL of a weak monoprotic acid (HA) being titrated with 0.100 M NaOH (image_url provided). The half-equivalence point occurs at pH 4.8. Estimate the pKa of HA and explain why the equivalence point pH is >7.",
+    "question": "You are given a titration curve image of 50 mL of a weak monoprotic acid (HA) being titrated with 0.100 M NaOH. The half-equivalence point occurs at pH 4.8. Estimate the pKa of HA and explain why the equivalence point pH is >7.",
     "hint": "At half-equivalence, pH = pKa. Weak acid titrated with strong base yields basic equivalence due to conjugate base hydrolysis.",
     "answer": "pKa ≈ 4.8; equivalence pH >7 because the conjugate base A⁻ hydrolyzes to produce OH⁻.",
     "solution": "At half-equivalence [HA] = [A⁻] so pH = pKa = 4.8. After neutralization, solution contains A⁻ which is basic (hydrolyzes to OH⁻), so equivalence pH is >7.",
-    "image_url": "images/titration_weak_acid.png"
+    "image": "problems/titration_weak_acid.png"
   },
   {
     "id": 120,
@@ -1210,7 +1210,7 @@
     "hint": "Same Vmax, higher Km indicates competitive inhibition.",
     "answer": "Competitive inhibitor — increases apparent Km without changing Vmax.",
     "solution": "Competitive inhibitors compete with substrate for the active site, so higher [S] is required to reach same velocity; Vmax unchanged because high [S] outcompetes inhibitor.",
-    "image_url": "images/v_vs_s_inhibitor.png"
+    "image": "problems/v_vs_s_inhibitor.png"
   },
   {
     "id": 121,
@@ -1221,7 +1221,7 @@
     "hint": "1715 cm⁻¹ = C=O stretch; broad 2500–3300 typical of carboxylic acid O–H.",
     "answer": "A carboxylic acid (–COOH).",
     "solution": "The carbonyl stretch near 1715 cm⁻¹ plus the very broad O–H band that extends to lower wavenumbers is diagnostic of carboxylic acids.",
-    "image_url": "images/ir_spectrum.png"
+    "image": "problems/ir_spectrum.png"
   },
   {
     "id": 122,
@@ -1232,18 +1232,18 @@
     "hint": "Consider restriction enzymes cutting at multiple sites in the plasmid or genome.",
     "answer": "The restriction enzyme cut the original 2.0 kb fragment into smaller fragments (1.0 kb and 0.5 kb); multiple recognition sites present.",
     "solution": "If the enzyme recognizes two sites within the 2.0 kb fragment, digestion yields smaller fragments. Multiple bands reflect discrete fragment sizes from cleavage.",
-    "image_url": "images/gel_digest.png"
+    "image": "problems/gel_digest.png"
   },
   {
     "id": 123,
     "title": "qPCR Amplification Plot",
     "difficulty": "Medium",
     "category": "Molecular Biology",
-    "question": "A qPCR amplification plot (image provided) shows sample A crosses threshold at cycle 18, sample B at cycle 21. Which sample has higher initial template, and by what factor (approx)?",
+    "question": "A qPCR amplification plot shows sample A crosses threshold at cycle 18, sample B at cycle 21. Which sample has higher initial template, and by what factor (approx)?",
     "hint": "Each cycle ~2-fold difference; ΔCt = 3 cycles.",
     "answer": "Sample A has higher initial template by ≈ 2^3 = 8-fold.",
     "solution": "Lower Ct indicates more starting template. Difference of 3 cycles corresponds to ~2^3 = 8-fold higher abundance in sample A.",
-    "image_url": "images/qpcr_plot.png"
+    "image": "problems/qpcr_plot.png"
   },
   {
     "id": 124,
@@ -1254,7 +1254,7 @@
     "hint": "Proteins absorb at 280 nm primarily due to aromatic residues; nucleic acids absorb strongly at 260 nm.",
     "answer": "High protein content / contamination or a protein-rich sample; sample likely protein and not pure nucleic acid.",
     "solution": "High A280 relative to A260 suggests protein presence; pure DNA has A260/A280 ≈ 1.8, so a higher A280 suggests protein contamination or a protein sample.",
-    "image_url": "images/uvvis_280.png"
+    "image": "problems/uvvis_280.png"
   },
   {
     "id": 125,
@@ -1265,7 +1265,7 @@
     "hint": "Consider how Km and Vmax change and their effects on intercepts.",
     "answer": "Noncompetitive inhibition (Vmax decreased, Km unchanged).",
     "solution": "A noncompetitive inhibitor reduces Vmax (raising 1/Vmax on y-axis) without affecting Km (so x-intercept unchanged). Thus the lines intersect on the x-axis.",
-    "image_url": "images/lineweaver_plot.png"
+    "image": "problems/lineweaver_plot.png"
   },
   {
     "id": 126,
@@ -1276,7 +1276,7 @@
     "hint": "Two titratable protons yield two equivalence points; buffer regions correspond to pKa values.",
     "answer": "Each equivalence point corresponds to neutralization of one acidic proton; midpoints between start and equivalence give pKa values; pH at each equivalence reflects strength of remaining conjugate base.",
     "solution": "A diprotic acid has two ionizable protons; titration shows two equivalence points. The pH at half-equivalence points equals pKa1 and pKa2. If spaced well, you can estimate both pKa values from buffer plateaus.",
-    "image_url": "images/titration_polyprotic.png"
+    "image": "problems/titration_polyprotic.png"
   },
   {
     "id": 127,

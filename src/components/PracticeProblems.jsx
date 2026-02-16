@@ -1,7 +1,9 @@
 import React, { useState, useMemo } from "react";
 import problems from "../data/problems.json";
+import imageRegistry from "../data/imageRegistry";
 import multipleChoiceProblems from "../data/multipleChoiceProblems.json"
 import "./PracticeProblems.css"
+
 
 const PracticeProblems = () => {
   const [visible, setVisible] = useState({});
@@ -144,15 +146,16 @@ const filteredProblems = useMemo(() => {
           </div>
 
           <p>{p.question}</p>
-          {p.image_url && (
-          <div className="problem-image">
-            <img
-              src={process.env.PUBLIC_URL + "/" + p.image_url}
-              alt={`${p.title} diagram`}
-            />
-          </div>
+            {p.image && (
+              <div className="problem-image">
+                <img
+                  src={imageRegistry[p.image]}
+                  alt={`${p.title} diagram`}
+                />
+              </div>
+            )}
 
-        )}
+
       {p.type === "multiple_choice" && (
         <div className="choices">
           {p.choices.map((c) => {
