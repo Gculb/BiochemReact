@@ -4,17 +4,18 @@ import "./TopicCard.css";
 
 const stripKatexDelimiters = (latex) =>
   latex
-    .replace(/^\\\[/, "")
-    .replace(/\\\]$/, "")
-    .trim();
+    .trim()
+    .replace(/^\\\[\s*/, "")
+    .replace(/\s*\\\]$/, "");
  
 const renderWithMath = (text) => {
   if (!text) return null;
 
-  // FULL block LaTeX (your metabolic pathways)
-  if (text.trim().startsWith("\\begin{")) {
-    return <BlockMath math={text} />;
-  }
+
+if (text.trim().startsWith("\\begin{") || text.trim().startsWith("\\[")) {
+  return <BlockMath math={stripKatexDelimiters(text)} />;
+}
+
 
   const blockMathRegex = /\$\$(.*?)\$\$/gs;
   const inlineMathRegex = /\$(.*?)\$/g;

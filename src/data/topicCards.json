@@ -1100,7 +1100,7 @@
           "id": "fatty-acid-beta-oxidation",
           "title": "Fatty Acid β-Oxidation",
           "summary": "Stepwise shortening of fatty acids to acetyl-CoA with FAD/NAD+ reduction.",
-          "details": "\\[\\begin{aligned}\\textbf{Fatty Acid \\beta\\text{-}Oxidation (overview)} \\\\[6pt] 1.\\;& \\text{Activation: }\\mathrm{FA + CoA \\rightarrow Acyl\\text{-}CoA} \\\\ & \\quad (\\text{Acyl\\text{-}CoA synthetase; ATP} \\rightarrow \\text{AMP}) \\\\ 2.\\;& \\text{Transport: Carnitine shuttle (CPT1/CPT2); CPT1 inhibited by malonyl\\text{-}CoA} \\\\ 3.\\;& \\text{Cycle (per 2C removed):} \\\\ & \\text{Dehydrogenation (FAD} \\rightarrow \\text{FADH}_2) \\\\ & \\rightarrow \\text{Hydration} \\\\ & \\rightarrow \\text{Dehydrogenation (NAD}^+ \\rightarrow \\text{NADH)} \\\\ & \\rightarrow \\text{Thiolysis (acetyl\\text{-}CoA released)} \\end{aligned}\\]",
+          "details": "\\[\\begin{aligned}\\textbf{Fatty Acid }\\beta\\text{-Oxidation (overview)} \\\\[6pt] 1.\\;& \\text{Activation: }\\mathrm{FA + CoA \\rightarrow Acyl\\text{-}CoA} \\\\ & \\quad (\\text{Acyl\\text{-}CoA synthetase; ATP} \\rightarrow \\text{AMP}) \\\\ 2.\\;& \\text{Transport: Carnitine shuttle (CPT1/CPT2); CPT1 inhibited by malonyl\\text{-}CoA} \\\\ 3.\\;& \\text{Cycle (per 2C removed):} \\\\ & \\text{Dehydrogenation (FAD }\\rightarrow \\text{FADH}_2) \\\\ & \\rightarrow \\text{Hydration} \\\\ & \\rightarrow \\text{Dehydrogenation (NAD}^+ \\rightarrow \\text{NADH)} \\\\ & \\rightarrow \\text{Thiolysis (acetyl\\text{-}CoA released)} \\end{aligned}\\]",
           "render": "katex",
           "important": false
         },
@@ -1108,7 +1108,7 @@
           "id": "fatty-acid-synthesis",
           "title": "Fatty Acid Synthesis & Lipogenesis",
           "summary": "Fatty-acid chain assembly from acetyl-CoA using NADPH.",
-          "details": "\\[\\begin{aligned}\\textbf{Fatty Acid Synthesis (cytosol)} \\\\[6pt] & \\text{Citrate shuttle: citrate exported to cytosol \\rightarrow ATP{-}citrate lyase \\rightarrow acetyl{-}CoA} \\\\ & \\text{Commitment: acetyl{-}CoA \\rightarrow malonyl{-}CoA (ACC; rate-limiting; regulated)} \\\\ & \\text{Elongation: Fatty Acid Synthase catalyzes iterative 2-C additions; NADPH consumed (PPP, malic enzyme sources)} \\end{aligned}\\]",
+          "details": "\\[\\begin{aligned}\\textbf{Fatty Acid Synthesis (cytosol)} \\\\[6pt] & \\text{Citrate shuttle: citrate exported to cytosol } \\rightarrow \\text{ ATP{-}citrate lyase } \\rightarrow \\text{ acetyl{-}CoA} \\\\ & \\text{Commitment: acetyl{-}CoA } \\rightarrow \\text{ malonyl{-}CoA (ACC; rate-limiting; regulated)} \\\\ & \\text{Elongation: Fatty Acid Synthase catalyzes iterative 2-C additions; NADPH consumed (PPP, malic enzyme sources)} \\end{aligned}\\]",
           "render": "katex",
           "important": false
         },
@@ -1124,18 +1124,13 @@
           "id": "amino-acid-metabolism",
           "title": "Amino Acid Catabolism & Transaminations",
           "summary": "Major routes for amino-acid breakdown and nitrogen shuttling.",
-          "details": "\\[\\begin{aligned}\\textbf{Amino Acid Catabolism — key reactions} \\\\[6pt] & \\text{Transamination: }\\;\\mathrm{AA + \\alpha{-}KG \\rightleftharpoons \\alpha{-}ketoacid + Glutamate\\ (Aminotransferases; e.g., ALT/AST)} \\\\ & \\text{Oxidative deamination: }\\;\\mathrm{Glutamate \\rightarrow \\alpha{-}KG + NH_4^+\\ (Glutamate\\ dehydrogenase)} \\\\ & \\text{Carbon skeletons funnel into TCA at multiple entry points (pyruvate, Acetyl{-}CoA, \\alpha{-}KG, succinyl{-}CoA, fumarate, OAA)} \\end{aligned}\\]",
-          "render": "katex",
-          "important": false
-        },
-        {
-          "id": "integrated-metabolic-maps",
-          "title": "Integrated Metabolic Maps (Interactive)",
-          "summary": "Clickable maps showing cross-talk between pathways and compartmentalization.",
-          "details": "\\[\\begin{aligned}\\textbf{Integrated Map — display recommendations} \\\\[6pt] & \\text{Show compartments: cytosol vs mitochondrion; indicate citrate/malate shuttles} \\\\ & \\text{Mark branch points: G6P (PPP), Citrate (FA synthesis), Pyruvate (TCA/alanine/lactate)} \\\\ & \\text{Label transporters: GLUT, MPC (mitochondrial pyruvate carrier), CPT1/CPT2} \\end{aligned}\\]",
+          "details": "\\[\\begin{aligned} \\textbf{Amino Acid Catabolism — key reactions} \\\\[6pt] &\\text{Transamination: }\\;AA + \\alpha\\text{-}KG \\rightleftharpoons \\alpha\\text{-}ketoacid + \\text{Glutamate (Aminotransferases; e.g., ALT/AST)} \\\\ &\\text{Oxidative deamination: }\\;\\text{Glutamate } \\rightarrow \\alpha\\text{-}KG + NH_4^+~\\text{(Glutamate dehydrogenase)} \\\\ &\\text{Carbon skeletons funnel into TCA at multiple entry points (pyruvate, Acetyl-CoA, }\\alpha\\text{-}KG\\text{, succinyl-CoA, fumarate, OAA)} \\end{aligned}\\]",
           "render": "katex",
           "important": false
         }
+
+
+
       ]
     },
       {

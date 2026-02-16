@@ -420,8 +420,7 @@
     { "id": "fatty-acid-oxidation", "title": "Fatty Acid β-oxidation" },
     { "id": "fatty-acid-synthesis", "title": "Fatty Acid Synthesis & Lipogenesis" },
     { "id": "gluconeogenesis", "title": "Gluconeogenesis & Regulation" },
-    { "id": "amino-acid-metabolism", "title": "Amino Acid Catabolism & Key Transaminations" },
-    { "id": "integrated-maps", "title": "Integrated Metabolic Maps (interactive)" }
+    { "id": "amino-acid-metabolism", "title": "Amino Acid Catabolism & Key Transaminations" }
   ]
    },
    {
