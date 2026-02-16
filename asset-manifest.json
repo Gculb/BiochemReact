@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/BiochemReact/static/css/main.831f7b40.css",
-    "main.js": "/BiochemReact/static/js/main.68d0404c.js",
+    "main.js": "/BiochemReact/static/js/main.d02dd0ee.js",
     "static/media/periodic_table.png": "/BiochemReact/static/media/periodic_table.3b1ba0e9241d7cd18626.png",
     "static/media/uvvis_280.png": "/BiochemReact/static/media/uvvis_280.229d63f47e69c1a94ad4.png",
     "static/media/KaTeX_AMS-Regular.ttf": "/BiochemReact/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
@@ -69,10 +69,10 @@
     "static/media/KaTeX_Size3-Regular.woff2": "/BiochemReact/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/BiochemReact/index.html",
     "main.831f7b40.css.map": "/BiochemReact/static/css/main.831f7b40.css.map",
-    "main.68d0404c.js.map": "/BiochemReact/static/js/main.68d0404c.js.map"
+    "main.d02dd0ee.js.map": "/BiochemReact/static/js/main.d02dd0ee.js.map"
   },
   "entrypoints": [
     "static/css/main.831f7b40.css",
-    "static/js/main.68d0404c.js"
+    "static/js/main.d02dd0ee.js"
   ]
 }
