@@ -46,6 +46,7 @@
       "id": "genchem",
       "title": "General Chemistry",
       "icon": "fa-flask",
+      "image": "periodic_table.png",
       "color": "#ff6b6b",
       "description": "Atomic structure, periodic trends, thermodynamics, acid-base chemistry, bonding and equilibrium.",
       "order": 3,

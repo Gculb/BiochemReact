@@ -1,4 +1,5 @@
 import heroMolecule from "../images/hero_molecule.jpg";
+import periodicTable from "../images/periodic_table.png"
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import FeatureCard from "../components/FeatureCard";
@@ -103,6 +104,8 @@ const HomePage = () => {
             Contact
           </button>
         </div>
+  
+
 
       </section>
     </main>
