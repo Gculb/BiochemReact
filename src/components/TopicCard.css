@@ -70,7 +70,14 @@
   transform: rotate(0deg);
   color: #2c3e50;
 }
-
+.topic-card__content,
+.topic-card__details {
+  max-width: 100%;          
+  min-width: 0;            
+  overflow-x: auto;        
+  white-space: pre-wrap;    
+  word-break: break-word;   
+}
 /* Expandable Content */
 .topic-card__content {
   padding: 0 15px 15px;
