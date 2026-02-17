@@ -112,58 +112,62 @@ const MoleculeViewer = () => {
     return mesh;
   };
 
-  // Molecule makers
-  const makeGlucose = () => {
-    const group = new THREE.Group();
-    const atoms = [];
-    const r = 2;
-    // Create 6-membered carbon ring
-    for (let i = 0; i < 6; i++) {
-      const angle = (i * Math.PI * 2) / 6;
-      const x = r * Math.cos(angle);
-      const y = r * Math.sin(angle);
-      const isO = i === 0;
-      const at = createAtom(x, y, 0, isO ? 0xff0000 : 0x404040, isO ? 0.6 : 0.5);
-      atoms.push(at);
-      group.add(at);
-    }
-    for (let i = 0; i < 6; i++) {
-      group.add(createBond(atoms[i].position, atoms[(i + 1) % 6].position));
-    }
-    // Add hydroxyl groups on carbons 1-4, and CH2OH on C5
-    [1, 2, 3, 4].forEach((i) => {
-      const angle = (i * Math.PI * 2) / 6;
-      const x = (r + 1.4) * Math.cos(angle);
-      const y = (r + 1.4) * Math.sin(angle);
-      const o = createAtom(x, y, 0, 0xff0000, 0.6);
-      group.add(o);
-      group.add(createBond(atoms[i].position, o.position));
-      const hx = x + 0.8 * Math.cos(angle);
-      const hy = y + 0.8 * Math.sin(angle);
-      const h = createAtom(hx, hy, 0, 0xffffff, 0.35);
-      group.add(h);
-      group.add(createBond(o.position, h.position));
-    });
-    // CH2OH group on C5
-    const angle5 = (5 * Math.PI * 2) / 6;
-    const ch2x = (r + 1.4) * Math.cos(angle5);
-    const ch2y = (r + 1.4) * Math.sin(angle5);
-    const c5 = createAtom(ch2x, ch2y, 0, 0x404040, 0.45);
-    group.add(c5);
-    group.add(createBond(atoms[5].position, c5.position));
-    const o5x = ch2x + 0.8 * Math.cos(angle5);
-    const o5y = ch2y + 0.8 * Math.sin(angle5);
-    const o5 = createAtom(o5x, o5y, 0, 0xff0000, 0.55);
-    group.add(o5);
-    group.add(createBond(c5.position, o5.position));
-    const h5x = o5x + 0.8 * Math.cos(angle5);
-    const h5y = o5y + 0.8 * Math.sin(angle5);
-    const h5 = createAtom(h5x, h5y, 0, 0xffffff, 0.35);
-    group.add(h5);
-    group.add(createBond(o5.position, h5.position));
-    return group;
-  };
+const makeGlucose = () => {
+  const group = new THREE.Group();
 
+  // ─── Helpers ──────────────────────────────────────────────────────────────
+  // Matches SC, COL, SZ, mk(), bond() from all other molecules in the viewer.
+  const SC  = 1.1;
+  const COL = { C:0x404040, O:0xff3030, H:0xffffff };
+  const SZ  = { C:0.30,     O:0.32,     H:0.18    };
+
+  const mk = (x, y, el, z = 0) => {
+    const a = createAtom(x*SC, y*SC, z*SC, COL[el], SZ[el]);
+    group.add(a);
+    return a;
+  };
+  const bond = (a, b) => group.add(createBond(a.position, b.position));
+
+
+
+  // ── Pyranose ring ─────────────────────────────────────────────────────────
+  const ringDeg = [0,   60,  120, 180, 240, 300];
+  const ringEl  = ['O', 'C', 'C', 'C', 'C', 'C'];
+
+  const ring = ringDeg.map((deg, i) => {
+    const a = deg * Math.PI / 180;
+    return mk(Math.cos(a), Math.sin(a), ringEl[i]);
+  });
+
+  for (let i = 0; i < 6; i++) bond(ring[i], ring[(i + 1) % 6]);
+
+  // ── Hydroxyl groups on C1–C4 (radially outward) ───────────────────────────
+  [1, 2, 3, 4].forEach(i => {
+    const angle = ringDeg[i] * Math.PI / 180;
+    const cx = Math.cos(angle), cy = Math.sin(angle);
+
+    const o = mk(cx * 2.0, cy * 2.0, 'O');   // C–O bond = 1.0
+    const h = mk(cx * 2.75, cy * 2.75, 'H'); // O–H bond = 0.75
+
+    bond(ring[i], o);
+    bond(o, h);
+  });
+
+  // ── CH2OH group on C5 ─────────────────────────────────────────────────────
+
+  const ang5 = 300 * Math.PI / 180;
+  const cx5 = Math.cos(ang5), cy5 = Math.sin(ang5);
+
+  const ch2 = mk(cx5 * 2.00, cy5 * 2.00, 'C'); 
+  const o5  = mk(cx5 * 2.90, cy5 * 2.90, 'O');  
+  const h5  = mk(cx5 * 3.65, cy5 * 3.65, 'H'); 
+
+  bond(ring[5], ch2);
+  bond(ch2, o5);
+  bond(o5, h5);
+
+  return group;
+};
   const makeAlanine = () => {
     const group = new THREE.Group();
     const SCALE = 1.6;
