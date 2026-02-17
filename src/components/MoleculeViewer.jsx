@@ -212,71 +212,121 @@ const MoleculeViewer = () => {
     return group;
   };
 
-  const makeATP = () => {
-    const group = new THREE.Group();
-    
-    // Adenine - 6+5 fused ring (purine)
-    // 6-membered ring
-    const ring6 = [];
-    for (let i = 0; i < 6; i++) {
-      const angle = (i * Math.PI * 2) / 6;
-      const x = -6 + Math.cos(angle) * 0.85;
-      const y = Math.sin(angle) * 0.85;
-      const isN = i % 2 === 0;
-      const atom = createAtom(x, y, 0, isN ? 0x0000ff : 0x404040, 0.4);
-      ring6.push(atom);
-      group.add(atom);
-    }
-    for (let i = 0; i < 6; i++) {
-      group.add(createBond(ring6[i].position, ring6[(i + 1) % 6].position));
-    }
-    
-    // 5-membered ring (fused)
-    const ring5 = [];
-    for (let i = 0; i < 5; i++) {
-      const angle = Math.PI / 2 + (i * Math.PI * 2) / 5;
-      const x = -6 + 1.2 * Math.cos(angle) * 0.7;
-      const y = 0.7 * Math.sin(angle);
-      const isN = i === 4;
-      const atom = createAtom(x, y, 0, isN ? 0x0000ff : 0x404040, 0.35);
-      ring5.push(atom);
-      group.add(atom);
-    }
-    for (let i = 0; i < 5; i++) {
-      group.add(createBond(ring5[i].position, ring5[(i + 1) % 5].position));
-    }
+const makeATP = () => {
+  const group = new THREE.Group();
 
-    // Ribose sugar (5-carbon ring)
-    const ribose = createAtom(-3, 0, 0, 0x404040, 0.5);
-    group.add(ribose);
-    group.add(createBond(ring6[0].position, ribose.position));
+  // ─── Helpers ──────────────────────────────────────────────────────────────
+  const SC  = 1.1;
+  const COL = { C:0x404040, N:0x3050f8, O:0xff3030, P:0xffa500, H:0xffffff };
+  const SZ  = { C:0.30,     N:0.32,     O:0.32,     P:0.44,     H:0.18    };
 
-    // Phosphate chain (3 phosphate groups)
-    const p1 = createAtom(-0.3, 0, 0, 0xffa500, 0.7);
-    const p2 = createAtom(1.7, 0.4, 0, 0xffa500, 0.65);
-    const p3 = createAtom(3.7, 0, 0, 0xffa500, 0.6);
-    group.add(p1, p2, p3);
-
-    // Connect phosphates
-    group.add(createBond(ribose.position, p1.position));
-    group.add(createBond(p1.position, p2.position));
-    group.add(createBond(p2.position, p3.position));
-
-    // Double-bond oxygens (high energy!)
-    const oPositions = [
-      { p: p1, offset: [0, 1] },
-      { p: p2, offset: [0.2, 1.1] },
-      { p: p3, offset: [0, 1] }
-    ];
-    
-    oPositions.forEach(({ p, offset }) => {
-      const oAtom = createAtom(p.position.x + offset[0], p.position.y + offset[1], 0, 0xff3030, 0.55);
-      group.add(oAtom);
-      group.add(createBond(p.position, oAtom.position));
-    });
-
-    return group;
+  const mk = (x, y, el, z = 0) => {
+    const a = createAtom(x*SC, y*SC, z*SC, COL[el], SZ[el]);
+    group.add(a);
+    return a;
   };
+  const bond = (a, b) => group.add(createBond(a.position, b.position));
+
+
+
+
+  // ── 1. PYRIMIDINE RING  N1-C2-N3-C4-C5-C6 ────────────────────────────────
+  const C4  = mk( 0.000,  0.500, 'C');
+  const N3  = mk(-0.866,  1.000, 'N');
+  const C2  = mk(-1.732,  0.500, 'C');
+  const N1  = mk(-1.732, -0.500, 'N');
+  const C6  = mk(-0.866, -1.000, 'C');
+  const C5  = mk( 0.000, -0.500, 'C');
+  bond(C4,N3); bond(N3,C2); bond(C2,N1); bond(N1,C6); bond(C6,C5); bond(C5,C4);
+
+
+  // ── 2. IMIDAZOLE RING  C4-N7-C8-N9-C5  (fused at shared C4–C5 bond) ──────
+  // ±z offsets prevent N7/N9 from appearing stacked (they share the same x coordinate)
+  const N7  = mk( 0.951,  0.809, 'N',  0.35);
+  const C8  = mk( 1.539,  0.000, 'C');
+  const N9  = mk( 0.951, -0.809, 'N', -0.35);
+  bond(C4,N7); bond(N7,C8); bond(C8,N9); bond(N9,C5);
+
+
+  // ── 3. ADENINE SUBSTITUENTS ───────────────────────────────────────────────
+  // NH₂ on C6 (exocyclic amino group)
+  const NH2N = mk(-0.866, -1.950, 'N');
+  const NH2a = mk(-1.516, -2.423, 'H');
+  const NH2b = mk(-0.216, -2.423, 'H');
+  bond(C6,NH2N); bond(NH2N,NH2a); bond(NH2N,NH2b);
+
+  // H on C2 and C8
+  bond(C2, mk(-3.204,  1.350, 'H'));
+  bond(C8, mk( 2.389,  0.000, 'H'));
+
+
+  // ── 4. RIBOSE  O4′-C1′-C2′-C3′-C4′ ──────────────────────────────────────
+  const C1p = mk( 1.2931, -1.7487, 'C');
+  const O4p = mk( 2.2267, -2.1071, 'O');
+  const C4p = mk( 2.1743, -3.1057, 'C');
+  const C3p = mk( 1.2084, -3.3645, 'C');
+  const C2p = mk( 0.6638, -2.5259, 'C');
+
+  bond(N9,C1p);   // glycosidic bond
+  bond(C1p,O4p); bond(O4p,C4p);
+  bond(C4p,C3p); bond(C3p,C2p); bond(C2p,C1p);
+
+  // 2′-OH
+  const O2p = mk(-0.3349, -2.4735, 'O');
+  bond(C2p, O2p);
+  bond(O2p, mk(-0.8889, -2.4305, 'H'));
+
+  // 3′-OH  (ATP has a free 3′-OH, unlike ACoA which has a 3′-phosphate)
+  const O3p = mk( 0.8500, -4.2981, 'O');
+  bond(C3p, O3p);
+  bond(O3p, mk( 0.4917, -5.0000, 'H'));
+
+  // C5′ exocyclic off C4′
+  const C5p = mk( 2.9515, -3.7350, 'C');
+  bond(C4p, C5p);
+
+
+  // ── 5. TRIPHOSPHATE CHAIN  C5′–O5′–Pα–O–Pβ–O–Pγ ─────────────────────────
+  // Each bond = 0.9 units in the C4′→C5′ outward direction (−39°).
+  // Bridging oxygens sit between each phosphorus pair.
+  // Terminal oxygens branch ±90° (perpendicular to chain direction).
+  //
+  // All positions pre-verified; min terminal-O separation = 1.27 (no overlap).
+
+  // O5′ (5′-oxygen, between C5′ and Pα)
+  const O5p = mk( 3.6509, -4.3014, 'O');
+  bond(C5p, O5p);
+
+  // Pα
+  const Pa  = mk( 4.3503, -4.8678, 'P');
+  bond(O5p, Pa);
+  bond(Pa, mk( 4.9167, -4.1684, 'O'));   // terminal O (toward viewer side)
+  bond(Pa, mk( 3.7839, -5.5672, 'O'));   // terminal O (away side)
+
+  // Bridging O between Pα and Pβ  (the high-energy bond #1)
+  const Ob1 = mk( 5.0498, -5.4342, 'O');
+  bond(Pa, Ob1);
+
+  // Pβ
+  const Pb  = mk( 5.7492, -6.0006, 'P');
+  bond(Ob1, Pb);
+  bond(Pb, mk( 6.3156, -5.3011, 'O'));   // terminal O
+  bond(Pb, mk( 5.1828, -6.7000, 'O'));   // terminal O
+
+  // Bridging O between Pβ and Pγ  (the high-energy bond #2)
+  const Ob2 = mk( 6.4486, -6.5670, 'O');
+  bond(Pb, Ob2);
+
+  // Pγ  (terminal phosphate — released as Pi on hydrolysis)
+  const Pg  = mk( 7.1481, -7.1334, 'P');
+  bond(Ob2, Pg);
+  bond(Pg, mk( 7.7144, -6.4339, 'O'));   // terminal O
+  bond(Pg, mk( 6.5817, -7.8328, 'O'));   // terminal O
+  bond(Pg, mk( 7.8475, -7.6997, 'O'));   // terminal O (end of chain)
+
+  return group;
+};
+
 
   const makeDNA = () => {
     const group = new THREE.Group();
@@ -363,366 +413,463 @@ const MoleculeViewer = () => {
     return group;
   };
 
-  const makeAlphaHelix = () => {
-    const group = new THREE.Group();
-    const residues = 12;
-    const radius = 1.2;
-    const rise = 0.5;
-    const turn = (2 * Math.PI) / 3.6;
-
-    for (let i = 0; i < residues; i++) {
-      const angle = i * turn;
-      const caPos = new THREE.Vector3(
-        Math.cos(angle) * radius,
-        i * rise,
-        Math.sin(angle) * radius
-      );
-      const nPos = caPos.clone().add(new THREE.Vector3(Math.cos(angle - 0.3) * 0.6, -0.3, Math.sin(angle - 0.3) * 0.6));
-      const cPos = caPos.clone().add(new THREE.Vector3(Math.cos(angle + 0.3) * 0.6, 0.3, Math.sin(angle + 0.3) * 0.6));
-
-      const n = createAtom(nPos.x, nPos.y, nPos.z, 0x0000ff, 0.35);
-      const ca = createAtom(caPos.x, caPos.y, caPos.z, 0xaaaaaa, 0.4);
-      const c = createAtom(cPos.x, cPos.y, cPos.z, 0x333333, 0.35);
-
-      group.add(n, ca, c);
-      group.add(createBond(nPos, caPos));
-      group.add(createBond(caPos, cPos));
-    }
-    return group;
-  };
-
-  const makeAcetylCoA = () => {
-    const group = new THREE.Group();
-    const SCALE = 1.4;
-
-    // Adenine base
-    const aden = createAtom(-6 * SCALE, 0, 0, 0x3050f8, 0.6);
-    group.add(aden);
-
-    // Ribose
-    const ribPos = [-2.5 * SCALE, 0, 0];
-    const rib = createAtom(...ribPos, 0x404040, 0.5);
-    group.add(rib);
-    group.add(createBond(aden.position, rib.position));
-
-    // Phosphate groups (3)
-    const p1Pos = [0, 0, 0];
-    const p1 = createAtom(...p1Pos, 0xffa500, 0.65);
-    group.add(p1);
-    group.add(createBond(rib.position, p1.position));
-
-    const p2Pos = [1.5 * SCALE, 0.4 * SCALE, 0];
-    const p2 = createAtom(...p2Pos, 0xffa500, 0.6);
-    group.add(p2);
-    group.add(createBond(p1.position, p2.position));
-
-    const p3Pos = [3 * SCALE, 0, 0];
-    const p3 = createAtom(...p3Pos, 0xffa500, 0.6);
-    group.add(p3);
-    group.add(createBond(p2.position, p3.position));
-
-    // Acetyl group (2-carbon)
-    const c1Pos = [4.5 * SCALE, 0, 0];
-    const c1 = createAtom(...c1Pos, 0x404040, 0.5);
-    group.add(c1);
-    group.add(createBond(p3.position, c1.position));
-
-    const c2Pos = [6 * SCALE, 0, 0];
-    const c2 = createAtom(...c2Pos, 0x404040, 0.5);
-    group.add(c2);
-    group.add(createBond(c1.position, c2.position));
-
-    // Oxygen on acetyl
-    const oPos = [6.5 * SCALE, 0.8 * SCALE, 0];
-    const o = createAtom(...oPos, 0xff3030, 0.5);
-    group.add(o);
-    group.add(createBond(c2.position, o.position));
-
-    return group;
-  };
-
-          const makeTryptophan = () => {
-            const group = new THREE.Group();
-            const SCALE = 1.6;
-
-            const at = (x, y, z, el) => {
-              const styles = {
-                C: [0x404040, 0.4],
-                N: [0x3050f8, 0.45],
-                O: [0xff3030, 0.45],
-                H: [0xffffff, 0.25]
-              };
-              const [c, r] = styles[el];
-              const m = createAtom(x * SCALE, y * SCALE, z * SCALE, c, r);
-              group.add(m);
-              return m;
-            };
-
-            const link = (a, b) => group.add(createBond(a.position, b.position));
-
-            // Backbone
-            const ca = at(0, 0, 0, "C");
-            const n = at(-1.2, 0.8, 0, "N");
-            const h1 = at(-2.0, 1.3, 0, "H");
-            const h2 = at(-1.2, 1.8, 0, "H");
-
-            link(ca, n);
-            link(n, h1);
-            link(n, h2);
-
-            const c = at(1.4, 0, 0, "C");
-            const o1 = at(2.4, 0.8, 0, "O");
-            const o2 = at(2.4, -0.8, 0, "O");
-
-            link(ca, c);
-            link(c, o1);
-            link(c, o2);
-
-            // Side chain CH2
-            const cb = at(0, -1.5, 0, "C");
-            link(ca, cb);
-
-            // Indole ring (simplified)
-            const ring = [
-              at(0.8, -3.0, 0, "C"),
-              at(2.2, -3.0, 0, "C"),
-              at(3.0, -4.2, 0, "C"),
-              at(2.2, -5.4, 0, "C"),
-              at(0.8, -5.4, 0, "C"),
-              at(0.0, -4.2, 0, "C")
-            ];
-
-            link(cb, ring[0]);
-            ring.forEach((a, i) => link(a, ring[(i + 1) % ring.length]));
-
-            const indoleN = at(1.0, -6.8, 0, "N");
-            link(ring[4], indoleN);
-
-            return group;
-          };
-const makeCholesterol = () => {
+const makeAlphaHelix = () => {
   const group = new THREE.Group();
-  const SCALE = 0.9;
+  const residues = 12;
+  const radius = 1.2;
+  const rise = 0.5;
+  const turn = (2 * Math.PI) / 3.6;
 
-  // ---------- Helpers ----------
-  const rotateAroundAxis = (v, axis, angle) => {
-    const q = new THREE.Quaternion();
-    q.setFromAxisAngle(axis, angle);
-    return v.clone().applyQuaternion(q);
-  };
 
-  // Ensure an atom Mesh is added to the group exactly once
-  const ensureAtomInGroup = (atom) => {
-    if (!atom.parent) group.add(atom);
-  };
+  const backbone = []; 
 
-  // Build a fused cyclohexane (chair) given two adjacent existing atoms (anchorA -> anchorB)
-  const buildFusedChairHexagon = ({
-    anchorA,              // THREE.Mesh (existing atom)
-    anchorB,              // THREE.Mesh (existing atom, adjacent to anchorA)
-    bondLength = 1.05 * SCALE,
-    puckers = [0.45, -0.45, 0.45, -0.45, 0.45, -0.45].map(v => v * SCALE),
-    angleSign = 1         // 1 or -1 to choose orientation
-  }) => {
-    const atoms = new Array(6);
-    atoms[0] = anchorA;
-    atoms[1] = anchorB;
+  for (let i = 0; i < residues; i++) {
+    const angle = i * turn;
 
-    // Guarantee anchors live in our group
-    ensureAtomInGroup(anchorA);
-    ensureAtomInGroup(anchorB);
+    const caPos = new THREE.Vector3(
+      Math.cos(angle) * radius,
+      i * rise,
+      Math.sin(angle) * radius
+    );
 
-    const p0 = anchorA.position.clone();
-    const p1 = anchorB.position.clone();
-    let prevPos = p1.clone();
-    let prevDir = p1.clone().sub(p0).normalize();
+    // N is slightly behind and below Cα on the helix tangent
+    const nPos = caPos.clone().add(
+      new THREE.Vector3(Math.cos(angle - 0.3) * 0.6, -0.3, Math.sin(angle - 0.3) * 0.6)
+    );
 
-    // Choose an approximate "up" vector for puckering. If ring direction is close to Z, use X.
-    let worldUp = new THREE.Vector3(0, 0, 1);
-    if (Math.abs(prevDir.dot(worldUp)) > 0.9) worldUp = new THREE.Vector3(1, 0, 0);
+    // C is slightly ahead and above Cα
+    const cPos = caPos.clone().add(
+      new THREE.Vector3(Math.cos(angle + 0.3) * 0.6, 0.3, Math.sin(angle + 0.3) * 0.6)
+    );
 
-    // plane normal (perpendicular to ring plane) => use cross(dir, up)
-    let planeNormal = new THREE.Vector3().crossVectors(prevDir, worldUp);
-    if (planeNormal.lengthSq() < 1e-6) planeNormal = new THREE.Vector3(0, 0, 1);
-    planeNormal.normalize();
+   
+    // Offset radially outward and slightly upward from the C atom
+    const oPos = cPos.clone().add(
+      new THREE.Vector3(Math.cos(angle + 0.3) * 0.55, 0.4, Math.sin(angle + 0.3) * 0.55)
+    );
 
-    const angle = angleSign * (Math.PI / 3); // 60 degrees for hexagon
+    const n  = createAtom(nPos.x,  nPos.y,  nPos.z,  0x3050f8, 0.32); // blue  - nitrogen
+    const ca = createAtom(caPos.x, caPos.y, caPos.z, 0xaaaaaa, 0.38); // grey  - alpha carbon
+    const c  = createAtom(cPos.x,  cPos.y,  cPos.z,  0x404040, 0.30); // dark  - carbonyl carbon
+    const o  = createAtom(oPos.x,  oPos.y,  oPos.z,  0xff3030, 0.28); // red   - carbonyl oxygen
 
-    // Walk: atoms[0], atoms[1] are anchors; compute atoms[2..5]
-    for (let i = 2; i < 6; i++) {
-      const newDir = rotateAroundAxis(prevDir, planeNormal, angle).normalize();
-      const pos = prevPos.clone()
-        .add(newDir.clone().multiplyScalar(bondLength))
-        .addScaledVector(planeNormal, puckers[i]); // puckering perpendicular to ring plane
+    group.add(n, ca, c, o);
 
-      const atom = createAtom(pos.x, pos.y, pos.z, 0x404040, 0.35);
-      group.add(atom);
 
-      // bond from prevPos (which is the previous atom) to current
-      group.add(createBond(prevPos, pos));
+    group.add(createBond(nPos, caPos));   
+    group.add(createBond(caPos, cPos));   
+    group.add(createBond(cPos, oPos));    // C=O  (carbonyl)
 
-      atoms[i] = atom;
-      prevPos = pos.clone();
-      prevDir = newDir.clone();
+   
+    if (i > 0) {
+      group.add(createBond(backbone[i - 1].c.position, nPos));
     }
 
-    // close ring: bond between last atom and atoms[0]
-    group.add(createBond(atoms[5].position, atoms[0].position));
-
-    return atoms;
-  };
-
-  // Build a fused cyclopentane (5-membered) given two adjacent existing atoms (anchorA -> anchorB)
-  const buildFusedPentagon = ({
-    anchorA,
-    anchorB,
-    bondLength = 0.95 * SCALE,
-    puckers = [0.25, -0.25, 0.25, -0.25, 0.25].map(v => v * SCALE),
-    angleSign = 1
-  }) => {
-    const n = 5;
-    const atoms = new Array(n);
-    atoms[0] = anchorA;
-    atoms[1] = anchorB;
-
-    ensureAtomInGroup(anchorA);
-    ensureAtomInGroup(anchorB);
-
-    let p0 = anchorA.position.clone();
-    let p1 = anchorB.position.clone();
-    let prevPos = p1.clone();
-    let prevDir = p1.clone().sub(p0).normalize();
-
-    // choose world up
-    let worldUp = new THREE.Vector3(0, 0, 1);
-    if (Math.abs(prevDir.dot(worldUp)) > 0.9) worldUp = new THREE.Vector3(1, 0, 0);
-
-    let planeNormal = new THREE.Vector3().crossVectors(prevDir, worldUp);
-    if (planeNormal.lengthSq() < 1e-6) planeNormal = new THREE.Vector3(0, 0, 1);
-    planeNormal.normalize();
-
-    const angle = angleSign * (2 * Math.PI / n); // 72° for pentagon
-
-    for (let i = 2; i < n; i++) {
-      const newDir = rotateAroundAxis(prevDir, planeNormal, angle).normalize();
-      const pos = prevPos.clone()
-        .add(newDir.clone().multiplyScalar(bondLength))
-        .addScaledVector(planeNormal, puckers[i]); // small pucker
-      const atom = createAtom(pos.x, pos.y, pos.z, 0x404040, 0.35);
-      group.add(atom);
-      group.add(createBond(prevPos, pos));
-      atoms[i] = atom;
-      prevPos = pos.clone();
-      prevDir = newDir.clone();
-    }
-
-    // close ring
-    group.add(createBond(atoms[n - 1].position, atoms[0].position));
-
-    return atoms;
-  };
-
-  // ---------- Build scaffold (steroid fused rings) ----------
-  // Slightly different coordinates than your original centers: we will place two seed atoms for ring A,
-  // then build the rest by fusion. This is robust and removes long diagonals.
-
-  // Seed two atoms for ring A
-  const a0 = createAtom(0.0 * SCALE, 0.0 * SCALE, 0.45 * SCALE, 0x404040, 0.35); // up
-  const a1 = createAtom(1.05 * SCALE, 0.0 * SCALE, -0.45 * SCALE, 0x404040, 0.35); // down
-  group.add(a0);
-  group.add(a1);
-  group.add(createBond(a0.position, a1.position));
-
-  // Ring A (hexagon) built from anchors a0->a1
-  const ringA = buildFusedChairHexagon({
-    anchorA: a0,
-    anchorB: a1,
-    bondLength: 1.05 * SCALE,
-    puckers: [0.45, -0.45, 0.45, -0.45, 0.45, -0.45].map(v => v * SCALE),
-    angleSign: 1
-  });
-
-  // Ring B fused to ringA at atoms 4 & 5 (use ringA[4], ringA[5])
-  const ringB = buildFusedChairHexagon({
-    anchorA: ringA[4],
-    anchorB: ringA[5],
-    bondLength: 1.05 * SCALE,
-    puckers: [0.45, -0.45, 0.45, -0.45, 0.45, -0.45].map(v => v * SCALE),
-    angleSign: 1
-  });
-
-  // Ring C fused to ringB at atoms 4 & 5 (the standard steroid connectivity)
-  const ringC = buildFusedChairHexagon({
-    anchorA: ringB[4],
-    anchorB: ringB[5],
-    bondLength: 1.05 * SCALE,
-    puckers: [0.45, -0.45, 0.45, -0.45, 0.45, -0.45].map(v => v * SCALE),
-    angleSign: -1 // flip orientation if you need the ring to bend the other way
-  });
-
-  // Ring D (pentagon) fused to ringC using ringC[2] & ringC[3]
-  const ringD = buildFusedPentagon({
-    anchorA: ringC[2],
-    anchorB: ringC[3],
-    bondLength: 0.95 * SCALE,
-    puckers: [0.25, -0.25, 0.25, -0.25, 0.25].map(v => v * SCALE),
-    angleSign: 1
-  });
-
-  // ---------- Add substituents similar to your original routine ----------
-
-  // OH on C3 -> choose ringA[2] (beta: up)
-  const c3 = ringA[2];
-  const ohPos = c3.position.clone().add(new THREE.Vector3(0, 0, 1.0 * SCALE));
-  const oh = createAtom(ohPos.x, ohPos.y, ohPos.z, 0xff3030, 0.38);
-  group.add(oh);
-  group.add(createBond(c3.position, oh.position));
-
-  // Methyl at approx ringB[2] (C10)
-  const methyl10Pos = ringB[2].position.clone().add(new THREE.Vector3(0, 0, 0.95 * SCALE));
-  const methyl10 = createAtom(methyl10Pos.x, methyl10Pos.y, methyl10Pos.z, 0x404040, 0.32);
-  group.add(methyl10);
-  group.add(createBond(ringB[2].position, methyl10.position));
-
-  // Methyl at approx ringC[1] (C13)
-  const methyl13Pos = ringC[1].position.clone().add(new THREE.Vector3(0, 0, 0.95 * SCALE));
-  const methyl13 = createAtom(methyl13Pos.x, methyl13Pos.y, methyl13Pos.z, 0x404040, 0.32);
-  group.add(methyl13);
-  group.add(createBond(ringC[1].position, methyl13.position));
-
-  // Alkyl tail from ringD[2] (C17) — zig-zag, alternate puckering for clarity
-  let prev = ringD[2].position.clone();
-  const tailSteps = [
-    new THREE.Vector3(1.05 * SCALE, 0.05 * SCALE, 0.65 * SCALE),
-    new THREE.Vector3(1.05 * SCALE, -0.15 * SCALE, -0.6 * SCALE),
-    new THREE.Vector3(1.05 * SCALE, 0.2 * SCALE, 0.55 * SCALE),
-    new THREE.Vector3(0.95 * SCALE, -0.05 * SCALE, -0.45 * SCALE),
-    new THREE.Vector3(0.95 * SCALE, 0.15 * SCALE, 0.35 * SCALE)
-  ];
-
-  for (let i = 0; i < tailSteps.length; i++) {
-    const pos = prev.clone().add(tailSteps[i]);
-    const t = createAtom(pos.x, pos.y, pos.z, 0x404040, 0.30);
-    group.add(t);
-    group.add(createBond(prev, t.position));
-    prev = t.position.clone();
+    backbone.push({ n, ca, c, o, nPos, cPos, oPos });
   }
 
-  // Small hydrogens for silhouette
-  const h1Pos = ringA[1].position.clone().add(new THREE.Vector3(-0.45 * SCALE, -0.25 * SCALE, -0.25 * SCALE));
-  const h1 = createAtom(h1Pos.x, h1Pos.y, h1Pos.z, 0xffffff, 0.22);
-  group.add(h1);
-  group.add(createBond(ringA[1].position, h1.position));
 
-  const h2Pos = ringC[4].position.clone().add(new THREE.Vector3(0.45 * SCALE, 0.25 * SCALE, 0.25 * SCALE));
-  const h2 = createAtom(h2Pos.x, h2Pos.y, h2Pos.z, 0xffffff, 0.22);
-  group.add(h2);
-  group.add(createBond(ringC[4].position, h2.position));
+  for (let i = 4; i < residues; i++) {
+    const donor    = backbone[i].nPos;       
+    const acceptor = backbone[i - 4].oPos;   
+    group.add(createBond(donor, acceptor, 0x00dd88));
+  }
 
   return group;
 };
 
+const makeAcetylCoA = () => {
+  const group = new THREE.Group();
 
+  // ─── Helpers ──────────────────────────────────────────────────────────────
+  const SC  = 1.1;  // world-units per bond-length unit
+  const COL = { C:0x404040, N:0x3050f8, O:0xff3030, P:0xffa500, S:0xffdd00, H:0xffffff };
+  const SZ  = { C:0.30,     N:0.32,     O:0.32,     P:0.42,     S:0.44,     H:0.18    };
+
+  const mk = (x, y, el, z = 0) => {
+    const a = createAtom(x*SC, y*SC, z*SC, COL[el], SZ[el]);
+    group.add(a);
+    return a;
+  };
+  const bond = (a, b) => group.add(createBond(a.position, b.position));
+
+
+
+
+  // ── 1. PYRIMIDINE RING  N1-C2-N3-C4-C5-C6 ────────────────────────────────
+  const C4  = mk( 0.000,  0.500, 'C');
+  const N3  = mk(-0.866,  1.000, 'N');
+  const C2  = mk(-1.732,  0.500, 'C');
+  const N1  = mk(-1.732, -0.500, 'N');
+  const C6  = mk(-0.866, -1.000, 'C');
+  const C5  = mk( 0.000, -0.500, 'C');
+  bond(C4,N3); bond(N3,C2); bond(C2,N1); bond(N1,C6); bond(C6,C5); bond(C5,C4);
+
+
+
+  const N7  = mk( 0.951,  0.809, 'N',  0.35);
+  const C8  = mk( 1.539,  0.000, 'C');
+  const N9  = mk( 0.951, -0.809, 'N', -0.35);
+  bond(C4,N7); bond(N7,C8); bond(C8,N9); bond(N9,C5);
+
+
+  const NH2N = mk(-0.866, -1.950, 'N');
+  const NH2a = mk(-1.516, -2.423, 'H');
+  const NH2b = mk(-0.216, -2.423, 'H');
+  bond(C6,NH2N); bond(NH2N,NH2a); bond(NH2N,NH2b);
+
+
+  const HC2  = mk(-3.204,  1.350, 'H');
+  bond(C2,HC2);
+
+
+  const HC8  = mk( 2.389,  0.000, 'H');
+  bond(C8,HC8);
+
+  //4. Ribose
+  const C1p = mk( 1.2931, -1.7487, 'C');
+  const O4p = mk( 2.2267, -2.1071, 'O');
+  const C4p = mk( 2.1743, -3.1057, 'C');
+  const C3p = mk( 1.2084, -3.3645, 'C');
+  const C2p = mk( 0.6638, -2.5259, 'C');
+
+  bond(N9, C1p);                              // glycosidic bond
+  bond(C1p,O4p); bond(O4p,C4p);
+  bond(C4p,C3p); bond(C3p,C2p); bond(C2p,C1p);
+
+  // 2′-OH (outward from C2′)
+  const O2p = mk(-0.3349, -2.4735, 'O');
+  const H2p = mk(-0.8889, -2.4305, 'H');
+  bond(C2p,O2p); bond(O2p,H2p);
+
+  // 3′-O → 3′-phosphate
+  const O3p = mk( 0.8500, -4.2981, 'O');
+  bond(C3p,O3p);
+
+  // C5′ exocyclic off C4′ (outward, toward phosphate chain)
+  const C5p = mk( 2.9515, -3.7350, 'C');
+  bond(C4p,C5p);
+
+
+  // ── 5. 3′-PHOSPHATE ───────────────────────────────────────────────────────
+  const P3  = mk( 0.4917, -5.2317, 'P');
+  bond(O3p, P3);
+  bond(P3, mk( 0.6883, -6.0586, 'O'));
+  bond(P3, mk(-0.2078, -5.7146, 'O'));
+  bond(P3, mk( 0.7963, -4.4381, 'O'));
+
+
+  // ── 6. 5′-PYROPHOSPHATE  Pa–O–Pb ─────────────────────────────────────────
+  const Pa     = mk( 3.8840, -4.4902, 'P');
+  bond(C5p, Pa);
+  bond(Pa, mk( 3.8840, -3.6402, 'O'));    // terminal O up
+  bond(Pa, mk( 3.8840, -5.3402, 'O'));    // terminal O down
+
+  const PbO    = mk( 4.4280, -4.9307, 'O');
+  bond(Pa, PbO);
+
+  const Pb     = mk( 4.9720, -5.3713, 'P');
+  bond(PbO, Pb);
+  bond(Pb, mk( 4.9720, -4.5213, 'O'));    // terminal O up
+  bond(Pb, mk( 4.9720, -6.2213, 'O'));    // terminal O down
+
+
+  // ── 7. PANTETHEINE ARM  ───────────────────────────────────────────────────
+
+  let wx = 4.9720, wy = -5.3713;
+
+  const step = (el, dy) => {
+    wx += 1.05; wy += dy;
+    return mk(wx, wy, el);
+  };
+  const DY = 0.42;
+
+  const PbLink = step('O', +DY);  bond(Pb,     PbLink);
+  const pantC1 = step('C', -DY);  bond(PbLink, pantC1);
+  const pantC2 = step('C', +DY);  bond(pantC1, pantC2);
+  const amC1   = step('C', -DY);  bond(pantC2, amC1);
+  bond(amC1, mk(wx, wy - 0.88, 'O'));          // first amide C=O (down)
+
+  const amN1   = step('N', +DY);  bond(amC1,   amN1);
+  bond(amN1,   mk(wx + 0.15, wy + 0.85, 'H')); // N-H
+
+  const betC1  = step('C', -DY);  bond(amN1,   betC1);
+  const betC2  = step('C', +DY);  bond(betC1,  betC2);
+  const amC2   = step('C', -DY);  bond(betC2,  amC2);
+  bond(amC2,   mk(wx, wy - 0.88, 'O'));         // second amide C=O (down)
+
+  const amN2   = step('N', +DY);  bond(amC2,   amN2);
+  bond(amN2,   mk(wx + 0.15, wy + 0.85, 'H')); // N-H
+
+  const cysC1  = step('C', -DY);  bond(amN2,   cysC1);
+  const cysC2  = step('C', +DY);  bond(cysC1,  cysC2);
+  const sulfur = step('S', -0.30); bond(cysC2,  sulfur);
+
+
+  // ── 8. ACETYL GROUP  CH₃–C(=O)–S  (the reactive thioester) ──────────────
+  const thioC  = step('C', +0.30); bond(sulfur, thioC);
+  bond(thioC,  mk(wx, wy - 0.88, 'O'));         // thioester C=O (down)
+
+  const methyl = step('C', +DY);   bond(thioC,  methyl);
+  bond(methyl, mk(wx + 0.55, wy + 0.60, 'H'));
+  bond(methyl, mk(wx + 0.55, wy - 0.50, 'H'));
+  bond(methyl, mk(wx,        wy + 0.30, 'H', 0.60));
+
+  return group;
+};
+
+const makeTryptophan = () => {
+  const group = new THREE.Group();
+  const SCALE = 1.6;
+
+  const at = (x, y, z, el) => {
+    const styles = {
+      C: [0x404040, 0.40],
+      N: [0x3050f8, 0.45],
+      O: [0xff3030, 0.45],
+      H: [0xffffff, 0.25]
+    };
+    const [c, r] = styles[el];
+    const m = createAtom(x * SCALE, y * SCALE, z * SCALE, c, r);
+    group.add(m);
+    return m;
+  };
+
+  const link = (a, b) => group.add(createBond(a.position, b.position));
+
+
+
+  const ca  = at( 0.0,  0.0, 0, "C");
+  const haC = at( 0.0,  1.0, 0, "H"); 
+  link(ca, haC);
+
+  // Amino group NH2
+  const n   = at(-1.2,  0.0, 0, "N");
+  const hn1 = at(-1.8,  0.8, 0, "H");
+  const hn2 = at(-1.8, -0.8, 0, "H");
+  link(ca, n);
+  link(n, hn1);
+  link(n, hn2);
+
+  // Carboxyl group — asymmetric: C=O (carbonyl) and C-OH (hydroxyl)
+  const coo  = at( 1.3,  0.0,  0,    "C");
+  const oC   = at( 1.9,  0.9,  0,    "O");  // C=O  (carbonyl, no H)
+  const oH   = at( 1.9, -0.9,  0,    "O");  // C-OH (hydroxyl)
+  const hoH  = at( 2.8, -0.9,  0,    "H");  // H on the OH
+  link(ca, coo);
+  link(coo, oC);   // double bond — rendered same visually, but oC has no H
+  link(coo, oH);
+  link(oH, hoH);
+
+  // ── Side chain: Cβ (CH2 bridge to indole) ─────────────────────────────────
+  const cb  = at( 0.0, -1.3,  0,    "C");
+  const hb1 = at(-0.7, -1.8,  0.5,  "H");
+  const hb2 = at( 0.7, -1.8,  0.5,  "H");
+  link(ca, cb);
+  link(cb, hb1);
+  link(cb, hb2);
+
+
+  // Benzene ring — 6-membered, placed below Cβ
+  const b1 = at( 0.7, -3.1, 0, "C");  // C7a — fusion atom shared with pyrrole
+  const b2 = at( 0.7, -4.5, 0, "C");  // C3a — fusion atom shared with pyrrole
+  const b3 = at( 1.8, -5.2, 0, "C");
+  const b4 = at( 3.0, -4.5, 0, "C");
+  const b5 = at( 3.0, -3.1, 0, "C");
+  const b6 = at( 1.8, -2.4, 0, "C");
+
+ 
+  link(b1, b2);
+  link(b2, b3);
+  link(b3, b4);
+  link(b4, b5);
+  link(b5, b6);
+  link(b6, b1);
+
+
+  const hb = [b3, b4, b5, b6].map(atom => {
+    const pos = atom.position;
+    // push H outward from benzene center (~x=1.85, y=-3.8)
+    const dx = (pos.x - 1.85 * SCALE) * 0.35;
+    const dy = (pos.y + 3.80 * SCALE) * 0.35;
+    const h = createAtom(pos.x + dx, pos.y + dy, 0, 0xffffff, 0.22);
+    group.add(h);
+    group.add(createBond(pos, h.position));
+    return h;
+  });
+
+
+  const c2   = at(-0.5, -3.8, 0, "C");  // C2 — bonded to Cβ
+  const c3   = at(-0.5, -4.8, 0, "C");  // C3
+  const indN = at( 0.1, -5.6, 0, "N");  // indole N (NH)
+  const hn   = at( 0.1, -6.5, 0, "H");  // N-H (the characteristic indole NH)
+
+  link(c2,   b1);
+  link(b2,   indN);
+  link(indN, c3);
+  link(c3,   c2);
+
+  link(indN, hn);
+
+  const hc2 = at(-1.35, -3.4, 0, "H");
+  const hc3 = at(-1.35, -5.2, 0, "H");
+  link(c2, hc2);
+  link(c3, hc3);
+
+
+  link(cb, c2);
+
+  return group;
+};
+      const makeCholesterol = () => {
+        const group = new THREE.Group();
+
+  
+        const S        = 0.9;
+        const r        = 1.2 * S;                          
+        const hexStep  = r * Math.sqrt(3);                  
+        const pentR    = r / (2 * Math.sin(Math.PI / 5));   
+        const apothem  = pentR * Math.cos(Math.PI / 5);     
+        const PUCK_HEX = 0.22 * S;                          
+        const PUCK_PNT = 0.18 * S;                          
+
+
+        const makeHexRing = (cx, cy) => {
+          const atoms = Array.from({ length: 6 }, (_, i) => {
+            const angle  = Math.PI / 6 + i * (Math.PI / 3);
+            const pucker = (i % 2 === 0 ? PUCK_HEX : -PUCK_HEX);
+            const a = createAtom(
+              cx + r * Math.cos(angle),
+              cy + r * Math.sin(angle),
+              pucker,
+              0x404040, 0.35
+            );
+            group.add(a);
+            return a;
+          });
+          for (let i = 0; i < 6; i++) {
+            group.add(createBond(atoms[i].position, atoms[(i + 1) % 6].position));
+          }
+          return atoms;
+        };
+
+        // Pentagon fused to the right edge of ring C (atoms C[0] upper and C[5] lower).
+        // Atom 0 coincides with C[5], atom 1 coincides with C[0].
+        // Remaining atoms 2-4 are new and extend to the right.
+        const makePentRing = (sharedTop, sharedBottom) => {
+          // Pentagon center lies on the perpendicular bisector of the shared edge, to the right.
+          const midX   = (sharedTop.position.x + sharedBottom.position.x) / 2;
+          const midY   = (sharedTop.position.y + sharedBottom.position.y) / 2;
+          const pentCx = midX + apothem;   // +x = to the right of ring C
+          const pentCy = midY;
+
+          // Angle from pentagon center to the lower shared atom (= D[0] start angle).
+          const startAngle = Math.atan2(
+            sharedBottom.position.y - pentCy,
+            sharedBottom.position.x - pentCx
+          );
+
+          // Build 5 atoms going clockwise (-72° per step) so:
+          //   D[0] → sharedBottom (= C[5])
+          //   D[1] → sharedTop    (= C[0])
+          //   D[2..4] → new atoms extending right
+          const atoms = Array.from({ length: 5 }, (_, i) => {
+            // D[0] and D[1] reuse the already-existing shared atoms
+            if (i === 0) return sharedBottom;
+            if (i === 1) return sharedTop;
+            const angle  = startAngle - i * (2 * Math.PI / 5);
+            const pucker = (i % 2 === 0 ? PUCK_PNT : -PUCK_PNT);
+            const a = createAtom(
+              pentCx + pentR * Math.cos(angle),
+              pentCy + pentR * Math.sin(angle),
+              pucker,
+              0x404040, 0.35
+            );
+            group.add(a);
+            return a;
+          });
+          for (let i = 0; i < 5; i++) {
+            group.add(createBond(atoms[i].position, atoms[(i + 1) % 5].position));
+          }
+          return atoms;
+        };
+        //build four rings
+        const ringA = makeHexRing(0, 0);
+        const ringB = makeHexRing(hexStep, 0);
+        const ringC = makeHexRing(2 * hexStep, 0);
+        const ringD = makePentRing(ringC[0], ringC[5]);
+
+     
+
+        // ─── Substituents ─────────────────────────────────────────────────────────
+
+        // OH group on C3 (ring A, atom [1] — upper-left, β-face points +Z)
+        const c3     = ringA[1];
+        const ohPos  = c3.position.clone().add(new THREE.Vector3(0, 0.9 * S, 0.3 * S));
+        const oh     = createAtom(ohPos.x, ohPos.y, ohPos.z, 0xff3030, 0.42);
+        group.add(oh);
+        group.add(createBond(c3.position, oh.position));
+
+        // Small H on the OH
+        const hOhPos = ohPos.clone().add(new THREE.Vector3(0, 0.5 * S, 0.2 * S));
+        const hOh    = createAtom(hOhPos.x, hOhPos.y, hOhPos.z, 0xffffff, 0.22);
+        group.add(hOh);
+        group.add(createBond(oh.position, hOh.position));
+
+        // Angular methyl at C10 (shared junction atom ringA[0] == ringB[2]), β-face
+        const c10    = ringA[0];
+        const me10   = createAtom(c10.position.x, c10.position.y, c10.position.z + 0.95 * S, 0x404040, 0.30);
+        group.add(me10);
+        group.add(createBond(c10.position, me10.position));
+
+        // Angular methyl at C13 (shared junction atom ringB[0] == ringC[2]), β-face
+        const c13    = ringB[0];
+        const me13   = createAtom(c13.position.x, c13.position.y, c13.position.z + 0.95 * S, 0x404040, 0.30);
+        group.add(me13);
+        group.add(createBond(c13.position, me13.position));
+
+        // 8-carbon isooctyl tail from C17 (ring D, atom [2])
+        // Zig-zags in XY with slight Z alternation, heading generally in +X
+        const tailSteps = [
+          new THREE.Vector3( 1.10 * S,  0.30 * S,  0.30 * S),
+          new THREE.Vector3( 1.10 * S, -0.30 * S, -0.30 * S),
+          new THREE.Vector3( 1.05 * S,  0.25 * S,  0.25 * S),
+          new THREE.Vector3( 1.05 * S, -0.20 * S, -0.25 * S),
+          new THREE.Vector3( 1.00 * S,  0.20 * S,  0.20 * S),
+          new THREE.Vector3( 1.00 * S, -0.15 * S, -0.20 * S),
+          new THREE.Vector3( 0.90 * S,  0.10 * S,  0.15 * S),
+          new THREE.Vector3( 0.90 * S, -0.10 * S, -0.15 * S),
+        ];
+
+        let prevPos = ringD[2].position.clone();
+        for (const step of tailSteps) {
+          const pos  = prevPos.clone().add(step);
+          const atom = createAtom(pos.x, pos.y, pos.z, 0x404040, 0.28);
+          group.add(atom);
+          group.add(createBond(prevPos, atom.position));
+          prevPos = pos;
+        }
+
+        // Isopropyl branch: add one extra methyl at the second-to-last tail carbon
+        // (approximate C24 branching, giving cholesterol's isooctyl shape)
+        const branchBase = prevPos.clone().add(new THREE.Vector3(-0.90 * S, 0, 0));
+        const branchAtom = createAtom(
+          branchBase.x + 0.5 * S,
+          branchBase.y + 0.6 * S,
+          branchBase.z + 0.2 * S,
+          0x404040, 0.26
+        );
+        group.add(branchAtom);
+        group.add(createBond(branchBase, branchAtom.position));
+
+        // Small axial H for visual depth on ring A
+        const hAxPos = ringA[3].position.clone().add(new THREE.Vector3(-0.35 * S, -0.20 * S, -0.35 * S));
+        const hAx    = createAtom(hAxPos.x, hAxPos.y, hAxPos.z, 0xffffff, 0.20);
+        group.add(hAx);
+        group.add(createBond(ringA[3].position, hAx.position));
+
+        return group;
+      }; 
 
   const moleculeBuilders = {
     glucose: makeGlucose,
