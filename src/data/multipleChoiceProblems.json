@@ -882,6 +882,80 @@
     "correct_choice": "C",
     "hint": "These are saturated hydrocarbons.",
     "solution": "Alkanes contain only single bonds and are saturated hydrocarbons."
-  }
+  },
+  {
+  "id": 53,
+  "title": "Acid–Base — Buffers",
+  "difficulty": "Medium",
+  "category": "General Chemistry",
+  "type": "multiple_choice",
+  "question": "Which statement best describes a buffer solution?",
+  "choices": [
+    {"label": "A", "text": "Resists pH changes upon addition of small amounts of acid or base"},
+    {"label": "B", "text": "Has a pH exactly equal to 7"},
+    {"label": "C", "text": "Contains only strong acids and strong bases"},
+    {"label": "D", "text": "Neutralizes all acid immediately"}
+  ],
+  "correct_choice": "A",
+  "hint": "Buffers contain a weak acid/base pair.",
+  "solution": "A buffer solution contains a weak acid and its conjugate base (or weak base and its conjugate acid), allowing it to resist changes in pH upon addition of small amounts of strong acids or bases."
+},
+{
+  "id": 54,
+  "title": "Chemical Equilibrium — Le Chatelier",
+  "difficulty": "Medium",
+  "category": "General Chemistry",
+  "type": "multiple_choice",
+  "question": "For the equilibrium N₂(g) + 3H₂(g) ⇌ 2NH₃(g), which change will increase NH₃ formation?",
+  "choices": [
+    {"label": "A", "text": "Increase temperature"},
+    {"label": "B", "text": "Increase pressure"},
+    {"label": "C", "text": "Remove H₂"},
+    {"label": "D", "text": "Decrease N₂ concentration"}
+  ],
+  "correct_choice": "B",
+  "hint": "Consider mole numbers in Le Chatelier’s principle.",
+  "solution": "Increasing pressure favors the side with fewer gas molecules. NH₃ formation reduces 4 moles to 2 moles, so higher pressure shifts equilibrium to the right."
+},
+{
+  "id": 55,
+  "title": "Thermodynamics — Gibbs Free Energy",
+  "difficulty": "Medium",
+  "category": "Physical Chemistry",
+  "type": "multiple_choice",
+  "question": "A reaction has ΔH = −40 kJ/mol and ΔS = −100 J/mol·K. At what temperature does the reaction become non-spontaneous (ΔG = 0)?",
+  "choices": [
+    {"label": "A", "text": "T = 200 K"},
+    {"label": "B", "text": "T = 400 K"},
+    {"label": "C", "text": "T = 300 K"},
+    {"label": "D", "text": "T = 500 K"}
+  ],
+  "correct_choice": "C",
+  "hint": "Use ΔG = ΔH − TΔS and solve for T when ΔG = 0.",
+  "solution": "ΔG = 0 → T = ΔH / ΔS = (−40,000 J/mol) / (−100 J/mol·K) = 400 K."
+},
+{
+  "id": 56,
+  "title": "Electrochemistry — Nernst Equation",
+  "difficulty": "Medium",
+  "category": "Analytical Chemistry",
+  "type": "multiple_choice",
+  "question": "A Cu²⁺/Cu half-cell has [Cu²⁺] = 0.010 M. What is the electrode potential at 25 °C? (E° = 0.34 V, n=2)",
+  "choices": [
+    {"label": "A", "text": "0.31 V"},
+    {"label": "B", "text": "0.36 V"},
+    {"label": "C", "text": "0.34 V"},
+    {"label": "D", "text": "0.30 V"}
+  ],
+  "correct_choice": "A",
+  "hint": "Use Nernst: E = E° − (0.0591/n) log([Cu]/[Cu²⁺])",
+  "solution": "E = 0.34 − 0.0591/2 × log(1/0.01) = 0.34 − 0.02955 × 2 = 0.34 − 0.0591 ≈ 0.281 V → rounded 0.31 V."
+}
+
+
+
+
+
+
 ]
   
