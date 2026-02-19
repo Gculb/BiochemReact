@@ -76,6 +76,48 @@
   margin: 12px 0 8px;
 }
 
+/* Collapsable group header */
+.collapsable-group-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  background: none;
+  border: none;
+  color: var(--sidebar-color);
+  cursor: pointer;
+  transition: background 120ms;
+  margin-bottom: 8px;
+  text-align: left;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
+.collapsable-group-header:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.collapsable-group-header:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 6px;
+}
+
+.collapsable-toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition: transform 120ms;
+}
+
+.collapsable-group-header .group-label {
+  margin: 0;
+  flex: 1;
+}
+
 /* Nav items */
 .group-list {
   list-style: none;
@@ -139,9 +181,87 @@
   transition: opacity var(--transition), transform var(--transition), width var(--transition);
 }
 
+/* ========== NESTED GROUPS STYLING ========== */
+.nested-group {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nested-group-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--sidebar-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 120ms, border-color 120ms;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.nested-group-toggle:hover,
+.nested-group-toggle:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.nested-group-toggle:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: transform 120ms;
+}
+
+.nested-label {
+  font-weight: 600;
+  flex: 1;
+}
+
+.nested-items {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 6px 8px;
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+  padding-left: 8px;
+}
+
+.nested-items .nav-link {
+  font-size: 0.9rem;
+  padding: 6px 8px;
+  margin-bottom: 4px;
+}
+
 /* COLLAPSED STATE tweaks */
 .sidebar.collapsed .sidebar-title { opacity: 0; transform: translateX(-6px); pointer-events:none; }
 .sidebar.collapsed .group-label { display: none; }
+
+/* Collapsed state for collapsable group header */
+.sidebar.collapsed .collapsable-group-header {
+  padding: 8px;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 4px;
+}
+
+.sidebar.collapsed .collapsable-group-header .group-label {
+  opacity: 0;
+  width: 0;
+  padding: 0;
+  pointer-events: none;
+  user-select: none;
+}
 
 /* keep icons in a single column and center them */
 .sidebar.collapsed .nav-link {
@@ -165,6 +285,43 @@
 .sidebar.collapsed .nav-link.active {
   background: rgba(255,255,255,0.06);
   box-shadow: inset 0 0 0 2px rgba(255,255,255,0.02);
+}
+
+/* collapsed state for nested groups */
+.sidebar.collapsed .nested-group-toggle {
+  background: none;
+  border: none;
+  padding: 8px;
+  justify-content: center;
+  width: auto;
+  gap: 0;
+  margin-bottom: 2px;
+}
+
+.sidebar.collapsed .nested-group-toggle:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+}
+
+/* Show nested items when expanded, hide when collapsed */
+.sidebar.collapsed .nested-items {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.sidebar.collapsed .nested-items .nav-link {
+  justify-content: center;
+  padding: 8px 0;
+  margin-bottom: 2px;
+}
+
+.sidebar.collapsed .nested-label {
+  opacity: 0;
+  width: 0;
+  padding: 0;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* TOOLTIP for collapsed nav (shows text on hover) */

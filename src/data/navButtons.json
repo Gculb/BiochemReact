@@ -1,31 +1,33 @@
 [
-  { "label": "Main", "ids": ["home", "degree", "viewer"] },
+  { "label": "Main", "ids": ["home", "viewer"] },
 
-  { "label": "Practice & Labs", "ids": ["problems", "lab"] },
-
-  {
-    "label": "Chemistry",
-    "ids": ["genchem", "genchemlab", "ochem", "ochem-lab", "analytical", "inorganic", "physical"]
-  },
+  { "label": "Practice", "ids": ["problems", "lab"] },
 
   {
-    "label": "Life Sciences",
-    "ids": ["genbio", "biochem1", "biochem2", "biochem-lab", "molbio", "microbio", "genetics", "bioinformatics", "cell-biology","cell-physiology","immunology","neurobiology"]
-  },
-
-  {
-    "label": "Metabolism",
-    "ids": ["metabolic-cycles"]
-  },
-
-  {
-    "label": "MCAT Prep",
-    "ids": ["mcat-prep","cognitive-psychology"]
-  },
-
-  {
-    "label": "Quantitative",
-    "ids": ["calculus", "stats", "physics"]
+    "label": "Context",
+    "collapsable": true,
+    "children": [
+      { "id": "degree" },
+      {
+        "parentLabel": "Chemistry",
+        "ids": ["genchem", "genchemlab", "ochem", "ochem-lab", "analytical", "inorganic", "physical"]
+      },
+      {
+        "parentLabel": "Biology",
+        "ids": ["genbio", "molbio", "microbio", "genetics", "bioinformatics", "cell-biology", "cell-physiology", "immunology", "neurobiology"]
+      },
+      {
+        "parentLabel": "Biochemistry",
+        "ids": ["biochem1", "biochem2", "biochem-lab"]
+      },
+      { "id": "metabolic-cycles" },
+      { "id": "mcat-prep" },
+      { "id": "cognitive-psychology" },
+      {
+        "parentLabel": "Mathematics",
+        "ids": ["calculus", "stats", "physics"]
+      }
+    ]
   },
 
   {

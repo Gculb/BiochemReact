@@ -1,6 +1,6 @@
 import React from "react";
 import "./AboutPage.css";
-
+import { Link } from "react-router-dom";
 const AboutPage = () => {
   return (
     <div className="about-page">
@@ -34,10 +34,12 @@ const AboutPage = () => {
         </section>
 
         {/* Features Section */}
+
         <section className="about-section features-section">
-          <h2>Key Features</h2>
+          <h2>Explore Our Tools</h2>
+          <p className="section-subtitle">Choose your learning style</p>
           <div className="features-grid">
-            <div className="feature-card">
+            <div className="feature-card" onClick={() => navigate("/viewer")}>
               <div className="feature-icon">🔬</div>
               <h3>3D Molecular Viewer</h3>
               <p>
@@ -46,8 +48,8 @@ const AboutPage = () => {
               </p>
             </div>
 
-            <div className="feature-card">
-              <div className="feature-icon">⚗️</div>
+            <div className="feature-card" onClick={() => navigate("/lab")}>
+              <div className="feature-icon" >⚗️</div>
               <h3>Kinetics Lab</h3>
               <p>
                 Simulate Michaelis-Menten enzyme kinetics. Generate synthetic data, add noise, 
@@ -55,7 +57,7 @@ const AboutPage = () => {
               </p>
             </div>
 
-            <div className="feature-card">
+            <div className="feature-card" onClick={() => navigate("/resources")}>
               <div className="feature-icon">📚</div>
               <h3>Comprehensive Topics</h3>
               <p>
@@ -64,7 +66,7 @@ const AboutPage = () => {
               </p>
             </div>
 
-            <div className="feature-card">
+            <div className="feature-card" onClick={() => navigate("/lab")}>
               <div className="feature-icon">📊</div>
               <h3>Data & Analysis</h3>
               <p>
@@ -73,7 +75,7 @@ const AboutPage = () => {
               </p>
             </div>
 
-            <div className="feature-card">
+            <div className="feature-card" onClick={() => navigate("/problems")}>
               <div className="feature-icon">🎯</div>
               <h3>Practice Problems</h3>
               <p>
@@ -82,7 +84,7 @@ const AboutPage = () => {
               </p>
             </div>
 
-            <div className="feature-card">
+            <div className="feature-card" onClick={() => navigate("/degree")}>
               <div className="feature-icon">🗺️</div>
               <h3>Degree Roadmap</h3>
               <p>
@@ -202,15 +204,15 @@ const AboutPage = () => {
           <h2>Ready to Learn?</h2>
           <p>Explore 3D molecules, run virtual labs, and master biochemistry concepts</p>
           <div className="cta-buttons">
-            <a href="/#/viewer" className="cta-btn primary">
+            <Link to="/#/viewer" className="cta-btn primary">
               Launch 3D Viewer
-            </a>
-            <a href="/#/lab" className="cta-btn secondary">
+            </Link>
+            <Link to="/#/lab" className="cta-btn secondary">
               Try Virtual Lab
-            </a>
-            <a href="/#/contact" className="cta-btn secondary">
+            </Link>
+            <Link to="/#/contact" className="cta-btn secondary">
               Get in Touch
-            </a>
+            </Link>
           </div>
         </section>
       </div>
