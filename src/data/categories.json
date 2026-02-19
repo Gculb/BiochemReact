@@ -20,7 +20,7 @@
       "title": "Degree Roadmap",
       "icon": "fa-road",
       "color": "#4b6cb7",
-      "description": "Suggested 4-year roadmap with semester-by-semester guidance and milestones.",
+      "description": "Suggested 4-year roadmap with year by year guidance and milestones.",
       "order": 1,
       "topics": [
         { "id": "year1", "title": "Year 1 — Foundations", "summary": "Gen Chem, calculus/statistics, intro bio, lab safety." },

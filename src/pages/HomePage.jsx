@@ -117,8 +117,8 @@ const HomePage = () => {
               <div className="feature-icon">🗺️</div>
               <h3>Degree Roadmap</h3>
               <p>
-                A suggested four-year curriculum guide for chemistry and biochemistry majors, 
-                with semester-by-semester recommendations.
+                A suggested four-year curriculum guide for biochemistry majors, 
+                with year-by-year recommendations.
               </p>
             </div>
           </div>

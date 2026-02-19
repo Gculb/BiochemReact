@@ -1,13 +1,13 @@
 [
-  { "label": "Main", "ids": ["home", "viewer"] },
+  { "label": "Main", "ids": ["home", "viewer","problems"] },
 
-  { "label": "Practice", "ids": ["problems", "lab"] },
-
+ 
   {
     "label": "Context",
     "collapsable": true,
     "children": [
-      { "id": "degree" },
+
+      { "parentLabel": "Degree Planning and Practice", "ids":[ "degree","problems"] },
       {
         "parentLabel": "Chemistry",
         "ids": ["genchem", "genchemlab", "ochem", "ochem-lab", "analytical", "inorganic", "physical"]
