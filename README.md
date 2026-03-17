@@ -4,6 +4,10 @@ A modern, interactive React-based educational platform for learning biochemistry
 
 **Live Demo:** [Deployed on GitHub Pages](https://gculb.github.io/BiochemReact)
 
+**GIFS of models** 
+
+![Demo](./public/demos/demo-gif.gif)
+
 ## 🎯 Features
 
 ### 📚 Learning Modules
@@ -202,7 +206,7 @@ Each category has:
 ## 🔮 Future Enhancements
 
 ### Planned Features
-- [*] 3D Alpha Helix and secondary structure visualization (Add bonds and make more accurate visulizations)
+- [*] 3D Protein Vizualizations
 - [ ] More interactive labs (titration, spectroscopy simulation)
 - [ ] Student problem-solving with code execution  (Bioinformatics)
 - [*] Activity logging and progress tracking 
@@ -210,12 +214,7 @@ Each category has:
 - [*] Add more sections
 * = partial implementation
 
-### Potential Additions
-- WebGL performance optimization for mobile
-- Unit conversion tools
-- Reaction mechanism animator
-- Concentration calculator utilities
-- Protein structure prediction visualization
+
 
 ## 🏆 Code Quality
 
@@ -234,7 +233,7 @@ This project is licensed under the ISC License. See package.json for details.
 
 **Grant Culbertson**
 - GitHub: [@gculb](https://github.com/gculb)
-- Portfolio: N/A
+
 
 ## 🙏 Acknowledgments
 
