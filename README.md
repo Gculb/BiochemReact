@@ -4,7 +4,7 @@ An interactive biochemistry learning platform built for students who learn bette
 
 **Live Demo:** [Deployed on GitHub Pages](https://gculb.github.io/BiochemReact)
 
-**model demo** 
+**Live demo of renders** 
 
 ![Demo](./public/demos/demo-gif.gif)
 
