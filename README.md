@@ -202,14 +202,12 @@ Each category has:
 ## 🔮 Future Enhancements
 
 ### Planned Features
-- [ ] 3D Alpha Helix and secondary structure visualization (Add bonds and make more accurate visulizations
+- [*] 3D Alpha Helix and secondary structure visualization (Add bonds and make more accurate visulizations)
 - [ ] More interactive labs (titration, spectroscopy simulation)
 - [ ] Student problem-solving with code execution  (Bioinformatics)
-- [ ] Dark mode toggle
 - [*] Activity logging and progress tracking 
 - [*] Glossary with searchable terms
-- [ ] PDF export for study guides
-- [ ] Add more sections
+- [*] Add more sections
 * = partial implementation
 
 ### Potential Additions
