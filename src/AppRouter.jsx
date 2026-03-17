@@ -5,6 +5,7 @@ import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
 import ResourcesPage from "./pages/ResourcesPage";
 import GlossaryPage from "./pages/GlossaryPage";
+import ProteinViewer from "./components/proteinViewer";
 import MoleculeViewer from "./components/MoleculeViewer";
 import KineticsLab from "./components/KineticsLab";
 
@@ -12,6 +13,7 @@ const AppRouter = () => (
   <Routes>
     <Route path="/" element={<HomePage />} />
     <Route path="/viewer" element={<MoleculeViewer />} />
+    <Route path="/protein-viewer" element={<ProteinViewer />} />  
     <Route path="/lab" element={<KineticsLab />} />
     <Route path="/resources" element={<ResourcesPage />} />
     <Route path="/glossary" element={<GlossaryPage />} />

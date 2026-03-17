@@ -29,9 +29,9 @@ const HomePage = () => {
             <div className="hero-cta-group">
               <button
                 className="cta-primary"
-                onClick={() => navigate("/viewer")}
+                onClick={() => navigate("/protein-viewer")}
               >
-                🧬 Open 3D Molecular Viewer
+                🧬 Open 3D Protein Viewer
               </button>
 
               <button

@@ -525,6 +525,41 @@
       { "id": "sensory-systems", "title": "Sensory Systems & Pathways" },
       { "id": "neurophysiology", "title": "Systems Neurophysiology (basic circuits)" }
     ]
+  },
+  {
+  "id": "protein-viewer",
+  "title": "3D Protein Viewer",
+  "icon": "fa-dna",
+  "color": "#8e44ad",
+  "description": "Interactive protein visualization using PDB structures: rotate, zoom, highlight domains, and explore active sites.",
+  "order": 2.5,
+  "topics": [
+    {
+      "id": "hemoglobin",
+      "title": "Hemoglobin (Oxygen Transport)",
+      "summary": "Tetrameric protein with heme groups for oxygen binding."
+    },
+    {
+      "id": "insulin",
+      "title": "Insulin (Hormone)",
+      "summary": "Peptide hormone regulating glucose metabolism."
+    },
+    {
+      "id": "dna-polymerase",
+      "title": "DNA Polymerase",
+      "summary": "Enzyme responsible for DNA replication."
+    },
+    {
+      "id": "active-sites",
+      "title": "Active Site Highlighting",
+      "summary": "Visualize catalytic residues and ligand binding."
+    },
+    {
+      "id": "secondary-structure",
+      "title": "Secondary Structure View",
+      "summary": "Alpha helices, beta sheets, and loops."
+    }
+  ]
   }
   ]
 }

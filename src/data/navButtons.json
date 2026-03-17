@@ -1,5 +1,5 @@
 [
-  { "label": "Main", "ids": ["home", "viewer","problems"] },
+  { "label": "Main", "ids": ["home", "viewer","protein-viewer"] },
 
  
   {
