@@ -1,6 +1,6 @@
 # Interactive Biochemistry Guide
 
-A modern, interactive React-based educational platform for learning biochemistry with 3D molecular visualization, enzyme kinetics simulation, and practice problems. Designed for students and professionals exploring biochemical concepts.
+An interactive biochemistry learning platform built for students who learn better by doing than reading. Features a custom-built 3D protein renderer (no WebGL libraries — projection math and spline smoothing from scratch), a Michaelis-Menten kinetics simulator with client-side curve fitting, and 100+ topic cards with LaTeX-rendered equations.
 
 **Live Demo:** [Deployed on GitHub Pages](https://gculb.github.io/BiochemReact)
 
@@ -11,7 +11,7 @@ A modern, interactive React-based educational platform for learning biochemistry
 ## 🎯 Features
 
 ### 📚 Learning Modules
-- **29 Topic Categories** covering General Chemistry, Organic Chemistry, Biochemistry I & II, Molecular Biology, Genetics, Bioinformatics, and more
+- **29+ Topic Categories** covering General Chemistry, Organic Chemistry, Biochemistry I & II, Molecular Biology, Genetics, Bioinformatics, and more
 - **100+ Interactive Topic Cards** with expandable details and LaTeX-rendered mathematical equations
 - **Critical Concepts** section highlighting essential topics with color-coded importance indicators
 - **Practice Problem Bank** with categorized problems and detailed solutions
