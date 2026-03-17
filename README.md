@@ -94,46 +94,7 @@ npm run build
 npm run deploy
 ```
 
-## 📁 Project Structure
 
-```
-BiochemReact/
-├── public/
-│   ├── index.html
-│   └── images/
-├── src/
-│   ├── components/
-│   │   ├── MoleculeViewer.jsx       # 3D molecular visualization
-│   │   ├── MoleculeViewer.css
-│   │   ├── KineticsLab.jsx          # Enzyme kinetics simulator
-│   │   ├── KineticsLab.css
-│   │   ├── TopicCard.jsx            # Expandable topic cards
-│   │   ├── TopicCard.css
-│   │   ├── CriticalConcepts.jsx     # Key concepts display
-│   │   ├── CriticalConcepts.css
-│   │   ├── PracticeProblems.jsx     # Problem bank
-│   │   ├── PracticeProblems.css
-│   │   ├── SideBar.jsx              # Navigation sidebar
-│   │   ├── SideBar.css
-│   │   ├── FeatureCard.jsx          # Feature showcase cards
-│   │   └── FeatureCard.css
-│   ├── pages/
-│   │   ├── HomePage.jsx             # Landing page with features
-│   │   └── CategoryPage.jsx         # Category view with topic cards
-│   ├── data/
-│   │   ├── categories.json          # 29 category definitions
-│   │   ├── topicCards.json          # 100+ topic cards (18+ sections)
-│   │   ├── criticalConcepts.json    # Key concepts by section
-│   │   ├── problems.json            # Practice problems
-│   │   ├── navButtons.json          # Navigation metadata
-│   │   └── topicCards.json
-│   ├── App.jsx                      # Main app component
-│   ├── App.css
-│   ├── AppRouter.jsx                # Route definitions
-│   └── index.js                     # React entry point
-├── package.json
-└── README.md
-```
 
 ## 🎮 Usage Guide
 
