@@ -4,7 +4,7 @@ A modern, interactive React-based educational platform for learning biochemistry
 
 **Live Demo:** [Deployed on GitHub Pages](https://gculb.github.io/BiochemReact)
 
-**GIFS of models** 
+**model demo** 
 
 ![Demo](./public/demos/demo-gif.gif)
 
