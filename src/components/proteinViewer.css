@@ -1,169 +1,302 @@
 
 
-/* ─── Root — mirrors .molecule-viewer ───────────────────────────────────────── */
-.pv-root {
+/* ─── Panel wrapper ─────────────────────────────────────────────────────────── */
+.bioinfo-panel { padding-bottom: 4px; }
+.bioinfo-panel h4 { margin-bottom: 8px; }
+
+/* ─── Tab bar ────────────────────────────────────────────────────────────────── */
+.bio-tabbar {
   display: flex;
-  height: 100%;
-  min-height: 520px;
-  background: #0f0f1e;
-  border-radius: 8px;
-  overflow: hidden;
-  font-family: 'Segoe UI', system-ui, sans-serif;
-}
-
-/* ─── Canvas wrap — mirrors .mv-canvas-container ────────────────────────────── */
-.pv-canvas-wrap {
-  position: relative;
-  flex: 1;
-  min-width: 0;
-  background: #08081a;
-}
-
-.pv-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-  cursor: grab;
-}
-.pv-canvas:active { cursor: grabbing; }
-
-/* ─── Loading / error ────────────────────────────────────────────────────────── */
-.pv-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  background: rgba(8,8,26,0.84);
-  color: #a0b4cc;
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-  backdrop-filter: blur(3px);
-  z-index: 10;
-}
-.pv-err { color: #ff7b8a; }
-
-.pv-spinner {
-  width: 34px; height: 34px;
-  border: 3px solid rgba(91,155,213,0.18);
-  border-top-color: #5b9bd5;
-  border-radius: 50%;
-  animation: pv-spin 0.75s linear infinite;
-}
-@keyframes pv-spin { to { transform: rotate(360deg); } }
-
-/* ─── PDB badge (in info overlay) ───────────────────────────────────────────── */
-.pv-badge {
-  display: inline-block;
-  margin-left: 6px;
-  padding: 1px 7px;
-  background: rgba(91,155,213,0.15);
-  border: 1px solid rgba(91,155,213,0.35);
-  border-radius: 3px;
-  font-size: 0.68em;
-  font-weight: 600;
-  color: #7ec4f0;
-  letter-spacing: 0.14em;
-  vertical-align: middle;
-}
-
-/* ─── Canvas overlay controls ────────────────────────────────────────────────── */
-.pv-canvas-btns {
-  position: absolute;
-  bottom: 36px;
-  right: 12px;
-  display: flex;
-  gap: 5px;
-  z-index: 5;
-}
-.pv-ctrl {
-  background: rgba(8,8,26,0.72);
-  border: 1px solid rgba(91,155,213,0.28);
-  color: #7a9fbe;
-  font-size: 0.78rem;
-  padding: 4px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  backdrop-filter: blur(4px);
-  transition: all 0.15s;
-  line-height: 1;
-}
-.pv-ctrl:hover {
-  border-color: #5b9bd5;
-  color: #aad4f8;
-  background: rgba(91,155,213,0.1);
-}
-.pv-ctrl--active {
-  border-color: #5b9bd5;
-  color: #7ec8ff;
-  background: rgba(91,155,213,0.14);
-}
-
-.pv-advanced {
-  display: flex;
-  align-items: center;
-  justify-content: center;  
-}
-
-.pv-advanced-box {
-  background: #1a2030;
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 12px;
-  padding: 28px 32px;
-  max-width: 380px;
-  width: 90%;            
-  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
-}
-
-.pv-advanced-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 18px;
-}
-
-/* ─── Legend section ─────────────────────────────────────────────────────────── */
-.pv-legend-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
   flex-wrap: wrap;
-  font-size: 0.82rem;
-  color: #8892a4;
+  gap: 3px;
+  margin-bottom: 10px;
 }
-.pv-swatch {
-  display: inline-block;
-  width: 14px;
-  height: 10px;
-  border-radius: 2px;
-  margin-left: 8px;
-  flex-shrink: 0;
-}
-.pv-swatch:first-child { margin-left: 0; }
-
-.pv-hint {
-  margin-top: 7px;
-  font-size: 0.74rem;
-  opacity: 0.45;
-  font-style: italic;
-}
-
-/* ─── Sequence strip ─────────────────────────────────────────────────────────── */
-.pv-seq {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.72rem;
+.bio-tab {
+  padding: 4px 8px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 3px;
   color: #5a7f9a;
-  letter-spacing: 0.12em;
-  line-height: 1.85;
-  word-break: break-all;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.bio-tab:hover { color: #aad4f8; border-color: rgba(91,155,213,0.3); }
+.bio-tab--active {
+  background: rgba(91,155,213,0.14);
+  border-color: rgba(91,155,213,0.5);
+  color: #7ec4f0;
+}
+
+/* ─── Content scroll area ────────────────────────────────────────────────────── */
+.bio-content {
+  padding-top: 4px;
+  max-height: 420px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 2px;
+}
+.bio-content::-webkit-scrollbar { width: 3px; }
+.bio-content::-webkit-scrollbar-thumb { background: rgba(91,155,213,0.25); border-radius: 2px; }
+
+/* ─── Stat 2×2 grid ──────────────────────────────────────────────────────────── */
+.bio-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin-bottom: 4px;
+}
+.bio-stat-cell {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.055);
+  border-radius: 4px;
+  padding: 7px 9px;
+}
+.bio-stat-label {
+  font-size: 0.67rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4a7fa5;
+  margin-bottom: 2px;
+}
+.bio-stat-value {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #c9d8e8;
+  line-height: 1.2;
+}
+.bio-stat-unit { font-size: 0.68rem; font-weight: 400; color: #5a7f9a; }
+.bio-stat-sub  { font-size: 0.67rem; color: #4a6a7a; margin-top: 2px; }
+
+/* ─── Metric bar ─────────────────────────────────────────────────────────────── */
+.bio-metric { margin-bottom: 9px; }
+.bio-metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 3px;
+}
+.bio-metric-label { font-size: 0.72rem; color: #7a9fb8; }
+.bio-metric-value { font-size: 0.75rem; font-weight: 600; color: #aac8e0; font-family: 'Courier New', monospace; }
+.bio-metric-track {
+  height: 5px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.bio-metric-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+.bio-metric-note { font-size: 0.67rem; color: #4a6a7a; margin-top: 3px; font-style: italic; }
+
+/* ─── Divider ────────────────────────────────────────────────────────────────── */
+.bio-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.055);
+  margin: 10px 0;
+}
+
+/* ─── Sublabel ───────────────────────────────────────────────────────────────── */
+.bio-sublabel {
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #3a6a80;
+  margin-bottom: 5px;
+}
+
+/* ─── Half-life grid ─────────────────────────────────────────────────────────── */
+.bio-halflife-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 5px;
+  margin-bottom: 4px;
+}
+.bio-hl-cell {
   background: rgba(0,0,0,0.22);
   border: 1px solid rgba(255,255,255,0.055);
   border-radius: 4px;
-  padding: 8px 10px;
-  max-height: 88px;
-  overflow-y: auto;
-  margin-top: 4px;
+  padding: 6px 7px;
+  text-align: center;
 }
-.pv-seq::-webkit-scrollbar { width: 3px; }
-.pv-seq::-webkit-scrollbar-thumb { background: rgba(91,155,213,0.28); border-radius: 2px; } 
+.bio-hl-cell span { display: block; font-size: 0.63rem; color: #4a7fa5; margin-bottom: 3px; }
+.bio-hl-cell strong { font-size: 0.78rem; color: #0015ff; }
+
+/* ─── Footnote ───────────────────────────────────────────────────────────────── */
+.bio-footnote { font-size: 0.63rem; color: #3a5a6a; font-style: italic; }
+
+/* ─── UniProt link ───────────────────────────────────────────────────────────── */
+.bio-uniprot-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.72rem;
+  color: #4a9fd5;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(74,159,213,0.35);
+  padding-bottom: 1px;
+  transition: color 0.15s;
+}
+.bio-uniprot-link:hover { color: #7ec8f8; border-bottom-color: rgba(126,200,248,0.5); }
+
+/* ─── Empty state ────────────────────────────────────────────────────────────── */
+.bio-empty { font-size: 0.8rem; color: #3a5a6a; font-style: italic; padding: 8px 0; }
+
+/* ─── SS donut + bars ────────────────────────────────────────────────────────── */
+.bio-ss-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.bio-ss-donut { flex-shrink: 0; }
+.bio-ss-bars  { flex: 1; min-width: 0; }
+.bio-ss-legend { margin-top: 5px; }
+.bio-ss-leg-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: #7a9fb8;
+  margin-bottom: 2px;
+}
+.bio-ss-leg-row span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ─── AA class donut ─────────────────────────────────────────────────────────── */
+.bio-class-wrap {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.bio-class-legend { flex: 1; }
+.bio-class-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.7rem;
+  color: #7a9fb8;
+  margin-bottom: 4px;
+}
+.bio-class-row span:first-child {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.bio-class-row strong { margin-left: auto; color: #aac8e0; font-size: 0.72rem; }
+
+/* ─── Composition chart ──────────────────────────────────────────────────────── */
+.bio-comp-chart { }
+.bio-comp-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 3px;
+}
+.bio-comp-aa {
+  width: 14px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  flex-shrink: 0;
+}
+.bio-comp-track {
+  flex: 1;
+  height: 5px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.bio-comp-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+  opacity: 0.8;
+}
+.bio-comp-pct {
+  width: 34px;
+  text-align: right;
+  font-size: 0.65rem;
+  color: #4a6a7a;
+  font-family: 'Courier New', monospace;
+  flex-shrink: 0;
+}
+
+/* ─── Function text ──────────────────────────────────────────────────────────── */
+.bio-func-text {
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: #8eaabf;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 4px;
+  padding: 9px 11px;
+  max-height: 140px;
+  overflow-y: auto;
+}
+.bio-func-text::-webkit-scrollbar { width: 3px; }
+.bio-func-text::-webkit-scrollbar-thumb { background: rgba(91,155,213,0.2); border-radius: 2px; }
+
+/* ─── Tags ───────────────────────────────────────────────────────────────────── */
+.bio-tag-cloud { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.bio-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.68rem;
+  border: 1px solid;
+}
+.bio-tag--cyan   { background: rgba(91,155,213,0.12);  border-color: rgba(91,155,213,0.3);  color: #7ec8e3; }
+.bio-tag--yellow { background: rgba(240,165,0,0.1);    border-color: rgba(240,165,0,0.3);    color: #f0c060; }
+.bio-tag--red    { background: rgba(224,123,123,0.1);  border-color: rgba(224,123,123,0.3);  color: #e09090; }
+.bio-tag--blue   { background: rgba(91,155,213,0.08);  border-color: rgba(91,155,213,0.2);   color: #5a8aaa; }
+
+/* ─── Domains ────────────────────────────────────────────────────────────────── */
+.bio-domain-list { margin-bottom: 10px; }
+.bio-domain-item {
+  background: rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.055);
+  border-radius: 4px;
+  padding: 7px 9px;
+  margin-bottom: 5px;
+}
+.bio-domain-type {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4a7fa5;
+  margin-bottom: 2px;
+}
+.bio-domain-desc { font-size: 0.78rem; color: #b0c8d8; }
+.bio-domain-pos  {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.67rem;
+  color: #3a6a80;
+  margin-top: 3px;
+}
+.bio-domain-len  { color: #5a9ab8; }
+
+/* ─── Organism block ─────────────────────────────────────────────────────────── */
+.bio-organism-block {
+  margin-top: 10px;
+  padding: 8px 10px;
+  background: rgba(0,0,0,0.18);
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.bio-organism-name { font-size: 0.78rem; font-style: italic; color: #8eaabf; margin-top: 3px; }
+.bio-gene          { font-size: 0.75rem; color: #4a7fa5; margin-top: 4px; }
+.bio-gene strong   { color: #7ec4f0; }
