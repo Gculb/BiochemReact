@@ -31,23 +31,23 @@ const WARN_THRESHOLD  = 5000;
 const BLOCK_THRESHOLD = 20000;
 
 // Secondary structure colors (used in RCSB mode)
-const SS_COLOR = { 0: "#8892a4", 1: "#5b9bd5", 2: "#f0a500" };
+const SS_COLOR = { 0: "#7f8896", 1: "#79a8ca", 2: "#c8a35b" };
 const SS_WIDTH = { 0: 2,  1: 5.5, 2: 4 };
 
 // AlphaFold pLDDT confidence color ramp
 function plddtColor(v) {
-  if (v >= 90) return "#1D9E75"; // very high – teal
-  if (v >= 70) return "#5b9bd5"; // confident – blue
-  if (v >= 50) return "#f0a500"; // low – amber
-  return "#e07b7b";              // very low – red
+  if (v >= 90) return "#5f8f7b"; // very high – muted teal
+  if (v >= 70) return "#6f90b0"; // confident – muted blue
+  if (v >= 50) return "#b89257"; // low – muted amber
+  return "#a97878";              // very low – muted rose
 }
 
 // Active site type → color
 const SITE_COLORS = {
-  "Active site": "#f0d060",
-  "Binding site": "#7ec8e3",
-  "Site":         "#c87ad0",
-  default:        "#f0a500",
+  "Active site": "#d7c06a",
+  "Binding site": "#87aec0",
+  "Site":         "#b28ab8",
+  default:        "#c8a35b",
 };
 
 // ─── Biochemical lookup tables (unchanged) ────────────────────────────────────
@@ -222,24 +222,29 @@ function parsePDB(text) {
   lines.forEach(line => {
     const rec = line.slice(0, 6).trim();
     if (rec === "HELIX") {
+      // Col 19 (0-indexed) = init chain ID; cols 21-24 = init seq num; cols 31-34 = end chain; 33-36 = end seq num
+      const chain = line[19] || " ";
       const s = parseInt(line.slice(21, 25)), e = parseInt(line.slice(33, 37));
-      for (let i = s; i <= e; i++) ssMap[`A${i}`] = 1;
+      for (let i = s; i <= e; i++) ssMap[`${chain}${i}`] = 1;
     } else if (rec === "SHEET") {
+      // Col 21 = strand chain ID; cols 22-25 = init seq; col 32 = end chain; 33-36 = end seq
+      const chain = line[21] || " ";
       const s = parseInt(line.slice(22, 26)), e = parseInt(line.slice(33, 37));
-      for (let i = s; i <= e; i++) ssMap[`A${i}`] = 2;
+      for (let i = s; i <= e; i++) ssMap[`${chain}${i}`] = 2;
     }
   });
   lines.forEach(line => {
     if (line.slice(0, 4) !== "ATOM") return;
     if (line.slice(12, 16).trim() !== "CA") return;
-    const chain  = line[21];
+    const chain  = line[21] || " ";
     const resSeq = parseInt(line.slice(22, 26));
     const x      = parseFloat(line.slice(30, 38));
     const y      = parseFloat(line.slice(38, 46));
     const z      = parseFloat(line.slice(46, 54));
     const plddt  = parseFloat(line.slice(60, 66)) || 0; // B-factor column
     if (isNaN(x) || isNaN(y) || isNaN(z)) return;
-    const ss = ssMap[`${chain}${resSeq}`] || 0;
+    // Try exact chain match first, fall back to any chain match for single-chain proteins
+    const ss = ssMap[`${chain}${resSeq}`] ?? ssMap[`A${resSeq}`] ?? ssMap[` ${resSeq}`] ?? 0;
     atoms.push([x, y, z, ss, resSeq, plddt]);
   });
   return atoms;
@@ -328,10 +333,10 @@ function hexRgba(hex, a) {
 
 // ─── Sub-components (BioInfoPanel sub-components — unchanged) ─────────────────
 const AA_COLORS = {
-  A:"#6ab187",R:"#e07b7b",N:"#7ec8e3",D:"#e07b7b",C:"#f0d060",E:"#e07b7b",
-  Q:"#7ec8e3",G:"#8892a4",H:"#a07ad0",I:"#6ab187",L:"#6ab187",K:"#e07b7b",
-  M:"#f0d060",F:"#c87ad0",P:"#7ec8e3",S:"#5b9bd5",T:"#5b9bd5",W:"#c87ad0",
-  Y:"#c87ad0",V:"#6ab187",
+  A:"#82a993",R:"#c88c8c",N:"#8eb4c7",D:"#c88c8c",C:"#d1bf78",E:"#c88c8c",
+  Q:"#8eb4c7",G:"#8d98a4",H:"#a189bc",I:"#82a993",L:"#82a993",K:"#c88c8c",
+  M:"#d1bf78",F:"#b694bf",P:"#8eb4c7",S:"#7397b8",T:"#7397b8",W:"#b694bf",
+  Y:"#b694bf",V:"#82a993",
 };
 
 const MetricBar = ({ label, value, rawValue, max, color, note }) => {
@@ -370,9 +375,9 @@ const CompositionChart = ({ composition }) => {
     <div className="bio-comp-chart">
       {[...composition].sort((a, b) => b.pct - a.pct).map(({ aa, pct, count }) => (
         <div key={aa} className="bio-comp-row" title={`${aa}: ${count} residues (${pct}%)`}>
-          <span className="bio-comp-aa" style={{ color: AA_COLORS[aa] || "#5b9bd5" }}>{aa}</span>
+          <span className="bio-comp-aa" style={{ color: AA_COLORS[aa] || "#79a8ca" }}>{aa}</span>
           <div className="bio-comp-track">
-            <div className="bio-comp-fill" style={{ width: `${(parseFloat(pct) / maxPct) * 100}%`, background: AA_COLORS[aa] || "#5b9bd5" }} />
+            <div className="bio-comp-fill" style={{ width: `${(parseFloat(pct) / maxPct) * 100}%`, background: AA_COLORS[aa] || "#79a8ca" }} />
           </div>
           <span className="bio-comp-pct">{pct}%</span>
         </div>
@@ -383,10 +388,10 @@ const CompositionChart = ({ composition }) => {
 
 const ClassDonut = ({ classes, total }) => {
   const items = [
-    { label: "Non-polar", val: classes.nonpolar, color: "#6ab187" },
-    { label: "Polar",     val: classes.polar,    color: "#5b9bd5" },
-    { label: "Charged",   val: classes.charged,  color: "#e07b7b" },
-    { label: "Aromatic",  val: classes.aromatic, color: "#c87ad0" },
+    { label: "Non-polar", val: classes.nonpolar, color: "#82a993" },
+    { label: "Polar",     val: classes.polar,    color: "#79a8ca" },
+    { label: "Charged",   val: classes.charged,  color: "#c88c8c" },
+    { label: "Aromatic",  val: classes.aromatic, color: "#b694bf" },
   ];
   const R = 30, SW = 10, circ = 2 * Math.PI * R;
   let offset = 0;
@@ -431,7 +436,7 @@ const SSDonut = ({ ssFrac }) => {
         <circle cx="36" cy="36" r={R} fill="none" stroke={SS_COLOR[0]} strokeWidth={SW} strokeDasharray={`${cS} ${circ - cS}`} strokeDashoffset={`${-(hS + shS)}`} />
         <circle cx="36" cy="36" r={R} fill="none" stroke={SS_COLOR[2]} strokeWidth={SW} strokeDasharray={`${shS} ${circ - shS}`} strokeDashoffset={`${-hS}`} />
         <circle cx="36" cy="36" r={R} fill="none" stroke={SS_COLOR[1]} strokeWidth={SW} strokeDasharray={`${hS} ${circ - hS}`} strokeDashoffset="0" />
-        <text x="36" y="40" textAnchor="middle" fontSize="9" fill="#7ec8e3" fontFamily="'Segoe UI',sans-serif">{h}%</text>
+        <text x="36" y="40" textAnchor="middle" fontSize="9" fill="#8eb4c7" fontFamily="'Segoe UI',sans-serif">{h}%</text>
         <text x="36" y="31" textAnchor="middle" fontSize="7" fill="#4a7fa5" fontFamily="'Segoe UI',sans-serif">α</text>
       </svg>
       <div className="bio-ss-legend">
@@ -467,10 +472,10 @@ const ActiveSiteTooltip = ({ site, onClose }) => {
 const PlddtLegend = () => (
   <div className="plddt-legend">
     {[
-      { label: "Very high (>90)", color: "#1D9E75" },
-      { label: "Confident (70–90)", color: "#5b9bd5" },
-      { label: "Low (50–70)", color: "#f0a500" },
-      { label: "Very low (<50)", color: "#e07b7b" },
+      { label: "Very high (>90)", color: "#5f8f7b" },
+      { label: "Confident (70–90)", color: "#6f90b0" },
+      { label: "Low (50–70)", color: "#b89257" },
+      { label: "Very low (<50)", color: "#a97878" },
     ].map(({ label, color }) => (
       <div key={label} className="plddt-row">
         <span style={{ background: color }} />
@@ -512,21 +517,21 @@ function BioInfoPanel({ sequence, meta, currentPdb, uniprot, ssFrac, activeSites
                 { label: "Mol. Weight",    value: calc.mw,         unit: "kDa", sub: `${Math.round(calc.mwRaw).toLocaleString()} Da` },
                 { label: "Length",         value: calc.len,        unit: "aa" },
                 { label: "Isoelectric pt", value: calc.pI,         unit: "pH",
-                  accent: parseFloat(calc.pI) > 7 ? "#f0a500" : "#5b9bd5",
+                  accent: parseFloat(calc.pI) > 7 ? "#c8a35b" : "#79a8ca",
                   sub: parseFloat(calc.pI) > 7 ? "Basic protein" : parseFloat(calc.pI) < 7 ? "Acidic protein" : "Neutral" },
                 { label: "Charge at pH 7", value: (parseFloat(calc.chargeAt7) > 0 ? "+" : "") + calc.chargeAt7,
-                  accent: parseFloat(calc.chargeAt7) > 0 ? "#f0a500" : "#5b9bd5" },
+                  accent: parseFloat(calc.chargeAt7) > 0 ? "#c8a35b" : "#79a8ca" },
               ]} />
               <div className="bio-divider" />
-              <MetricBar label="GRAVY Score (Kyte-Doolittle)" value={calc.gravy} rawValue={parseFloat(calc.gravy) + 4.5} max={9} color={parseFloat(calc.gravy) > 0 ? "#f0a500" : "#5b9bd5"} note={`${parseFloat(calc.gravy) > 0 ? "Hydrophobic" : "Hydrophilic"} overall tendency`} />
-              <MetricBar label="Aliphatic Index (thermostability)" value={calc.aliphIdx} rawValue={parseFloat(calc.aliphIdx)} max={150} color="#6ab187" note={`${parseFloat(calc.aliphIdx) > 80 ? "High thermostability" : parseFloat(calc.aliphIdx) > 50 ? "Moderate stability" : "Lower stability"} (Ikai 1980)`} />
-              <MetricBar label="Instability Index" value={calc.instabilityIdx} rawValue={parseFloat(calc.instabilityIdx)} max={100} color={calc.isStable ? "#6ab187" : "#e07b7b"} note={`${calc.isStable ? "✓ Predicted stable in vitro" : "⚠ Predicted unstable"} (Guruprasad 1990, cutoff: 40)`} />
+              <MetricBar label="GRAVY Score (Kyte-Doolittle)" value={calc.gravy} rawValue={parseFloat(calc.gravy) + 4.5} max={9} color={parseFloat(calc.gravy) > 0 ? "#c8a35b" : "#79a8ca"} note={`${parseFloat(calc.gravy) > 0 ? "Hydrophobic" : "Hydrophilic"} overall tendency`} />
+              <MetricBar label="Aliphatic Index (thermostability)" value={calc.aliphIdx} rawValue={parseFloat(calc.aliphIdx)} max={150} color="#82a993" note={`${parseFloat(calc.aliphIdx) > 80 ? "High thermostability" : parseFloat(calc.aliphIdx) > 50 ? "Moderate stability" : "Lower stability"} (Ikai 1980)`} />
+              <MetricBar label="Instability Index" value={calc.instabilityIdx} rawValue={parseFloat(calc.instabilityIdx)} max={100} color={calc.isStable ? "#82a993" : "#c88c8c"} note={`${calc.isStable ? "✓ Predicted stable in vitro" : "⚠ Predicted unstable"} (Guruprasad 1990, cutoff: 40)`} />
               <div className="bio-divider" />
               <StatGrid cells={[
                 { label: "ε₂₈₀ reduced",   value: calc.extCoeff, unit: "M⁻¹cm⁻¹", sub: "Extinction coefficient" },
                 { label: "A₂₈₀ (0.1%)",    value: calc.absCoeff, unit: "g⁻¹Lcm⁻¹", sub: "Absorbance (Pace 1995)" },
-                { label: "+ Charged res.", value: calc.posCharged, sub: "Arg + Lys + His", accent: "#f0a500" },
-                { label: "− Charged res.", value: calc.negCharged, sub: "Asp + Glu",       accent: "#5b9bd5" },
+                { label: "+ Charged res.", value: calc.posCharged, sub: "Arg + Lys + His", accent: "#c8a35b" },
+                { label: "− Charged res.", value: calc.negCharged, sub: "Asp + Glu",       accent: "#79a8ca" },
               ]} />
               <div className="bio-divider" />
               <div className="bio-sublabel">N-terminal half-life — {calc.nTerm}– (N-end rule)</div>
@@ -562,7 +567,7 @@ function BioInfoPanel({ sequence, meta, currentPdb, uniprot, ssFrac, activeSites
               <div className="bio-divider" />
               <StatGrid cells={[
                 { label: "Resolution", value: meta?.resolution ?? "—", unit: "Å",
-                  accent: meta?.resolution ? parseFloat(meta.resolution) < 2 ? "#6ab187" : parseFloat(meta.resolution) < 3 ? "#f0a500" : "#e07b7b" : undefined,
+                  accent: meta?.resolution ? parseFloat(meta.resolution) < 2 ? "#82a993" : parseFloat(meta.resolution) < 3 ? "#c8a35b" : "#c88c8c" : undefined,
                   sub: meta?.resolution ? parseFloat(meta.resolution) < 2 ? "High quality" : parseFloat(meta.resolution) < 3 ? "Good quality" : "Moderate quality" : undefined },
                 { label: "Exp. method", value: meta?.method?.split(" ")?.[0] ?? "—" },
                 { label: "Chains",      value: meta?.chains ?? "—" },
@@ -703,6 +708,7 @@ const ProteinViewer = () => {
     radius: 1,
     foldT: 0,           // 0 = fully folded, 1 = fully unfolded
     alphaFoldMode: false,
+    uniprotAcc: "",
     activeSiteProjections: [], // [{sx,sy,depth,site}] rebuilt each frame
   });
 
@@ -719,6 +725,7 @@ const ProteinViewer = () => {
   const [advancedPrompt, setAdvancedPrompt] = useState(null);
   const [sizeWarning,    setSizeWarning]    = useState(null);
   const [uniprot,        setUniprot]        = useState(null);
+  const [uniprotAcc,     setUniprotAcc]     = useState("");
   const [ssFrac,         setSSFrac]         = useState(null);
   const [activeSites,    setActiveSites]    = useState([]);   // ← NEW
   const [selectedSite,   setSelectedSite]   = useState(null); // ← NEW
@@ -858,10 +865,10 @@ const ProteinViewer = () => {
     if (afMode) {
       // pLDDT legend
       [
-        { label: ">90", color: "#1D9E75" },
-        { label: "70–90", color: "#5b9bd5" },
-        { label: "50–70", color: "#f0a500" },
-        { label: "<50",  color: "#e07b7b" },
+        { label: ">90", color: "#5f8f7b" },
+        { label: "70–90", color: "#79a8ca" },
+        { label: "50–70", color: "#c8a35b" },
+        { label: "<50",  color: "#c88c8c" },
       ].forEach(({ label, color }, li) => {
         const lx = 12 + li * 72, ly = H - 12;
         ctx.fillStyle = color; ctx.fillRect(lx, ly - 9, 14, 9);
@@ -960,8 +967,14 @@ const ProteinViewer = () => {
   // ── Sync foldT slider → stateRef + lerp atoms ────────────────────────────
   useEffect(() => {
     stateRef.current.foldT = foldT;
+    // When fully folded, restore native atoms exactly — no lerp needed
+    if (foldT === 0) {
+      const na = stateRef.current.nativeAtoms;
+      if (na && na.length) stateRef.current.atoms = na;
+      return;
+    }
     const { nativeAtoms, unfoldedXYZ } = stateRef.current;
-    if (!nativeAtoms.length || !unfoldedXYZ.length) return;
+    if (!nativeAtoms || !nativeAtoms.length || !unfoldedXYZ || !unfoldedXYZ.length) return;
     const t = foldT;
     stateRef.current.atoms = nativeAtoms.map((a, i) => {
       const u = unfoldedXYZ[i];
@@ -1013,6 +1026,8 @@ const ProteinViewer = () => {
       setActiveSites(parsedSites);
 
       const accession = entry.primaryAccession;
+      setUniprotAcc(accession);
+      stateRef.current.uniprotAcc = accession;
       setUniprot({ accession, function: fn, diseases, domains, keywords, organism, gene, subcell, cofactors });
 
       // Return accession for AlphaFold follow-up
@@ -1021,15 +1036,28 @@ const ProteinViewer = () => {
   }, []);
 
   // ── NEW: AlphaFold fetch ──────────────────────────────────────────────────
-  const fetchAlphaFold = useCallback(async (uniprotAcc) => {
-    if (!uniprotAcc) { setAfError("No UniProt accession available for AlphaFold lookup."); return; }
-    setAfLoading(true); setAfError(null);
+  const fetchAlphaFold = useCallback(async (requestedAcc) => {
+    const accession = (requestedAcc || uniprotAcc || stateRef.current.uniprotAcc || "").trim();
+    if (!accession) {
+      setAfError("No UniProt accession available for AlphaFold lookup.");
+      return;
+    }
+
+    setAfLoading(true);
+    setAfError(null);
     try {
-      const res  = await fetch(AF_API(uniprotAcc));
+      const res = await fetch(AF_API(accession));
       if (!res.ok) throw new Error("AlphaFold entry not found");
       const data = await res.json();
-      const pdbUrl = data[0]?.pdbUrl;
-      if (!pdbUrl) throw new Error("No PDB URL in AlphaFold response");
+      const entry = Array.isArray(data) ? data[0] : data;
+      const pdbUrl =
+        entry?.pdbUrl ||
+        entry?.cifUrl ||
+        entry?.bcifUrl ||
+        entry?.modelUrl ||
+        entry?.pdb_url;
+
+      if (!pdbUrl) throw new Error("No structure URL in AlphaFold response");
 
       const pdbText = await fetch(pdbUrl).then(r => r.text());
       const afAtoms = parsePDB(pdbText);
@@ -1037,30 +1065,38 @@ const ProteinViewer = () => {
 
       const c = centroid(afAtoms), r = maxR(afAtoms, c);
       const unfolded = generateUnfolded(afAtoms);
-      stateRef.current = {
-        ...stateRef.current,
-        atoms:        afAtoms,
-        nativeAtoms:  afAtoms,
-        unfoldedXYZ:  unfolded,
-        center:       c,
-        radius:       r,
-        residueMap:   buildResidueMap(afAtoms),
-        foldT:        0,
-      };
+
+      // Field-by-field to avoid race with foldT effect
+      stateRef.current.atoms = afAtoms;
+      stateRef.current.nativeAtoms = afAtoms;
+      stateRef.current.unfoldedXYZ = unfolded;
+      stateRef.current.center = c;
+      stateRef.current.radius = r;
+      stateRef.current.residueMap = buildResidueMap(afAtoms);
+      stateRef.current.foldT = 0;
+      stateRef.current.alphaFoldMode = true;
+      stateRef.current.uniprotAcc = accession;
+
+      // setFoldT AFTER stateRef is populated so the foldT=0 effect sees nativeAtoms
       setFoldT(0);
       setAlphaFoldMode(true);
       setSSFrac(calcSSFraction(afAtoms));
+      setUniprotAcc(accession);
     } catch (e) {
       setAfError(e.message || "AlphaFold fetch failed.");
+    } finally {
+      setAfLoading(false);
     }
-    setAfLoading(false);
-  }, []);
+  }, [uniprotAcc]);
 
   // ── Core load ─────────────────────────────────────────────────────────────
   const loadProtein = useCallback(async (pdb, preloadedPdbText) => {
     setLoading(true); setError(null); setMeta(null); setSequence("");
     setCurrentPdb(pdb); setSSFrac(null); setAlphaFoldMode(false);
     setAfError(null); setSelectedSite(null); setFoldT(0);
+    setUniprotAcc("");
+    // Clear stale accession immediately so AlphaFold button doesn't fire with wrong acc
+    stateRef.current.uniprotAcc = "";
 
     const [metaRes, pdbRes, entityRes] = await Promise.allSettled([
       fetch(RCSB_META(pdb)).then(r => r.json()),
@@ -1089,25 +1125,25 @@ const ProteinViewer = () => {
     const c        = centroid(atoms), r = maxR(atoms, c);
     const unfolded = generateUnfolded(atoms);
 
-    stateRef.current = {
-      ...stateRef.current,
-      atoms,
-      nativeAtoms:  atoms,
-      unfoldedXYZ:  unfolded,
-      center:       c,
-      radius:       r,
-      residueMap:   buildResidueMap(atoms),
-      rx:           0.3,
-      ry:           0.4,
-      foldT:        0,
-      activeSiteProjections: [],
-    };
+    // Set all atom state atomically. Do NOT use spread — assign individual fields
+    // so a concurrent foldT=0 effect sees a consistent snapshot.
+    stateRef.current.atoms              = atoms;
+    stateRef.current.nativeAtoms        = atoms;
+    stateRef.current.unfoldedXYZ        = unfolded;
+    stateRef.current.center             = c;
+    stateRef.current.radius             = r;
+    stateRef.current.residueMap         = buildResidueMap(atoms);
+    stateRef.current.rx                 = 0.3;
+    stateRef.current.ry                 = 0.4;
+    stateRef.current.foldT              = 0;
+    stateRef.current.alphaFoldMode      = false;
+    stateRef.current.activeSiteProjections = [];
+
     setSSFrac(calcSSFraction(atoms));
     setLoading(false);
 
-    // Kick off UniProt (which also parses active sites) and save the accession
+    // fetchUniprot is fire-and-forget for UI but we await the returned accession
     const acc = await fetchUniprot(pdb);
-    // Store accession on stateRef for AlphaFold button
     stateRef.current.uniprotAcc = acc || null;
   }, [fetchUniprot]);
 
@@ -1200,8 +1236,8 @@ const ProteinViewer = () => {
             : (
               <>
                 <button className="mv-btn af-btn"
-                  disabled={afLoading}
-                  onClick={() => fetchAlphaFold(stateRef.current.uniprotAcc)}>
+                  disabled={afLoading || !uniprotAcc}
+                  onClick={() => fetchAlphaFold(uniprotAcc)}>
                   {afLoading ? "Loading…" : "Load AlphaFold structure"}
                 </button>
                 {afError && <div className="af-error">{afError}</div>}
@@ -1279,7 +1315,7 @@ const ProteinViewer = () => {
           {sizeWarning && (
             <div className="pv-overlay pv-advanced">
               <div className="pv-advanced-box">
-                <h3 style={{ color: sizeWarning.level === "large" ? "#ff7b8a" : "#f0a500" }}>
+                <h3 style={{ color: sizeWarning.level === "large" ? "#ff7b8a" : "#c8a35b" }}>
                   {sizeWarning.level === "large" ? "⛔ Very Large Structure" : "⚠ Large Structure"}
                 </h3>
                 <p>
@@ -1342,7 +1378,7 @@ const ProteinViewer = () => {
               <div className="pv-meta-legend">
                 <div className="pv-meta-legend-title">{alphaFoldMode ? "pLDDT confidence" : "Secondary structure"}</div>
                 {alphaFoldMode ? (
-                  [["#1D9E75",">90 very high"],["#5b9bd5","70–90 confident"],["#f0a500","50–70 low"],["#e07b7b","<50 very low"]].map(([c, l]) => (
+                  [["#5f8f7b",">90 very high"],["#79a8ca","70–90 confident"],["#c8a35b","50–70 low"],["#c88c8c","<50 very low"]].map(([c, l]) => (
                     <div key={l} className="pv-meta-legend-row"><span className="pv-swatch" style={{ background: c }} /><span>{l}</span></div>
                   ))
                 ) : (
@@ -1391,4 +1427,4 @@ const ProteinViewer = () => {
   );
 };
 
-export default ProteinViewer; 
+export default ProteinViewer;  
