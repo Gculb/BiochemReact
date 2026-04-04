@@ -760,6 +760,224 @@
 .pv-legend{
   padding-bottom:12px;
 }
+/* ─────────────────────────────────────────────────────────────────
+   Fold / Unfold slider
+───────────────────────────────────────────────────────────────── */
+.fold-slider-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.fold-label {
+  font-size: 0.72rem;
+  opacity: 0.55;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.fold-slider {
+  flex: 1;
+  accent-color: #f0a500;
+  cursor: pointer;
+}
+.fold-readout {
+  font-size: 0.78rem;
+  color: #f0a500;
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.fold-btns {
+  display: flex;
+  gap: 6px;
+}
+.fold-preset {
+  flex: 1;
+  font-size: 0.78rem;
+  padding: 4px 6px;
+}
+ 
+/* ─────────────────────────────────────────────────────────────────
+   AlphaFold panel
+───────────────────────────────────────────────────────────────── */
+.af-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #0b3d6e 0%, #083052 100%);
+  color: #7ec8e3;
+  border-color: #1a5f8a;
+  font-weight: 500;
+}
+.af-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1a5f8a 0%, #0b3d6e 100%);
+}
+.af-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.af-active-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.af-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #1D9E75;
+  background: rgba(29, 158, 117, 0.12);
+  border: 1px solid rgba(29, 158, 117, 0.3);
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+.af-error {
+  font-size: 0.75rem;
+  color: #ff7b8a;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+ 
+/* pLDDT inline legend (sidebar) */
+.plddt-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.plddt-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+.plddt-row span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+ 
+/* AlphaFold badge in meta strip */
+.pv-badge--af {
+  background: rgba(29, 158, 117, 0.15);
+  color: #1D9E75;
+  border: 1px solid rgba(29, 158, 117, 0.4);
+  margin-left: 6px;
+}
+ 
+/* ─────────────────────────────────────────────────────────────────
+   Active site tooltip (canvas overlay)
+───────────────────────────────────────────────────────────────── */
+.ast-wrap {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+  pointer-events: none;
+}
+.active-site-tooltip {
+  pointer-events: all;
+  background: rgba(12, 20, 34, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 10px 12px;
+  min-width: 180px;
+  max-width: 260px;
+  backdrop-filter: blur(6px);
+}
+.ast-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.ast-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ast-type {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  flex: 1;
+}
+.ast-close {
+  background: none;
+  border: none;
+  color: #6a7a8a;
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 0;
+  line-height: 1;
+}
+.ast-close:hover { color: #aab8c8; }
+.ast-desc {
+  font-size: 0.78rem;
+  color: #8a9ab8;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.ast-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.75rem;
+  color: #5b7a9a;
+}
+.ast-meta strong { color: #9ab8d8; }
+ 
+/* ─────────────────────────────────────────────────────────────────
+   Sites tab — BioInfoPanel
+───────────────────────────────────────────────────────────────── */
+.bio-site-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.bio-site-item {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid #f0a500; /* overridden inline */
+  border-radius: 0 6px 6px 0;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.bio-site-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+.bio-site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+.bio-site-type {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.bio-site-pos {
+  font-size: 0.72rem;
+  opacity: 0.55;
+  white-space: nowrap;
+}
+.bio-site-desc {
+  font-size: 0.75rem;
+  color: #7a8fa8;
+  line-height: 1.4;
+}
+.bio-site-ligand {
+  font-size: 0.72rem;
+  color: #5b7a9a;
+  margin-top: 3px;
+}
+ 
+/* Chip variant for site count in meta strip */
+.pv-meta-chip--sites {
+  color: #f0d060;
+  border-color: rgba(240, 208, 96, 0.4);
+  background: rgba(240, 208, 96, 0.08);
+} 
 
 /* Responsive */
 @media (max-width: 1280px){
