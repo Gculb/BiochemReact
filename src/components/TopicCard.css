@@ -1,27 +1,26 @@
-/* Topic Card Expandable Styling */
-
 .topic-card {
   padding: 0;
-  border-radius: 8px;
-  background: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 14px;
+  background: var(--app-card);
+  box-shadow: var(--app-shadow-soft);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   overflow: hidden;
-  border-left: 5px solid #ddd;
+  border: 1px solid var(--app-border);
+  border-left: 5px solid rgba(126, 200, 248, 0.22);
 }
 
-.topic-card:hover:not(:active) {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background: #fafbfc;
+.topic-card:hover:not(:active),
+.topic-card--expanded {
+  box-shadow: var(--app-shadow);
+  background: var(--app-card-hover);
 }
 
 .topic-card:focus-visible {
-  outline: 2px solid #667eea;
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: var(--app-shadow-soft), var(--app-focus-ring);
 }
 
-/* Header Section */
 .topic-card__header {
   padding: 15px;
   display: flex;
@@ -61,61 +60,47 @@
   width: 24px;
   height: 24px;
   font-size: 0.85rem;
-  color: #666;
+  color: var(--app-text-soft);
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 
-.topic-card--expanded .topic-card__toggle {
-  transform: rotate(0deg);
-  color: #2c3e50;
-}
 .topic-card__content,
 .topic-card__details {
-  max-width: 100%;          
-  min-width: 0;            
-  overflow-x: auto;        
-  white-space: pre-wrap;    
-  word-break: break-word;   
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
-/* Expandable Content */
+
 .topic-card__content {
   padding: 0 15px 15px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid var(--app-border);
   animation: fadeSlideDown 0.25s ease-out forwards;
 }
 
 @keyframes fadeSlideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-
+.topic-card__summary,
+.topic-card__details {
+  color: var(--app-text-muted);
+  line-height: 1.6;
+}
 
 .topic-card__summary {
   margin: 12px 0 0;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #444;
 }
 
 .topic-card__details {
   margin: 12px 0 0;
   padding: 12px;
-  background: rgba(102, 126, 234, 0.05);
+  background: rgba(91, 155, 213, 0.08);
   border-radius: 6px;
-  border-left: 3px solid #667eea;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: #555;
-  overflow-x: auto;
-  overflow-y: visible;
+  border-left: 3px solid var(--app-accent);
 }
 
 .topic-card__details p {
@@ -126,18 +111,7 @@
   margin-top: 8px;
 }
 
-/* Expanded State */
-.topic-card--expanded {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  background: #fbfcfd;
-}
-
-/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .topic-card {
-    border-radius: 6px;
-  }
-
   .topic-card__header {
     padding: 13px;
     min-height: 52px;
@@ -149,15 +123,6 @@
 
   .topic-card__content {
     padding: 0 13px 13px;
-  }
-
-  .topic-card__summary {
-    font-size: 0.9rem;
-  }
-
-  .topic-card__details {
-    font-size: 0.85rem;
-    padding: 10px;
   }
 }
 
@@ -173,62 +138,13 @@
 
   .topic-card__title {
     font-size: 0.95rem;
-    gap: 6px;
-  }
-
-  .topic-card__toggle {
-    width: 20px;
-    height: 20px;
   }
 
   .topic-card__content {
     padding: 0 12px 12px;
   }
-
-  .topic-card__summary {
-    font-size: 0.85rem;
-    margin-top: 10px;
-  }
-
-  .topic-card__details {
-    font-size: 0.8rem;
-    padding: 8px;
-    margin: 10px 0 0;
-  }
 }
 
-/* Accessibility: Keyboard Navigation */
-.topic-card:focus {
-  outline: none;
-}
-
-/* High contrast mode */
-@media (prefers-contrast: more) {
-  .topic-card {
-    border: 1px solid #2c3e50;
-  }
-
-  .topic-card__toggle {
-    font-weight: bold;
-  }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .topic-card {
-    transition: none;
-  }
-
-  .topic-card__content {
-    animation: none;
-  }
-
-  .topic-card__toggle {
-    transition: none;
-  }
-}
-
-/* KaTeX Math Styling */
 .topic-card__summary .katex,
 .topic-card__details .katex {
   font-size: 1.05em;
@@ -239,4 +155,3 @@
 .topic-card__details .katex-display {
   margin: 0.5em 0;
 }
-

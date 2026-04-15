@@ -4,6 +4,7 @@ import Sidebar from './components/SideBar';
 import { useState } from 'react'
 import AppRouter from './AppRouter';
 import "katex/dist/katex.min.css";
+import "./App.css";
 
 function App() {
   const [collapsed, setCollapsed] = useState(false);

@@ -1,9 +1,6 @@
-/* Resources Page Styles */
-
 .resources-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 40px 20px;
+  padding: 40px 20px 64px;
 }
 
 .resources-container {
@@ -11,16 +8,26 @@
   margin: 0 auto;
 }
 
-/* Hero Section */
-.resources-hero {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
+.resources-page .resources-hero,
+.resources-tips,
+.section-header,
+.resource-card {
+  border: 1px solid var(--app-border);
+}
+
+.resources-page .resources-hero,
+.resources-tips {
+  background:
+    radial-gradient(circle at top right, rgba(126, 200, 248, 0.14), transparent 32%),
+    var(--app-card);
+  border-radius: var(--app-radius-lg);
+  box-shadow: var(--app-shadow);
+}
+
+.resources-page .resources-hero {
   padding: 60px 40px;
   margin-bottom: 50px;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
 }
 
 .resources-hero h1 {
@@ -30,42 +37,35 @@
   letter-spacing: -1px;
 }
 
-.resources-hero .hero-subtitle {
+.resources-page .hero-subtitle {
   font-size: 18px;
-  margin: 0;
-  opacity: 0.9;
-  font-weight: 300;
   line-height: 1.6;
 }
 
-/* Resources Sections */
 .resources-section {
   margin-bottom: 50px;
   animation: fadeInUp 0.6s ease-out;
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-header,
+.resource-card {
+  background: var(--app-card);
+  box-shadow: var(--app-shadow-soft);
 }
 
 .section-header {
   margin-bottom: 40px;
-  background: white;
   padding: 30px 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: var(--app-radius-lg);
 }
 
 .section-header h2 {
   font-size: 32px;
-  color: #667eea;
   margin: 0 0 12px 0;
   font-weight: 700;
   display: flex;
@@ -73,49 +73,36 @@
   gap: 15px;
 }
 
-.section-header h2 i {
-  font-size: 36px;
-  color: #764ba2;
+.section-header h2 i,
+.card-header i,
+.tip-card h3 {
+  color: var(--app-accent-strong);
 }
 
-.section-header p {
-  font-size: 16px;
-  color: #666;
-  margin: 0;
-  font-weight: 300;
-}
-
-/* Resources Grid */
 .resources-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 35px; 
+  gap: 35px;
   margin-bottom: 20px;
 }
 
-/* Resource Card */
 .resource-card {
-  background: white;
-  border-radius: 12px;
+  border-radius: var(--app-radius-md);
   padding: 30px;
   text-decoration: none;
   color: inherit;
-  border: 2px solid #eee;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: hidden;
   min-height: 260px;
-  box-sizing: border-box;
 }
 
 .resource-card:hover {
-  border-color: #667eea;
+  border-color: var(--app-border-accent);
   transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.25);
-  z-index: 1;
+  box-shadow: var(--app-shadow-hover);
+  background: var(--app-card-hover);
 }
 
 .card-header {
@@ -128,23 +115,15 @@
 
 .card-header h3 {
   font-size: 18px;
-  color: #333;
   margin: 0;
   font-weight: 600;
   flex: 1;
   line-height: 1.4;
 }
 
-.card-header i {
-  color: #667eea;
-  font-size: 18px;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
 .card-description {
   font-size: 14px;
-  color: #666;
+  color: var(--app-text-muted);
   line-height: 1.6;
   margin: 0 0 15px 0;
   flex-grow: 1;
@@ -159,32 +138,22 @@
 
 .resource-tag {
   display: inline-block;
-  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-  color: #667eea;
+  background: rgba(91, 155, 213, 0.12);
+  color: var(--app-accent-strong);
   padding: 4px 10px;
   border-radius: 16px;
   font-size: 12px;
   font-weight: 500;
-  border: 1px solid #667eea30;
+  border: 1px solid rgba(91, 155, 213, 0.28);
 }
 
-.resource-card:hover .resource-tag {
-  background: linear-gradient(135deg, #667eea25 0%, #764ba225 100%);
-  border-color: #667eea;
-}
-
-/* Tips Section */
 .resources-tips {
-  background: white;
-  border-radius: 12px;
   padding: 50px 40px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   margin-top: 50px;
 }
 
 .resources-tips h2 {
   font-size: 32px;
-  color: #667eea;
   margin: 0 0 35px 0;
   font-weight: 700;
   text-align: center;
@@ -197,80 +166,48 @@
 }
 
 .tip-card {
-  background: #f8f9fa;
-  border-radius: 10px;
+  background: var(--app-card-muted);
+  border-radius: var(--app-radius-md);
   padding: 25px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid var(--app-accent);
+  border-top: 1px solid var(--app-border);
+  border-right: 1px solid var(--app-border);
+  border-bottom: 1px solid var(--app-border);
   transition: all 0.3s ease;
 }
 
 .tip-card:hover {
-  background: #f0f3ff;
-  border-left-color: #764ba2;
+  background: rgba(91, 155, 213, 0.08);
+  border-left-color: var(--app-accent-strong);
   transform: translateX(5px);
-}
-
-.tip-card h3 {
-  font-size: 18px;
-  color: #667eea;
-  margin: 0 0 12px 0;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.tip-card h3 i {
-  font-size: 22px;
 }
 
 .tip-card p {
   font-size: 14px;
-  color: #666;
   line-height: 1.6;
   margin: 0;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .resources-page {
     padding: 20px 15px;
   }
 
-  .resources-container {
-    max-width: 100%;
-  }
-
-  .resources-hero {
+  .resources-page .resources-hero {
     padding: 40px 25px;
     margin-bottom: 30px;
   }
 
   .resources-hero h1 {
     font-size: 32px;
-    margin-bottom: 15px;
-  }
-
-  .resources-hero .hero-subtitle {
-    font-size: 16px;
   }
 
   .section-header {
     padding: 25px 20px;
-    margin-bottom: 30px;
   }
 
   .section-header h2 {
     font-size: 24px;
-    gap: 10px;
-  }
-
-  .section-header h2 i {
-    font-size: 28px;
-  }
-
-  .section-header p {
-    font-size: 15px;
   }
 
   .resources-grid {
@@ -278,31 +215,9 @@
     gap: 25px;
   }
 
-  .resource-card {
-    padding: 25px;
-  }
-
-  .card-header h3 {
-    font-size: 16px;
-  }
-
-  .card-description {
-    font-size: 13px;
-  }
-
+  .resource-card,
   .resources-tips {
-    padding: 35px 20px;
-    margin-top: 30px;
-  }
-
-  .resources-tips h2 {
-    font-size: 24px;
-    margin-bottom: 25px;
-  }
-
-  .tips-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    padding: 25px;
   }
 }
 
@@ -311,79 +226,22 @@
     padding: 15px 10px;
   }
 
-  .resources-hero {
-    padding: 30px 20px;
-    margin-bottom: 25px;
-  }
-
-  .resources-hero h1 {
-    font-size: 24px;
-    margin-bottom: 12px;
-  }
-
-  .resources-hero .hero-subtitle {
-    font-size: 14px;
-  }
-
-  .section-header {
-    padding: 20px 15px;
-    margin-bottom: 25px;
-  }
-
-  .section-header h2 {
-    font-size: 20px;
-    gap: 8px;
-  }
-
-  .section-header h2 i {
-    font-size: 24px;
-  }
-
-  .section-header p {
-    font-size: 14px;
-  }
-
-  .resources-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .resource-card {
-    padding: 20px;
-  }
-
-  .card-header h3 {
-    font-size: 15px;
-  }
-
-  .card-description {
-    font-size: 13px;
-  }
-
+  .resources-page .resources-hero,
+  .section-header,
+  .resource-card,
   .resources-tips {
-    padding: 25px 15px;
-    margin-top: 25px;
+    padding: 20px 15px;
   }
 
-  .resources-tips h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
+  .resources-hero h1,
+  .resources-tips h2,
+  .section-header h2 {
+    font-size: 24px;
   }
 
+  .resources-grid,
   .tips-grid {
     grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .tip-card {
-    padding: 20px;
-  }
-
-  .tip-card h3 {
-    font-size: 16px;
-  }
-
-  .tip-card p {
-    font-size: 13px;
+    gap: 20px;
   }
 }

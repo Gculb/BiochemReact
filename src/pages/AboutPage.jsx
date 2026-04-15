@@ -1,7 +1,8 @@
 import React from "react";
 import "./AboutPage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const AboutPage = () => {
+  const navigate = useNavigate();
   return (
     <div className="about-page">
       <div className="about-container">
@@ -204,13 +205,13 @@ const AboutPage = () => {
           <h2>Ready to Learn?</h2>
           <p>Explore 3D molecules, run virtual labs, and master biochemistry concepts</p>
           <div className="cta-buttons">
-            <Link to="/#/viewer" className="cta-btn primary">
+            <Link to="/viewer" className="cta-btn primary">
               Launch 3D Viewer
             </Link>
-            <Link to="/#/lab" className="cta-btn secondary">
+            <Link to="/lab" className="cta-btn secondary">
               Try Virtual Lab
             </Link>
-            <Link to="/#/contact" className="cta-btn secondary">
+            <Link to="/contact" className="cta-btn secondary">
               Get in Touch
             </Link>
           </div>

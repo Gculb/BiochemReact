@@ -20,6 +20,11 @@
   scrollbar-width:thin;
 }
 
+.pv-root .mv-controls,
+.pv-root .bioinfo-panel{
+  color:#d9e6f2;
+}
+
 .mv-controls{
   min-width:0;
 }
@@ -41,6 +46,13 @@
   padding:14px;
 }
 
+.pv-root .mv-section,
+.pv-root .bioinfo-panel,
+.pv-root .mv-view-item{
+  background:rgba(13,18,34,.92);
+  border-color:rgba(255,255,255,.06);
+}
+
 .mv-section h4,
 .bioinfo-panel h4{
   margin:0 0 10px;
@@ -48,6 +60,12 @@
   letter-spacing:.08em;
   text-transform:uppercase;
   color:#c9d8e8;
+}
+
+.pv-root .mv-section p,
+.pv-root .mv-view-item,
+.pv-root .mv-view-item div{
+  color:#b8cad8;
 }
 
 .mv-section{
@@ -302,6 +320,59 @@
   background:rgba(91,155,213,.14);
   border-color:rgba(91,155,213,.28);
   color:#8fd0ff;
+}
+
+.pv-root .mv-views{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  max-height:260px;
+  overflow:auto;
+}
+
+.pv-root .mv-view-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  padding:10px;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:14px;
+  box-shadow:none;
+}
+
+.pv-root .mv-view-item strong{
+  color:#e4eef8;
+  display:block;
+  margin-bottom:2px;
+}
+
+.pv-root .mv-view-actions{
+  display:flex;
+  gap:6px;
+}
+
+.pv-root .mv-vbtn{
+  padding:6px 10px;
+  font-size:.75rem;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);
+  color:#d9e6f2;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.pv-root .mv-vbtn:hover:not(.mv-vbtn-del){
+  background:rgba(91,155,213,.16);
+  color:#f4f8fd;
+  border-color:rgba(126,200,248,.35);
+}
+
+.pv-root .mv-vbtn-del:hover{
+  background:rgba(255,143,163,.18);
+  color:#ffd7de;
+  border-color:rgba(255,143,163,.35);
 }
 
 /* Bio panel */
