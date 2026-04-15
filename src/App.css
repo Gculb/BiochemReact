@@ -4,14 +4,14 @@
   --app-bg-strong: #141b33;
   --app-card: rgba(13, 18, 34, 0.92);
   --app-card-hover: rgba(18, 27, 49, 0.98);
-  --app-card-muted: rgba(255, 255, 255, 0.03);
+  --app-card-muted: rgba(255, 255, 255, 0.06);
   --app-border: rgba(255, 255, 255, 0.08);
   --app-border-accent: rgba(91, 155, 213, 0.35);
   --app-text: #e4eef8;
   --app-text-strong: #f4f8fd;
-  --app-text-muted: #bfd0df;
-  --app-text-soft: #97aec2;
-  --app-text-faint: #8098ad;
+  --app-text-muted: #d1deea;
+  --app-text-soft: #b5c7d6;
+  --app-text-faint: #9db2c4;
   --app-accent: #5b9bd5;
   --app-accent-strong: #7ec8f8;
   --app-accent-soft: rgba(91, 155, 213, 0.14);

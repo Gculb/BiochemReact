@@ -98,7 +98,7 @@
 .topic-card__details {
   margin: 12px 0 0;
   padding: 12px;
-  background: rgba(91, 155, 213, 0.08);
+  background: rgba(91, 155, 213, 0.12);
   border-radius: 6px;
   border-left: 3px solid var(--app-accent);
 }

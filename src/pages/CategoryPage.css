@@ -1,0 +1,141 @@
+.category-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.category-page__hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 28px;
+  align-items: stretch;
+  margin-bottom: 30px;
+}
+
+.category-page__hero-copy,
+.category-page__hero-media,
+.category-page__content,
+.category-page__source {
+  background: var(--app-card);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-lg);
+}
+
+.category-page__hero-copy {
+  padding: 32px;
+  box-shadow: var(--app-shadow-soft);
+}
+
+.category-page__eyebrow {
+  margin: 0 0 12px;
+  color: var(--app-accent-strong);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.category-page__title {
+  margin: 0 0 12px;
+  color: var(--app-text-strong);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  line-height: 1.1;
+}
+
+.category-page__description {
+  margin: 0 0 22px;
+  color: var(--app-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.category-page__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.category-page__stat {
+  padding: 10px 14px;
+  border-radius: var(--app-radius-pill);
+  border: 1px solid var(--app-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--app-text);
+  font-size: 0.94rem;
+}
+
+.category-page__hero-media {
+  overflow: hidden;
+  box-shadow: var(--app-shadow);
+}
+
+.category-page__hero-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+}
+
+.category-page__source {
+  margin-top: 16px;
+  padding: 14px 18px;
+  color: var(--app-text-soft);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.category-page__source a {
+  color: var(--app-accent-strong);
+}
+
+.category-page__content {
+  padding: 28px;
+  box-shadow: var(--app-shadow-soft);
+}
+
+.category-page__section-title {
+  margin: 0 0 18px;
+  color: var(--app-text-strong);
+  font-size: 1.5rem;
+}
+
+.category-page__topic-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.category-page__status {
+  padding: 40px;
+  color: #ff9fad;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 900px) {
+  .category-page__hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-page {
+    padding: 28px 20px 40px;
+  }
+
+  .category-page__hero-copy,
+  .category-page__content {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-page {
+    padding: 22px 14px 32px;
+  }
+
+  .category-page__hero-copy,
+  .category-page__content,
+  .category-page__source {
+    padding: 18px;
+  }
+}

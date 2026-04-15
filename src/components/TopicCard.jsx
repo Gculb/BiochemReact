@@ -78,9 +78,9 @@ const TopicCard = ({ topic, categoryColor }) => {
     >
       <header
         className="topic-card__header"
-        style={{ borderLeftColor: topic.important ? categoryColor : "#ddd" }}
+        style={{ borderLeftColor: topic.important ? categoryColor : "rgba(126, 200, 248, 0.22)" }}
       >
-        <h3 className="topic-card__title" style={{ color: topic.important ? categoryColor : "#2c3e50" }}>
+        <h3 className="topic-card__title" style={{ color: topic.important ? categoryColor : "var(--app-text-strong)" }}>
           <span className="topic-card__text">
             {topic.title}
             {topic.important && <span className="topic-card__badge">⭐</span>}
