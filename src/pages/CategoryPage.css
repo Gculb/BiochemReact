@@ -12,6 +12,10 @@
   margin-bottom: 30px;
 }
 
+.category-page__hero--text-only {
+  grid-template-columns: 1fr;
+}
+
 .category-page__hero-copy,
 .category-page__hero-media,
 .category-page__content,

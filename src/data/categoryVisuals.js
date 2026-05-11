@@ -153,6 +153,80 @@ const buildMotif = (motif, accent, accentSoft, width, height) => {
   `;
 };
 
+const buildTileArtwork = (motif, accent, accentSoft, width, height) => {
+  const centerX = width / 2;
+  const centerY = height / 2;
+
+  if (motif === "chart") {
+    return `
+      <rect x="64" y="62" width="292" height="138" rx="22" fill="#07111f" fill-opacity="0.46" stroke="${accentSoft}" stroke-width="2"/>
+      <path d="M 92 172 L 146 132 L 200 146 L 258 94 L 326 116" stroke="${accent}" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="92" cy="172" r="9" fill="#ffffff" fill-opacity="0.76"/>
+      <circle cx="146" cy="132" r="9" fill="${accentSoft}"/>
+      <circle cx="200" cy="146" r="9" fill="#ffffff" fill-opacity="0.76"/>
+      <circle cx="258" cy="94" r="9" fill="${accent}"/>
+      <circle cx="326" cy="116" r="9" fill="${accentSoft}"/>
+      <rect x="94" y="190" width="44" height="10" rx="5" fill="${accent}" fill-opacity="0.5"/>
+      <rect x="154" y="190" width="86" height="10" rx="5" fill="#ffffff" fill-opacity="0.24"/>
+      <rect x="254" y="190" width="64" height="10" rx="5" fill="${accentSoft}" fill-opacity="0.48"/>
+    `;
+  }
+
+  if (motif === "helix") {
+    return `
+      <path d="M 94 70 C 164 104, 164 154, 326 190" stroke="${accent}" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <path d="M 94 190 C 164 154, 164 104, 326 70" stroke="${accentSoft}" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <path d="M 126 88 L 294 172 M 126 172 L 294 88 M 166 106 L 254 154 M 166 154 L 254 106" stroke="#ffffff" stroke-opacity="0.42" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="94" cy="70" r="10" fill="#ffffff" fill-opacity="0.7"/>
+      <circle cx="326" cy="190" r="10" fill="${accent}"/>
+      <circle cx="94" cy="190" r="10" fill="${accentSoft}"/>
+      <circle cx="326" cy="70" r="10" fill="#ffffff" fill-opacity="0.7"/>
+    `;
+  }
+
+  if (motif === "cell") {
+    return `
+      <ellipse cx="${centerX}" cy="${centerY}" rx="116" ry="76" fill="${accentSoft}" fill-opacity="0.78" stroke="${accent}" stroke-opacity="0.58" stroke-width="4"/>
+      <circle cx="${centerX - 12}" cy="${centerY}" r="34" fill="#07111f" fill-opacity="0.38" stroke="#ffffff" stroke-opacity="0.42" stroke-width="4"/>
+      <circle cx="${centerX + 68}" cy="${centerY - 28}" r="19" fill="${accent}" fill-opacity="0.92"/>
+      <circle cx="${centerX + 48}" cy="${centerY + 38}" r="14" fill="#ffffff" fill-opacity="0.58"/>
+      <circle cx="${centerX - 76}" cy="${centerY + 26}" r="12" fill="#ffffff" fill-opacity="0.36"/>
+      <path d="M 82 188 C 150 146, 258 148, 338 190" stroke="${accent}" stroke-opacity="0.52" stroke-width="6" fill="none" stroke-linecap="round"/>
+    `;
+  }
+
+  if (motif === "wave") {
+    return `
+      <path d="M 70 138 C 112 58, 170 58, 212 136 S 312 218, 354 122" stroke="${accent}" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <path d="M 70 182 C 130 118, 178 118, 238 180 S 318 224, 354 170" stroke="${accentSoft}" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <circle cx="122" cy="86" r="12" fill="${accentSoft}"/>
+      <circle cx="212" cy="136" r="12" fill="#ffffff" fill-opacity="0.72"/>
+      <circle cx="316" cy="154" r="12" fill="${accent}"/>
+      <path d="M 86 70 L 346 70 M 86 210 L 346 210" stroke="#ffffff" stroke-opacity="0.14" stroke-width="2"/>
+    `;
+  }
+
+  if (motif === "hex") {
+    return `
+      <path d="M 142 78 L 198 48 L 254 78 L 254 140 L 198 170 L 142 140 Z" fill="${accent}" fill-opacity="0.88"/>
+      <path d="M 226 124 L 282 94 L 338 124 L 338 186 L 282 216 L 226 186 Z" fill="${accentSoft}" fill-opacity="0.88"/>
+      <path d="M 82 132 L 126 108 L 170 132 L 170 182 L 126 206 L 82 182 Z" fill="#ffffff" fill-opacity="0.36"/>
+      <path d="M 254 110 L 226 124 M 170 156 L 226 156 M 142 108 L 126 108" stroke="#ffffff" stroke-opacity="0.46" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="198" cy="48" r="8" fill="#ffffff" fill-opacity="0.72"/>
+      <circle cx="338" cy="186" r="8" fill="${accent}"/>
+      <circle cx="82" cy="132" r="8" fill="${accentSoft}"/>
+    `;
+  }
+
+  return `
+    <circle cx="112" cy="118" r="20" fill="${accentSoft}" />
+    <circle cx="208" cy="78" r="15" fill="#ffffff" fill-opacity="0.7" />
+    <circle cx="308" cy="150" r="24" fill="${accent}" />
+    <path d="M 132 118 L 194 84 L 288 142" stroke="${accent}" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M 132 118 L 308 150" stroke="#ffffff" stroke-opacity="0.22" stroke-width="4" fill="none" stroke-linecap="round"/>
+  `;
+};
+
 export const buildCategoryIllustration = ({
   category,
   topics = [],
@@ -177,6 +251,35 @@ export const buildCategoryIllustration = ({
   const pillGap = isHero ? 18 : 12;
   const pillX = isHero ? 48 : 26;
   const pillFont = isHero ? 18 : 11;
+
+  if (!isHero) {
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(title)} visual">
+        <defs>
+          <linearGradient id="tileBg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="${mixColors(baseColor, "#ffffff", 0.08)}" stop-opacity="0.95" />
+            <stop offset="52%" stop-color="${backgroundMid}" stop-opacity="1" />
+            <stop offset="100%" stop-color="${backgroundEnd}" stop-opacity="1" />
+          </linearGradient>
+          <radialGradient id="tileGlow" cx="62%" cy="30%" r="58%">
+            <stop offset="0%" stop-color="${accent}" stop-opacity="0.32" />
+            <stop offset="100%" stop-color="${accent}" stop-opacity="0" />
+          </radialGradient>
+          <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
+            <path d="M 34 0 L 0 0 0 34" fill="none" stroke="#ffffff" stroke-opacity="0.055" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="${width}" height="${height}" rx="26" fill="url(#tileBg)" />
+        <rect width="${width}" height="${height}" rx="26" fill="url(#grid)" />
+        <rect width="${width}" height="${height}" rx="26" fill="url(#tileGlow)" />
+        <circle cx="72" cy="54" r="76" fill="${accent}" fill-opacity="0.10" />
+        <circle cx="364" cy="214" r="100" fill="#ffffff" fill-opacity="0.055" />
+        ${buildTileArtwork(meta.motif, accent, accentSoft, width, height)}
+      </svg>
+    `;
+
+    return svgToDataUri(svg);
+  }
 
   const pillMarkup = topicPills
     .map((topic, index) => {
@@ -215,4 +318,3 @@ export const buildCategoryIllustration = ({
 
   return svgToDataUri(svg);
 };
-

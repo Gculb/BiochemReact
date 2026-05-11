@@ -1,0 +1,250 @@
+.bio-python {
+  margin: 30px 0;
+  padding: 28px;
+  color: var(--app-text);
+  background: var(--app-card);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-lg);
+  box-shadow: var(--app-shadow-soft);
+}
+
+.bio-python__intro {
+  max-width: 760px;
+  margin-bottom: 24px;
+}
+
+.bio-python__eyebrow {
+  margin: 0 0 10px;
+  color: var(--app-accent-strong);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bio-python h2,
+.bio-python h3 {
+  color: var(--app-text-strong);
+}
+
+.bio-python h2 {
+  margin: 0 0 10px;
+  font-size: 1.55rem;
+}
+
+.bio-python h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+
+.bio-python p {
+  margin: 0;
+  color: var(--app-text-muted);
+  line-height: 1.6;
+}
+
+.bio-python__layout {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.72fr) minmax(420px, 1.28fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.bio-python__workflow {
+  display: grid;
+  gap: 12px;
+}
+
+.bio-python__card {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 14px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--app-border);
+  border-radius: 12px;
+}
+
+.bio-python__card span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: #4fd3a6;
+  background: rgba(79, 211, 166, 0.12);
+  border: 1px solid rgba(79, 211, 166, 0.28);
+  border-radius: 12px;
+}
+
+.bio-python__code-panel {
+  overflow: hidden;
+  background: #07111f;
+  border: 1px solid rgba(126, 200, 248, 0.22);
+  border-radius: 14px;
+}
+
+.bio-python__code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  color: var(--app-text-strong);
+  background: rgba(126, 200, 248, 0.1);
+  border-bottom: 1px solid rgba(126, 200, 248, 0.18);
+  font-weight: 700;
+}
+
+.bio-python__practice {
+  display: grid;
+  gap: 14px;
+}
+
+.bio-python__editor,
+.bio-python__input-panel textarea,
+.bio-python__output-panel pre {
+  width: 100%;
+  color: #d8f3ff;
+  background: #07111f;
+  border: 0;
+  font-family: "Cascadia Code", "Consolas", monospace;
+  color: #d8f3ff;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  resize: vertical;
+}
+
+.bio-python__editor {
+  display: block;
+  min-height: 270px;
+  padding: 18px;
+}
+
+.bio-python__editor:focus,
+.bio-python__input-panel textarea:focus {
+  outline: none;
+  box-shadow: inset var(--app-focus-ring);
+}
+
+.bio-python__runner-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 14px;
+}
+
+.bio-python__input-panel,
+.bio-python__output-panel {
+  overflow: hidden;
+  background: rgba(7, 17, 31, 0.86);
+  border: 1px solid rgba(126, 200, 248, 0.18);
+  border-radius: 14px;
+}
+
+.bio-python__input-panel {
+  display: grid;
+}
+
+.bio-python__input-panel > span,
+.bio-python__output-header {
+  padding: 10px 14px;
+  color: var(--app-text-strong);
+  background: rgba(126, 200, 248, 0.08);
+  border-bottom: 1px solid rgba(126, 200, 248, 0.16);
+  font-weight: 700;
+}
+
+.bio-python__input-panel textarea {
+  min-height: 190px;
+  padding: 14px;
+}
+
+.bio-python__output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bio-python__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.bio-python__actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 7px 11px;
+  color: var(--app-text);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--app-border);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.bio-python__actions button:hover {
+  border-color: rgba(126, 200, 248, 0.38);
+  background: rgba(126, 200, 248, 0.12);
+}
+
+.bio-python__actions .bio-python__run {
+  color: #062219;
+  background: #4fd3a6;
+  border-color: #4fd3a6;
+  font-weight: 800;
+}
+
+.bio-python__output-panel pre {
+  min-height: 118px;
+  margin: 0;
+  padding: 14px;
+  white-space: pre-wrap;
+}
+
+.bio-python__feedback {
+  margin: 0 14px 14px;
+  padding: 12px 14px;
+  color: #ffe0a8;
+  background: rgba(255, 193, 111, 0.1);
+  border: 1px solid rgba(255, 193, 111, 0.24);
+  border-radius: 10px;
+}
+
+.bio-python__feedback strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.bio-python__feedback ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.bio-python__feedback li {
+  color: #ffe0a8;
+  line-height: 1.45;
+}
+
+@media (max-width: 950px) {
+  .bio-python__layout,
+  .bio-python__runner-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .bio-python {
+    padding: 20px 14px;
+  }
+
+  .bio-python__card {
+    grid-template-columns: 1fr;
+  }
+
+  .bio-python__output-header,
+  .bio-python__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

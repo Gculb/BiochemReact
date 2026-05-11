@@ -309,6 +309,7 @@
       "order": 19,
       "topics": [
         { "id": "blast", "title": "BLAST & Sequence Alignment" },
+        { "id": "python-bioinformatics", "title": "Python Coding for Bioinformatics", "important": true },
         { "id": "databases", "title": "GenBank, UniProt, PDB" },
         { "id": "msa", "title": "Multiple Sequence Alignment (Clustal, MUSCLE)" },
         { "id": "phylogenetics", "title": "Phylogenetics & Evolutionary Trees" },
@@ -354,6 +355,20 @@
       "topics": [
         { "id": "enzyme-sim", "title": "Enzyme Kinetics Simulator", "important": true },
         { "id": "data-fit", "title": "Curve Fitting (Km & Vmax)" }
+      ]
+    },
+    {
+      "id": "metrics",
+      "title": "Metrics Dashboard",
+      "icon": "fa-chart-line",
+      "color": "#7ec8f8",
+      "description": "Site-level dashboard for curriculum coverage, high-yield density, practice depth, and interactive learning tools.",
+      "order": 22.5,
+      "topics": [
+        { "id": "coverage", "title": "Curriculum Coverage" },
+        { "id": "high-yield-density", "title": "High-Yield Topic Density" },
+        { "id": "practice-depth", "title": "Practice Problem Depth" },
+        { "id": "tooling", "title": "Interactive Tool Inventory" }
       ]
     },
     {

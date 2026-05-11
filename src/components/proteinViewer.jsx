@@ -6,9 +6,9 @@ const RCSB_META   = (id) => `https://data.rcsb.org/rest/v1/core/entry/${id}`;
 const RCSB_ENTITY = (id) => `https://data.rcsb.org/rest/v1/core/polymer_entity/${id}/1`;
 const RCSB_PDB    = (id) => `https://files.rcsb.org/download/${id}.pdb`;
 const UNIPROT_SEARCH = (pdb) =>
-  `https://rest.uniprot.org/uniprotkb/search?query=database(PDB):${pdb}&format=json` +
-  `&fields=id,protein_name,gene_names,organism_name,cc_function,ft_domain,sequence,` +
-  `cc_disease,keyword,cc_subcellular_location,cc_cofactor,ft_active_site,ft_binding,ft_site&size=1`;
+  `https://rest.uniprot.org/uniprotkb/search?query=${encodeURIComponent(`xref:pdb-${pdb}`)}&format=json` +
+  `&fields=accession,id,protein_name,gene_names,organism_name,cc_function,ft_domain,sequence,` +
+  `cc_disease,keyword,cc_subcellular_location,cc_cofactor,ft_act_site,ft_binding,ft_site&size=1`;
 // AlphaFold EBI — returns array; element 0 has pdbUrl
 const AF_API = (uniprotAcc) =>
   `https://alphafold.ebi.ac.uk/api/prediction/${uniprotAcc}`;

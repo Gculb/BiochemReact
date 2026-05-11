@@ -80,30 +80,30 @@ select {
   min-height: 100vh;
 }
 
-:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page) {
+:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page, .metrics-page) {
   position: relative;
   min-height: 100vh;
   color: var(--app-text);
 }
 
-:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page) h1,
-:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page) h2,
-:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page) h3,
-:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page) h4 {
+:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page, .metrics-page) h1,
+:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page, .metrics-page) h2,
+:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page, .metrics-page) h3,
+:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page, .metrics-page) h4 {
   color: var(--app-text-strong);
 }
 
-:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page) p,
-:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page) li,
-:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page) label {
+:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page, .metrics-page) p,
+:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page, .metrics-page) li,
+:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page, .metrics-page) label {
   color: var(--app-text-muted);
 }
 
-:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page) a {
+:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page, .metrics-page) a {
   color: var(--app-accent-strong);
 }
 
-:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page) a:hover {
+:is(.home-page, .about-page, .resources-page, .contact-page, .glossary-page, .metrics-page) a:hover {
   color: #b9e0ff;
 }
 

@@ -3,10 +3,9 @@ import { useParams } from 'react-router-dom';
 import PracticeProblems from "../components/PracticeProblems";
 import CriticalConcepts from "../components/CriticalConcepts";
 import TopicCard from "../components/TopicCard";
-import CategoryVisualGuide from "../components/CategoryVisualGuide";
+import BioinformaticsPythonSection from "../components/BioinformaticsPythonSection";
 import categoriesData from "../data/categories.json";
 import topicCardsData from "../data/topicCards.json";
-import { buildCategoryIllustration } from "../data/categoryVisuals";
 import periodicTable from "../images/periodic_table.png";
 import "./CategoryPage.css";
 
@@ -27,16 +26,11 @@ const CategoryPage = () => {
     .filter((topic) => topic.important)
     .concat(topicCards.filter((topic) => !topic.important))
     .slice(0, 3);
-  const heroImage = category?.image
-    ? categoryImages[category.image]
-    : buildCategoryIllustration({
-        category,
-        topics: featuredTopics.map((topic) => topic.title),
-        size: "hero",
-      });
+  const heroImage = category?.image ? categoryImages[category.image] : null;
+
   return (
     <div className="category-page">
-      <header className="category-page__hero">
+      <header className={`category-page__hero ${!heroImage ? "category-page__hero--text-only" : ""}`}>
         <div className="category-page__hero-copy" style={{ borderTop: `4px solid ${category.color}` }}>
           <p className="category-page__eyebrow">Category Overview</p>
           <h1 className="category-page__title">{category.title}</h1>
@@ -49,19 +43,21 @@ const CategoryPage = () => {
           </div>
         </div>
 
-        <div className="category-page__hero-media">
-          <img
-            src={heroImage}
-            alt={`${category.title} topic overview`}
-            className="category-page__hero-image"
-          />
-        </div>
+        {heroImage && (
+          <div className="category-page__hero-media">
+            <img
+              src={heroImage}
+              alt={`${category.title} topic overview`}
+              className="category-page__hero-image"
+            />
+          </div>
+        )}
       </header>
       
       {/* Critical Concepts Section */}
       <CriticalConcepts categoryId={categoryId} categoryColor={category.color} />
 
-      <CategoryVisualGuide category={category} topics={featuredTopics} />
+      {category.id === "bioinformatics" && <BioinformaticsPythonSection />}
 
       {category.image && (
         <p className="category-page__source">
