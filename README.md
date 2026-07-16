@@ -11,7 +11,7 @@ An interactive biochemistry learning platform built for students who learn bette
 ## 🎯 Features
 
 ### 📚 Learning Modules
-- **29+ Topic Categories** covering General Chemistry, Organic Chemistry, Biochemistry I & II, Molecular Biology, Genetics, Bioinformatics, and more
+- **35+ Topic Categories** covering General Chemistry, Organic Chemistry, Biochemistry I & II, Molecular Biology, Genetics, Bioinformatics, and more
 - **100+ Interactive Topic Cards** with expandable details and LaTeX-rendered mathematical equations
 - **Critical Concepts** section highlighting essential topics with color-coded importance indicators
 - **Practice Problem Bank** with categorized problems and detailed solutions
