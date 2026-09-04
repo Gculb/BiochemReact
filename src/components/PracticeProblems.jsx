@@ -15,20 +15,29 @@ const PracticeProblems = () => {
     const saved = localStorage.getItem("completedProblems");
     return saved ? JSON.parse(saved) : {};
   });
-const selectChoice = (problemId, choiceLabel, correctChoice) => {
+const selectChoice = (problemKey, choiceLabel, correctChoice) => {
   setSelectedAnswers((prev) => ({
     ...prev,
-    [problemId]: choiceLabel,
+    [problemKey]: choiceLabel,
   }));
 
   
-  if (choiceLabel === correctChoice && !completed[problemId]) {
-    toggleCompleted(problemId);
+  if (choiceLabel === correctChoice && !completed[problemKey]) {
+    toggleCompleted(problemKey);
   }
 };
 
 const allProblems = useMemo(() => {
-  return [...problems, ...multipleChoiceProblems];
+  return [
+    ...problems.map((problem) => ({
+      ...problem,
+      problemKey: `standard-${problem.id}`,
+    })),
+    ...multipleChoiceProblems.map((problem) => ({
+      ...problem,
+      problemKey: `multiple-choice-${problem.id}`,
+    })),
+  ];
 }, []);
   const toggle = (id, field) => {
     setVisible((prev) => ({
@@ -113,7 +122,7 @@ const filteredProblems = useMemo(() => {
       </p>
 
       <p style={{ color: "#666" }}>
-        Completed {filteredProblems.filter((p) => completed[p.id]).length} / {filteredProblems.length} problems
+        Completed {filteredProblems.filter((p) => completed[p.problemKey]).length} / {filteredProblems.length} problems
       </p>
       <div style={{ display: "flex", gap: "0.5rem", marginBottom: "1rem" }}>
         <button
@@ -132,9 +141,9 @@ const filteredProblems = useMemo(() => {
         </button>
       </div>
       {displayProblems.slice(0, count).map((p) => (
-        <div
-              key={p.id}
-              className={`problem-card ${completed[p.id] ? "completed" : ""}`}
+          <div
+            key={p.problemKey}
+              className={`problem-card ${completed[p.problemKey] ? "completed" : ""}`}
             >
           <h3>{p.title}</h3>
           <div className="problem-meta">
@@ -159,7 +168,7 @@ const filteredProblems = useMemo(() => {
       {p.type === "multiple_choice" && (
         <div className="choices">
           {p.choices.map((c) => {
-            const selected = selectedAnswers[p.id] === c.label;
+            const selected = selectedAnswers[p.problemKey] === c.label;
             const isCorrect = c.label === p.correct_choice;
 
             return (
@@ -169,7 +178,7 @@ const filteredProblems = useMemo(() => {
                   ${selected && isCorrect ? "correct" : ""}
                   ${selected && !isCorrect ? "incorrect" : ""}
                 `}
-                onClick={() => selectChoice(p.id, c.label, p.correct_choice)}
+                onClick={() => selectChoice(p.problemKey, c.label, p.correct_choice)}
               >
                 <strong>{c.label}.</strong> {c.text}
               </button>
@@ -183,16 +192,16 @@ const filteredProblems = useMemo(() => {
           {/* Hint button */}
           <button
             className="hintButton"
-            onClick={() => toggle(p.id, "hint")}
+            onClick={() => toggle(p.problemKey, "hint")}
           >
             
             <span>
-              {visible[p.id]?.hint ? "Hide Hint" : "Reveal Hint"}
-              <i className={`fa-solid ${visible[p.id]?.hint ? "fa-eye-slash" : "fa-lightbulb"}`} />
+              {visible[p.problemKey]?.hint ? "Hide Hint" : "Reveal Hint"}
+              <i className={`fa-solid ${visible[p.problemKey]?.hint ? "fa-eye-slash" : "fa-lightbulb"}`} />
             </span>
           </button>
 
-          {visible[p.id]?.hint && (
+          {visible[p.problemKey]?.hint && (
             <div className="hint">
               <strong>Hint:</strong> {p.hint}
             </div>
@@ -201,25 +210,25 @@ const filteredProblems = useMemo(() => {
           {/* Solution button */}
           <button
             className="solutionButton"
-            onClick={() => toggle(p.id, "solution")}
+            onClick={() => toggle(p.problemKey, "solution")}
           >
 
             <span>
-              {visible[p.id]?.solution ? "Hide Solution" : "Reveal Solution"}
-              <i className={`fa-solid ${visible[p.id]?.solution ? "fa-eye-slash" : "fa-circle-check"}`} />
+              {visible[p.problemKey]?.solution ? "Hide Solution" : "Reveal Solution"}
+              <i className={`fa-solid ${visible[p.problemKey]?.solution ? "fa-eye-slash" : "fa-circle-check"}`} />
             </span>
           </button>
               <button
               type="button"
-              className={`completeButton ${completed[p.id] ? "done" : ""}`}
-              onClick={() => toggleCompleted(p.id)}
+              className={`completeButton ${completed[p.problemKey] ? "done" : ""}`}
+              onClick={() => toggleCompleted(p.problemKey)}
             >
               <span>
-                <i className={`fa-solid ${completed[p.id] ? "fa-check-circle" : "fa-circle"}`} />
-                {completed[p.id] ? "Completed" : "Mark as Complete"}
+                <i className={`fa-solid ${completed[p.problemKey] ? "fa-check-circle" : "fa-circle"}`} />
+                {completed[p.problemKey] ? "Completed" : "Mark as Complete"}
               </span>
             </button>
-          {visible[p.id]?.solution && (
+          {visible[p.problemKey]?.solution && (
             <div className="solution">
               {p.type === "multiple_choice" ? (
                 <>

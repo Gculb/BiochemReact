@@ -355,33 +355,62 @@ const MetricBar = ({ label, value, rawValue, max, color, note }) => {
   );
 };
 
-const StatGrid = ({ cells }) => (
-  <div className="bio-stat-grid">
-    {cells.map(({ label, value, unit, sub, accent }, i) => (
-      <div key={i} className="bio-stat-cell">
-        <div className="bio-stat-label">{label}</div>
-        <div className="bio-stat-value" style={accent ? { color: accent } : {}}>
-          {value}{unit && <span className="bio-stat-unit"> {unit}</span>}
-        </div>
-        {sub && <div className="bio-stat-sub">{sub}</div>}
+const StatGrid = ({ cells }) => {
+  const [selected, setSelected] = useState(null);
+  const selectedCell = cells[selected ?? 0];
+
+  return (
+    <div className="bio-stat-grid-wrap">
+      <div className="bio-stat-grid">
+        {cells.map(({ label, value, unit, sub, accent }, i) => (
+          <button
+            key={label}
+            type="button"
+            className={`bio-stat-cell${selected === i ? " bio-stat-cell--selected" : ""}`}
+            onClick={() => setSelected(selected === i ? null : i)}
+            aria-pressed={selected === i}
+          >
+            <span className="bio-stat-label">{label}</span>
+            <span className="bio-stat-value" style={accent ? { color: accent } : {}}>
+              {value}{unit && <span className="bio-stat-unit"> {unit}</span>}
+            </span>
+            {sub && <span className="bio-stat-sub">{sub}</span>}
+          </button>
+        ))}
       </div>
-    ))}
-  </div>
-);
+      {selected != null && selectedCell?.sub && (
+        <div className="bio-stat-detail" role="status">
+          <strong>{selectedCell.label}</strong>
+          <span>{selectedCell.sub}</span>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const CompositionChart = ({ composition }) => {
+  const [selectedAa, setSelectedAa] = useState(null);
   const maxPct = Math.max(...composition.map(c => parseFloat(c.pct)));
+  const selected = composition.find(({ aa }) => aa === selectedAa);
   return (
-    <div className="bio-comp-chart">
+    <div className="bio-comp-chart" aria-label="Amino acid composition">
       {[...composition].sort((a, b) => b.pct - a.pct).map(({ aa, pct, count }) => (
-        <div key={aa} className="bio-comp-row" title={`${aa}: ${count} residues (${pct}%)`}>
+        <button
+          key={aa}
+          type="button"
+          className={`bio-comp-row${selectedAa === aa ? " bio-comp-row--selected" : ""}`}
+          onClick={() => setSelectedAa(selectedAa === aa ? null : aa)}
+          aria-pressed={selectedAa === aa}
+          title={`${aa}: ${count} residues (${pct}%)`}
+        >
           <span className="bio-comp-aa" style={{ color: AA_COLORS[aa] || "#79a8ca" }}>{aa}</span>
           <div className="bio-comp-track">
             <div className="bio-comp-fill" style={{ width: `${(parseFloat(pct) / maxPct) * 100}%`, background: AA_COLORS[aa] || "#79a8ca" }} />
           </div>
           <span className="bio-comp-pct">{pct}%</span>
-        </div>
+        </button>
       ))}
+      {selected && <div className="bio-comp-detail" role="status"><strong>{selected.aa}</strong><span>{selected.count} residues · {selected.pct}% of sequence</span></div>}
     </div>
   );
 };
@@ -704,6 +733,8 @@ const ProteinViewer = () => {
     atoms: [],          // current display atoms (lerped)
     nativeAtoms: [],    // original folded positions
     unfoldedXYZ: [],    // denatured XYZ (same length as nativeAtoms)
+    rcsbAtoms: [],      // RCSB structure kept for switching back from AlphaFold
+    rcsbUnfoldedXYZ: [],
     center: [0, 0, 0],
     radius: 1,
     foldT: 0,           // 0 = fully folded, 1 = fully unfolded
@@ -711,6 +742,7 @@ const ProteinViewer = () => {
     uniprotAcc: "",
     activeSiteProjections: [], // [{sx,sy,depth,site}] rebuilt each frame
   });
+  const loadGenerationRef = useRef(0);
 
   // React state (drives UI re-renders)
   const [currentPdb,     setCurrentPdb]     = useState("1MBN");
@@ -992,7 +1024,7 @@ const ProteinViewer = () => {
   useEffect(() => { stateRef.current.alphaFoldMode = alphaFoldMode; }, [alphaFoldMode]);
 
   // ── UniProt fetch (extended with active sites) ────────────────────────────
-  const fetchUniprot = useCallback(async (pdb) => {
+  const fetchUniprot = useCallback(async (pdb, loadGeneration) => {
     setUniprot(null);
     setActiveSites([]);
     setSelectedSite(null);
@@ -1000,6 +1032,7 @@ const ProteinViewer = () => {
       const res = await fetch(UNIPROT_SEARCH(pdb));
       if (!res.ok) return;
       const data  = await res.json();
+      if (loadGeneration !== loadGenerationRef.current) return;
       const entry = data.results?.[0];
       if (!entry) return;
 
@@ -1037,6 +1070,7 @@ const ProteinViewer = () => {
 
   // ── NEW: AlphaFold fetch ──────────────────────────────────────────────────
   const fetchAlphaFold = useCallback(async (requestedAcc) => {
+    const loadGeneration = loadGenerationRef.current;
     const accession = (requestedAcc || uniprotAcc || stateRef.current.uniprotAcc || "").trim();
     if (!accession) {
       setAfError("No UniProt accession available for AlphaFold lookup.");
@@ -1060,6 +1094,7 @@ const ProteinViewer = () => {
       if (!pdbUrl) throw new Error("No structure URL in AlphaFold response");
 
       const pdbText = await fetch(pdbUrl).then(r => r.text());
+      if (loadGeneration !== loadGenerationRef.current) return;
       const afAtoms = parsePDB(pdbText);
       if (!afAtoms.length) throw new Error("No Cα atoms in AlphaFold PDB");
 
@@ -1091,6 +1126,7 @@ const ProteinViewer = () => {
 
   // ── Core load ─────────────────────────────────────────────────────────────
   const loadProtein = useCallback(async (pdb, preloadedPdbText) => {
+    const loadGeneration = ++loadGenerationRef.current;
     setLoading(true); setError(null); setMeta(null); setSequence("");
     setCurrentPdb(pdb); setSSFrac(null); setAlphaFoldMode(false);
     setAfError(null); setSelectedSite(null); setFoldT(0);
@@ -1103,6 +1139,7 @@ const ProteinViewer = () => {
       preloadedPdbText ? Promise.resolve(preloadedPdbText) : fetch(RCSB_PDB(pdb)).then(r => r.text()),
       fetch(RCSB_ENTITY(pdb)).then(r => r.json()),
     ]);
+    if (loadGeneration !== loadGenerationRef.current) return;
 
     if (metaRes.status === "fulfilled") {
       const d = metaRes.value;
@@ -1130,6 +1167,8 @@ const ProteinViewer = () => {
     stateRef.current.atoms              = atoms;
     stateRef.current.nativeAtoms        = atoms;
     stateRef.current.unfoldedXYZ        = unfolded;
+    stateRef.current.rcsbAtoms          = atoms;
+    stateRef.current.rcsbUnfoldedXYZ    = unfolded;
     stateRef.current.center             = c;
     stateRef.current.radius             = r;
     stateRef.current.residueMap         = buildResidueMap(atoms);
@@ -1143,7 +1182,8 @@ const ProteinViewer = () => {
     setLoading(false);
 
     // fetchUniprot is fire-and-forget for UI but we await the returned accession
-    const acc = await fetchUniprot(pdb);
+    const acc = await fetchUniprot(pdb, loadGeneration);
+    if (loadGeneration !== loadGenerationRef.current) return;
     stateRef.current.uniprotAcc = acc || null;
   }, [fetchUniprot]);
 
@@ -1222,11 +1262,15 @@ const ProteinViewer = () => {
                 <button className="mv-btn" style={{ marginTop: "8px" }}
                   onClick={() => {
                     setAlphaFoldMode(false);
-                    // Restore RCSB atoms
-                    const na = stateRef.current.nativeAtoms;
-                    if (na.length) {
-                      const c = centroid(na), r = maxR(na, c);
-                      stateRef.current = { ...stateRef.current, atoms: na, center: c, radius: r };
+                    const rcsbAtoms = stateRef.current.rcsbAtoms;
+                    if (rcsbAtoms.length) {
+                      const c = centroid(rcsbAtoms), r = maxR(rcsbAtoms, c);
+                      stateRef.current.atoms = rcsbAtoms;
+                      stateRef.current.nativeAtoms = rcsbAtoms;
+                      stateRef.current.unfoldedXYZ = stateRef.current.rcsbUnfoldedXYZ;
+                      stateRef.current.center = c;
+                      stateRef.current.radius = r;
+                      stateRef.current.residueMap = buildResidueMap(rcsbAtoms);
                     }
                   }}>
                   ← Back to RCSB
