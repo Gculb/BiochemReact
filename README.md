@@ -1,10 +1,10 @@
 # Interactive Biochemistry Guide
 
-An interactive biochemistry learning platform built for students who learn better by doing than reading. Features a custom-built 3D protein renderer (no WebGL libraries — projection math and spline smoothing from scratch), a Michaelis-Menten kinetics simulator with client-side curve fitting, and 100+ topic cards with LaTeX-rendered equations.
+An interactive biochemistry learning platform built for students who learn better by doing than reading. Features a custom canvas-based protein viewer with RCSB and AlphaFold structures, a Michaelis-Menten kinetics simulator with client-side curve fitting, and 100+ topic cards with LaTeX-rendered equations.
 
 **Live Demo:** [Deployed on GitHub Pages](https://gculb.github.io/BiochemReact)
 
-**Live demo of renders (old UI) ** 
+**Viewer preview**
 
 ![Demo](./public/demos/demo-gif.gif)
 
@@ -15,6 +15,8 @@ An interactive biochemistry learning platform built for students who learn bette
 - **100+ Interactive Topic Cards** with expandable details and LaTeX-rendered mathematical equations
 - **Critical Concepts** section highlighting essential topics with color-coded importance indicators
 - **Practice Problem Bank** with categorized problems and detailed solutions
+- **RCSB Protein Search** supporting PDB IDs, protein names, and full-text database results
+- **Protein Comparison Mode** with side-by-side structures, Cα overlays, AlphaFold mode, and statistics
 
 ### 🧪 Interactive Tools
 
@@ -39,14 +41,15 @@ An interactive biochemistry learning platform built for students who learn bette
 - **Persistent Storage** save molecular views to browser localStorage
 - **Accessibility** keyboard navigation, ARIA labels, semantic HTML
 - **Responsive Design** mobile-first CSS with breakpoints for all devices
-- **Performance Optimized** lazy molecule loading, efficient animations
+- **Performance Optimized** efficient animations and sampled large-structure overlays
 
 ## 📋 Technology Stack
 
 ### Frontend
 - **React** 19.2.4 – Modern component architecture with hooks
 - **React Router** 7.13.0 – Client-side routing
-- **Three.js** 128+ – 3D graphics and molecular visualization
+- **Three.js** 0.182.0 – 3D molecular visualization
+- **Canvas 2D** – custom protein ribbon and Cα rendering
 - **Chart.js** – Data plotting and visualization
 - **KaTeX** 0.16.28 – LaTeX math rendering
 - **react-katex** 3.1.0 – React wrapper for KaTeX
@@ -56,6 +59,7 @@ An interactive biochemistry learning platform built for students who learn bette
 - **Create React App** – Standard React project setup
 - **GitHub Pages** – Free hosting and deployment
 - **gh-pages** – GitHub Pages deployment tool
+- **GitHub Actions** – Automated test and production-build checks for pushes and pull requests
 
 ## 🚀 Getting Started
 
@@ -94,6 +98,13 @@ npm run build
 npm run deploy
 ```
 
+**Run tests:**
+```bash
+npm test -- --watchAll=false
+```
+
+The test suite includes protein parsing and calculation checks plus UI interaction tests for homepage navigation and sidebar controls. CI runs the test suite and production build automatically through [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
+
 
 
 ## 🎮 Usage Guide
@@ -110,9 +121,10 @@ npm run deploy
 3. **Mouse Controls:**
    - Click and drag to rotate
    - Scroll to zoom in/out
-4. Adjust rotation speed with slider (coming soon)
-5. Save current view by entering a name and clicking "Save"
-6. Restore saved views instantly
+4. Use the fold/unfold controls or pause automatic rotation
+5. Search for another PDB structure or open **Compare proteins**
+6. Save current view by entering a name and clicking "Save"
+7. Restore saved views instantly
 
 ### Kinetics Lab
 1. Navigate to **Lab** or click "Try Virtual Lab"
@@ -168,7 +180,8 @@ Each category has:
 NO MORE PLANNED FEATURES. 
 
 ### Planned Features
-- [*] 3D Protein Vizualizations
+- [x] 3D Protein Visualizations
+- [x] RCSB and AlphaFold protein comparison
 - [*] Student problem-solving with code execution  (Bioinformatics)
 - [*] Activity logging and progress tracking 
 - [*] Glossary with searchable terms
@@ -182,7 +195,8 @@ NO MORE PLANNED FEATURES.
 - **React Hooks** for modern state management
 - **Semantic HTML** for accessibility
 - **Responsive Design** mobile-first CSS
-- **Performance Optimized** lazy component loading
+- **Performance Optimized** efficient animations and responsive layouts
+- **Automated CI** GitHub Actions runs tests and production builds on pushes and pull requests
 - **JSDoc Comments** for complex logic
 - **Consistent Styling** with CSS modules and classes
 
@@ -198,7 +212,9 @@ This project is licensed under the ISC License. See package.json for details.
 
 ## 🙏 Acknowledgments
 
-- **Three.js** – 3D graphics library
+- **Three.js** – molecular rendering library used by the molecule viewer
+- **RCSB PDB** – protein structure data and search API
+- **AlphaFold EBI** – predicted structure data
 - **Chart.js** – Data visualization
 - **KaTeX** – LaTeX math rendering
 - **React** – Frontend framework
@@ -207,7 +223,8 @@ This project is licensed under the ISC License. See package.json for details.
 ## 🐛 Troubleshooting
 
 ### 3D Viewer Not Rendering
-- Ensure your browser supports WebGL (most modern browsers do)
+- The protein viewer uses Canvas 2D; reload the page and check the browser console for API errors
+- The molecule viewer uses WebGL through Three.js; ensure your browser supports WebGL
 - Try a different browser (Chrome, Firefox, Safari)
 
 ### Math Equations Not Displaying
@@ -224,4 +241,4 @@ For questions, suggestions, or contributions, please open an issue or pull reque
 
 ---
 
-**Last Updated:** February 2026
+**Last Updated:** September 2026
