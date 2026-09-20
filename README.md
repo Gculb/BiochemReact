@@ -41,7 +41,16 @@ An interactive biochemistry learning platform built for students who learn bette
 - **Persistent Storage** save molecular views to browser localStorage
 - **Accessibility** keyboard navigation, ARIA labels, semantic HTML
 - **Responsive Design** mobile-first CSS with breakpoints for all devices
-- **Performance Optimized** efficient animations and sampled large-structure overlays
+- **Performance Optimized** Web Workers, GPU rendering when available, adaptive sampling, and a 2D fallback
+
+### 🧩 Protein Viewer Architecture
+- **`useProteinLoader`** handles RCSB, UniProt, and AlphaFold requests, race protection, and fallback loading
+- **`useProteinCanvas`** manages animation frames, resizing, dragging, zooming, and active-site hit testing
+- **`useProteinWebGL`** renders large structures through Three.js when WebGL is available
+- **`ProteinCanvas`** owns the canvas presentation and view controls
+- **`BioInfoPanel` and `ProteinComparison`** isolate analysis and comparison workflows
+- **`proteinStructure.worker.js`** moves PDB parsing and structure preparation off the main thread
+- **Automatic fallback** uses the optimized 2D renderer when WebGL is unavailable or blocked
 
 ## 📋 Technology Stack
 
