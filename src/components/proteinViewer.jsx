@@ -1,147 +1,14 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import "./proteinViewer.css";
+import {
+  AF_API, AA_MASS, BLOCK_THRESHOLD,
+  PROTEINS, RCSB_ENTITY, RCSB_META, RCSB_PDB, SITE_COLORS,
+  SS_COLOR, SS_WIDTH, UNIPROT_SEARCH, WARN_THRESHOLD, plddtColor,
+} from "./proteinViewerData.js";
+import { calcBioInfo as calculateBioInfo } from "./proteinViewerUtils.js";
+import ProteinSearch from "./ProteinSearch.jsx";
 
-// ─── API endpoints ────────────────────────────────────────────────────────────
-const RCSB_META   = (id) => `https://data.rcsb.org/rest/v1/core/entry/${id}`;
-const RCSB_ENTITY = (id) => `https://data.rcsb.org/rest/v1/core/polymer_entity/${id}/1`;
-const RCSB_PDB    = (id) => `https://files.rcsb.org/download/${id}.pdb`;
-const RCSB_SEARCH = "https://search.rcsb.org/rcsbsearch/v2/query";
-const UNIPROT_SEARCH = (pdb) =>
-  `https://rest.uniprot.org/uniprotkb/search?query=${encodeURIComponent(`xref:pdb-${pdb}`)}&format=json` +
-  `&fields=accession,id,protein_name,gene_names,organism_name,cc_function,ft_domain,sequence,` +
-  `cc_disease,keyword,cc_subcellular_location,cc_cofactor,ft_act_site,ft_binding,ft_site&size=1`;
-// AlphaFold EBI — returns array; element 0 has pdbUrl
-const AF_API = (uniprotAcc) =>
-  `https://alphafold.ebi.ac.uk/api/prediction/${uniprotAcc}`;
-
-// ─── Static data ──────────────────────────────────────────────────────────────
-const PROTEINS = {
-  "1MBN": { label: "Myoglobin",        class: "All-α",       bio: "Oxygen storage in muscle" },
-  "4INS": { label: "Insulin",          class: "α + α",       bio: "Blood glucose regulation" },
-  "1TIM": { label: "TIM Barrel",       class: "(β/α)₈",      bio: "Triosephosphate isomerase" },
-  "2POR": { label: "Porin",            class: "All-β barrel", bio: "Outer membrane channel" },
-  "3NIR": { label: "GFP",             class: "β-barrel",    bio: "Green fluorescent protein" },
-  "1HHO": { label: "Hemoglobin",       class: "All-α",       bio: "O₂ transport (α₂β₂ tetramer)" },
-  "1CAG": { label: "Collagen",         class: "Triple helix", bio: "Extracellular matrix structure" },
-  "6LU7": { label: "SARS-CoV-2 Mpro", class: "α/β mixed",   bio: "Main protease, key drug target" },
-  "5XNL": { label: "p53 DBD",         class: "β-sandwich",  bio: "Tumor suppressor DNA-binding domain", tier: "advanced" },
-  "1UBQ": { label: "Ubiquitin",        class: "α+β",         bio: "Protein degradation tag" },
-};
-
-const WARN_THRESHOLD  = 5000;
-const BLOCK_THRESHOLD = 20000;
-
-// Secondary structure colors (used in RCSB mode)
-const SS_COLOR = { 0: "#7f8896", 1: "#79a8ca", 2: "#c8a35b" };
-const SS_WIDTH = { 0: 2,  1: 5.5, 2: 4 };
-
-// AlphaFold pLDDT confidence color ramp
-function plddtColor(v) {
-  if (v >= 90) return "#5f8f7b"; // very high – muted teal
-  if (v >= 70) return "#6f90b0"; // confident – muted blue
-  if (v >= 50) return "#b89257"; // low – muted amber
-  return "#a97878";              // very low – muted rose
-}
-
-// Active site type → color
-const SITE_COLORS = {
-  "Active site": "#d7c06a",
-  "Binding site": "#87aec0",
-  "Site":         "#b28ab8",
-  default:        "#c8a35b",
-};
-
-// ─── Biochemical lookup tables (unchanged) ────────────────────────────────────
-const AA_MASS = {
-  A:89.09,R:174.20,N:132.12,D:133.10,C:121.16,E:147.13,Q:146.15,G:75.03,
-  H:155.16,I:131.17,L:131.17,K:146.19,M:149.20,F:165.19,P:115.13,S:105.09,
-  T:119.12,W:204.23,Y:181.19,V:117.15,
-};
-const KD = {
-  A:1.8,R:-4.5,N:-3.5,D:-3.5,C:2.5,E:-3.5,Q:-3.5,G:-0.4,H:-3.2,
-  I:4.5,L:3.8,K:-3.9,M:1.9,F:2.8,P:-1.6,S:-0.8,T:-0.7,W:-0.9,Y:-1.3,V:4.2,
-};
-const PKA = {
-  D:3.65,E:4.25,C:8.18,Y:10.07,H:6.00,K:10.53,R:12.48,Nterm:8.00,Cterm:3.10,
-};
-const DIWV_DESTAB = new Set([
-  "WW","WC","WM","WH","WF","WR","WK","WQ","WP","WS","WN","WT","WA","WD","WE","WG","WI","WL","WV","WY",
-  "CK","CM","CS","CT","CH","CR","CC","CQ","CP","CN","CA","CD","CE","CF","CG","CI","CL","CV","CY","CW",
-  "MK","ML","MM","MR","MS","MN","MC","MA","MD","ME","MF","MG","MH","MI","MP","MQ","MT","MV","MY","MW",
-  "FK","FM","FR","FY","FW","FC","FH","FN","FD","FE","FG","FI","FL","FP","FQ","FS","FT","FA","FV",
-  "YK","YM","YR","YC","YD","YE","YF","YG","YH","YI","YL","YN","YP","YQ","YS","YT","YA","YV","YW",
-  "IK","IM","IR","IC","ID","IE","IF","IG","IH","IL","IN","IP","IQ","IS","IT","IA","IV","IW","IY",
-  "LK","LR","LC","LD","LE","LF","LG","LH","LI","LM","LN","LP","LQ","LS","LT","LA","LV","LW","LY",
-  "RK","RR","RM","RC","RD","RE","RF","RG","RH","RI","RL","RN","RP","RQ","RS","RT","RA","RV","RW","RY",
-  "KK","KR","KM","KC","KD","KE","KF","KG","KH","KI","KL","KN","KP","KQ","KS","KT","KA","KV","KW","KY",
-  "SS","ST","SD","SE","SF","SG","SH","SI","SK","SL","SM","SN","SP","SQ","SR","SA","SV","SW","SY",
-]);
-const HALFLIFE = {
-  A:{mam:"4.4h",yeast:">20h",ecoli:">10h"}, R:{mam:"1h",yeast:"2min",ecoli:"2min"},
-  N:{mam:"1.4h",yeast:"3min",ecoli:">10h"}, D:{mam:"1.1h",yeast:"3min",ecoli:"1.1h"},
-  C:{mam:"1.2h",yeast:">20h",ecoli:">10h"}, E:{mam:"1h",yeast:"30min",ecoli:"1h"},
-  Q:{mam:"0.8h",yeast:"10min",ecoli:">10h"}, G:{mam:"30h",yeast:">20h",ecoli:">10h"},
-  H:{mam:"3.5h",yeast:"10min",ecoli:">10h"}, I:{mam:"20h",yeast:"30min",ecoli:">10h"},
-  L:{mam:"5.5h",yeast:"3min",ecoli:"2min"}, K:{mam:"1.3h",yeast:"3min",ecoli:"2min"},
-  M:{mam:"30h",yeast:">20h",ecoli:">10h"}, F:{mam:"1.1h",yeast:"3min",ecoli:"2min"},
-  P:{mam:">20h",yeast:">20h",ecoli:"?"}, S:{mam:"1.9h",yeast:">20h",ecoli:">10h"},
-  T:{mam:"7.2h",yeast:">20h",ecoli:">10h"}, W:{mam:"2.8h",yeast:"3min",ecoli:"2min"},
-  Y:{mam:"2.8h",yeast:"10min",ecoli:"2min"}, V:{mam:"100h",yeast:">20h",ecoli:">10h"},
-};
-
-// ─── Biochemical calculations (unchanged) ─────────────────────────────────────
-function calcBioInfo(seq) {
-  if (!seq) return null;
-  const s   = seq.toUpperCase().replace(/[^ACDEFGHIKLMNPQRSTVWY]/g, "");
-  if (!s.length) return null;
-  const len  = s.length;
-  const arr  = s.split("");
-  const counts = {};
-  for (const aa of arr) counts[aa] = (counts[aa] || 0) + 1;
-
-  const mw    = arr.reduce((sum, aa) => sum + (AA_MASS[aa] || 111), 0) - 18.02 * (len - 1);
-  const gravy = arr.reduce((sum, aa) => sum + (KD[aa] || 0), 0) / len;
-
-  const charge = (pH) => {
-    let q = 1 / (1 + Math.pow(10, pH - PKA.Nterm)) - 1 / (1 + Math.pow(10, PKA.Cterm - pH));
-    const pos = { H: PKA.H, K: PKA.K, R: PKA.R };
-    const neg = { D: PKA.D, E: PKA.E, C: PKA.C, Y: PKA.Y };
-    for (const [aa, pka] of Object.entries(pos)) q += (counts[aa] || 0) / (1 + Math.pow(10, pH - pka));
-    for (const [aa, pka] of Object.entries(neg)) q -= (counts[aa] || 0) / (1 + Math.pow(10, pka - pH));
-    return q;
-  };
-  let lo = 0, hi = 14;
-  for (let i = 0; i < 150; i++) { const mid = (lo + hi) / 2; charge(mid) > 0 ? (lo = mid) : (hi = mid); }
-  const pI        = ((lo + hi) / 2).toFixed(2);
-  const chargeAt7 = charge(7.0).toFixed(2);
-
-  let destabCount = 0;
-  for (let i = 0; i < len - 1; i++) if (DIWV_DESTAB.has(arr[i] + arr[i + 1])) destabCount++;
-  const instabilityIdx = ((destabCount / (len - 1)) * 100).toFixed(1);
-  const isStable       = parseFloat(instabilityIdx) < 40;
-  const aliphIdx       = (((counts.A || 0) + 2.9 * (counts.V || 0) + 3.9 * ((counts.I || 0) + (counts.L || 0))) / len * 100).toFixed(1);
-  const extCoeff       = 5500 * (counts.W || 0) + 1490 * (counts.Y || 0) + 125 * (counts.C || 0);
-  const absCoeff       = extCoeff ? (extCoeff / mw).toFixed(3) : "0";
-  const posCharged     = (counts.R || 0) + (counts.K || 0) + (counts.H || 0);
-  const negCharged     = (counts.D || 0) + (counts.E || 0);
-  const composition    = Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([aa, n]) => ({ aa, count: n, pct: ((n / len) * 100).toFixed(1) }));
-  const nTerm          = arr[0];
-  const halflife       = HALFLIFE[nTerm] || { mam: "?", yeast: "?", ecoli: "?" };
-  const classes = {
-    aromatic: (counts.F||0)+(counts.W||0)+(counts.Y||0)+(counts.H||0),
-    nonpolar: (counts.G||0)+(counts.A||0)+(counts.V||0)+(counts.L||0)+(counts.I||0)+(counts.P||0)+(counts.M||0),
-    polar:    (counts.S||0)+(counts.T||0)+(counts.C||0)+(counts.N||0)+(counts.Q||0),
-    charged:  posCharged + negCharged,
-  };
-  return {
-    mw: (mw / 1000).toFixed(2), mwRaw: mw,
-    gravy: gravy.toFixed(3), pI, chargeAt7,
-    instabilityIdx, isStable, aliphIdx,
-    extCoeff: extCoeff.toLocaleString(), absCoeff,
-    composition, classes, halflife, nTerm,
-    posCharged, negCharged, len,
-  };
-}
+const calcBioInfo = calculateBioInfo;
 
 // ─── Fold/unfold: generate denatured positions ────────────────────────────────
 /**
@@ -250,8 +117,6 @@ function parsePDB(text) {
   });
   return atoms;
 }
-
-const countAtoms = (text) => text.split("\n").filter(l => l.startsWith("ATOM")).length;
 
 /** Build residue-sequence → atom-index lookup from a parsed atom array */
 function buildResidueMap(atoms) {
@@ -709,6 +574,16 @@ function ComparisonStructureCard({ pdb, label, onData }) {
   const [showCAlpha, setShowCAlpha] = useState(true);
 
   useEffect(() => {
+    let raf;
+    const animate = () => {
+      if (!dragRef.current) setRotation(value => ({ ...value, y: value.y + 0.005 }));
+      raf = requestAnimationFrame(animate);
+    };
+    raf = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  useEffect(() => {
     const request = ++requestRef.current;
     setLoading(true); setError(null); setData(null); onData(null);
     if (!pdb) {
@@ -842,7 +717,7 @@ function ProteinComparison({ primaryPdb, onClose }) {
     <section className="protein-comparison">
       <div className="comparison-heading">
         <div><span className="compare-card-label">STRUCTURE COMPARISON</span><h2>Two proteins, one view</h2><p>Inspect geometry and statistics side by side. Drag either structure to rotate it.</p></div>
-        <button className="mv-btn mv-btn-secondary" onClick={onClose}>Close comparison</button>
+        <button className="mv-btn mv-btn-secondary" onClick={onClose}>Disable comparison</button>
       </div>
       <div className="comparison-picker"><label htmlFor="comparison-protein">Compare {effectivePrimaryPdb} with</label><select id="comparison-protein" value={effectiveSecondaryPdb} onChange={event => setSecondaryPdb(event.target.value)}>{Object.entries(PROTEINS).map(([pdb, protein]) => <option key={pdb} value={pdb} disabled={pdb === effectivePrimaryPdb}>{protein.label} ({pdb})</option>)}</select></div>
       <div className="comparison-cards">
@@ -862,81 +737,6 @@ function ProteinComparison({ primaryPdb, onClose }) {
         </div>
       )}
     </section>
-  );
-}
-
-// ─── Custom PDB search ───────────────────────────────────────────────────────
-function CustomSearch({ onLoad }) {
-  const [query, setQuery] = useState(""), [searching, setSearching] = useState(false), [err, setErr] = useState("");
-  const [databaseResults, setDatabaseResults] = useState([]);
-  const suggestions = Object.entries(PROTEINS)
-    .filter(([pdb, protein]) => !query || pdb.includes(query.toUpperCase()) || protein.label.toUpperCase().includes(query.toUpperCase()))
-    .sort(([firstPdb], [secondPdb]) => firstPdb.localeCompare(secondPdb));
-  const loadSuggestion = pdb => {
-    setQuery(pdb);
-    setErr("");
-    onLoad(pdb, 0, null);
-  };
-  const submit = async event => {
-    event?.preventDefault();
-    const searchTerm = query.trim();
-    if (!searchTerm || searchTerm.length < 2) { setErr("Enter a PDB ID or protein name to search."); return; }
-    setErr(""); setDatabaseResults([]); setSearching(true);
-    try {
-      const exactId = /^[a-z0-9]{4}$/i.test(searchTerm) ? searchTerm.toUpperCase() : null;
-      if (exactId) {
-        const [metaRes, pdbRes] = await Promise.all([fetch(RCSB_META(exactId)), fetch(RCSB_PDB(exactId))]);
-        if (!metaRes.ok || !pdbRes.ok) throw new Error(`PDB entry "${exactId}" was not found.`);
-        const pdbText = await pdbRes.text();
-        if (!pdbText.includes("ATOM")) throw new Error(`PDB entry "${exactId}" has no renderable atom data.`);
-        onLoad(exactId, countAtoms(pdbText), pdbText);
-      } else {
-        const response = await fetch(RCSB_SEARCH, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            query: { type: "terminal", service: "full_text", parameters: { value: searchTerm } },
-            return_type: "entry",
-            request_options: { paginate: { start: 0, rows: 8 } },
-          }),
-        });
-        if (!response.ok) throw new Error("RCSB search is temporarily unavailable.");
-        const result = await response.json();
-        const entries = await Promise.all((result.result_set || []).slice(0, 8).map(async item => {
-          const pdb = item.identifier.toUpperCase();
-          try {
-            const metadata = await fetch(RCSB_META(pdb)).then(res => res.ok ? res.json() : null);
-            return { pdb, title: metadata?.struct?.title || "Untitled structure" };
-          } catch { return { pdb, title: "RCSB structure" }; }
-        }));
-        if (!entries.length) throw new Error(`No RCSB structures matched "${searchTerm}".`);
-        setDatabaseResults(entries);
-      }
-    } catch (searchError) { setErr(searchError.message || "Network error. Try again."); }
-    finally { setSearching(false); }
-  };
-  return (
-    <div className="mv-section">
-      <h4>Custom PDB Search</h4>
-      <form className="mv-form" onSubmit={submit}>
-        <input className="mv-input" value={query} onChange={e => { setQuery(e.target.value.slice(0, 80)); setErr(""); setDatabaseResults([]); }}
-          placeholder="PDB ID or protein name" spellCheck={false} aria-label="PDB ID or protein name" />
-        <button className="mv-btn" type="submit" disabled={searching}>{searching ? "Searching…" : "Search"}</button>
-      </form>
-      {suggestions.length > 0 && (
-        <div className="mv-search-suggestions" aria-label="Suggested proteins">
-          {suggestions.map(([pdb, protein]) => <button key={pdb} type="button" onClick={() => loadSuggestion(pdb)}>{protein.label}<span>{pdb}</span></button>)}
-        </div>
-      )}
-      {databaseResults.length > 0 && (
-        <div className="mv-search-results" aria-live="polite">
-          <div className="mv-search-results-heading">RCSB database matches</div>
-          {databaseResults.map(result => <button key={result.pdb} type="button" onClick={() => loadSuggestion(result.pdb)}><span>{result.title}</span><strong>{result.pdb}</strong></button>)}
-        </div>
-      )}
-      {err && <div className="mv-search-message mv-search-message--error" role="alert">{err}</div>}
-      {!err && <p className="mv-search-help">Search any 4-character RCSB PDB identifier or choose a suggestion.</p>}
-    </div>
   );
 }
 
@@ -1162,7 +962,7 @@ const ProteinViewer = () => {
     const ro = new ResizeObserver(deb);
     if (canvasRef.current) ro.observe(canvasRef.current);
     return () => { ro.disconnect(); cancelAnimationFrame(rafId); };
-  }, []);
+  }, [comparisonOpen]);
 
   // ── Mouse: drag + wheel + active site click ───────────────────────────────
   useEffect(() => {
@@ -1212,7 +1012,7 @@ const ProteinViewer = () => {
       window.removeEventListener("mouseup", up);
       c.removeEventListener("wheel", wheel);
     };
-  }, []); // no deps — accesses projections through stateRef
+  }, [comparisonOpen]);
 
   // ── Sync foldT slider → stateRef + lerp atoms ────────────────────────────
   useEffect(() => {
@@ -1447,7 +1247,7 @@ const ProteinViewer = () => {
           </div>
         </div>
 
-        <CustomSearch onLoad={handleCustomLoad} />
+        <ProteinSearch onLoad={handleCustomLoad} />
 
         {/* ── NEW: Fold / Unfold slider ─────────────────────────────────── */}
         <div className="mv-section">
@@ -1514,7 +1314,10 @@ const ProteinViewer = () => {
         <div className="mv-section">
           <h4>Viewer</h4>
           <p className="pv-hint">Drag to rotate · Scroll to zoom · Click site rings</p>
-          <button className="mv-btn compare-launch" onClick={() => setComparisonOpen(true)}>Compare proteins</button>
+          <button className={`mv-btn compare-launch${comparisonOpen ? " active" : ""}`} aria-pressed={comparisonOpen}
+            onClick={() => setComparisonOpen(value => !value)}>
+            {comparisonOpen ? "Disable comparison" : "Compare proteins"}
+          </button>
         </div>
 
         {sequence && (

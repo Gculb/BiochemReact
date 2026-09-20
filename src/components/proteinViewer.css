@@ -1234,6 +1234,12 @@
   margin-top:10px;
 }
 
+.compare-launch.active{
+  border-color:rgba(126,200,248,.35);
+  background:rgba(91,155,213,.14);
+  color:#9ed8ff;
+}
+
 .protein-comparison{
   grid-column:1 / -1;
   padding:18px;
