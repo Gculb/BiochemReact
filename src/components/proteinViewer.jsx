@@ -7,6 +7,11 @@ import {
 } from "./proteinViewerData.js";
 import { calcBioInfo as calculateBioInfo } from "./proteinViewerUtils.js";
 import ProteinSearch from "./ProteinSearch.jsx";
+import ProteinCanvas from "./ProteinCanvas.jsx";
+import useProteinCanvas from "./useProteinCanvas.js";
+import useProteinLoader from "./useProteinLoader.js";
+import ExtractedBioInfoPanel from "./BioInfoPanel.jsx";
+import ExtractedProteinComparison from "./ProteinComparison.jsx";
 
 const calcBioInfo = calculateBioInfo;
 
@@ -197,6 +202,7 @@ function hexRgba(hex, a) {
   return `rgba(${r},${g},${b},${a.toFixed(2)})`;
 }
 
+/*
 // ─── Sub-components (BioInfoPanel sub-components — unchanged) ─────────────────
 const AA_COLORS = {
   A:"#82a993",R:"#c88c8c",N:"#8eb4c7",D:"#c88c8c",C:"#d1bf78",E:"#c88c8c",
@@ -508,7 +514,7 @@ function BioInfoPanel({ sequence, meta, currentPdb, uniprot, ssFrac, activeSites
         </div>
       )}
 
-      {/* ── NEW: Sites tab ── */}
+      {}
       {tab === "sites" && (
         <div className="bio-content">
           {activeSites?.length > 0 ? (
@@ -740,6 +746,7 @@ function ProteinComparison({ primaryPdb, onClose }) {
   );
 }
 
+*/
 // ─── Main viewer ──────────────────────────────────────────────────────────────
 const ProteinViewer = () => {
   const canvasRef  = useRef(null);
@@ -759,8 +766,6 @@ const ProteinViewer = () => {
     uniprotAcc: "",
     activeSiteProjections: [], // [{sx,sy,depth,site}] rebuilt each frame
   });
-  const loadGenerationRef = useRef(0);
-
   // React state (drives UI re-renders)
   const [currentPdb,     setCurrentPdb]     = useState("1MBN");
   const [loading,        setLoading]        = useState(false);
@@ -792,6 +797,14 @@ const ProteinViewer = () => {
     const { rx, ry, zoom, atoms, center, radius, foldT: t, alphaFoldMode: afMode, activeSiteProjections } = stateRef.current;
     if (!atoms.length) return;
 
+    // Bound per-frame canvas work for large structures while retaining full detail for normal ones.
+    const ribbonBudget = atoms.length > 8000 ? 1400 : atoms.length > 3000 ? 2200 : 4000;
+    const ribbonStride = Math.max(1, Math.ceil(atoms.length / ribbonBudget));
+    const ribbonAtoms = ribbonStride === 1
+      ? atoms
+      : atoms.filter((_, index) => index % ribbonStride === 0 || index === atoms.length - 1);
+    const splineSteps = atoms.length > 3000 ? 1 : atoms.length > 1200 ? 2 : 5;
+
     const scale = (Math.min(W, H) / 2.3) * zoom / radius;
     const cx = W / 2, cy = H / 2;
 
@@ -805,8 +818,8 @@ const ProteinViewer = () => {
 
     // Segment the atom chain (large gaps = chain breaks)
     const segs = []; let seg = [];
-    atoms.forEach((a, i) => {
-      const prev = atoms[i - 1];
+    ribbonAtoms.forEach((a, i) => {
+      const prev = ribbonAtoms[i - 1];
       if (prev) {
         const d = Math.sqrt((a[0]-prev[0])**2 + (a[1]-prev[1])**2 + (a[2]-prev[2])**2);
         if (d > 6) { if (seg.length > 1) segs.push([...seg]); seg = []; }
@@ -818,7 +831,7 @@ const ProteinViewer = () => {
     // Build draw list with depth for painter's sort
     const drawList = segs.map(rawSeg => {
       const pts3      = rawSeg.map(a => [a[0], a[1], a[2]]);
-      const smooth    = spline(pts3, 5);
+      const smooth    = spline(pts3, splineSteps);
       const projected = smooth.map(p => proj(p));
       return {
         projected,
@@ -941,78 +954,17 @@ const ProteinViewer = () => {
     }
   }, [activeSites, selectedSite]);
 
-  // ── RAF loop ──────────────────────────────────────────────────────────────
-  useEffect(() => {
-    let raf;
-    const loop = () => {
-      if (autoRotate && !dragRef.current.on) stateRef.current.ry += 0.005;
-      if (!advancedPrompt && !sizeWarning) draw();
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-  }, [autoRotate, draw, advancedPrompt, sizeWarning]);
-
-  // ── Resize observer ───────────────────────────────────────────────────────
-  useEffect(() => {
-    const resize = () => { const c = canvasRef.current; if (!c) return; c.width = c.offsetWidth; c.height = c.offsetHeight; };
-    resize();
-    let rafId;
-    const deb = () => { cancelAnimationFrame(rafId); rafId = requestAnimationFrame(resize); };
-    const ro = new ResizeObserver(deb);
-    if (canvasRef.current) ro.observe(canvasRef.current);
-    return () => { ro.disconnect(); cancelAnimationFrame(rafId); };
-  }, [comparisonOpen]);
-
-  // ── Mouse: drag + wheel + active site click ───────────────────────────────
-  useEffect(() => {
-    const c = canvasRef.current;
-    if (!c) return;
-
-    const down = e => { dragRef.current = { on: true, lx: e.clientX, ly: e.clientY }; };
-    const move = e => {
-      if (!dragRef.current.on) return;
-      stateRef.current.ry += (e.clientX - dragRef.current.lx) * 0.007;
-      stateRef.current.rx += (e.clientY - dragRef.current.ly) * 0.007;
-      dragRef.current.lx = e.clientX;
-      dragRef.current.ly = e.clientY;
-    };
-    const up = e => {
-      // If the mouse barely moved, treat as a click → hit-test active sites
-      if (dragRef.current.on) {
-        const dx = Math.abs(e.clientX - dragRef.current.lx);
-        const dy = Math.abs(e.clientY - dragRef.current.ly);
-        if (dx < 4 && dy < 4) {
-          const rect = c.getBoundingClientRect();
-          const mx   = e.clientX - rect.left;
-          const my   = e.clientY - rect.top;
-          const projs = stateRef.current.activeSiteProjections || [];
-          let hit = null, bestD = Infinity;
-          projs.forEach(p => {
-            const d = Math.sqrt((mx - p.sx) ** 2 + (my - p.sy) ** 2);
-            if (d < 18 && d < bestD) { bestD = d; hit = p.site; }
-          });
-          if (hit) setSelectedSite(prev => prev === hit ? null : hit);
-        }
-      }
-      dragRef.current.on = false;
-    };
-    const wheel = e => {
-      e.preventDefault();
-      stateRef.current.zoom = Math.max(0.3, Math.min(4.5, stateRef.current.zoom - e.deltaY * 0.001));
-    };
-
-    c.addEventListener("mousedown", down);
-    window.addEventListener("mousemove", move);
-    window.addEventListener("mouseup", up);
-    c.addEventListener("wheel", wheel, { passive: false });
-    return () => {
-      c.removeEventListener("mousedown", down);
-      window.removeEventListener("mousemove", move);
-      window.removeEventListener("mouseup", up);
-      c.removeEventListener("wheel", wheel);
-    };
-  }, [comparisonOpen]);
+  useProteinCanvas({
+    canvasRef,
+    dragRef,
+    stateRef,
+    draw,
+    autoRotate,
+    advancedPrompt,
+    sizeWarning,
+    comparisonOpen,
+    setSelectedSite,
+  });
 
   // ── Sync foldT slider → stateRef + lerp atoms ────────────────────────────
   useEffect(() => {
@@ -1041,181 +993,33 @@ const ProteinViewer = () => {
   // ── Sync alphaFoldMode → stateRef ─────────────────────────────────────────
   useEffect(() => { stateRef.current.alphaFoldMode = alphaFoldMode; }, [alphaFoldMode]);
 
-  // ── UniProt fetch (extended with active sites) ────────────────────────────
-  const fetchUniprot = useCallback(async (pdb, loadGeneration) => {
-    setUniprot(null);
-    setActiveSites([]);
-    setSelectedSite(null);
-    try {
-      const res = await fetch(UNIPROT_SEARCH(pdb));
-      if (!res.ok) return;
-      const data  = await res.json();
-      if (loadGeneration !== loadGenerationRef.current) return;
-      const entry = data.results?.[0];
-      if (!entry) return;
-
-      const fn       = entry.comments?.find(c => c.commentType === "FUNCTION")?.texts?.[0]?.value || null;
-      const diseases = entry.comments?.filter(c => c.commentType === "DISEASE")?.map(c => c.disease?.diseaseName?.value)?.filter(Boolean) || [];
-      const domains  = entry.features?.filter(f => ["Domain","Repeat","Motif","Region"].includes(f.type))?.slice(0, 10)?.map(f => ({ type: f.type, description: f.description || f.type, start: f.location?.start?.value, end: f.location?.end?.value })) || [];
-      const keywords = entry.keywords?.map(k => k.name) || [];
-      const organism = entry.organism?.scientificName || null;
-      const gene     = entry.genes?.[0]?.geneName?.value || null;
-      const subcell  = entry.comments?.filter(c => c.commentType === "SUBCELLULAR LOCATION")?.flatMap(c => c.subcellularLocations?.map(s => s.location?.value))?.filter(Boolean) || [];
-      const cofactors= entry.comments?.filter(c => c.commentType === "COFACTOR")?.flatMap(c => c.cofactors?.map(cf => cf.name))?.filter(Boolean) || [];
-
-      // ── Active / binding / other sites ─────────────────────────────────
-      const siteFeatures = entry.features?.filter(f =>
-        ["Active site", "Binding site", "Site"].includes(f.type)
-      ) || [];
-      const parsedSites = siteFeatures.map(f => ({
-        type:        f.type,
-        description: f.description || null,
-        position:    f.location?.start?.value ?? null,
-        // Some binding sites carry a ligand name in evidences or description
-        ligand:      f.ligand?.name || null,
-      }));
-      setActiveSites(parsedSites);
-
-      const accession = entry.primaryAccession;
-      setUniprotAcc(accession);
-      stateRef.current.uniprotAcc = accession;
-      setUniprot({ accession, function: fn, diseases, domains, keywords, organism, gene, subcell, cofactors });
-
-      // Return accession for AlphaFold follow-up
-      return accession;
-    } catch {}
-  }, []);
-
-  // ── NEW: AlphaFold fetch ──────────────────────────────────────────────────
-  const fetchAlphaFold = useCallback(async (requestedAcc) => {
-    const loadGeneration = loadGenerationRef.current;
-    const accession = (requestedAcc || uniprotAcc || stateRef.current.uniprotAcc || "").trim();
-    if (!accession) {
-      setAfError("No UniProt accession available for AlphaFold lookup.");
-      return;
-    }
-
-    setAfLoading(true);
-    setAfError(null);
-    try {
-      const res = await fetch(AF_API(accession));
-      if (!res.ok) throw new Error("AlphaFold entry not found");
-      const data = await res.json();
-      const entry = Array.isArray(data) ? data[0] : data;
-      const pdbUrl =
-        entry?.pdbUrl ||
-        entry?.cifUrl ||
-        entry?.bcifUrl ||
-        entry?.modelUrl ||
-        entry?.pdb_url;
-
-      if (!pdbUrl) throw new Error("No structure URL in AlphaFold response");
-
-      const pdbText = await fetch(pdbUrl).then(r => r.text());
-      if (loadGeneration !== loadGenerationRef.current) return;
-      const afAtoms = parsePDB(pdbText);
-      if (!afAtoms.length) throw new Error("No Cα atoms in AlphaFold PDB");
-
-      const c = centroid(afAtoms), r = maxR(afAtoms, c);
-      const unfolded = generateUnfolded(afAtoms);
-
-      // Field-by-field to avoid race with foldT effect
-      stateRef.current.atoms = afAtoms;
-      stateRef.current.nativeAtoms = afAtoms;
-      stateRef.current.unfoldedXYZ = unfolded;
-      stateRef.current.center = c;
-      stateRef.current.radius = r;
-      stateRef.current.residueMap = buildResidueMap(afAtoms);
-      stateRef.current.foldT = 0;
-      stateRef.current.alphaFoldMode = true;
-      stateRef.current.uniprotAcc = accession;
-
-      // setFoldT AFTER stateRef is populated so the foldT=0 effect sees nativeAtoms
-      setFoldT(0);
-      setAlphaFoldMode(true);
-      setSSFrac(calcSSFraction(afAtoms));
-      setUniprotAcc(accession);
-    } catch (e) {
-      setAfError(e.message || "AlphaFold fetch failed.");
-    } finally {
-      setAfLoading(false);
-    }
-  }, [uniprotAcc]);
-
-  // ── Core load ─────────────────────────────────────────────────────────────
-  const loadProtein = useCallback(async (pdb, preloadedPdbText) => {
-    const loadGeneration = ++loadGenerationRef.current;
-    setLoading(true); setError(null); setMeta(null); setSequence("");
-    setCurrentPdb(pdb); setSSFrac(null); setAlphaFoldMode(false);
-    setAfError(null); setSelectedSite(null); setFoldT(0);
-    setUniprotAcc("");
-    // Clear stale accession immediately so AlphaFold button doesn't fire with wrong acc
-    stateRef.current.uniprotAcc = "";
-
-    const [metaRes, pdbRes, entityRes] = await Promise.allSettled([
-      fetch(RCSB_META(pdb)).then(r => r.json()),
-      preloadedPdbText ? Promise.resolve(preloadedPdbText) : fetch(RCSB_PDB(pdb)).then(r => r.text()),
-      fetch(RCSB_ENTITY(pdb)).then(r => r.json()),
-    ]);
-    if (loadGeneration !== loadGenerationRef.current) return;
-
-    if (metaRes.status === "fulfilled") {
-      const d = metaRes.value;
-      setMeta({
-        title:     d.struct?.title || pdb,
-        method:    d.exptl?.[0]?.method || "—",
-        resolution: d.refine?.[0]?.ls_d_res_high?.toFixed(2) ?? d.em_3d_reconstruction?.[0]?.resolution?.toFixed(2) ?? "—",
-        deposited:  d.rcsb_accession_info?.initial_release_date?.split("T")[0] || "—",
-        atoms:      d.rcsb_entry_info?.deposited_atom_count?.toLocaleString() || "—",
-        keywords:   d.struct_keywords?.pdbx_keywords || "—",
-        chains:     d.rcsb_entry_info?.polymer_entity_count || "—",
-      });
-    }
-    if (entityRes.status === "fulfilled") setSequence(entityRes.value?.entity_poly?.pdbx_seq_one_letter_code_can || "");
-
-    const pdbText = pdbRes.status === "fulfilled" ? pdbRes.value : null;
-    const atoms   = pdbText && pdbText.includes("ATOM") ? parsePDB(pdbText) : buildFallback(pdb);
-    if (!atoms.length) { setError("No Cα atoms found."); setLoading(false); return; }
-
-    const c        = centroid(atoms), r = maxR(atoms, c);
-    const unfolded = generateUnfolded(atoms);
-
-    // Set all atom state atomically. Do NOT use spread — assign individual fields
-    // so a concurrent foldT=0 effect sees a consistent snapshot.
-    stateRef.current.atoms              = atoms;
-    stateRef.current.nativeAtoms        = atoms;
-    stateRef.current.unfoldedXYZ        = unfolded;
-    stateRef.current.rcsbAtoms          = atoms;
-    stateRef.current.rcsbUnfoldedXYZ    = unfolded;
-    stateRef.current.center             = c;
-    stateRef.current.radius             = r;
-    stateRef.current.residueMap         = buildResidueMap(atoms);
-    stateRef.current.rx                 = 0.3;
-    stateRef.current.ry                 = 0.4;
-    stateRef.current.foldT              = 0;
-    stateRef.current.alphaFoldMode      = false;
-    stateRef.current.activeSiteProjections = [];
-
-    setSSFrac(calcSSFraction(atoms));
-    setLoading(false);
-
-    // fetchUniprot is fire-and-forget for UI but we await the returned accession
-    const acc = await fetchUniprot(pdb, loadGeneration);
-    if (loadGeneration !== loadGenerationRef.current) return;
-    stateRef.current.uniprotAcc = acc || null;
-  }, [fetchUniprot]);
-
-  const handleCustomLoad = useCallback((id, atomCount, pdbText) => {
-    if (atomCount > BLOCK_THRESHOLD) setSizeWarning({ id, atomCount, pdbText, level: "large" });
-    else if (atomCount > WARN_THRESHOLD) setSizeWarning({ id, atomCount, pdbText, level: "warn" });
-    else loadProtein(id, pdbText);
-  }, [loadProtein]);
-
-  const confirmSizeWarning = useCallback(() => {
-    if (!sizeWarning) return;
-    loadProtein(sizeWarning.id, sizeWarning.pdbText);
-    setSizeWarning(null);
-  }, [sizeWarning, loadProtein]);
+  const { fetchAlphaFold, loadProtein, handleCustomLoad, confirmSizeWarning } = useProteinLoader({
+    stateRef,
+    uniprotAcc,
+    sizeWarning,
+    setLoading,
+    setError,
+    setMeta,
+    setSequence,
+    setCurrentPdb,
+    setSSFrac,
+    setAlphaFoldMode,
+    setAfError,
+    setSelectedSite,
+    setFoldT,
+    setUniprotAcc,
+    setUniprot,
+    setActiveSites,
+    setAfLoading,
+    setSizeWarning,
+    buildFallback,
+    parsePDB,
+    buildResidueMap,
+    calcSSFraction,
+    generateUnfolded,
+    centroid,
+    maxR,
+  });
 
   // Saved views
   const saveView = () => {
@@ -1360,7 +1164,12 @@ const ProteinViewer = () => {
       {/* ── Canvas stage ──────────────────────────────────────────────────── */}
       {!comparisonOpen && <main className="pv-stage">
         <div className="mv-canvas-container pv-canvas-wrap">
-          <canvas ref={canvasRef} className="mv-canvas pv-canvas" />
+          <ProteinCanvas
+            canvasRef={canvasRef}
+            autoRotate={autoRotate}
+            onToggleAutoRotate={() => setAutoRotate(value => !value)}
+            onReset={() => { stateRef.current.rx = 0.3; stateRef.current.ry = 0.4; stateRef.current.zoom = 1; }}
+          />
 
           {loading && <div className="pv-overlay"><div className="pv-spinner" /><span>Fetching {currentPdb} from RCSB…</span></div>}
           {error   && <div className="pv-overlay pv-err">{error}</div>}
@@ -1403,12 +1212,6 @@ const ProteinViewer = () => {
             </div>
           )}
 
-          <div className="pv-canvas-btns">
-            <button className={`pv-ctrl${autoRotate ? " pv-ctrl--active" : ""}`} onClick={() => setAutoRotate(v => !v)}>
-              {autoRotate ? "⏸" : "▶"}
-            </button>
-            <button className="pv-ctrl" title="Reset view" onClick={() => { stateRef.current.rx = 0.3; stateRef.current.ry = 0.4; stateRef.current.zoom = 1; }}>↺</button>
-          </div>
         </div>
 
         {/* ── Meta strip ──────────────────────────────────────────────────── */}
@@ -1476,7 +1279,7 @@ const ProteinViewer = () => {
 
       {/* ── Right bioinfo panel ──────────────────────────────────────────── */}
       {!comparisonOpen && <aside className="bioinfo-panel">
-        <BioInfoPanel
+        <ExtractedBioInfoPanel
           sequence={sequence}
           meta={meta}
           currentPdb={currentPdb}
@@ -1489,7 +1292,7 @@ const ProteinViewer = () => {
           }}
         />
       </aside>}
-      {comparisonOpen && <ProteinComparison primaryPdb={currentPdb} onClose={() => setComparisonOpen(false)} />}
+      {comparisonOpen && <ExtractedProteinComparison primaryPdb={currentPdb} onClose={() => setComparisonOpen(false)} />}
     </div>
   );
 };
