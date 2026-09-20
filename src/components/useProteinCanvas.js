@@ -32,7 +32,7 @@ export default function useProteinCanvas({
   useEffect(() => {
     const resize = () => {
       const canvas = canvasRef.current;
-      if (!canvas) return;
+      if (!canvas || stateRef.current.gpuMode) return;
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     };

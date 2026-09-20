@@ -9,8 +9,9 @@ import { calcBioInfo as calculateBioInfo } from "./proteinViewerUtils.js";
 import ProteinSearch from "./ProteinSearch.jsx";
 import ProteinCanvas from "./ProteinCanvas.jsx";
 import useProteinCanvas from "./useProteinCanvas.js";
+import useProteinWebGL from "./useProteinWebGL.js";
 import useProteinLoader from "./useProteinLoader.js";
-import ExtractedBioInfoPanel from "./BioInfoPanel.jsx";
+import ExtractedBioInfoPanel, { ActiveSiteTooltip } from "./BioInfoPanel.jsx";
 import ExtractedProteinComparison from "./ProteinComparison.jsx";
 
 const calcBioInfo = calculateBioInfo;
@@ -792,6 +793,7 @@ const ProteinViewer = () => {
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    if (stateRef.current.gpuMode) return;
     const ctx = canvas.getContext("2d"), W = canvas.width, H = canvas.height;
     ctx.clearRect(0, 0, W, H);
     const { rx, ry, zoom, atoms, center, radius, foldT: t, alphaFoldMode: afMode, activeSiteProjections } = stateRef.current;
@@ -953,6 +955,8 @@ const ProteinViewer = () => {
       ctx.fillText(`Unfolding: ${Math.round(t * 100)}%`, W - 110, 18);
     }
   }, [activeSites, selectedSite]);
+
+  useProteinWebGL({ canvasRef, stateRef, activeSites, selectedSite, advancedPrompt, sizeWarning, comparisonOpen });
 
   useProteinCanvas({
     canvasRef,
