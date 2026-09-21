@@ -9,6 +9,29 @@ const AA_COLORS = {
   Y:"#b694bf",V:"#82a993",
 };
 
+const AA_INFO = {
+  A: { name: "Alanine",       category: "Non-polar",    mw: 89.1,  codons: "GCU, GCC, GCA, GCG" },
+  R: { name: "Arginine",      category: "Charged (+)",  mw: 174.2, codons: "CGU, CGC, CGA, CGG, AGA, AGG" },
+  N: { name: "Asparagine",    category: "Polar",        mw: 132.1, codons: "AAU, AAC" },
+  D: { name: "Aspartate",     category: "Charged (−)",  mw: 133.1, codons: "GAU, GAC" },
+  C: { name: "Cysteine",      category: "Polar",        mw: 121.2, codons: "UGU, UGC" },
+  E: { name: "Glutamate",     category: "Charged (−)",  mw: 147.1, codons: "GAA, GAG" },
+  Q: { name: "Glutamine",     category: "Polar",        mw: 146.2, codons: "CAA, CAG" },
+  G: { name: "Glycine",       category: "Non-polar",    mw: 75.1,  codons: "GGU, GGC, GGA, GGG" },
+  H: { name: "Histidine",     category: "Charged (+)",  mw: 155.2, codons: "CAU, CAC" },
+  I: { name: "Isoleucine",    category: "Non-polar",    mw: 131.2, codons: "AUU, AUC, AUA" },
+  L: { name: "Leucine",       category: "Non-polar",    mw: 131.2, codons: "UUA, UUG, CUU, CUC, CUA, CUG" },
+  K: { name: "Lysine",        category: "Charged (+)",  mw: 146.2, codons: "AAA, AAG" },
+  M: { name: "Methionine",    category: "Non-polar",    mw: 149.2, codons: "AUG" },
+  F: { name: "Phenylalanine", category: "Aromatic",     mw: 165.2, codons: "UUU, UUC" },
+  P: { name: "Proline",       category: "Non-polar",    mw: 115.1, codons: "CCU, CCC, CCA, CCG" },
+  S: { name: "Serine",        category: "Polar",        mw: 105.1, codons: "UCU, UCC, UCA, UCG, AGU, AGC" },
+  T: { name: "Threonine",     category: "Polar",        mw: 119.1, codons: "ACU, ACC, ACA, ACG" },
+  W: { name: "Tryptophan",    category: "Aromatic",     mw: 204.2, codons: "UGG" },
+  Y: { name: "Tyrosine",      category: "Aromatic",     mw: 181.2, codons: "UAU, UAC" },
+  V: { name: "Valine",        category: "Non-polar",    mw: 99.1,  codons: "GUU, GUC, GUA, GUG" },
+};
+
 const MetricBar = ({ label, value, rawValue, max, color, note }) => {
   const pct = Math.min(100, Math.max(0, (rawValue / max) * 100));
   return (
@@ -62,25 +85,39 @@ const CompositionChart = ({ composition }) => {
   const [selectedAa, setSelectedAa] = useState(null);
   const maxPct = Math.max(...composition.map(c => parseFloat(c.pct)));
   const selected = composition.find(({ aa }) => aa === selectedAa);
+  const selectedInfo = selected ? AA_INFO[selected.aa] : null;
+
   return (
     <div className="bio-comp-chart" aria-label="Amino acid composition">
-      {[...composition].sort((a, b) => b.pct - a.pct).map(({ aa, pct, count }) => (
-        <button
-          key={aa}
-          type="button"
-          className={`bio-comp-row${selectedAa === aa ? " bio-comp-row--selected" : ""}`}
-          onClick={() => setSelectedAa(selectedAa === aa ? null : aa)}
-          aria-pressed={selectedAa === aa}
-          title={`${aa}: ${count} residues (${pct}%)`}
-        >
-          <span className="bio-comp-aa" style={{ color: AA_COLORS[aa] || "#79a8ca" }}>{aa}</span>
-          <div className="bio-comp-track">
-            <div className="bio-comp-fill" style={{ width: `${(parseFloat(pct) / maxPct) * 100}%`, background: AA_COLORS[aa] || "#79a8ca" }} />
-          </div>
-          <span className="bio-comp-pct">{pct}%</span>
-        </button>
-      ))}
-      {selected && <div className="bio-comp-detail" role="status"><strong>{selected.aa}</strong><span>{selected.count} residues · {selected.pct}% of sequence</span></div>}
+      {[...composition].sort((a, b) => b.pct - a.pct).map(({ aa, pct, count }) => {
+        const info = AA_INFO[aa];
+        return (
+          <button
+            key={aa}
+            type="button"
+            className={`bio-comp-row${selectedAa === aa ? " bio-comp-row--selected" : ""}`}
+            onClick={() => setSelectedAa(selectedAa === aa ? null : aa)}
+            aria-pressed={selectedAa === aa}
+            title={`${info?.name ?? aa}: ${count} residues (${pct}%)`}
+          >
+            <span className="bio-comp-aa" style={{ color: AA_COLORS[aa] || "#79a8ca" }}>{aa}</span>
+            <span className="bio-comp-name">{info?.name ?? ""}</span>
+            <div className="bio-comp-track">
+              <div className="bio-comp-fill" style={{ width: `${(parseFloat(pct) / maxPct) * 100}%`, background: AA_COLORS[aa] || "#79a8ca" }} />
+            </div>
+            <span className="bio-comp-pct">{pct}%</span>
+          </button>
+        );
+      })}
+      {selected && selectedInfo && (
+        <div className="bio-comp-detail" role="status">
+          <strong>{selectedInfo.name} ({selected.aa})</strong>
+          <span>{selected.count} residues · {selected.pct}% of sequence</span>
+          <span>Category: {selectedInfo.category}</span>
+          <span>Mol. weight: {selectedInfo.mw} Da</span>
+          <span>Codons: {selectedInfo.codons}</span>
+        </div>
+      )}
     </div>
   );
 };

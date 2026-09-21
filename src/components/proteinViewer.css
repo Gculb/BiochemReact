@@ -1239,7 +1239,34 @@
   background:rgba(91,155,213,.14);
   color:#9ed8ff;
 }
+.bio-comp-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.75rem;
+  color: #8eb4c7;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: 6px;
+}
 
+.bio-comp-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: #10192a;
+  font-size: 0.8rem;
+  color: #c7d4e2;
+}
+
+.bio-comp-detail strong {
+  color: #e6edf5;
+  font-size: 0.85rem;
+}
 .protein-comparison{
   grid-column:1 / -1;
   padding:18px;
