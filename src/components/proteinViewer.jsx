@@ -34,50 +34,58 @@ function generateUnfolded(atoms, seed = 42) {
     return (rng >>> 0) / 0xffffffff;
   };
   const randN = () => {
-    // Box-Muller
     const u = Math.max(1e-10, rand()), v = rand();
     return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
   };
+
+  const BOND = 3.8;         // real Cα–Cα spacing, so the chain stays a chain
+  const PERSISTENCE = 0.35; // 0 = perfectly stiff rod, 1 = pure random walk each step
 
   const cx = atoms.reduce((s, a) => s + a[0], 0) / atoms.length;
   const cy = atoms.reduce((s, a) => s + a[1], 0) / atoms.length;
   const cz = atoms.reduce((s, a) => s + a[2], 0) / atoms.length;
 
-  return atoms.map((a, i) => {
-    const ss   = a[3];
-    const dx   = a[0] - cx, dy = a[1] - cy, dz = a[2] - cz;
-    const dist = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1;
-    // Radial unit vector from centroid
-    const rx = dx / dist, ry = dy / dist, rz = dz / dist;
+  const out = new Array(atoms.length);
+  let dir = [1, 0, 0];
+  let pos = null;
 
-    if (ss === 1) {
-      // Helices: shoot outward + drift up/down
-      const blow = 18 + rand() * 12;
-      return [
-        a[0] + rx * blow + randN() * 3,
-        a[1] + ry * blow + randN() * 3,
-        a[2] + rz * blow + randN() * 3 + (i % 2 === 0 ? 8 : -8),
+  for (let i = 0; i < atoms.length; i++) {
+    const prev = atoms[i - 1];
+    // Same gap threshold used elsewhere (draw(), parsePDB chain logic) to detect
+    // real chain breaks vs. a continuous backbone
+    const isBreak = i === 0 || (prev && Math.hypot(
+      atoms[i][0] - prev[0], atoms[i][1] - prev[1], atoms[i][2] - prev[2]
+    ) > 6);
+
+    if (isBreak) {
+      // Start a fresh walk near this segment's native location (offset by
+      // centroid) so multi-chain structures don't collapse onto one strand
+      pos = [
+        atoms[i][0] - cx + randN() * 4,
+        atoms[i][1] - cy + randN() * 4,
+        atoms[i][2] - cz + randN() * 4,
       ];
-    } else if (ss === 2) {
-      // Sheets: fan sideways (perpendicular in XZ plane)
-      const perp = [-rz, 0, rx];
-      const blow = 14 + rand() * 10;
-      const side = (rand() - 0.5) * 24;
-      return [
-        a[0] + rx * blow + perp[0] * side + randN() * 2,
-        a[1] + ry * blow + randN() * 4,
-        a[2] + rz * blow + perp[2] * side + randN() * 2,
-      ];
-    } else {
-      // Coils: pure diffusion, wider spread
-      const spread = 20;
-      return [
-        a[0] + randN() * spread,
-        a[1] + randN() * spread,
-        a[2] + randN() * spread,
-      ];
+      const theta = rand() * Math.PI * 2, phi = rand() * Math.PI;
+      dir = [Math.sin(phi) * Math.cos(theta), Math.sin(phi) * Math.sin(theta), Math.cos(phi)];
+      out[i] = [pos[0] + cx, pos[1] + cy, pos[2] + cz];
+      continue;
     }
-  });
+
+    // Worm-like-chain step: mostly keep going the same direction, wobble a bit —
+    // this is what gives it a floppy-but-extended look instead of a tight coil
+    dir = [
+      dir[0] * (1 - PERSISTENCE) + randN() * PERSISTENCE,
+      dir[1] * (1 - PERSISTENCE) + randN() * PERSISTENCE,
+      dir[2] * (1 - PERSISTENCE) + randN() * PERSISTENCE,
+    ];
+    const dlen = Math.hypot(dir[0], dir[1], dir[2]) || 1;
+    dir = [dir[0] / dlen, dir[1] / dlen, dir[2] / dlen];
+
+    pos = [pos[0] + dir[0] * BOND, pos[1] + dir[1] * BOND, pos[2] + dir[2] * BOND];
+    out[i] = [pos[0] + cx, pos[1] + cy, pos[2] + cz];
+  }
+
+  return out;
 }
 
 // ─── Linear interpolation helper ─────────────────────────────────────────────
@@ -202,6 +210,21 @@ function hexRgba(hex, a) {
   const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
   return `rgba(${r},${g},${b},${a.toFixed(2)})`;
 }
+const PlddtLegend = () => (
+  <div className="plddt-legend">
+    {[
+      { label: "Very high (>90)", color: "#5f8f7b" },
+      { label: "Confident (70–90)", color: "#6f90b0" },
+      { label: "Low (50–70)", color: "#b89257" },
+      { label: "Very low (<50)", color: "#a97878" },
+    ].map(({ label, color }) => (
+      <div key={label} className="plddt-row">
+        <span style={{ background: color }} />
+        {label}
+      </div>
+    ))}
+  </div>
+);
 
 /*
 // ─── Sub-components (BioInfoPanel sub-components — unchanged) ─────────────────
@@ -789,6 +812,7 @@ const ProteinViewer = () => {
   const [afError,        setAfError]        = useState(null); // ← NEW
   const [comparisonOpen, setComparisonOpen] = useState(false);
 
+
   // ── Draw ────────────────────────────────────────────────────────────────────
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
@@ -798,14 +822,6 @@ const ProteinViewer = () => {
     ctx.clearRect(0, 0, W, H);
     const { rx, ry, zoom, atoms, center, radius, foldT: t, alphaFoldMode: afMode, activeSiteProjections } = stateRef.current;
     if (!atoms.length) return;
-
-    // Bound per-frame canvas work for large structures while retaining full detail for normal ones.
-    const ribbonBudget = atoms.length > 8000 ? 1400 : atoms.length > 3000 ? 2200 : 4000;
-    const ribbonStride = Math.max(1, Math.ceil(atoms.length / ribbonBudget));
-    const ribbonAtoms = ribbonStride === 1
-      ? atoms
-      : atoms.filter((_, index) => index % ribbonStride === 0 || index === atoms.length - 1);
-    const splineSteps = atoms.length > 3000 ? 1 : atoms.length > 1200 ? 2 : 5;
 
     const scale = (Math.min(W, H) / 2.3) * zoom / radius;
     const cx = W / 2, cy = H / 2;
@@ -818,17 +834,29 @@ const ProteinViewer = () => {
       return { sx: cx + x2 * scale * fov, sy: cy - y2 * scale * fov, depth: z2 };
     };
 
-    // Segment the atom chain (large gaps = chain breaks)
-    const segs = []; let seg = [];
-    ribbonAtoms.forEach((a, i) => {
-      const prev = ribbonAtoms[i - 1];
+    // Detect true chain breaks on the raw, unstrided sequence — real Cα-Cα spacing is
+    // ~3.8 Å whether folded or unfolded, so a gap > 6 reliably means an actual break.
+    const rawSegs = []; let rawBreakSeg = [];
+    atoms.forEach((a, i) => {
+      const prev = atoms[i - 1];
       if (prev) {
-        const d = Math.sqrt((a[0]-prev[0])**2 + (a[1]-prev[1])**2 + (a[2]-prev[2])**2);
-        if (d > 6) { if (seg.length > 1) segs.push([...seg]); seg = []; }
+        const d = Math.hypot(a[0] - prev[0], a[1] - prev[1], a[2] - prev[2]);
+        if (d > 6) { if (rawBreakSeg.length > 1) rawSegs.push(rawBreakSeg); rawBreakSeg = []; }
       }
-      seg.push(a);
+      rawBreakSeg.push(a);
     });
-    if (seg.length > 1) segs.push(seg);
+    if (rawBreakSeg.length > 1) rawSegs.push(rawBreakSeg);
+
+    // Bound per-frame canvas work for large structures while retaining full detail for normal ones.
+    // Subsample WITHIN each confirmed segment only — stride can never introduce a break
+    // that wasn't already there.
+    const ribbonBudget = atoms.length > 8000 ? 1400 : atoms.length > 3000 ? 2200 : 4000;
+    const ribbonStride = Math.max(1, Math.ceil(atoms.length / ribbonBudget));
+    const segs = rawSegs
+      .map(s => (ribbonStride === 1 ? s : s.filter((_, i) => i % ribbonStride === 0 || i === s.length - 1)))
+      .filter(s => s.length > 1);
+
+    const splineSteps = atoms.length > 3000 ? 1 : atoms.length > 1200 ? 2 : 5;
 
     // Build draw list with depth for painter's sort
     const drawList = segs.map(rawSeg => {
